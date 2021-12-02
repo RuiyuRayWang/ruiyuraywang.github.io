@@ -128,12 +128,18 @@
         <p>Hosting my first Blog with Hugo on Github!</p>
 <p>For a starter, I&rsquo;ll document in this post how the blog is managed and used.
 I&rsquo;ve setup the site by referring to <a href="https://blog.csdn.net/kutawei/article/details/105421545">here</a>, <a href="https://zhuanlan.zhihu.com/p/150095964">here</a>, and <a href="https://gohugo.io/getting-started/quick-start/">here</a>.</p>
-<p>The first link is particularly useful. I&rsquo;ve adopted its file structure for setting up privately managed (<code>/blog</code>) and public sites (<code>/public</code>). It also gives a shell script which automatically regenerates the static site based on contents in <code>/blog</code>. Everytime there&rsquo;s an update in <code>/blog</code>, just do</p>
+<p>The first link is particularly useful. I&rsquo;ve adopted its file structure for setting up privately managed (<code>/blog</code>) and public sites (<code>/public</code>).
+Critically, the <code>/public</code> repo must be created with the following convention: <a href="https://github.com/RuiyuRayWang/ruiyuraywang.github.io">https://github.com/RuiyuRayWang/ruiyuraywang.github.io</a>
+Everytime contents in <code>/blog</code> is updated, run <code>hugo -D</code> to generate new site to <code>/public</code> and push <code>/public</code> to github accordingly.</p>
+<p>For automatic regeneration of the static site, a shell script is given (<code>./deploy.h</code>). After editing contents in <code>/blog</code>, simply do</p>
 <pre tabindex="0"><code>./deploy.sh
 </code></pre><p>and the static sites will be updated.</p>
 <p>To add new contents to the blog, open up a terminal and navigate to the <code>/blog</code> directory and type:</p>
 <pre tabindex="0"><code>hugo new content/post/[new-post-name].md
-</code></pre><p>The newly created markdown should assume a pre-defined format (headers, etc.). Edit the post contents and then set <code>draft</code> to <code>false</code>, the post will be updated to the static site the next time the <code>./deploy.sh</code> script is ran.</p>
+</code></pre><p>The newly created markdown should assume a pre-defined format (headers, etc.). Edit the post contents and then set <code>draft</code> to <code>false</code>, the post will be updated marked and recognized the next time <code>hugo -D</code> is invoked.</p>
+<p>Before pushing to github remote site, check locally how the update looks, do:</p>
+<pre tabindex="0"><code>hugo server -D
+</code></pre><p>and the newly generated site can be viewed at <code>http://localhost:1313/</code></p>
 
         </p>
     </div>
