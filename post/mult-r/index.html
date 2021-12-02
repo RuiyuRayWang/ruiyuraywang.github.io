@@ -272,12 +272,39 @@ sudo gdebi r-${R_VERSION}_1_amd64.deb
 </code></pre><p>To ensure that R is available on the default system <code>PATH</code> variable, create symbolic links to the version of R just installed.</p>
 <pre tabindex="0"><code>sudo ln -s /opt/R/${R_VERSION}/bin/R /usr/local/bin/R
 sudo ln -s /opt/R/${R_VERSION}/bin/Rscript /usr/local/bin/Rscript
-</code></pre><p>This step only applies to the first installation of R on a given system. For subsequent installations, this section should be skipped.</p>
-<p>To install multiple versions of R, repeat these steps to specify, download, and install a different version of R alongside existing versions.</p>
-<p><a href="https://docs.rstudio.com/rspm/admin/appendix/system-dependency-detection/">System Dependency Detection</a></p>
+</code></pre><p>Next, install multiple versions of R. Repeat the steps to specify, download, and install a different version of R alongside existing versions.
+I did this <code>export R_VERSION=3.6.3</code> and executed the steps above to have R-3.6.3 installed.</p>
+<h3 id="switching-between-r-versions">Switching between R versions</h3>
+<p>The tutorial has a note at the symlink step saying:</p>
+<blockquote>
+<p>This step only applies to the first installation of R on a given system. For subsequent installations, this section should be skipped.</p>
+</blockquote>
+<p>I suspect that overriding the symlink with later installed R versions would allow switching between different R versions. So I did:</p>
+<pre tabindex="0"><code>sudo rm /usr/local/bin/R /usr/local/bin/Rscript
+sudo ln -s /opt/R/3.6.3/bin/R /usr/local/bin/R  # ${R_VERSION}=3.6.3
+sudo ln -s /opt/R/3.6.3/bin/Rscript /usr/local/bin/Rscript
+</code></pre><p>After doing this, R indeed switched to my desired version.</p>
+<pre tabindex="0"><code>$ which R
+/usr/local/bin/R
+$ file /usr/local/bin/R
+/usr/local/bin/R: symbolic link to /opt/R/3.6.3/bin/R
+$ R --version
+R version 3.6.3 (2020-02-29) -- &quot;Holding the Windsock&quot;
+Copyright (C) 2020 The R Foundation for Statistical Computing
+Platform: x86_64-pc-linux-gnu (64-bit)
+</code></pre><p>Another way of switching between different R versions is to get <code>Rstudio</code> recognize different R builts.
+Referring to this post: <a href="https://support.rstudio.com/hc/en-us/articles/200486138-Changing-R-versions-for-the-RStudio-Desktop-IDE">Changing R versions for the RStudio Desktop IDE</a>, we know that on Linux systems, <code>Rstudio</code> use the version of R pointed to by the output of <code>which R</code>.</p>
+<p>To override which version of R is used, we can set <code>RSTUDIO_WHICH_R</code> environment variable to the R executable that we want to run against. For example, in terminal:</p>
+<pre tabindex="0"><code>$ export RSTUDIO_WHICH_R=/opt/R/3.6.3/bin/R
+</code></pre><p>And within the same terminal, launch Rstudio by typing:</p>
+<pre tabindex="0"><code>$ rstudio
+</code></pre><p>Because the <code>RSTUDIO_WHICH_R</code> is only available in a given shell, calling <code>rstudio</code> in a new terminal will still point to the default R executable. In our case this is <code>/usr/local/bin/R</code>, which ,by default, points to <code>/opt/R/4.0.5/bin/R</code>.</p>
+<p>Now we can happily work with multiple R versions. It&rsquo;s time to build R packages. Hopefully <code>cellassign</code> can be run properly this time.</p>
+<p><code>cellassign</code> depends on tensorflow which is another nasty built experience. I&rsquo;ll write about it next time.</p>
+<p>Other useful resources:</p>
 <p><a href="https://support.rstudio.com/hc/en-us/articles/215488098-Installing-multiple-versions-of-R-on-Linux"><strong>Installing multiple versions of R on Linux</strong></a>*</p>
 <p><a href="https://support.rstudio.com/hc/en-us/articles/212364537-Using-multiple-versions-of-R-with-RStudio-Workbench-RStudio-Server-Pro">Using multiple versions of R with RStudio Workbench / RStudio Server Pro</a></p>
-<p><a href="https://support.rstudio.com/hc/en-us/articles/200486138-Changing-R-versions-for-the-RStudio-Desktop-IDE">Changing R versions for the RStudio Desktop IDE</a></p>
+<p><a href="https://docs.rstudio.com/rspm/admin/appendix/system-dependency-detection/">System Dependency Detection</a></p>
 
 
                 
