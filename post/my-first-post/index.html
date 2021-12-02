@@ -131,8 +131,8 @@ I&rsquo;ve setup the site by referring to <a href="https://blog.csdn.net/kutawei
 <p>The first link is particularly useful. I&rsquo;ve adopted its file structure for setting up privately managed (<code>/blog</code>) and public sites (<code>/public</code>). It also gives a shell script which automatically regenerates the static site based on contents in <code>/blog</code>. Everytime there&rsquo;s an update in <code>/blog</code>, just do</p>
 <pre tabindex="0"><code>./deploy.sh
 </code></pre><p>and the static sites will be updated.</p>
-<p>To add new contents to the blog, open up a terminal and navigate to the directory that stores the hugo site. Type:</p>
-<pre tabindex="0"><code>hugo new blog/content/post/[new-post-name].md
+<p>To add new contents to the blog, open up a terminal and navigate to the <code>/blog</code> directory and type:</p>
+<pre tabindex="0"><code>hugo new content/post/[new-post-name].md
 </code></pre><p>The newly created markdown should assume a pre-defined format (headers, etc.). Edit the post contents and then set <code>draft</code> to <code>false</code>, the post will be updated to the static site the next time the <code>./deploy.sh</code> script is ran.</p>
 
         </p>
