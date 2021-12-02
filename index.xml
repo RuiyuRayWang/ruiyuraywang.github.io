@@ -13,7 +13,8 @@
       <pubDate>Thu, 02 Dec 2021 16:49:27 +0800</pubDate>
       
       <guid>/post/on-comp-bio/</guid>
-      <description>Recently I ran into this wonderful article published in Nature Biotechnology written by Nick Loman and Mick Watson, about how to become a good computational biologist. Although officially doing my phD in a wet lab, I&amp;rsquo;ve managed to train myself to become a practitioner of bioinformatics/computational biology (thanks to the patience and resources put in by Minmin). The article is so brilliant that I figured I&amp;rsquo;d write about it in my (actual) first post.</description>
+      <description>Recently I ran into this wonderful article published in Nature Biotechnology written by Nick Loman and Mick Watson, about how to become a good computational biologist. The article is so brilliant that I figured I&amp;rsquo;d write about it in my (actual) first post.
+You’re a scientist, not a programmer  The perfect is the enemy of the good. Remember you are a scientist and the quality of your research is what is important, not how pretty your source code looks.</description>
     </item>
     
     <item>
@@ -23,7 +24,7 @@
       
       <guid>/post/my-first-post/</guid>
       <description>Hosting my first Blog with Hugo on Github!
-For a starter, I&amp;rsquo;ll document in this post how the blog is managed and used. I&amp;rsquo;ve setup the site by referring to here, and here.
+For a starter, I&amp;rsquo;ll document in this post how the blog is managed and used. I&amp;rsquo;ve setup the site by referring to here, here, and here.
 The first link is particularly useful. I&amp;rsquo;ve adopted its file structure for setting up privately managed (/blog) and public sites (/public). It also gives a shell script which automatically regenerates the static site based on contents in /blog.</description>
     </item>
     
