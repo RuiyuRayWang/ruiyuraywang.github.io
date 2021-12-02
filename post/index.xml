@@ -1,12 +1,36 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Posts on My New Hugo Site</title>
+    <title>Posts on RuiyuRay&#39;s Blog</title>
     <link>/post/</link>
-    <description>Recent content in Posts on My New Hugo Site</description>
+    <description>Recent content in Posts on RuiyuRay&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 02 Dec 2021 16:49:27 +0800</lastBuildDate><atom:link href="/post/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 02 Dec 2021 19:54:09 +0800</lastBuildDate><atom:link href="/post/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Build Multiple R Versions on the Same System</title>
+      <link>/post/mult-r/</link>
+      <pubDate>Thu, 02 Dec 2021 19:54:09 +0800</pubDate>
+      
+      <guid>/post/mult-r/</guid>
+      <description>References:
+Installing multiple versions of R on Linux*
+Using multiple versions of R with RStudio Workbench / RStudio Server Pro
+Changing R versions for the RStudio Desktop IDE
+Install R*
+System Dependency Detection</description>
+    </item>
+    
+    <item>
+      <title>Frquently Used Softwares</title>
+      <link>/post/frq-used/</link>
+      <pubDate>Thu, 02 Dec 2021 17:41:03 +0800</pubDate>
+      
+      <guid>/post/frq-used/</guid>
+      <description>Softwares used in works. Some require built from scratch.
+Mac (iOS)  bash tools  brew tree   softwares  R    Ubuntu </description>
+    </item>
+    
     <item>
       <title>So you want to be a computational biologist?</title>
       <link>/post/on-comp-bio/</link>

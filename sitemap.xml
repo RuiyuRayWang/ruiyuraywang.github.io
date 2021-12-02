@@ -2,10 +2,46 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>/</loc>
-    <lastmod>2021-12-02T16:49:27+08:00</lastmod>
+    <loc>/post/mult-r/</loc>
+    <lastmod>2021-12-02T19:54:09+08:00</lastmod>
+  </url><url>
+    <loc>/categories/</loc>
+    <lastmod>2021-12-02T19:54:09+08:00</lastmod>
   </url><url>
     <loc>/post/</loc>
+    <lastmod>2021-12-02T19:54:09+08:00</lastmod>
+  </url><url>
+    <loc>/tags/r/</loc>
+    <lastmod>2021-12-02T19:54:09+08:00</lastmod>
+  </url><url>
+    <loc>/tags/rstudio/</loc>
+    <lastmod>2021-12-02T19:54:09+08:00</lastmod>
+  </url><url>
+    <loc>/</loc>
+    <lastmod>2021-12-02T19:54:09+08:00</lastmod>
+  </url><url>
+    <loc>/tags/</loc>
+    <lastmod>2021-12-02T19:54:09+08:00</lastmod>
+  </url><url>
+    <loc>/categories/tech/</loc>
+    <lastmod>2021-12-02T19:54:09+08:00</lastmod>
+  </url><url>
+    <loc>/tags/ubuntu/</loc>
+    <lastmod>2021-12-02T19:54:09+08:00</lastmod>
+  </url><url>
+    <loc>/post/frq-used/</loc>
+    <lastmod>2021-12-02T17:41:03+08:00</lastmod>
+  </url><url>
+    <loc>/tags/comp-bio/</loc>
+    <lastmod>2021-12-02T16:49:27+08:00</lastmod>
+  </url><url>
+    <loc>/categories/comp-bio/</loc>
+    <lastmod>2021-12-02T16:49:27+08:00</lastmod>
+  </url><url>
+    <loc>/tags/journal/</loc>
+    <lastmod>2021-12-02T16:49:27+08:00</lastmod>
+  </url><url>
+    <loc>/tags/science/</loc>
     <lastmod>2021-12-02T16:49:27+08:00</lastmod>
   </url><url>
     <loc>/post/on-comp-bio/</loc>
@@ -13,9 +49,5 @@
   </url><url>
     <loc>/post/my-first-post/</loc>
     <lastmod>2021-11-23T19:59:57+08:00</lastmod>
-  </url><url>
-    <loc>/categories/</loc>
-  </url><url>
-    <loc>/tags/</loc>
   </url>
 </urlset>

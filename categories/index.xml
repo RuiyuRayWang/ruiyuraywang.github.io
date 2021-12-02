@@ -1,10 +1,29 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Categories on My New Hugo Site</title>
+    <title>Categories on RuiyuRay&#39;s Blog</title>
     <link>/categories/</link>
-    <description>Recent content in Categories on My New Hugo Site</description>
+    <description>Recent content in Categories on RuiyuRay&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language><atom:link href="/categories/index.xml" rel="self" type="application/rss+xml" />
+    <language>en-us</language>
+    <lastBuildDate>Thu, 02 Dec 2021 19:54:09 +0800</lastBuildDate><atom:link href="/categories/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Tech</title>
+      <link>/categories/tech/</link>
+      <pubDate>Thu, 02 Dec 2021 19:54:09 +0800</pubDate>
+      
+      <guid>/categories/tech/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Comp bio</title>
+      <link>/categories/comp-bio/</link>
+      <pubDate>Thu, 02 Dec 2021 16:49:27 +0800</pubDate>
+      
+      <guid>/categories/comp-bio/</guid>
+      <description></description>
+    </item>
+    
   </channel>
 </rss>

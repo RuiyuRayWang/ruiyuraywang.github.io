@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Comp bio on RuiyuRay&#39;s Blog</title>
+    <link>/categories/comp-bio/</link>
+    <description>Recent content in Comp bio on RuiyuRay&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 02 Dec 2021 16:49:27 +0800</lastBuildDate><atom:link href="/categories/comp-bio/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>So you want to be a computational biologist?</title>
+      <link>/post/on-comp-bio/</link>
+      <pubDate>Thu, 02 Dec 2021 16:49:27 +0800</pubDate>
+      
+      <guid>/post/on-comp-bio/</guid>
+      <description>Recently I ran into this wonderful article published in Nature Biotechnology written by Nick Loman and Mick Watson, about how to become a good computational biologist. The article is so brilliant that I figured I&amp;rsquo;d write about it in my (actual) first post.
+You’re a scientist, not a programmer  The perfect is the enemy of the good. Remember you are a scientist and the quality of your research is what is important, not how pretty your source code looks.</description>
+    </item>
+    
+  </channel>
+</rss>
