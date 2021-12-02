@@ -6,7 +6,16 @@
     <description>Recent content in Posts on My New Hugo Site</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 23 Nov 2021 19:59:57 +0800</lastBuildDate><atom:link href="/post/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 02 Dec 2021 16:49:27 +0800</lastBuildDate><atom:link href="/post/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>So you want to be a computational biologist?</title>
+      <link>/post/on-comp-bio/</link>
+      <pubDate>Thu, 02 Dec 2021 16:49:27 +0800</pubDate>
+      
+      <guid>/post/on-comp-bio/</guid>
+      <description>Recently I ran into this wonderful article published in Nature Biotechnology written by Nick Loman and Mick Watson, about how to become a good computational biologist. Although officially doing my phD in a wet lab, I&amp;rsquo;ve managed to train myself to become a practitioner of bioinformatics/computational biology (thanks to the patience and resources put in by Minmin). The article is so brilliant that I figured I&amp;rsquo;d write about it in my (actual) first post.</description>
+    </item>
+    
     <item>
       <title>My First Post</title>
       <link>/post/my-first-post/</link>
