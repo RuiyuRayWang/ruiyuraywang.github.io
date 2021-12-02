@@ -186,17 +186,13 @@
 <div class="post-preview">
     <a href="/post/mult-r/">
         <h2 class="post-title">
-            Build Multiple R Versions on the Same System
+            Build Multiple R Versions on Linux
         </h2>
 	
         <div class="post-content-preview">
 	
-            References:
-Installing multiple versions of R on Linux*
-Using multiple versions of R with RStudio Workbench / RStudio Server Pro
-Changing R versions for the RStudio Desktop IDE
-Install R*
-System Dependency Detection
+            Long time ago I built R-4.0.3 on Ubuntu system by following this guide. Briefly speaking, I added GPG Key to APT (Advanced Package Tool) and added CRAN repository and directly retrieved R by apt.
+$ sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys E298A3A825C0D65DFD57CBB651716619E084DAB9 $ sudo add-apt-repository 'deb https://cloud.r-project.org/bin/linux/ubuntu bionic-cran40/' $ sudo apt update $ sudo apt install r-base Recently, I ran into an issue with cellassign. I suspected that reverting to previous R versions might resolve the problem.
        
         </div>
     </a>

@@ -15,9 +15,9 @@
     
 
     
-    <meta name="title" content="Build Multiple R Versions on the Same System" />
-    <meta property="og:title" content="Build Multiple R Versions on the Same System" />
-    <meta property="twitter:title" content="Build Multiple R Versions on the Same System" />
+    <meta name="title" content="Build Multiple R Versions on Linux" />
+    <meta property="og:title" content="Build Multiple R Versions on Linux" />
+    <meta property="twitter:title" content="Build Multiple R Versions on Linux" />
     
 
     
@@ -34,7 +34,7 @@
     <meta name="keyword"  content="王睿宇, wangruiyu, Wangruiyu, , 博客, 个人网站, 生物信息学, bioinformatics, 计算生物学, computational biology, 神经生物学, neurobiology">
     <link rel="shortcut icon" href="/img/favicon.ico">
 
-    <title>Build Multiple R Versions on the Same System-Ray的博客 | RuiyuRay&#39;s Blog</title>
+    <title>Build Multiple R Versions on Linux-Ray的博客 | RuiyuRay&#39;s Blog</title>
 
     <link rel="canonical" href="/post/mult-r/">
 
@@ -180,7 +180,7 @@
                         </a>
                         
                     </div>
-                    <h1>Build Multiple R Versions on the Same System</h1>
+                    <h1>Build Multiple R Versions on Linux</h1>
                     <h2 class="subheading"></h2>
                     <span class="meta">
                         
@@ -215,13 +215,31 @@
                 post-container">
 
                 
-                <p>References:</p>
+                <p>Long time ago I built R-4.0.3 on Ubuntu system by following this <a href="https://www.digitalocean.com/community/tutorials/how-to-install-r-on-ubuntu-18-04-quickstart">guide</a>. Briefly speaking, I added GPG Key to APT (Advanced Package Tool) and added <code>CRAN</code> repository and directly retrieved R by <code>apt</code>.</p>
+<pre tabindex="0"><code>$ sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys E298A3A825C0D65DFD57CBB651716619E084DAB9
+$ sudo add-apt-repository 'deb https://cloud.r-project.org/bin/linux/ubuntu bionic-cran40/'
+$ sudo apt update
+$ sudo apt install r-base
+</code></pre><p>Recently, I ran into an issue with <code>cellassign</code>. I suspected that reverting to previous R versions might <a href="https://github.com/Irrationone/cellassign/issues/92">resolve the problem</a>.</p>
+<p>Plus, the GPG key added earlier is raising errors everytime I invoke <code>sudo apt update</code>, which is quite annoying. So I figured it might be better to build R from source. I did a little bit of research and found these links might help:</p>
 <p><a href="https://support.rstudio.com/hc/en-us/articles/215488098-Installing-multiple-versions-of-R-on-Linux"><strong>Installing multiple versions of R on Linux</strong></a>*</p>
 <p><a href="https://support.rstudio.com/hc/en-us/articles/212364537-Using-multiple-versions-of-R-with-RStudio-Workbench-RStudio-Server-Pro">Using multiple versions of R with RStudio Workbench / RStudio Server Pro</a></p>
 <p><a href="https://support.rstudio.com/hc/en-us/articles/200486138-Changing-R-versions-for-the-RStudio-Desktop-IDE">Changing R versions for the RStudio Desktop IDE</a></p>
 <p><a href="https://docs.rstudio.com/resources/install-r/"><strong>Install R</strong></a>*</p>
 <p><a href="https://docs.rstudio.com/rspm/admin/appendix/system-dependency-detection/">System Dependency Detection</a></p>
+<h3 id="uninstall-previously-built-r-versions">Uninstall previously built R versions</h3>
+<p>First check GPG Keys added by previous R built and remove it.</p>
+<pre tabindex="0"><code>$ sudo apt-key list
+</code></pre><pre tabindex="0"><code>pub   rsa4096 2019-06-11 [SC]
+      4A0C 1931 1880 3EB4 A561  E569 B3CF 35C3 15B5 5A9F
+uid           [ unknown] Launchpad PPA for cran
 
+/etc/apt/trusted.gpg.d/ubuntu-keyring-2012-archive.gpg
+</code></pre><pre tabindex="0"><code>$ sudo apt-key del &quot;4A0C 1931 1880 3EB4 A561  E569 B3CF 35C3 15B5 5A9F&quot;
+</code></pre><p>Before uninstalling R, check what packages are currently installed and back them up, in case they&rsquo;ll be needed later.</p>
+<pre tabindex="0"><code>$ R
+&gt; .libPaths()
+</code></pre><pre tabindex="0"><code></code></pre>
 
                 
                 
