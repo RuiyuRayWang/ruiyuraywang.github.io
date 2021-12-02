@@ -14,7 +14,8 @@
       
       <guid>/post/my-first-post/</guid>
       <description>Hosting my first Blog with Hugo on Github!
-For a starter, I&amp;rsquo;ll document in this post how the blog is managed and used. I&amp;rsquo;ve setup the site by referring to here, and here. The first link is particularly useful. And I&amp;rsquo;ve adopted its file structure for setting up privately managed (/blog) and public sites (/public). It also gives a shell script which automatically regenerates the static site based on contents in /blog.</description>
+For a starter, I&amp;rsquo;ll document in this post how the blog is managed and used. I&amp;rsquo;ve setup the site by referring to here, and here.
+The first link is particularly useful. I&amp;rsquo;ve adopted its file structure for setting up privately managed (/blog) and public sites (/public). It also gives a shell script which automatically regenerates the static site based on contents in /blog.</description>
     </item>
     
   </channel>
