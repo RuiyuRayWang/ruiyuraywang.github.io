@@ -15,9 +15,9 @@
     
 
     
-    <meta name="title" content="Build Multiple R Versions on Linux" />
-    <meta property="og:title" content="Build Multiple R Versions on Linux" />
-    <meta property="twitter:title" content="Build Multiple R Versions on Linux" />
+    <meta name="title" content="Clean Built of Multiple R Versions on Linux" />
+    <meta property="og:title" content="Clean Built of Multiple R Versions on Linux" />
+    <meta property="twitter:title" content="Clean Built of Multiple R Versions on Linux" />
     
 
     
@@ -34,7 +34,7 @@
     <meta name="keyword"  content="王睿宇, wangruiyu, Wangruiyu, , 博客, 个人网站, 生物信息学, bioinformatics, 计算生物学, computational biology, 神经生物学, neurobiology">
     <link rel="shortcut icon" href="/img/favicon.ico">
 
-    <title>Build Multiple R Versions on Linux-Ray的博客 | RuiyuRay&#39;s Blog</title>
+    <title>Clean Built of Multiple R Versions on Linux-Ray的博客 | RuiyuRay&#39;s Blog</title>
 
     <link rel="canonical" href="/post/mult-r/">
 
@@ -180,7 +180,7 @@
                         </a>
                         
                     </div>
-                    <h1>Build Multiple R Versions on Linux</h1>
+                    <h1>Clean Built of Multiple R Versions on Linux</h1>
                     <h2 class="subheading"></h2>
                     <span class="meta">
                         
@@ -215,12 +215,12 @@
                 post-container">
 
                 
-                <p>Long time ago I built R-4.0.3 on Ubuntu system by following this <a href="https://www.digitalocean.com/community/tutorials/how-to-install-r-on-ubuntu-18-04-quickstart">guide</a> or this <a href="https://cran.r-project.org/bin/linux/ubuntu/">guide</a>. Briefly speaking, I added GPG Key to APT (Advanced Package Tool) and added <code>CRAN</code> repository and directly retrieved R by <code>apt</code>.</p>
+                <p>Long time ago I built R-4.0.3 on Ubuntu system by following these guides: <a href="https://www.digitalocean.com/community/tutorials/how-to-install-r-on-ubuntu-18-04-quickstart">link1</a>, <a href="https://cran.r-project.org/bin/linux/ubuntu/">link2</a>. Briefly, I added GPG Key to APT (Advanced Package Tool) and added <code>CRAN</code> repository and directly retrieved R by <code>apt</code>.</p>
 <pre tabindex="0"><code>$ sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys E298A3A825C0D65DFD57CBB651716619E084DAB9
 $ sudo add-apt-repository 'deb https://cloud.r-project.org/bin/linux/ubuntu bionic-cran40/'
 $ sudo apt update
 $ sudo apt install r-base
-</code></pre><p>Recently, I ran into an issue with <code>cellassign</code>. I suspected that reverting to previous R versions might <a href="https://github.com/Irrationone/cellassign/issues/92">resolve the problem</a>.</p>
+</code></pre><p>Recently, I ran into an issue with <a href="https://github.com/Irrationone/cellassign"><code>cellassign</code></a> when analyzing single cell datasets. I suspected that reverting to previous R versions might <a href="https://github.com/Irrationone/cellassign/issues/92">resolve the problem</a>.</p>
 <p>Plus, the GPG key added earlier is raising errors everytime I invoke <code>sudo apt update</code>, which is quite annoying. So I figured it might be better to build R from source.</p>
 <h3 id="uninstall-previously-built-r-versions">Uninstall previously built R versions</h3>
 <p>First check GPG Keys added by previous R built and remove it.</p>
@@ -232,8 +232,8 @@ uid           [ unknown] Launchpad PPA for cran
 /etc/apt/trusted.gpg.d/ubuntu-keyring-2012-archive.gpg
 </code></pre><pre tabindex="0"><code>$ sudo apt-key del &quot;4A0C 1931 1880 3EB4 A561  E569 B3CF 35C3 15B5 5A9F&quot;
 </code></pre><p>Then remove <code>cran</code> repository from <code>apt</code> repository list:</p>
-<pre tabindex="0"><code>sudo vim /etc/apt/sources.list
-</code></pre><p>Before uninstalling R, check what packages are currently installed and back them up, in case they&rsquo;ll be needed later.</p>
+<pre tabindex="0"><code>$ sudo vim /etc/apt/sources.list  # Manually edit, remove entries related to R or cran
+</code></pre><p>Before uninstalling R, we might want to check what packages are currently installed and back them up, in case they&rsquo;ll be needed later.</p>
 <pre tabindex="0"><code>$ R
 R version 4.0.3 (2020-10-10) -- &quot;Bunny-Wunnies Freak Out&quot;
 Copyright (C) 2020 The R Foundation for Statistical Computing
@@ -248,7 +248,7 @@ Platform: x86_64-pc-linux-gnu (64-bit)
 <pre tabindex="0"><code>$ cp -r /home/luolab/R/x86_64-pc-linux-gnu-library/ /media/luolab/4A9623FA9623E563/R_bak/home.luolab.R.x86_64-pc-linux-gnu-library  # Moving to 120G SSD
 $ cp -r /usr/local/lib/R/site-library/ /media/luolab/4A9623FA9623E563/R_bak/usr.local.lib.R.site-library
 $ cp -r /usr/lib/R/library/ /media/luolab/4A9623FA9623E563/R_bak/usr.lib.R.library
-</code></pre><p>Now actually uninstall R. From shell, do:</p>
+</code></pre><p>Now actually uninstall R. In shell, do:</p>
 <pre tabindex="0"><code>$ sudo apt-get --purge remove r-base-core
 $ sudo apt-get autoremove
 </code></pre><p>Make sure R is properly removed:</p>
@@ -260,6 +260,7 @@ sudo apt install r-base-core
 </code></pre><h3 id="install-r-from-precompiled-binaries">Install R from precompiled binaries</h3>
 <p>I will use the method listed in this page for installation of R:
 <a href="https://docs.rstudio.com/resources/install-r/"><strong>Install R</strong></a>*</p>
+<p>As a prerequisite, enable additional repositories for third-party or source packages:</p>
 <pre tabindex="0"><code>$ sudo apt-get update
 $ sudo apt-get install gdebi-core
 </code></pre><p>Specify R version.</p>
@@ -272,18 +273,19 @@ sudo gdebi r-${R_VERSION}_1_amd64.deb
 </code></pre><p>To ensure that R is available on the default system <code>PATH</code> variable, create symbolic links to the version of R just installed.</p>
 <pre tabindex="0"><code>sudo ln -s /opt/R/${R_VERSION}/bin/R /usr/local/bin/R
 sudo ln -s /opt/R/${R_VERSION}/bin/Rscript /usr/local/bin/Rscript
-</code></pre><p>Next, install multiple versions of R. Repeat the steps to specify, download, and install a different version of R alongside existing versions.
-I did this <code>export R_VERSION=3.6.3</code> and executed the steps above to have R-3.6.3 installed.</p>
+</code></pre><p>Next, time to install multiple versions of R. Repeat the above steps to specify, download, and install a different version of R alongside existing versions.
+I re-configured with <code>export R_VERSION=3.6.3</code> and executed the steps above to have R-3.6.3 installed.</p>
 <h3 id="switching-between-r-versions">Switching between R versions</h3>
-<p>The tutorial has a note at the symlink step saying:</p>
+<p>The tutorial has a note at the symlink step, saying:</p>
 <blockquote>
 <p>This step only applies to the first installation of R on a given system. For subsequent installations, this section should be skipped.</p>
 </blockquote>
 <p>I suspect that overriding the symlink with later installed R versions would allow switching between different R versions. So I did:</p>
-<pre tabindex="0"><code>sudo rm /usr/local/bin/R /usr/local/bin/Rscript
-sudo ln -s /opt/R/3.6.3/bin/R /usr/local/bin/R  # ${R_VERSION}=3.6.3
-sudo ln -s /opt/R/3.6.3/bin/Rscript /usr/local/bin/Rscript
-</code></pre><p>After doing this, R indeed switched to my desired version.</p>
+<pre tabindex="0"><code>$ export R_VERSION=3.6.3
+$ sudo rm /usr/local/bin/R /usr/local/bin/Rscript
+$ sudo ln -s /opt/R/${R_VERSION}/bin/R /usr/local/bin/R  # ${R_VERSION}=3.6.3
+$ sudo ln -s /opt/R/${R_VERSION}/bin/Rscript /usr/local/bin/Rscript
+</code></pre><p>After doing this, R indeed switched to 3.6.3, which is my desired version.</p>
 <pre tabindex="0"><code>$ which R
 /usr/local/bin/R
 $ file /usr/local/bin/R
@@ -292,14 +294,14 @@ $ R --version
 R version 3.6.3 (2020-02-29) -- &quot;Holding the Windsock&quot;
 Copyright (C) 2020 The R Foundation for Statistical Computing
 Platform: x86_64-pc-linux-gnu (64-bit)
-</code></pre><p>Another way of switching between different R versions is to get <code>Rstudio</code> recognize different R builts.
+</code></pre><p>Another way of switching between different R versions is to get <code>Rstudio</code> recognize different R executables.
 Referring to this post: <a href="https://support.rstudio.com/hc/en-us/articles/200486138-Changing-R-versions-for-the-RStudio-Desktop-IDE">Changing R versions for the RStudio Desktop IDE</a>, we know that on Linux systems, <code>Rstudio</code> use the version of R pointed to by the output of <code>which R</code>.</p>
-<p>To override which version of R is used, we can set <code>RSTUDIO_WHICH_R</code> environment variable to the R executable that we want to run against. For example, in terminal:</p>
+<p>To override which version of R is used, we set <code>RSTUDIO_WHICH_R</code> environment variable to the R executable that we want to run against. For example, in terminal:</p>
 <pre tabindex="0"><code>$ export RSTUDIO_WHICH_R=/opt/R/3.6.3/bin/R
 </code></pre><p>And within the same terminal, launch Rstudio by typing:</p>
 <pre tabindex="0"><code>$ rstudio
-</code></pre><p>Because the <code>RSTUDIO_WHICH_R</code> is only available in a given shell, calling <code>rstudio</code> in a new terminal will still point to the default R executable. In our case this is <code>/usr/local/bin/R</code>, which ,by default, points to <code>/opt/R/4.0.5/bin/R</code>.</p>
-<p>Now we can happily work with multiple R versions. It&rsquo;s time to build R packages. Hopefully <code>cellassign</code> can be run properly this time.</p>
+</code></pre><p>Because the <code>RSTUDIO_WHICH_R</code> is a temporary variable, it is only available in the activated shell instance. Calling <code>rstudio</code> in a new terminal will still point to the default R executable, which in our case is <code>/usr/local/bin/R</code>, which ,by default, points to <code>/opt/R/4.0.5/bin/R</code>.</p>
+<p>Now that we can work with multiple R versions, it&rsquo;s time to build some R packages. Hopefully <code>cellassign</code> can be run properly this time.</p>
 <p><code>cellassign</code> depends on tensorflow which is another nasty built experience. I&rsquo;ll write about it next time.</p>
 <p>Other useful resources:</p>
 <p><a href="https://support.rstudio.com/hc/en-us/articles/215488098-Installing-multiple-versions-of-R-on-Linux"><strong>Installing multiple versions of R on Linux</strong></a>*</p>

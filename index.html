@@ -186,13 +186,13 @@
 <div class="post-preview">
     <a href="/post/mult-r/">
         <h2 class="post-title">
-            Build Multiple R Versions on Linux
+            Clean Built of Multiple R Versions on Linux
         </h2>
 	
         <div class="post-content-preview">
 	
-            Long time ago I built R-4.0.3 on Ubuntu system by following this guide or this guide. Briefly speaking, I added GPG Key to APT (Advanced Package Tool) and added CRAN repository and directly retrieved R by apt.
-$ sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys E298A3A825C0D65DFD57CBB651716619E084DAB9 $ sudo add-apt-repository 'deb https://cloud.r-project.org/bin/linux/ubuntu bionic-cran40/' $ sudo apt update $ sudo apt install r-base Recently, I ran into an issue with cellassign. I suspected that reverting to previous R versions might resolve the problem.
+            Long time ago I built R-4.0.3 on Ubuntu system by following these guides: link1, link2. Briefly, I added GPG Key to APT (Advanced Package Tool) and added CRAN repository and directly retrieved R by apt.
+$ sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys E298A3A825C0D65DFD57CBB651716619E084DAB9 $ sudo add-apt-repository 'deb https://cloud.r-project.org/bin/linux/ubuntu bionic-cran40/' $ sudo apt update $ sudo apt install r-base Recently, I ran into an issue with cellassign when analyzing single cell datasets.
        
         </div>
     </a>
