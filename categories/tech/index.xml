@@ -24,7 +24,7 @@ $ sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys E298A3A825C0D65D
       
       <guid>/post/frq-used/</guid>
       <description>Softwares used in works. Some require built from scratch.
-Mac (iOS)  bash tools  brew tree   softwares  R    Ubuntu </description>
+Mac (iOS)  bash tools  brew tree   softwares  R    Ubuntu  Bioinformatics  samtools STAR umi_tools    </description>
     </item>
     
     <item>

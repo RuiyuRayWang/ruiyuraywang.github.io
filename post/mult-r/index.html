@@ -274,35 +274,41 @@ sudo gdebi r-${R_VERSION}_1_amd64.deb
 <pre tabindex="0"><code>sudo ln -s /opt/R/${R_VERSION}/bin/R /usr/local/bin/R
 sudo ln -s /opt/R/${R_VERSION}/bin/Rscript /usr/local/bin/Rscript
 </code></pre><p>Next, time to install multiple versions of R. Repeat the above steps to specify, download, and install a different version of R alongside existing versions.
-I re-configured with <code>export R_VERSION=3.6.3</code> and executed the steps above to have R-3.6.3 installed.</p>
+I re-configured with <code>export R_VERSION=3.6.2</code> and executed the steps above to have R-3.6.2 installed.</p>
 <h3 id="switching-between-r-versions">Switching between R versions</h3>
+<h4 id="method-1">Method 1</h4>
 <p>The tutorial has a note at the symlink step, saying:</p>
 <blockquote>
 <p>This step only applies to the first installation of R on a given system. For subsequent installations, this section should be skipped.</p>
 </blockquote>
 <p>I suspect that overriding the symlink with later installed R versions would allow switching between different R versions. So I did:</p>
-<pre tabindex="0"><code>$ export R_VERSION=3.6.3
+<pre tabindex="0"><code>$ export R_VERSION=3.6.2
 $ sudo rm /usr/local/bin/R /usr/local/bin/Rscript
-$ sudo ln -s /opt/R/${R_VERSION}/bin/R /usr/local/bin/R  # ${R_VERSION}=3.6.3
+$ sudo ln -s /opt/R/${R_VERSION}/bin/R /usr/local/bin/R  # ${R_VERSION}=3.6.2
 $ sudo ln -s /opt/R/${R_VERSION}/bin/Rscript /usr/local/bin/Rscript
-</code></pre><p>After doing this, R indeed switched to 3.6.3, which is my desired version.</p>
+</code></pre><p>After doing this, R indeed switched to 3.6.2, which is my desired version.</p>
 <pre tabindex="0"><code>$ which R
 /usr/local/bin/R
 $ file /usr/local/bin/R
-/usr/local/bin/R: symbolic link to /opt/R/3.6.3/bin/R
+/usr/local/bin/R: symbolic link to /opt/R/3.6.2/bin/R
 $ R --version
-R version 3.6.3 (2020-02-29) -- &quot;Holding the Windsock&quot;
+R version 3.6.2 (2020-02-29) -- &quot;Holding the Windsock&quot;
 Copyright (C) 2020 The R Foundation for Statistical Computing
 Platform: x86_64-pc-linux-gnu (64-bit)
-</code></pre><p>Another way of switching between different R versions is to get <code>Rstudio</code> recognize different R executables.
+</code></pre><h4 id="method-2">Method 2</h4>
+<p>Another way of switching between different R versions is to get <code>Rstudio</code> recognize different R executables.
 Referring to this post: <a href="https://support.rstudio.com/hc/en-us/articles/200486138-Changing-R-versions-for-the-RStudio-Desktop-IDE">Changing R versions for the RStudio Desktop IDE</a>, we know that on Linux systems, <code>Rstudio</code> use the version of R pointed to by the output of <code>which R</code>.</p>
 <p>To override which version of R is used, we set <code>RSTUDIO_WHICH_R</code> environment variable to the R executable that we want to run against. For example, in terminal:</p>
-<pre tabindex="0"><code>$ export RSTUDIO_WHICH_R=/opt/R/3.6.3/bin/R
+<pre tabindex="0"><code>$ export RSTUDIO_WHICH_R=/opt/R/3.6.2/bin/R
 </code></pre><p>And within the same terminal, launch Rstudio by typing:</p>
 <pre tabindex="0"><code>$ rstudio
 </code></pre><p>Because the <code>RSTUDIO_WHICH_R</code> is a temporary variable, it is only available in the activated shell instance. Calling <code>rstudio</code> in a new terminal will still point to the default R executable, which in our case is <code>/usr/local/bin/R</code>, which ,by default, points to <code>/opt/R/4.0.5/bin/R</code>.</p>
 <p>Now that we can work with multiple R versions, it&rsquo;s time to build some R packages. Hopefully <code>cellassign</code> can be run properly this time.</p>
 <p><code>cellassign</code> depends on tensorflow which is another nasty built experience. I&rsquo;ll write about it next time.</p>
+<h2 id="2021123-updates">#2021.12.3 Updates:</h2>
+<p>Previously in this post I installed R-3.6.3. Now this is discouraged. For configuration of <code>cellassign</code>, build <code>R-3.6.2</code> instead of <code>R-3.6.3</code>, because some of the package dependencies (<code>RcppAnnoy</code>) has <a href="https://github.com/LTLA/BiocNeighbors/issues/17">bad compatibility with <code>R-3.6.3</code></a>.</p>
+<p>It turns out that <code>cellassign</code> still fails after reverting to R-3.6.3!</p>
+<p>The error encountered with <code>cellassign</code> turns out to be a compatibility issue of R <code>tensorflow</code>. To avoid the error, build R <code>tensorflow</code> with <code>devtools</code> and explicitly specify a version. See this <a href="https://github.com/Irrationone/cellassign/issues/94">issue</a>.</p>
 <p>Other useful resources:</p>
 <p><a href="https://support.rstudio.com/hc/en-us/articles/215488098-Installing-multiple-versions-of-R-on-Linux"><strong>Installing multiple versions of R on Linux</strong></a>*</p>
 <p><a href="https://support.rstudio.com/hc/en-us/articles/212364537-Using-multiple-versions-of-R-with-RStudio-Workbench-RStudio-Server-Pro">Using multiple versions of R with RStudio Workbench / RStudio Server Pro</a></p>
@@ -313,7 +319,7 @@ Referring to this post: <a href="https://support.rstudio.com/hc/en-us/articles/2
                 
 <div class="entry-shang text-center">
     
-	    <p>「真诚赞赏，手留余香」</p>
+	    <p> 「如果这篇文章对你有用,请用力打赏」</p>
 	
 	<button class="zs show-zs btn btn-bred">赞赏支持</button>
 </div>
@@ -323,7 +329,7 @@ Referring to this post: <a href="https://support.rstudio.com/hc/en-us/articles/2
 		<button type="button" class="close">×</button>
 		<span class="author"><a href="/"><img src="/img/favicon.png" />RuiyuRay&#39;s Blog</a></span>
         
-	        <p class="tip"><i></i><span>真诚赞赏，手留余香</span></p>
+	        <p class="tip"><i></i><span>如果这篇文章对你有用,请用力打赏</span></p>
 		
  
 	</div>

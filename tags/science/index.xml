@@ -13,8 +13,8 @@
       <pubDate>Thu, 02 Dec 2021 16:49:27 +0800</pubDate>
       
       <guid>/post/on-comp-bio/</guid>
-      <description>Recently I ran into this wonderful article published in Nature Biotechnology written by Nick Loman and Mick Watson, about how to become a good computational biologist. The article is so brilliant that I figured I&amp;rsquo;d write about it in my (actual) first post.
-You’re a scientist, not a programmer  The perfect is the enemy of the good. Remember you are a scientist and the quality of your research is what is important, not how pretty your source code looks.</description>
+      <description>Recently I ran into this wonderful article published in Nature Biotechnology written by Nick Loman and Mick Watson, about how to become a computational biologist. The article is so brilliant and I thought I should dedicate my (actual) first post to write about it.
+Understand your goals and choose appropriate methods  Key to good computational biology is the selection and use of appropriate software. Before you can usefully interpret the output of a piece of software, you must understand what the software is doing.</description>
     </item>
     
   </channel>
