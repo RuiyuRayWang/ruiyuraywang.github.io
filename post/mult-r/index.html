@@ -15,9 +15,9 @@
     
 
     
-    <meta name="title" content="Clean Built of Multiple R Versions on Linux" />
-    <meta property="og:title" content="Clean Built of Multiple R Versions on Linux" />
-    <meta property="twitter:title" content="Clean Built of Multiple R Versions on Linux" />
+    <meta name="title" content="Clean Built of Multiple R Versions on Ubuntu" />
+    <meta property="og:title" content="Clean Built of Multiple R Versions on Ubuntu" />
+    <meta property="twitter:title" content="Clean Built of Multiple R Versions on Ubuntu" />
     
 
     
@@ -34,7 +34,7 @@
     <meta name="keyword"  content="王睿宇, wangruiyu, Wangruiyu, , 博客, 个人网站, 生物信息学, bioinformatics, 计算生物学, computational biology, 神经生物学, neurobiology">
     <link rel="shortcut icon" href="/img/favicon.ico">
 
-    <title>Clean Built of Multiple R Versions on Linux-Ray的博客 | RuiyuRay&#39;s Blog</title>
+    <title>Clean Built of Multiple R Versions on Ubuntu-Ray的博客 | RuiyuRay&#39;s Blog</title>
 
     <link rel="canonical" href="/post/mult-r/">
 
@@ -180,7 +180,7 @@
                         </a>
                         
                     </div>
-                    <h1>Clean Built of Multiple R Versions on Linux</h1>
+                    <h1>Clean Built of Multiple R Versions on Ubuntu</h1>
                     <h2 class="subheading"></h2>
                     <span class="meta">
                         
@@ -305,8 +305,8 @@ Referring to this post: <a href="https://support.rstudio.com/hc/en-us/articles/2
 </code></pre><p>Because the <code>RSTUDIO_WHICH_R</code> is a temporary variable, it is only available in the activated shell instance. Calling <code>rstudio</code> in a new terminal will still point to the default R executable, which in our case is <code>/usr/local/bin/R</code>, which ,by default, points to <code>/opt/R/4.0.5/bin/R</code>.</p>
 <p>Now that we can work with multiple R versions, it&rsquo;s time to build some R packages. Hopefully <code>cellassign</code> can be run properly this time.</p>
 <p><code>cellassign</code> depends on tensorflow which is another nasty built experience. I&rsquo;ll write about it next time.</p>
-<h2 id="2021123-updates">#2021.12.3 Updates:</h2>
-<p>Previously in this post I installed R-3.6.3. Now this is discouraged. For configuration of <code>cellassign</code>, build <code>R-3.6.2</code> instead of <code>R-3.6.3</code>, because some of the package dependencies (<code>RcppAnnoy</code>) has <a href="https://github.com/LTLA/BiocNeighbors/issues/17">bad compatibility with <code>R-3.6.3</code></a>.</p>
+<h3 id="2021123-updates">2021.12.3 Updates:</h3>
+<p>Previously in this post I installed R-3.6.3. Now I strongly discourage this practice. For configuration of <code>cellassign</code>, build <code>R-3.6.2</code> instead of <code>R-3.6.3</code>, because some of the package dependencies (<code>RcppAnnoy</code>) has <a href="https://github.com/LTLA/BiocNeighbors/issues/17">bad compatibility with <code>R-3.6.3</code></a>.</p>
 <p>It turns out that <code>cellassign</code> still fails after reverting to R-3.6.3!</p>
 <p>The error encountered with <code>cellassign</code> turns out to be a compatibility issue of R <code>tensorflow</code>. To avoid the error, build R <code>tensorflow</code> with <code>devtools</code> and explicitly specify a version. See this <a href="https://github.com/Irrationone/cellassign/issues/94">issue</a>.</p>
 <p>Other useful resources:</p>
@@ -366,6 +366,11 @@ Referring to this post: <a href="https://support.rstudio.com/hc/en-us/articles/2
                     </li>
                     
                     
+                    <li class="next">
+                        <a href="/post/build-tensorflow/" data-toggle="tooltip" data-placement="top" title="Building System &amp; Environment Support for Tensorflow on Ubuntu">Next
+                            Post &rarr;</a>
+                    </li>
+                    
                 </ul>
                 
 <div id="disqus-comment"></div>
@@ -414,6 +419,14 @@ Referring to this post: <a href="https://support.rstudio.com/hc/en-us/articles/2
                         
                         
                         
+                        
+                        
+                        
+                        
+                        
+                        <a href="/tags/ubuntu" title="ubuntu">
+                            ubuntu
+                        </a>
                         
                         
                     </div>

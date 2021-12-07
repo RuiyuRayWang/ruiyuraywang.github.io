@@ -15,9 +15,9 @@
     
 
     
-    <meta name="title" content="Tech" />
-    <meta property="og:title" content="Tech" />
-    <meta property="twitter:title" content="Tech" />
+    <meta name="title" content="Building System &amp; Environment Support for Tensorflow on Ubuntu" />
+    <meta property="og:title" content="Building System &amp; Environment Support for Tensorflow on Ubuntu" />
+    <meta property="twitter:title" content="Building System &amp; Environment Support for Tensorflow on Ubuntu" />
     
 
     
@@ -34,9 +34,9 @@
     <meta name="keyword"  content="王睿宇, wangruiyu, Wangruiyu, , 博客, 个人网站, 生物信息学, bioinformatics, 计算生物学, computational biology, 神经生物学, neurobiology">
     <link rel="shortcut icon" href="/img/favicon.ico">
 
-    <title>Tech-Ray的博客 | RuiyuRay&#39;s Blog</title>
+    <title>Building System &amp; Environment Support for Tensorflow on Ubuntu-Ray的博客 | RuiyuRay&#39;s Blog</title>
 
-    <link rel="canonical" href="/categories/tech/">
+    <link rel="canonical" href="/post/build-tensorflow/">
 
     <link rel="stylesheet" href="/css/iDisqus.min.css"/>
 
@@ -152,14 +152,49 @@
 
 
 
-<header class="intro-header" style="background-image: url('/img/IMG_2540.JPG')">
+
+<style type="text/css">
+    header.intro-header {
+        background-image: url('/img/IMG_2540.JPG')
+    }
+</style>
+
+<header class="intro-header" >
+
     <div class="container">
         <div class="row">
-            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 ">
-                <div class="site-heading">
-                    <h1>RuiyuRay&#39;s Blog </h1>
-                    
-		    <span class="subheading"></span>
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <div class="tags">
+                        
+                        <a class="tag" href="/tags/tensorflow" title="Tensorflow">
+                            Tensorflow
+                        </a>
+                        
+                        <a class="tag" href="/tags/ubuntu" title="Ubuntu">
+                            Ubuntu
+                        </a>
+                        
+                        <a class="tag" href="/tags/deep-learning" title="Deep Learning">
+                            Deep Learning
+                        </a>
+                        
+                    </div>
+                    <h1>Building System &amp; Environment Support for Tensorflow on Ubuntu</h1>
+                    <h2 class="subheading">First Dive into Deep Learning</h2>
+                    <span class="meta">
+                        
+                            Posted by 
+                            
+                                     Ruiyu Wang
+                             
+                            on 
+                            Sunday, December 5, 2021
+                            
+                            
+                            
+                            
+                    </span>
                 </div>
             </div>
         </div>
@@ -168,181 +203,155 @@
 
 
 
-  
-<div class="container">
-    <div class="row">
-        
-        
-   	    <div class="
-            col-lg-8 col-lg-offset-1
-            col-md-8 col-md-offset-1
-            col-sm-12
-            col-xs-12
-            post-container
-        ">
+
+<article>
+    <div class="container">
+        <div class="row">
+
             
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
 
-<div class="post-preview">
-    <a href="/post/build-tensorflow/">
-        <h2 class="post-title">
-            Building System &amp; Environment Support for Tensorflow on Ubuntu
-        </h2>
-	
-        <h3 class="post-subtitle">
-            First Dive into Deep Learning
-        </h3>
-	
-        <div class="post-content-preview">
-	
-            As promised, I will write about my experience with installation of tensorflow. The process looks daunting at first, but once you&rsquo;re familiar with the process, it&rsquo;s nothing more than a couple lines of sudo commands.
-Compatibility Before start, make sure to check compatibilities between the tools and packages that you&rsquo;ll be building with. Take the following things into consideration:
-- Ubuntu 16.04? 18.04? or others? Although NVIDIA explicitly specified different build packages for each version, sometimes you don't have to strictly follow them.
-       
-        </div>
-    </a>
-    <p class="post-meta">
-    
-        Posted by     Ruiyu Wang  Sunday, December 5, 2021
-        
-        
-    
-    </p>
+                
+                <p>As promised, I will write about my experience with installation of tensorflow. The process looks daunting at first, but once you&rsquo;re familiar with the process, it&rsquo;s nothing more than a couple lines of sudo commands.</p>
+<h3 id="compatibility">Compatibility</h3>
+<p>Before start, make sure to check compatibilities between the tools and packages that you&rsquo;ll be building with. Take the following things into consideration:</p>
+<pre><code>- Ubuntu
+    16.04? 18.04? or others? Although NVIDIA explicitly specified different build packages for each version, sometimes you don't have to strictly follow them. I've had success with installing CUDA 9.0 for Ubuntu 16.04 over a 18.04 system with no obvious issue (since there is no CUDA 9.0 release for 18.04). Experiment yourself!
+- Tensorflow
+    Tensorflow `MAJOR` versions can have a big difference. Usually, packages built under Tensorflow 1 will not work with Tensorflow 2, and vice versa. Be sure to check installation specifications of the package you'll be using and install the corresponding Tensorflow versions. **Remember to build dedicated environments** for each package with Tensorflow version required. For example, `cellassign` requires `Tensorflow&gt;=2.1.0`, but `Cell BLAST` requires `Tensorflow==1.12.0`. In such case, I have to create two environments, one with `Tensorflow&gt;=2.1.0` and `cellassign` installed, and the other with `Tensorflow==1.12.0` and `Cell BLAST` installed.  
+    The GPU specificity does not seem to be a big issue. You could always install the same version of `tensorflow-gpu`, provided that that version of `tensorflow` can be built successfully. Just make sure your machine has a supporting GPU or there's no point in installing it.
+- GCC
+    I did not run into any issue with gcc on my machine. I think most recently built Ubuntu systems carry a legit gcc version with it. In the installation procedures, there's one step that explicitly checks gcc version. If gcc has a trouble, you'll find it there.
+- CUDA
+- cuDNN
+    Compatibilities between CUDA and cuDNN, as well as Tensorflow, python and gcc can be found [here](https://www.tensorflow.org/install/source#gpu). If you use different versions of Tensorflow on the same machine, like above for `cellassign` and `Cell BLAST`, you'll have to make multiple CUDA &amp; cuDNN builts. For example, I've built on my machine `CUDA 9.0 &amp; cuDNN 7.3.1` for `Cell BLAST` with `Tensorflow==1.12.0`, and `CUDA 11.0 &amp; cuDNN 8.0.4` for `cellassign` with `Tensorflow==2.4.0`.
+</code></pre>
+<h3 id="removing-previous-installations">Removing previous installations</h3>
+<p>In case</p>
 
+
+                
+                
+<div class="entry-shang text-center">
+    
+	    <p> 「如果这篇文章对你有用,请用力打赏」</p>
+	
+	<button class="zs show-zs btn btn-bred">赞赏支持</button>
 </div>
-<hr>
-
-<div class="post-preview">
-    <a href="/post/mult-r/">
-        <h2 class="post-title">
-            Clean Built of Multiple R Versions on Ubuntu
-        </h2>
-	
-        <div class="post-content-preview">
-	
-            Long time ago I built R-4.0.3 on Ubuntu system by following these guides: link1, link2. Briefly, I added GPG Key to APT (Advanced Package Tool) and added CRAN repository and directly retrieved R by apt.
-$ sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys E298A3A825C0D65DFD57CBB651716619E084DAB9 $ sudo add-apt-repository 'deb https://cloud.r-project.org/bin/linux/ubuntu bionic-cran40/' $ sudo apt update $ sudo apt install r-base Recently, I ran into an issue with cellassign when analyzing single cell datasets.
-       
-        </div>
-    </a>
-    <p class="post-meta">
-    
-        Posted by     Ruiyu Wang  Thursday, December 2, 2021
+<div class="zs-modal-bg"></div>
+<div class="zs-modal-box">
+	<div class="zs-modal-head">
+		<button type="button" class="close">×</button>
+		<span class="author"><a href="/"><img src="/img/favicon.png" />RuiyuRay&#39;s Blog</a></span>
         
-        
-    
-    </p>
-
-</div>
-<hr>
-
-<div class="post-preview">
-    <a href="/post/frq-used/">
-        <h2 class="post-title">
-            Frquently Used Softwares
-        </h2>
-	
-        <div class="post-content-preview">
-	
-            Softwares used in works. Some require built from scratch.
-Mac (iOS)  bash tools  brew tree   softwares  R    Ubuntu  Bioinformatics  samtools STAR umi_tools    Single cell biology  R  Seurat   python  geosketch    
-       
-        </div>
-    </a>
-    <p class="post-meta">
-    
-        Posted by     Ruiyu Wang  Thursday, December 2, 2021
-        
-        
-    
-    </p>
-
-</div>
-<hr>
-
-<div class="post-preview">
-    <a href="/post/my-first-post/">
-        <h2 class="post-title">
-            My First Post
-        </h2>
-	
-        <div class="post-content-preview">
-	
-            Hosting my first Blog with Hugo on Github!
-For a starter, I&rsquo;ll document in this post how the blog is managed and used. I&rsquo;ve setup the site by referring to here, here, and here.
-The first link is particularly useful. I&rsquo;ve adopted its file structure for setting up privately managed (/blog) and public sites (/public). Critically, the /public repo must be created with the following convention: https://github.com/RuiyuRayWang/ruiyuraywang.github.io Everytime contents in /blog is updated, run hugo -D to generate new site to /public and push /public to github accordingly.
-       
-        </div>
-    </a>
-    <p class="post-meta">
-    
-        Posted by     Ruiyu Wang  Tuesday, November 23, 2021
-        
-        
-    
-    </p>
-
-</div>
-<hr>
-
-
-            
-
-
-
-       	</div>
-        
-
-<div class="
-    col-lg-3 col-lg-offset-0
-    col-md-3 col-md-offset-0
-    col-sm-12
-    col-xs-12
-    sidebar-container
-">
-    
-    
-    <section>
-        <hr class="hidden-sm hidden-xs">
-        <h5>FEATURED TAGS</h5>
-        <div class="tags">
-            
-            
-               
-            
-               
-            
-               
-            
-               
-            
-               
-            
-               
-            
-               
-            
-               
-                    <a href="/tags/ubuntu" title="ubuntu">
-                        ubuntu
-                    </a>
-               
-            
-        </div>
-    </section>
-    
-
-    
-	
-    
-    
-
-    
-    
-</div>
-
+	        <p class="tip"><i></i><span>如果这篇文章对你有用,请用力打赏</span></p>
+		
+ 
+	</div>
+	<div class="zs-modal-body">
+		<div class="zs-modal-btns">
+			<button class="btn btn-blink" data-num="2">2元</button>
+			<button class="btn btn-blink" data-num="5">5元</button>
+			<button class="btn btn-blink" data-num="10">10元</button>
+			<button class="btn btn-blink" data-num="50">50元</button>
+			<button class="btn btn-blink" data-num="100">100元</button>
+			<button class="btn btn-blink" data-num="1">任意金额</button>
+		</div>
+		<div class="zs-modal-pay">
+			<button class="btn btn-bred" id="pay-text">2元</button>
+			<p>使用<span id="pay-type">微信</span>扫描二维码完成支付</p>
+			<img src="/img/reward/wechat-2.png"  id="pay-image"/>
+		</div>
+	</div>
+	<div class="zs-modal-footer">
+		<label><input type="radio" name="zs-type" value="wechat" class="zs-type" checked="checked"><span ><span class="zs-wechat"><img src="/img/reward/wechat-btn.png"/></span></label>
+		<label><input type="radio" name="zs-type" value="alipay" class="zs-type" class="zs-alipay"><img src="/img/reward/alipay-btn.png"/></span></label>
 	</div>
 </div>
+<script type="text/javascript" src="/js/reward.js"></script>
 
+                
+
+                <hr>
+                <ul class="pager">
+                    
+                    <li class="previous">
+                        <a href="/post/mult-r/" data-toggle="tooltip" data-placement="top" title="Clean Built of Multiple R Versions on Ubuntu">&larr;
+                            Previous Post</a>
+                    </li>
+                    
+                    
+                </ul>
+                
+<div id="disqus-comment"></div>
+
+
+            </div>
+
+            
+            
+            <div class="
+                col-lg-2 col-lg-offset-0
+                visible-lg-block
+                sidebar-container
+                catalog-container">
+                <div class="side-catalog">
+                    <hr class="hidden-sm hidden-xs">
+                    <h5>
+                        <a class="catalog-toggle" href="#">CATALOG</a>
+                    </h5>
+                    <ul class="catalog-body"></ul>
+                </div>
+            </div>
+            
+
+            
+            <div class="
+                col-lg-11 col-lg-offset-1
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                
+                
+                <section>
+                    <hr class="hidden-sm hidden-xs">
+                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
+                    <div class="tags">
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        <a href="/tags/ubuntu" title="ubuntu">
+                            ubuntu
+                        </a>
+                        
+                        
+                    </div>
+                </section>
+                
+
+                
+                
+            </div>
+        </div>
+    </div>
+</article>
 
 
 
@@ -354,7 +363,7 @@ The first link is particularly useful. I&rsquo;ve adopted its file structure for
                 <ul class="list-inline text-center">
                    
                    <li>
-                       <a href='/categories/tech/index.xml' rel="alternate" type="application/rss+xml" title="RuiyuRay&#39;s Blog" >
+                       <a href='' rel="alternate" type="application/rss+xml" title="RuiyuRay&#39;s Blog" >
                            <span class="fa-stack fa-lg">
                                <i class="fas fa-circle fa-stack-2x"></i>
                                <i class="fas fa-rss fa-stack-1x fa-inverse"></i>

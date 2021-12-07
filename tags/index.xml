@@ -6,7 +6,34 @@
     <description>Recent content in Tags on RuiyuRay&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 02 Dec 2021 19:54:09 +0800</lastBuildDate><atom:link href="/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 05 Dec 2021 22:57:25 +0800</lastBuildDate><atom:link href="/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Deep Learning</title>
+      <link>/tags/deep-learning/</link>
+      <pubDate>Sun, 05 Dec 2021 22:57:25 +0800</pubDate>
+      
+      <guid>/tags/deep-learning/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Tensorflow</title>
+      <link>/tags/tensorflow/</link>
+      <pubDate>Sun, 05 Dec 2021 22:57:25 +0800</pubDate>
+      
+      <guid>/tags/tensorflow/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Ubuntu</title>
+      <link>/tags/ubuntu/</link>
+      <pubDate>Sun, 05 Dec 2021 22:57:25 +0800</pubDate>
+      
+      <guid>/tags/ubuntu/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>R</title>
       <link>/tags/r/</link>
@@ -22,15 +49,6 @@
       <pubDate>Thu, 02 Dec 2021 19:54:09 +0800</pubDate>
       
       <guid>/tags/rstudio/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Ubuntu</title>
-      <link>/tags/ubuntu/</link>
-      <pubDate>Thu, 02 Dec 2021 19:54:09 +0800</pubDate>
-      
-      <guid>/tags/ubuntu/</guid>
       <description></description>
     </item>
     
