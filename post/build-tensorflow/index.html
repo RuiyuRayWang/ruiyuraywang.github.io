@@ -229,7 +229,7 @@ The reason is that I was trying to use two tools: <code>cellassign</code> and <c
 - <a href="https://towardsdatascience.com/installing-multiple-cuda-cudnn-versions-in-ubuntu-fcb6aa5194e2">link4</a></p>
 <p>Since I don&rsquo;t have time to write too much, I&rsquo;ll try to make things brief.</p>
 <h1 id="tldr">TL;DR</h1>
-<h2 id="1-purge-previous-installations">1. Purge previous installations:</h2>
+<h2 id="1-purge-previous-installations">1. Purge previous installations</h2>
 <pre tabindex="0"><code>## Purge previous installations
 $ sudo apt-get --purge remove &quot;*cublas*&quot; &quot;cuda*&quot; &quot;nsight*&quot;
 $ sudo apt-get --purge remove &quot;*nvidia*&quot;
@@ -252,11 +252,13 @@ uid           [ unknown] cudatools &lt;cudatools@nvidia.com&gt;
 OK
 $ sudo apt-key del &quot;AE09 FE4B BD22 3A84 B2CC  FCE3 F60F 4B3D 7FA2 AF80&quot;
 OK
-</code></pre><h2 id="2-install-nvidia-driver-download-pagehttpswwwnvidiacomdownloadindexaspxlangen-us">2. Install NVIDIA driver. <a href="https://www.nvidia.com/download/index.aspx?lang=en-us">Download page</a>.</h2>
-<p>Since my driver is installed via runfile, the purge steps above will also remove my driver. I need to install it back. To choose driver version, follow the following rule:</p>
+</code></pre><h2 id="2-install-nvidia-driver">2. Install NVIDIA driver</h2>
+<p><a href="https://www.nvidia.com/download/index.aspx?lang=en-us">Download page</a>.</p>
+<p>To choose driver version, keep one rule in mind:</p>
 <blockquote>
 <p>There is only one requirement, that one needs to satisfy in order to install multiple CUDA on the same machine. You need to have latest Nvidia driver that is required by the highest CUDA that you’re going to install. Usually it is a good idea to install precise driver that was used during the build of CUDA.</p>
 </blockquote>
+<p>Since my driver is installed via runfile, the purge steps above will also remove my driver. I need to install it back.</p>
 <p>Download the driver <a href="https://www.nvidia.com/download/index.aspx?lang=en-us">here</a>, and execute the runfile:</p>
 <pre tabindex="0"><code>$ sudo ./NVIDIA-Linux-x86_64_470.86.run
 </code></pre><p>First time running the script received an error.</p>
@@ -266,9 +268,11 @@ OK
 </blockquote>
 <p>Disable the Nouveau and reboot the system.</p>
 <pre tabindex="0"><code>$ reboot
-</code></pre><p>After reboot there will be no GUI (because the graphics card&rsquo;s driver has been disabled!). Logged in remotely via ssh to execute the <code>.run</code> script:</p>
+</code></pre><p>After reboot there will be no GUI (because the graphics card&rsquo;s driver has been disabled!).<br>
+Logged in remotely via ssh to execute the <code>.run</code> script:</p>
 <pre tabindex="0"><code>$ sudo ./NVIDIA-Linux-x86_64_470.86.run
-</code></pre><p>Followed the installation instructions to get the driver back to work. Immediately after the installation succeeds, Ubuntu GUI shows up.</p>
+</code></pre><p>Followed the installation instructions to get the driver back to work.<br>
+Immediately after the installation succeeds, Ubuntu GUI shows up.</p>
 <p>Check driver configs:</p>
 <pre tabindex="0"><code>$ nvidia-smi
 Thu Dec 16 16:32:13 2021       
@@ -300,21 +304,24 @@ Thu Dec 16 16:32:13 2021
 |    0   N/A  N/A     39185      G   /usr/lib/firefox/firefox            2MiB |
 +-----------------------------------------------------------------------------+
 </code></pre><h2 id="3-install-the-cuda-stack">3. Install the &ldquo;CUDA stack&rdquo;</h2>
-<p>What&rsquo;s in the &ldquo;CUDA stack&rdquo; (as of 2021.12.17):
-* CUDA
-* cuDNN
-* CUPTI
-* TensorRT (optional)</p>
-<p>According to <a href="https://blog.kovalevskyi.com/multiple-version-of-cuda-libraries-on-the-same-machine-b9502d50ae77">kovalevskyi&rsquo;s guide</a>, it&rsquo;s better to use CUDA <code>runfile (local)</code> installers.</p>
+<p>What&rsquo;s in the &ldquo;CUDA stack&rdquo; (as of 2021.12.17):</p>
+<ul>
+<li>CUDA</li>
+<li>cuDNN</li>
+<li>CUPTI</li>
+<li>TensorRT (optional)</li>
+</ul>
+<p>According to <a href="https://blog.kovalevskyi.com/multiple-version-of-cuda-libraries-on-the-same-machine-b9502d50ae77">kovalevskyi&rsquo;s guide</a>, <strong>use CUDA <code>runfile (local)</code> installers</strong>.</p>
 <blockquote>
 <p>I would strongly recommend use the installer script. First of all, it is agnostic to the version of the Linux that is used. Secondly, unlike some binary pre-build packages like deb file you can control where exactly CUDA library files will be installed.</p>
 </blockquote>
 <p>The &ldquo;CUDA stack&rdquo; compatibility matrix can be checked <a href="https://www.tensorflow.org/install/source#gpu">here</a>.<br>
-<code>cellassign</code> requires <code>tensorflow &gt;= 2.1.0</code>. I&rsquo;ve opted to use <code>2.4.0</code>for my build. For <code>tensorflow==2.4.0</code> I need <code>CUDA 11.0</code> and <code>cuDNN 8.0</code>.<br>
+<code>cellassign</code> requires <code>tensorflow &gt;= 2.1.0</code>. With some tests I decided to use <code>2.4.0</code>. For <code>tensorflow==2.4.0</code> I need <code>CUDA 11.0</code> and <code>cuDNN 8.0</code>.<br>
 <code>Cell_BLAST</code> requires <code>tensorflow == 1.12.0</code> which depends on <code>CUDA 9.0</code> and <code>cuDNN 7</code>.<br>
 Download the CUDA Toolkit installers <a href="https://developer.nvidia.com/cuda-toolkit-archive">here</a>.
 Read the <code>Versioned Online Documentation</code> to understand the installation instructions, for example <a href="https://docs.nvidia.com/cuda/archive/11.0/">this one</a>.</p>
-<p><strong>Pre-installation actions</strong>:</p>
+<p><strong>Pre-installation actions</strong>:
+Not mandatory. Just be sure they&rsquo;ll pass.</p>
 <pre tabindex="0"><code>$ lspci | grep -i nvidia  ## Verify a CUDA-capable GPU is available
 $ uname -m &amp;&amp; cat /etc/*release  ## Verify Linux Version Support
 $ gcc --version  ## Verify that gcc is installed
@@ -325,8 +332,8 @@ $ chmod u+x cuda_11.0.2_450.51.05_linux.run
 $ sudo ./cuda_11.0.2_450.51.05_linux.run --silent --toolkit --tookitpath=/usr/local/cuda-11.0
 </code></pre><p>Quoting <a href="https://blog.kovalevskyi.com/multiple-version-of-cuda-libraries-on-the-same-machine-b9502d50ae77">Kovalevskyi</a>:</p>
 <blockquote>
-<p><code>--silent</code> — this will force installer to do everything in a silent mode without any interactive prompt. Really useful for the automation
-<code>--toolkit</code> — install only the toolkit, majority of users probably indeed need only toolkit
+<p><code>--silent</code> — this will force installer to do everything in a silent mode without any interactive prompt. Really useful for the automation<br>
+<code>--toolkit</code> — install only the toolkit, majority of users probably indeed need only toolkit<br>
 <code>--toolkitpath</code> — this is where all the magic starts, each cuda that we’re going to install needs to be installed in its own separate folder, in our example CUDA9 is installed in /usr/local/cuda-9.0, therefore CUDA8 will be installed in /usr/local/cuda-8, CUDA9.1 can go to /usr/local/cuda-9.1 , etc</p>
 </blockquote>
 <p>Create an NVIDIA account and download the cuDNN installers <a href="https://developer.nvidia.cn/rdp/cudnn-archive">here</a>. <strong>Use <code>.tgz</code> file.</strong>
@@ -338,7 +345,7 @@ $ sudo cp cuda/lib64/libcudnn* /usr/local/cuda-11.0/lib64
 $ sudo chmod a+r /usr/local/cuda-11.0/include/cudnn*.h /usr/local/cuda-11.0/lib64/libcudnn*
 </code></pre><h3 id="32-cuda-90--cudnn-765-for-cellblast">3.2 CUDA-9.0 &amp; cuDNN-7.6.5 for cellblast</h3>
 <p>Repeat the steps above to install <code>CUDA-9.0</code> &amp; <code>cuDNN-7.6.5</code>.</p>
-<p>For <code>CUDA 9.0</code>, gcc must be downgraded to <code>gcc-4.8</code> in order to compile during cuda runfile installtion. Do:</p>
+<p>For <code>CUDA 9.0</code>, gcc must be downgraded to <code>gcc-4.8</code> in order to compile during cuda runfile install. Do:</p>
 <pre tabindex="0"><code>$ gcc -v
 ...
 gcc version 7.5.0 (Ubuntu 7.5.0-3ubuntu1~18.04)
@@ -356,8 +363,10 @@ $ sudo ./cuda_9.0.176_384.81_linux.run --silent --toolkit --toolkitpath=/usr/loc
 $ sudo cp cuda/include/cudnn.h /usr/local/cuda-9.0/include
 $ sudo cp cuda/lib64/libcudnn* /usr/local/cuda/lib64
 $ sudo chmod a+r /usr/local/cuda-9.0/include/cudnn.h /usr/local/cuda-9.0/lib64/libcudnn*
-</code></pre><p>According to the TensorRT <a href="https://docs.nvidia.com/deeplearning/tensorrt/archives/tensorrt-601/tensorrt-support-matrix/index.html">support matrix</a>, there is currently no TensorRT support for <code>CUDA 11.0</code> &amp; <code>cuDNN 8.0.4</code>. For <code>CUDA 9.0</code> &amp; <code>cuDNN 7.6.5</code>, <code>TensorRT 6.0.1</code> is availabl. However, TensorRT is optional, I haven&rsquo;t figured out exactly how to make a clean installation, so skip it for now.</p>
-<p>For <strong>post-installation actions</strong>, i.e. PATH, LD_LIBRARY_PATH variables, we will have them setup in environment configurations.</p>
+</code></pre><p>Get gcc 7.5.0 back (<a href="https://linuxize.com/post/how-to-install-gcc-compiler-on-ubuntu-18-04/#installing-multiple-gcc-versions">ref</a>):</p>
+<pre tabindex="0"><code>$ sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-7 50
+</code></pre><p>According to the TensorRT <a href="https://docs.nvidia.com/deeplearning/tensorrt/archives/tensorrt-601/tensorrt-support-matrix/index.html">support matrix</a>, there is currently no TensorRT support for <code>CUDA 11.0</code> &amp; <code>cuDNN 8.0.4</code>. For <code>CUDA 9.0</code> &amp; <code>cuDNN 7.6.5</code>, <code>TensorRT 6.0.1</code> is available. However, TensorRT is optional, I haven&rsquo;t figured out exactly how to make a clean installation, so skip it for now.</p>
+<p>For <strong>post-installation actions</strong>, i.e. PATH, LD_LIBRARY_PATH variables, we will set them up in environment configuration step (sections below).</p>
 <h3 id="33-fix-symlink">3.3 Fix symlink</h3>
 <p>Make <code>/usr/local/cuda</code> point to the folder holding default cuda version, which I choose to be <code>CUDA-11.0</code>. This may be useful for other applications, for example <code>U-net</code>.</p>
 <pre tabindex="0"><code>sudo rm /usr/local/cuda
@@ -391,10 +400,12 @@ unset ORIGINAL_PATH
 export LD_LIBRARY_PATH=$ORIGINAL_LD_LIBRARY_PATH
 unset ORIGINAL_LD_LIBRARY_PATH
 </code></pre><h4 id="install-cellassign">Install cellassign</h4>
-<p>The install instructions on <code>cellassign</code> <a href="https://github.com/Irrationone/cellassign">github page</a> never worked. For a working build of <code>cellassign</code>, check out these threads:
-- <a href="https://github.com/Irrationone/cellassign/issues/92">link1</a>
-- <a href="https://github.com/Irrationone/cellassign/issues/78#issuecomment-714901092">link2</a>
-- <a href="https://github.com/Irrationone/cellassign/issues/94">link3</a></p>
+<p>The install instructions on <code>cellassign</code> <a href="https://github.com/Irrationone/cellassign">github page</a> never worked. For a working build of <code>cellassign</code>, check out these threads:</p>
+<ul>
+<li><a href="https://github.com/Irrationone/cellassign/issues/92">link1</a></li>
+<li><a href="https://github.com/Irrationone/cellassign/issues/78#issuecomment-714901092">link2</a></li>
+<li><a href="https://github.com/Irrationone/cellassign/issues/94">link3</a></li>
+</ul>
 <p>Note that the <code>tensorflow</code> R package is <strong>NOT THE SAME</strong> as the <code>tensorflow</code> python package. Supposedly it acts as a surrogate which talks to the core <code>tensorflow</code> python package. Both (the R and the python packages) are required in order for <code>cellassign</code> to work.</p>
 <pre tabindex="0"><code>## In R
 &gt; # install.packages(&quot;tensorflow&quot;) ## DON'T DO THIS!
@@ -415,7 +426,7 @@ Loaded Tensorflow version 2.4.0
 TensorFlow v2.4.0 (~/miniconda3/envs/cellassign/lib/python3.7/site-packages/tensorflow)
 Python v3.7 (~/miniconda3/envs/cellassign/bin/python)
 &gt; devtools::install_github(&quot;Irrationone/cellassign&quot;)
-</code></pre><h3 id="42-cellblast">4.2 cellblast</h3>
+</code></pre><h3 id="42-cell-blast">4.2 Cell-BLAST</h3>
 <p>Create new environment:</p>
 <pre tabindex="0"><code>$ conda create -n cellblast python=3.6
 </code></pre><h4 id="setup-shell-scripts-for-cellblast-conda-environment">Setup shell scripts for <code>cellblast</code> conda environment</h4>
@@ -452,20 +463,24 @@ $ pip install Cell-BLAST
 ...
 True
 &gt; import Cell_BLAST as cb
-</code></pre><p><!-- raw HTML omitted -->To build multiple Tensorflow versions, there will be various compatibilities requirements. Consider the followings:<br>
-- Tool of interest<br>
+</code></pre><h2 id="miscellaneous">Miscellaneous</h2>
+<p><em>The paragraph below was written at an very early on stage, but then I find them to be too verbose&hellip; I&rsquo;ve put them here anyway just so they&rsquo;re not wasted.</em></p>
+<p>To build multiple Tensorflow versions, there will be various compatibilities requirements. Consider the followings:</p>
+<ul>
+<li>Tool of interest<br>
 What tool will be tensorflow used for? What version of tensorflow does it depends on? These are the first things you should consider.<br>
 Unless using tensorflow for standalone purposes, you will have to choose a tensorflow version that is compatible with your tool. Many tools are written with legacy (older) versions of tensorflow, and they may not run properly with newer versions. Make sure to install the appropriate one. For example in my case, <code>cellassign</code> requires <code>tensorflow &gt;= 2.1.0</code>, whereas <code>Cell_BLAST</code> requires <code>tensorflow == 1.12.0</code>. These belong to two different MAJOR versions of tensorflow: <code>1.x.x</code> and <code>2.x.x</code>. Tensorflow MAJOR versions are quite different and are usually <strong>NOT</strong> interchangable.<br>
-If using tensorflow-gpu, there is also different dependencies on CUDA and cuDNN which you have to be aware about (see below).<br>
-- Tensorflow<br>
+If using tensorflow-gpu, there is also different dependencies on CUDA and cuDNN which you have to be aware about (see below).</li>
+<li>Tensorflow<br>
 Like I said above, tensorflow <code>MAJOR</code> versions can have a big difference. <strong>Remember to build dedicated environments</strong> for <strong>each tool</strong> with the required Tensorflow inside it. In my case, I created two environments, one with <code>Tensorflow&gt;=2.1.0</code> and <code>cellassign</code> installed, and the other with <code>Tensorflow==1.12.0</code> and <code>Cell_BLAST</code> installed.<br>
-For tensorflow-gpu, the decision of whether or not to install it depends on the tool you&rsquo;ll be using and on whether you think your task requires parallel computing. CPU can run properly with any task, but if the task is computationally expensive, you may want to try GPU versions of tensorflow.<br>
-- GCC<br>
-GCC is used for <code>make</code> build some package dependencies during tensorflow installations. I did not run into any issue with gcc on my machine. In the installation procedures, there&rsquo;s a step that explicitly checks gcc version. If you find a gcc trouble, just upgrade it and you&rsquo;ll be fine.<br>
-- Ubuntu<br>
-16.04? 18.04? or others? For some older versions of tensorflow, NVIDIA download page may not provide download links for the latest Ubuntu releases. But don&rsquo;t worry. I find that the Ubuntu release version doesn&rsquo;t have to be strictly followed. For example, for <code>tensorflow == 1.12.0</code> I had to install CUDA 9.0 over 18.04, but there&rsquo;s no CUDA 9.0 release for a 18.04 system, so I made an arbitrary choice: Download CUDA 9.0 for Ubuntu 16.04 and install it on 18.04. By now there seem to be no obvious issue. So don&rsquo;t be too prudent about this and experiment yourself!<br>
-- CUDA &amp; cuDNN<br>
-The compatibilities between CUDA and cuDNN, as well as Tensorflow, python and gcc can be found <a href="https://www.tensorflow.org/install/source#gpu">here</a>. If you use different versions of Tensorflow on the same machine, like above for <code>cellassign</code> and <code>Cell BLAST</code>, you&rsquo;ll have to make multiple CUDA &amp; cuDNN builts. For example, I&rsquo;ve built on my machine <code>CUDA 9.0 &amp; cuDNN 7.3.1</code> for <code>Cell BLAST</code> with <code>Tensorflow==1.12.0</code>, and <code>CUDA 11.0 &amp; cuDNN 8.0.4</code> for <code>cellassign</code> with <code>Tensorflow==2.4.0</code>.<!-- raw HTML omitted --></p>
+For tensorflow-gpu, the decision of whether or not to install it depends on the tool you&rsquo;ll be using and on whether you think your task requires parallel computing. CPU can run properly with any task, but if the task is computationally expensive, you may want to try GPU versions of tensorflow.</li>
+<li>GCC<br>
+GCC is used for <code>make</code> build some package dependencies during tensorflow installations. I did not run into any issue with gcc on my machine. In the installation procedures, there&rsquo;s a step that explicitly checks gcc version. If you find a gcc trouble, just upgrade it and you&rsquo;ll be fine.</li>
+<li>Ubuntu<br>
+16.04? 18.04? or others? For some older versions of tensorflow, NVIDIA download page may not provide download links for the latest Ubuntu releases. But don&rsquo;t worry. I find that the Ubuntu release version doesn&rsquo;t have to be strictly followed. For example, for <code>tensorflow == 1.12.0</code> I had to install CUDA 9.0 over 18.04, but there&rsquo;s no CUDA 9.0 release for a 18.04 system, so I made an arbitrary choice: Download CUDA 9.0 for Ubuntu 16.04 and install it on 18.04. By now there seem to be no obvious issue. So don&rsquo;t be too prudent about this and experiment yourself!</li>
+<li>CUDA &amp; cuDNN<br>
+The compatibilities between CUDA and cuDNN, as well as Tensorflow, python and gcc can be found <a href="https://www.tensorflow.org/install/source#gpu">here</a>. If you use different versions of Tensorflow on the same machine, like above for <code>cellassign</code> and <code>Cell BLAST</code>, you&rsquo;ll have to make multiple CUDA &amp; cuDNN builts. For example, I&rsquo;ve built on my machine <code>CUDA 9.0 &amp; cuDNN 7.3.1</code> for <code>Cell BLAST</code> with <code>Tensorflow==1.12.0</code>, and <code>CUDA 11.0 &amp; cuDNN 8.0.4</code> for <code>cellassign</code> with <code>Tensorflow==2.4.0</code>.</li>
+</ul>
 
 
                 
