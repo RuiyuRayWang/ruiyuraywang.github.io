@@ -8,14 +8,15 @@
     <language>en-us</language>
     <lastBuildDate>Sun, 05 Dec 2021 22:57:25 +0800</lastBuildDate><atom:link href="/tags/tensorflow/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Building System &amp; Environment Support for Tensorflow on Ubuntu</title>
+      <title>Building Environments for Cellassign and CellBLAST with multiple GPU Supported Tensorflow Versions on Ubuntu</title>
       <link>/post/build-tensorflow/</link>
       <pubDate>Sun, 05 Dec 2021 22:57:25 +0800</pubDate>
       
       <guid>/post/build-tensorflow/</guid>
-      <description>As promised, I will write about my experience with installation of tensorflow. The process looks daunting at first, but once you&amp;rsquo;re familiar with the process, it&amp;rsquo;s nothing more than a couple lines of sudo commands.
-Compatibility Before start, make sure to check compatibilities between the tools and packages that you&amp;rsquo;ll be building with. Take the following things into consideration:
-- Ubuntu 16.04? 18.04? or others? Although NVIDIA explicitly specified different build packages for each version, sometimes you don&#39;t have to strictly follow them.</description>
+      <description>As promised, I will write about my experience with installing tensorflow.
+Why did I ever have to build Tensorflow myself?
+The reason is that I was trying to use two tools: cellassign and Cell_BLAST, but they depend on different tensorflow versions. To make them both work, I used the following build strategy that allows different Tensorflow versions installed and run in separate conda environments.
+References: - link1: Best post for the job - link2: Official guide - link3 - link4</description>
     </item>
     
   </channel>

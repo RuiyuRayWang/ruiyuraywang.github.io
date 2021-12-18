@@ -215,14 +215,14 @@
                 post-container">
 
                 
-                <p>Long time ago I built R-4.0.3 on Ubuntu system by following these guides: <a href="https://www.digitalocean.com/community/tutorials/how-to-install-r-on-ubuntu-18-04-quickstart">link1</a>, <a href="https://cran.r-project.org/bin/linux/ubuntu/">link2</a>. Briefly, I added GPG Key to APT (Advanced Package Tool) and added <code>CRAN</code> repository and directly retrieved R by <code>apt</code>.</p>
+                <p>Long time ago I built R-4.0.3 on Ubuntu system following these guides: <a href="https://www.digitalocean.com/community/tutorials/how-to-install-r-on-ubuntu-18-04-quickstart">link1</a>, <a href="https://cran.r-project.org/bin/linux/ubuntu/">link2</a>. Briefly, I added GPG Key to APT (Advanced Package Tool) and added <code>CRAN</code> repository and directly retrieved R by <code>apt</code>.</p>
 <pre tabindex="0"><code>$ sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys E298A3A825C0D65DFD57CBB651716619E084DAB9
 $ sudo add-apt-repository 'deb https://cloud.r-project.org/bin/linux/ubuntu bionic-cran40/'
 $ sudo apt update
 $ sudo apt install r-base
 </code></pre><p>Recently, I ran into an issue with <a href="https://github.com/Irrationone/cellassign"><code>cellassign</code></a> when analyzing single cell datasets. I suspected that reverting to previous R versions might <a href="https://github.com/Irrationone/cellassign/issues/92">resolve the problem</a>.</p>
 <p>Plus, the GPG key added earlier is raising errors everytime I invoke <code>sudo apt update</code>, which is quite annoying. So I figured it might be better to build R from source.</p>
-<h3 id="uninstall-previously-built-r-versions">Uninstall previously built R versions</h3>
+<h2 id="uninstall-previously-built-r-versions">Uninstall previously built R versions</h2>
 <p>First check GPG Keys added by previous R built and remove it.</p>
 <pre tabindex="0"><code>$ sudo apt-key list
 </code></pre><pre tabindex="0"><code>pub   rsa4096 2019-06-11 [SC]
@@ -257,7 +257,7 @@ $ sudo apt-get autoremove
 Command 'R' not found, but can be installed with:
 
 sudo apt install r-base-core
-</code></pre><h3 id="install-r-from-precompiled-binaries">Install R from precompiled binaries</h3>
+</code></pre><h2 id="install-r-from-precompiled-binaries">Install R from precompiled binaries</h2>
 <p>I will use the method listed in this page for installation of R:
 <a href="https://docs.rstudio.com/resources/install-r/"><strong>Install R</strong></a>*</p>
 <p>As a prerequisite, enable additional repositories for third-party or source packages:</p>
@@ -275,8 +275,8 @@ sudo gdebi r-${R_VERSION}_1_amd64.deb
 sudo ln -s /opt/R/${R_VERSION}/bin/Rscript /usr/local/bin/Rscript
 </code></pre><p>Next, time to install multiple versions of R. Repeat the above steps to specify, download, and install a different version of R alongside existing versions.
 I re-configured with <code>export R_VERSION=3.6.2</code> and executed the steps above to have R-3.6.2 installed.</p>
-<h3 id="switching-between-r-versions">Switching between R versions</h3>
-<h4 id="method-1">Method 1</h4>
+<h2 id="switching-between-r-versions">Switching between R versions</h2>
+<h3 id="method-1">Method 1</h3>
 <p>The tutorial has a note at the symlink step, saying:</p>
 <blockquote>
 <p>This step only applies to the first installation of R on a given system. For subsequent installations, this section should be skipped.</p>
@@ -295,7 +295,7 @@ $ R --version
 R version 3.6.2 (2020-02-29) -- &quot;Holding the Windsock&quot;
 Copyright (C) 2020 The R Foundation for Statistical Computing
 Platform: x86_64-pc-linux-gnu (64-bit)
-</code></pre><h4 id="method-2">Method 2</h4>
+</code></pre><h3 id="method-2">Method 2</h3>
 <p>Another way of switching between different R versions is to get <code>Rstudio</code> recognize different R executables.
 Referring to this post: <a href="https://support.rstudio.com/hc/en-us/articles/200486138-Changing-R-versions-for-the-RStudio-Desktop-IDE">Changing R versions for the RStudio Desktop IDE</a>, we know that on Linux systems, <code>Rstudio</code> use the version of R pointed to by the output of <code>which R</code>.</p>
 <p>To override which version of R is used, we set <code>RSTUDIO_WHICH_R</code> environment variable to the R executable that we want to run against. For example, in terminal:</p>
@@ -305,11 +305,11 @@ Referring to this post: <a href="https://support.rstudio.com/hc/en-us/articles/2
 </code></pre><p>Because the <code>RSTUDIO_WHICH_R</code> is a temporary variable, it is only available in the activated shell instance. Calling <code>rstudio</code> in a new terminal will still point to the default R executable, which in our case is <code>/usr/local/bin/R</code>, which ,by default, points to <code>/opt/R/4.0.5/bin/R</code>.</p>
 <p>Now that we can work with multiple R versions, it&rsquo;s time to build some R packages. Hopefully <code>cellassign</code> can be run properly this time.</p>
 <p><code>cellassign</code> depends on tensorflow which is another nasty built experience. I&rsquo;ll write about it next time.</p>
-<h3 id="2021123-updates">2021.12.3 Updates:</h3>
+<h2 id="2021123-updates">2021.12.3 Updates:</h2>
 <p>Previously in this post I installed R-3.6.3. Now I strongly discourage this practice. For configuration of <code>cellassign</code>, build <code>R-3.6.2</code> instead of <code>R-3.6.3</code>, because some of the package dependencies (<code>RcppAnnoy</code>) has <a href="https://github.com/LTLA/BiocNeighbors/issues/17">bad compatibility with <code>R-3.6.3</code></a>.</p>
 <p>It turns out that <code>cellassign</code> still fails after reverting to R-3.6.3!</p>
 <p>The error encountered with <code>cellassign</code> turns out to be a compatibility issue of R <code>tensorflow</code>. To avoid the error, build R <code>tensorflow</code> with <code>devtools</code> and explicitly specify a version. See this <a href="https://github.com/Irrationone/cellassign/issues/94">issue</a>.</p>
-<p>Other useful resources:</p>
+<h3 id="other-useful-readings-while-working-on-this-problem">Other useful readings while working on this problem:</h3>
 <p><a href="https://support.rstudio.com/hc/en-us/articles/215488098-Installing-multiple-versions-of-R-on-Linux"><strong>Installing multiple versions of R on Linux</strong></a>*</p>
 <p><a href="https://support.rstudio.com/hc/en-us/articles/212364537-Using-multiple-versions-of-R-with-RStudio-Workbench-RStudio-Server-Pro">Using multiple versions of R with RStudio Workbench / RStudio Server Pro</a></p>
 <p><a href="https://docs.rstudio.com/rspm/admin/appendix/system-dependency-detection/">System Dependency Detection</a></p>
@@ -367,7 +367,7 @@ Referring to this post: <a href="https://support.rstudio.com/hc/en-us/articles/2
                     
                     
                     <li class="next">
-                        <a href="/post/build-tensorflow/" data-toggle="tooltip" data-placement="top" title="Building System &amp; Environment Support for Tensorflow on Ubuntu">Next
+                        <a href="/post/build-tensorflow/" data-toggle="tooltip" data-placement="top" title="Building Environments for Cellassign and CellBLAST with multiple GPU Supported Tensorflow Versions on Ubuntu">Next
                             Post &rarr;</a>
                     </li>
                     
@@ -407,6 +407,12 @@ Referring to this post: <a href="https://support.rstudio.com/hc/en-us/articles/2
                     <hr class="hidden-sm hidden-xs">
                     <h5><a href="/tags/">FEATURED TAGS</a></h5>
                     <div class="tags">
+                        
+                        
+                        
+                        
+                        
+                        
                         
                         
                         

@@ -8,14 +8,15 @@
     <language>en-us</language>
     <lastBuildDate>Sun, 05 Dec 2021 22:57:25 +0800</lastBuildDate><atom:link href="/tags/ubuntu/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Building System &amp; Environment Support for Tensorflow on Ubuntu</title>
+      <title>Building Environments for Cellassign and CellBLAST with multiple GPU Supported Tensorflow Versions on Ubuntu</title>
       <link>/post/build-tensorflow/</link>
       <pubDate>Sun, 05 Dec 2021 22:57:25 +0800</pubDate>
       
       <guid>/post/build-tensorflow/</guid>
-      <description>As promised, I will write about my experience with installation of tensorflow. The process looks daunting at first, but once you&amp;rsquo;re familiar with the process, it&amp;rsquo;s nothing more than a couple lines of sudo commands.
-Compatibility Before start, make sure to check compatibilities between the tools and packages that you&amp;rsquo;ll be building with. Take the following things into consideration:
-- Ubuntu 16.04? 18.04? or others? Although NVIDIA explicitly specified different build packages for each version, sometimes you don&#39;t have to strictly follow them.</description>
+      <description>As promised, I will write about my experience with installing tensorflow.
+Why did I ever have to build Tensorflow myself?
+The reason is that I was trying to use two tools: cellassign and Cell_BLAST, but they depend on different tensorflow versions. To make them both work, I used the following build strategy that allows different Tensorflow versions installed and run in separate conda environments.
+References: - link1: Best post for the job - link2: Official guide - link3 - link4</description>
     </item>
     
     <item>
@@ -24,8 +25,8 @@ Compatibility Before start, make sure to check compatibilities between the tools
       <pubDate>Thu, 02 Dec 2021 19:54:09 +0800</pubDate>
       
       <guid>/post/mult-r/</guid>
-      <description>Long time ago I built R-4.0.3 on Ubuntu system by following these guides: link1, link2. Briefly, I added GPG Key to APT (Advanced Package Tool) and added CRAN repository and directly retrieved R by apt.
-$ sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys E298A3A825C0D65DFD57CBB651716619E084DAB9 $ sudo add-apt-repository &#39;deb https://cloud.r-project.org/bin/linux/ubuntu bionic-cran40/&#39; $ sudo apt update $ sudo apt install r-base Recently, I ran into an issue with cellassign when analyzing single cell datasets.</description>
+      <description>Long time ago I built R-4.0.3 on Ubuntu system following these guides: link1, link2. Briefly, I added GPG Key to APT (Advanced Package Tool) and added CRAN repository and directly retrieved R by apt.
+$ sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys E298A3A825C0D65DFD57CBB651716619E084DAB9 $ sudo add-apt-repository &#39;deb https://cloud.r-project.org/bin/linux/ubuntu bionic-cran40/&#39; $ sudo apt update $ sudo apt install r-base Recently, I ran into an issue with cellassign when analyzing single cell datasets. I suspected that reverting to previous R versions might resolve the problem.</description>
     </item>
     
   </channel>

@@ -185,7 +185,7 @@
 <div class="post-preview">
     <a href="/post/build-tensorflow/">
         <h2 class="post-title">
-            Building System &amp; Environment Support for Tensorflow on Ubuntu
+            Building Environments for Cellassign and CellBLAST with multiple GPU Supported Tensorflow Versions on Ubuntu
         </h2>
 	
         <h3 class="post-subtitle">
@@ -194,9 +194,10 @@
 	
         <div class="post-content-preview">
 	
-            As promised, I will write about my experience with installation of tensorflow. The process looks daunting at first, but once you&rsquo;re familiar with the process, it&rsquo;s nothing more than a couple lines of sudo commands.
-Compatibility Before start, make sure to check compatibilities between the tools and packages that you&rsquo;ll be building with. Take the following things into consideration:
-- Ubuntu 16.04? 18.04? or others? Although NVIDIA explicitly specified different build packages for each version, sometimes you don't have to strictly follow them.
+            As promised, I will write about my experience with installing tensorflow.
+Why did I ever have to build Tensorflow myself?
+The reason is that I was trying to use two tools: cellassign and Cell_BLAST, but they depend on different tensorflow versions. To make them both work, I used the following build strategy that allows different Tensorflow versions installed and run in separate conda environments.
+References: - link1: Best post for the job - link2: Official guide - link3 - link4
        
         </div>
     </a>
@@ -233,6 +234,12 @@ Compatibility Before start, make sure to check compatibilities between the tools
         <h5>FEATURED TAGS</h5>
         <div class="tags">
             
+            
+               
+            
+               
+            
+               
             
                
             
