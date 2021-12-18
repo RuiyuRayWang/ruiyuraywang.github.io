@@ -222,12 +222,13 @@
                 <p>As promised, I will write about my experience with installing tensorflow.</p>
 <p>Why did I ever have to build Tensorflow myself?<br>
 The reason is that I was trying to use two tools: <code>cellassign</code> and <code>Cell_BLAST</code>, but they depend on different tensorflow versions. To make them both work, I used the following build strategy that allows different Tensorflow versions installed and run in separate conda environments.</p>
-<p>References:
-- <a href="https://blog.kovalevskyi.com/multiple-version-of-cuda-libraries-on-the-same-machine-b9502d50ae77">link1</a>: Best post for the job
-- <a href="https://www.tensorflow.org/install/gpu">link2</a>: Official guide
-- <a href="https://stackoverflow.com/questions/41330798/install-multiple-versions-of-cuda-and-cudnn">link3</a>
-- <a href="https://towardsdatascience.com/installing-multiple-cuda-cudnn-versions-in-ubuntu-fcb6aa5194e2">link4</a></p>
-<p>Since I don&rsquo;t have time to write too much, I&rsquo;ll try to make things brief.</p>
+<h1 id="main-references">Main References:</h1>
+<ul>
+<li><a href="https://blog.kovalevskyi.com/multiple-version-of-cuda-libraries-on-the-same-machine-b9502d50ae77">link1</a> - Best post for the job</li>
+<li><a href="https://www.tensorflow.org/install/gpu">link2</a> - Official guide</li>
+<li><a href="https://towardsdatascience.com/installing-multiple-cuda-cudnn-versions-in-ubuntu-fcb6aa5194e2">link3</a></li>
+</ul>
+<h6 id="since-i-dont-have-time-to-write-too-much-ill-try-to-make-things-brief">Since I don&rsquo;t have time to write too much, I&rsquo;ll try to make things brief.</h6>
 <h1 id="tldr">TL;DR</h1>
 <h2 id="1-purge-previous-installations">1. Purge previous installations</h2>
 <pre tabindex="0"><code>## Purge previous installations
@@ -304,7 +305,7 @@ Thu Dec 16 16:32:13 2021
 |    0   N/A  N/A     39185      G   /usr/lib/firefox/firefox            2MiB |
 +-----------------------------------------------------------------------------+
 </code></pre><h2 id="3-install-the-cuda-stack">3. Install the &ldquo;CUDA stack&rdquo;</h2>
-<p>What&rsquo;s in the &ldquo;CUDA stack&rdquo; (as of 2021.12.17):</p>
+<p>What&rsquo;s in the &ldquo;CUDA stack&rdquo; (as of 2021.12.17)?</p>
 <ul>
 <li>CUDA</li>
 <li>cuDNN</li>
@@ -316,12 +317,13 @@ Thu Dec 16 16:32:13 2021
 <p>I would strongly recommend use the installer script. First of all, it is agnostic to the version of the Linux that is used. Secondly, unlike some binary pre-build packages like deb file you can control where exactly CUDA library files will be installed.</p>
 </blockquote>
 <p>The &ldquo;CUDA stack&rdquo; compatibility matrix can be checked <a href="https://www.tensorflow.org/install/source#gpu">here</a>.<br>
-<code>cellassign</code> requires <code>tensorflow &gt;= 2.1.0</code>. With some tests I decided to use <code>2.4.0</code>. For <code>tensorflow==2.4.0</code> I need <code>CUDA 11.0</code> and <code>cuDNN 8.0</code>.<br>
-<code>Cell_BLAST</code> requires <code>tensorflow == 1.12.0</code> which depends on <code>CUDA 9.0</code> and <code>cuDNN 7</code>.<br>
-Download the CUDA Toolkit installers <a href="https://developer.nvidia.com/cuda-toolkit-archive">here</a>.
-Read the <code>Versioned Online Documentation</code> to understand the installation instructions, for example <a href="https://docs.nvidia.com/cuda/archive/11.0/">this one</a>.</p>
+<code>cellassign</code> requires <code>tensorflow &gt;= 2.1.0</code>.<br>
+With some tests I decided to use <code>2.4.0</code>. For <code>tensorflow==2.4.0</code> I need <code>CUDA 11.0</code> and <code>cuDNN 8.0</code>.<br>
+<code>Cell_BLAST</code> requires <code>tensorflow == 1.12.0</code> which depends on <code>CUDA 9.0</code> and <code>cuDNN 7</code>.</p>
+<p>Download the CUDA Toolkit installers <a href="https://developer.nvidia.com/cuda-toolkit-archive">here</a>.
+Read the <strong>&ldquo;Versioned Online Documentation&rdquo;</strong>, for example <a href="https://docs.nvidia.com/cuda/archive/11.0/">this one</a>, to understand what&rsquo;s going on.</p>
 <p><strong>Pre-installation actions</strong>:
-Not mandatory. Just be sure they&rsquo;ll pass.</p>
+Not mandatory. Just make sure they&rsquo;ll pass.</p>
 <pre tabindex="0"><code>$ lspci | grep -i nvidia  ## Verify a CUDA-capable GPU is available
 $ uname -m &amp;&amp; cat /etc/*release  ## Verify Linux Version Support
 $ gcc --version  ## Verify that gcc is installed
@@ -330,7 +332,7 @@ $ gcc --version  ## Verify that gcc is installed
 <pre tabindex="0"><code>$ wget http://developer.download.nvidia.com/compute/cuda/11.0.2/local_installers/cuda_11.0.2_450.51.05_linux.run
 $ chmod u+x cuda_11.0.2_450.51.05_linux.run
 $ sudo ./cuda_11.0.2_450.51.05_linux.run --silent --toolkit --tookitpath=/usr/local/cuda-11.0
-</code></pre><p>Quoting <a href="https://blog.kovalevskyi.com/multiple-version-of-cuda-libraries-on-the-same-machine-b9502d50ae77">Kovalevskyi</a>:</p>
+</code></pre><p>What are these flags doing? Quoting <a href="https://blog.kovalevskyi.com/multiple-version-of-cuda-libraries-on-the-same-machine-b9502d50ae77">Kovalevskyi</a>:</p>
 <blockquote>
 <p><code>--silent</code> — this will force installer to do everything in a silent mode without any interactive prompt. Really useful for the automation<br>
 <code>--toolkit</code> — install only the toolkit, majority of users probably indeed need only toolkit<br>
@@ -368,7 +370,7 @@ $ sudo chmod a+r /usr/local/cuda-9.0/include/cudnn.h /usr/local/cuda-9.0/lib64/l
 </code></pre><p>According to the TensorRT <a href="https://docs.nvidia.com/deeplearning/tensorrt/archives/tensorrt-601/tensorrt-support-matrix/index.html">support matrix</a>, there is currently no TensorRT support for <code>CUDA 11.0</code> &amp; <code>cuDNN 8.0.4</code>. For <code>CUDA 9.0</code> &amp; <code>cuDNN 7.6.5</code>, <code>TensorRT 6.0.1</code> is available. However, TensorRT is optional, I haven&rsquo;t figured out exactly how to make a clean installation, so skip it for now.</p>
 <p>For <strong>post-installation actions</strong>, i.e. PATH, LD_LIBRARY_PATH variables, we will set them up in environment configuration step (sections below).</p>
 <h3 id="33-fix-symlink">3.3 Fix symlink</h3>
-<p>Make <code>/usr/local/cuda</code> point to the folder holding default cuda version, which I choose to be <code>CUDA-11.0</code>. This may be useful for other applications, for example <code>U-net</code>.</p>
+<p>Make <code>/usr/local/cuda</code> point to the folder holding the default cuda version, which in my case is <code>CUDA-11.0</code>. This may be useful for other applications, for example <code>U-net</code>.</p>
 <pre tabindex="0"><code>sudo rm /usr/local/cuda
 sudo ln -s /usr/local/cuda-11.0 /usr/local/cuda
 </code></pre><h2 id="4-setup-environment-and-install-tools">4. Setup Environment and Install Tools</h2>
@@ -410,12 +412,12 @@ unset ORIGINAL_LD_LIBRARY_PATH
 <pre tabindex="0"><code>## In R
 &gt; # install.packages(&quot;tensorflow&quot;) ## DON'T DO THIS!
 &gt; devtools::install_github(&quot;rstudio/tensorflow@v2.4.0&quot;)  ## DO THIS!!
-</code></pre><p>Though R <code>tensorflow</code> could be used to install the python package, I find it more convenient to install it directly into the conda environment from terminal.</p>
+</code></pre><p>Although I could use R <code>tensorflow</code> to install the python package, I find it more convenient to install it directly into the conda environment from terminal.</p>
 <pre tabindex="0"><code>## In terminal
 $ conda activate cellassign
 $ pip install --upgrade pip
 $ pip install tensorflow==2.4.0
-$ pip install tensorflow-gpu==2.4.0  ## Optional
+$ pip install tensorflow-gpu==2.4.0  ## Optional for cellassign
 $ pip install tensorflow-probability==0.12.0  ## Required!
 </code></pre><p>Install <code>cellassign</code> R package.</p>
 <pre tabindex="0"><code>## In R
@@ -425,6 +427,7 @@ $ pip install tensorflow-probability==0.12.0  ## Required!
 Loaded Tensorflow version 2.4.0
 TensorFlow v2.4.0 (~/miniconda3/envs/cellassign/lib/python3.7/site-packages/tensorflow)
 Python v3.7 (~/miniconda3/envs/cellassign/bin/python)
+&gt;
 &gt; devtools::install_github(&quot;Irrationone/cellassign&quot;)
 </code></pre><h3 id="42-cell-blast">4.2 Cell-BLAST</h3>
 <p>Create new environment:</p>
@@ -452,7 +455,7 @@ export PATH=$ORIGINAL_PATH
 unset ORIGINAL_PATH
 export LD_LIBRARY_PATH=$ORIGINAL_LD_LIBRARY_PATH
 unset ORIGINAL_LD_LIBRARY_PATH
-</code></pre><h4 id="install-cellblast">Install cellblast</h4>
+</code></pre><h4 id="install-cell-blast">Install Cell-BLAST</h4>
 <pre tabindex="0"><code>$ pip install tensorflow-gpu==1.12  ## GPU &amp; CPU
 $ pip install tensorflow==1.12  ## CPU only
 $ pip install Cell-BLAST
@@ -464,7 +467,7 @@ $ pip install Cell-BLAST
 True
 &gt; import Cell_BLAST as cb
 </code></pre><h2 id="miscellaneous">Miscellaneous</h2>
-<p><em>The paragraph below was written at an very early on stage, but then I find them to be too verbose&hellip; I&rsquo;ve put them here anyway just so they&rsquo;re not wasted.</em></p>
+<p><em>The paragraph below was written at an very early stage, but later on I find them to be too verbose&hellip; I&rsquo;ve put them here anyway just so they&rsquo;re not wasted.</em></p>
 <p>To build multiple Tensorflow versions, there will be various compatibilities requirements. Consider the followings:</p>
 <ul>
 <li>Tool of interest<br>

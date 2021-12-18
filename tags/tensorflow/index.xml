@@ -16,7 +16,7 @@
       <description>As promised, I will write about my experience with installing tensorflow.
 Why did I ever have to build Tensorflow myself?
 The reason is that I was trying to use two tools: cellassign and Cell_BLAST, but they depend on different tensorflow versions. To make them both work, I used the following build strategy that allows different Tensorflow versions installed and run in separate conda environments.
-References: - link1: Best post for the job - link2: Official guide - link3 - link4</description>
+Main References:  link1 - Best post for the job link2 - Official guide link3  Since I don&amp;rsquo;t have time to write too much, I&amp;rsquo;ll try to make things brief.</description>
     </item>
     
   </channel>
