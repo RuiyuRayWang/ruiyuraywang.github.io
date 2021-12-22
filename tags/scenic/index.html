@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en-us">
 <head>
-	<meta name="generator" content="Hugo 0.89.4" />
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -16,9 +15,9 @@
     
 
     
-    <meta name="title" content="" />
-    <meta property="og:title" content="" />
-    <meta property="twitter:title" content="" />
+    <meta name="title" content="SCENIC" />
+    <meta property="og:title" content="SCENIC" />
+    <meta property="twitter:title" content="SCENIC" />
     
 
     
@@ -35,9 +34,9 @@
     <meta name="keyword"  content="王睿宇, wangruiyu, Wangruiyu, , 博客, 个人网站, 生物信息学, bioinformatics, 计算生物学, computational biology, 神经生物学, neurobiology">
     <link rel="shortcut icon" href="/img/favicon.ico">
 
-    <title>RuiyuRay&#39;s Blog-Ray的博客 | RuiyuRay&#39;s Blog</title>
+    <title>SCENIC-Ray的博客 | RuiyuRay&#39;s Blog</title>
 
-    <link rel="canonical" href="/">
+    <link rel="canonical" href="/tags/scenic/">
 
     <link rel="stylesheet" href="/css/iDisqus.min.css"/>
 
@@ -184,46 +183,23 @@
             
 
 <div class="post-preview">
-    <a href="/post/on-comp-bio/">
+    <a href="/post/install-r-scenic/">
         <h2 class="post-title">
-            So you want to be a computational biologist?
+            Documenting R SCENIC installation
         </h2>
 	
         <div class="post-content-preview">
 	
-            Recently I ran into this wonderful article published in Nature Biotechnology written by Nick Loman and Mick Watson, about how to become a computational biologist. The article is so brilliant and I thought I should dedicate my (actual) first post to write about it.
-Understand your goals and choose appropriate methods  Key to good computational biology is the selection and use of appropriate software. Before you can usefully interpret the output of a piece of software, you must understand what the software is doing.
+            TL;DR First consulted this page
+I have R-4.0.5 with Bioconductor 3.12(4.0), use the latest scripts for installation.
+In Rstudio:
+&gt; if (!requireNamespace(&quot;BiocManager&quot;, quietly = TRUE)) install.packages(&quot;BiocManager&quot;) &gt; BiocManager::version() &gt; # If your bioconductor version is previous to 4.0, see the section bellow &gt; &gt; ## Required &gt; BiocManager::install(c(&quot;AUCell&quot;, &quot;RcisTarget&quot;)) &gt; BiocManager::install(c(&quot;GENIE3&quot;)) # Optional. Can be replaced by GRNBoost &gt; &gt; ## Optional (but highly recommended): &gt; # To score the network on cells (i.
        
         </div>
     </a>
     <p class="post-meta">
     
-        Posted byRuiyu Wang  Thursday, December 2, 2021
-        
-        
-    
-    </p>
-
-</div>
-<hr>
-
-<div class="post-preview">
-    <a href="/post/my-first-post/">
-        <h2 class="post-title">
-            My First Post
-        </h2>
-	
-        <div class="post-content-preview">
-	
-            Hosting my first Blog with Hugo on Github!
-For a starter, I&rsquo;ll document in this post how the blog is managed and used. I&rsquo;ve setup the site by referring to here, here, and here.
-The first link is particularly useful. I&rsquo;ve adopted its file structure for setting up privately managed (/blog) and public sites (/public). Critically, the /public repo must be created with the following convention: https://github.com/RuiyuRayWang/ruiyuraywang.github.io Everytime contents in /blog is updated, run hugo -D to generate new site to /public and push /public to github accordingly.
-       
-        </div>
-    </a>
-    <p class="post-meta">
-    
-        Posted by     Ruiyu Wang  Tuesday, November 23, 2021
+        Posted by     Ruiyu Wang  Wednesday, December 22, 2021
         
         
     
@@ -235,15 +211,6 @@ The first link is particularly useful. I&rsquo;ve adopted its file structure for
 
             
 
-
-<ul class="pager">
-    
-    <li class="previous">
-        <a href="/">&larr; Newer Posts</a>
-    </li>
-    
-    
-</ul>
 
 
        	</div>
@@ -323,7 +290,7 @@ The first link is particularly useful. I&rsquo;ve adopted its file structure for
                 <ul class="list-inline text-center">
                    
                    <li>
-                       <a href='/index.xml' rel="alternate" type="application/rss+xml" title="RuiyuRay&#39;s Blog" >
+                       <a href='/tags/scenic/index.xml' rel="alternate" type="application/rss+xml" title="RuiyuRay&#39;s Blog" >
                            <span class="fa-stack fa-lg">
                                <i class="fas fa-circle fa-stack-2x"></i>
                                <i class="fas fa-rss fa-stack-1x fa-inverse"></i>

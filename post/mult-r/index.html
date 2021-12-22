@@ -309,8 +309,10 @@ Referring to this post: <a href="https://support.rstudio.com/hc/en-us/articles/2
 <p>Previously in this post I installed R-3.6.3. Now I strongly discourage this practice. For configuration of <code>cellassign</code>, build <code>R-3.6.2</code> instead of <code>R-3.6.3</code>, because some of the package dependencies (<code>RcppAnnoy</code>) has <a href="https://github.com/LTLA/BiocNeighbors/issues/17">bad compatibility with <code>R-3.6.3</code></a>.</p>
 <p>It turns out that <code>cellassign</code> still fails after reverting to R-3.6.3!</p>
 <p>The error encountered with <code>cellassign</code> turns out to be a compatibility issue of R <code>tensorflow</code>. To avoid the error, build R <code>tensorflow</code> with <code>devtools</code> and explicitly specify a version. See this <a href="https://github.com/Irrationone/cellassign/issues/94">issue</a>.</p>
-<h3 id="other-useful-readings-while-working-on-this-problem">Other useful readings while working on this problem:</h3>
+<h2 id="references">References:</h2>
+<p><a href="https://docs.rstudio.com/resources/install-r/"><strong>Install R</strong></a>*</p>
 <p><a href="https://support.rstudio.com/hc/en-us/articles/215488098-Installing-multiple-versions-of-R-on-Linux"><strong>Installing multiple versions of R on Linux</strong></a>*</p>
+<p><a href="https://cran.r-project.org/doc/manuals/r-release/R-admin.html">R Installation and Administration</a></p>
 <p><a href="https://support.rstudio.com/hc/en-us/articles/212364537-Using-multiple-versions-of-R-with-RStudio-Workbench-RStudio-Server-Pro">Using multiple versions of R with RStudio Workbench / RStudio Server Pro</a></p>
 <p><a href="https://docs.rstudio.com/rspm/admin/appendix/system-dependency-detection/">System Dependency Detection</a></p>
 
@@ -421,6 +423,12 @@ Referring to this post: <a href="https://support.rstudio.com/hc/en-us/articles/2
                         
                         
                         
+                        
+                        
+                        
+                        <a href="/tags/single-cell-biology" title="single-cell-biology">
+                            single-cell-biology
+                        </a>
                         
                         
                         

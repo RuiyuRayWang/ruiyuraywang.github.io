@@ -6,7 +6,34 @@
     <description>Recent content in Tags on RuiyuRay&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 15 Dec 2021 23:07:11 +0800</lastBuildDate><atom:link href="/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 22 Dec 2021 12:32:17 +0800</lastBuildDate><atom:link href="/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>SCENIC</title>
+      <link>/tags/scenic/</link>
+      <pubDate>Wed, 22 Dec 2021 12:32:17 +0800</pubDate>
+      
+      <guid>/tags/scenic/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Single Cell Biology</title>
+      <link>/tags/single-cell-biology/</link>
+      <pubDate>Wed, 22 Dec 2021 12:32:17 +0800</pubDate>
+      
+      <guid>/tags/single-cell-biology/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Ubuntu</title>
+      <link>/tags/ubuntu/</link>
+      <pubDate>Wed, 22 Dec 2021 12:32:17 +0800</pubDate>
+      
+      <guid>/tags/ubuntu/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>tag1</title>
       <link>/tags/tag1/</link>
@@ -35,29 +62,11 @@
     </item>
     
     <item>
-      <title>Single Cell Biology</title>
-      <link>/tags/single-cell-biology/</link>
-      <pubDate>Sun, 05 Dec 2021 22:57:25 +0800</pubDate>
-      
-      <guid>/tags/single-cell-biology/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>Tensorflow</title>
       <link>/tags/tensorflow/</link>
       <pubDate>Sun, 05 Dec 2021 22:57:25 +0800</pubDate>
       
       <guid>/tags/tensorflow/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Ubuntu</title>
-      <link>/tags/ubuntu/</link>
-      <pubDate>Sun, 05 Dec 2021 22:57:25 +0800</pubDate>
-      
-      <guid>/tags/ubuntu/</guid>
       <description></description>
     </item>
     

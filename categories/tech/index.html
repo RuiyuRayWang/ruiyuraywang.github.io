@@ -183,6 +183,32 @@
             
 
 <div class="post-preview">
+    <a href="/post/install-r-scenic/">
+        <h2 class="post-title">
+            Documenting R SCENIC installation
+        </h2>
+	
+        <div class="post-content-preview">
+	
+            TL;DR First consulted this page
+I have R-4.0.5 with Bioconductor 3.12(4.0), use the latest scripts for installation.
+In Rstudio:
+&gt; if (!requireNamespace(&quot;BiocManager&quot;, quietly = TRUE)) install.packages(&quot;BiocManager&quot;) &gt; BiocManager::version() &gt; # If your bioconductor version is previous to 4.0, see the section bellow &gt; &gt; ## Required &gt; BiocManager::install(c(&quot;AUCell&quot;, &quot;RcisTarget&quot;)) &gt; BiocManager::install(c(&quot;GENIE3&quot;)) # Optional. Can be replaced by GRNBoost &gt; &gt; ## Optional (but highly recommended): &gt; # To score the network on cells (i.
+       
+        </div>
+    </a>
+    <p class="post-meta">
+    
+        Posted by     Ruiyu Wang  Wednesday, December 22, 2021
+        
+        
+    
+    </p>
+
+</div>
+<hr>
+
+<div class="post-preview">
     <a href="/post/using-scenic/">
         <h2 class="post-title">
             Working with pySCENIC
@@ -283,34 +309,18 @@ Mac (iOS)  bash tools  brew tree   softwares  R    Ubuntu  Bioinformatics  samto
 </div>
 <hr>
 
-<div class="post-preview">
-    <a href="/post/my-first-post/">
-        <h2 class="post-title">
-            My First Post
-        </h2>
-	
-        <div class="post-content-preview">
-	
-            Hosting my first Blog with Hugo on Github!
-For a starter, I&rsquo;ll document in this post how the blog is managed and used. I&rsquo;ve setup the site by referring to here, here, and here.
-The first link is particularly useful. I&rsquo;ve adopted its file structure for setting up privately managed (/blog) and public sites (/public). Critically, the /public repo must be created with the following convention: https://github.com/RuiyuRayWang/ruiyuraywang.github.io Everytime contents in /blog is updated, run hugo -D to generate new site to /public and push /public to github accordingly.
-       
-        </div>
-    </a>
-    <p class="post-meta">
-    
-        Posted by     Ruiyu Wang  Tuesday, November 23, 2021
-        
-        
-    
-    </p>
-
-</div>
-<hr>
-
 
             
 
+
+<ul class="pager">
+    
+    
+    <li class="next">
+        <a href="/categories/tech/page/2/">Older Posts &rarr;</a>
+    </li>
+    
+</ul>
 
 
        	</div>
@@ -343,6 +353,12 @@ The first link is particularly useful. I&rsquo;ve adopted its file structure for
             
                
             
+               
+            
+               
+                    <a href="/tags/single-cell-biology" title="single-cell-biology">
+                        single-cell-biology
+                    </a>
                
             
                

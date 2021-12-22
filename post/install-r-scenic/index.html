@@ -15,9 +15,9 @@
     
 
     
-    <meta name="title" content="Frquently Used Softwares" />
-    <meta property="og:title" content="Frquently Used Softwares" />
-    <meta property="twitter:title" content="Frquently Used Softwares" />
+    <meta name="title" content="Documenting R SCENIC installation" />
+    <meta property="og:title" content="Documenting R SCENIC installation" />
+    <meta property="twitter:title" content="Documenting R SCENIC installation" />
     
 
     
@@ -34,9 +34,9 @@
     <meta name="keyword"  content="王睿宇, wangruiyu, Wangruiyu, , 博客, 个人网站, 生物信息学, bioinformatics, 计算生物学, computational biology, 神经生物学, neurobiology">
     <link rel="shortcut icon" href="/img/favicon.ico">
 
-    <title>Frquently Used Softwares-Ray的博客 | RuiyuRay&#39;s Blog</title>
+    <title>Documenting R SCENIC installation-Ray的博客 | RuiyuRay&#39;s Blog</title>
 
-    <link rel="canonical" href="/post/frq-used/">
+    <link rel="canonical" href="/post/install-r-scenic/">
 
     <link rel="stylesheet" href="/css/iDisqus.min.css"/>
 
@@ -167,8 +167,20 @@
                 <div class="post-heading">
                     <div class="tags">
                         
+                        <a class="tag" href="/tags/single-cell-biology" title="Single Cell Biology">
+                            Single Cell Biology
+                        </a>
+                        
+                        <a class="tag" href="/tags/ubuntu" title="Ubuntu">
+                            Ubuntu
+                        </a>
+                        
+                        <a class="tag" href="/tags/scenic" title="SCENIC">
+                            SCENIC
+                        </a>
+                        
                     </div>
-                    <h1>Frquently Used Softwares</h1>
+                    <h1>Documenting R SCENIC installation</h1>
                     <h2 class="subheading"></h2>
                     <span class="meta">
                         
@@ -177,7 +189,7 @@
                                      Ruiyu Wang
                              
                             on 
-                            Thursday, December 2, 2021
+                            Wednesday, December 22, 2021
                             
                             
                             
@@ -203,44 +215,96 @@
                 post-container">
 
                 
-                <p>Softwares used in works. Some require built from scratch.</p>
-<h2 id="mac-ios">Mac (iOS)</h2>
-<ol>
-<li>bash tools
-<ul>
-<li>brew</li>
-<li>tree</li>
-</ul>
-</li>
-<li>softwares
-<ul>
-<li>R</li>
-</ul>
-</li>
-</ol>
-<h2 id="ubuntu">Ubuntu</h2>
-<ol>
-<li>Bioinformatics
-<ul>
-<li>samtools</li>
-<li>STAR</li>
-<li>umi_tools</li>
-</ul>
-</li>
-</ol>
-<h2 id="single-cell-biology">Single cell biology</h2>
-<ol>
-<li>R
-<ul>
-<li>Seurat</li>
-</ul>
-</li>
-<li>python
-<ul>
-<li>geosketch</li>
-</ul>
-</li>
-</ol>
+                <h1 id="tldr">TL;DR</h1>
+<p>First consulted <a href="http://htmlpreview.github.io/?https://github.com/aertslab/SCENIC/blob/master/inst/doc/SCENIC_Setup.html">this page</a></p>
+<p>I have <code>R-4.0.5</code> with <code>Bioconductor 3.12(4.0)</code>, use the latest scripts for installation.</p>
+<p>In Rstudio:</p>
+<pre tabindex="0"><code>&gt; if (!requireNamespace(&quot;BiocManager&quot;, quietly = TRUE)) install.packages(&quot;BiocManager&quot;)
+&gt; BiocManager::version()
+&gt; # If your bioconductor version is previous to 4.0, see the section bellow
+&gt; 
+&gt; ## Required
+&gt; BiocManager::install(c(&quot;AUCell&quot;, &quot;RcisTarget&quot;))
+&gt; BiocManager::install(c(&quot;GENIE3&quot;)) # Optional. Can be replaced by GRNBoost
+&gt; 
+&gt; ## Optional (but highly recommended):
+&gt; # To score the network on cells (i.e. run AUCell):
+&gt; BiocManager::install(c(&quot;zoo&quot;, &quot;mixtools&quot;, &quot;rbokeh&quot;))
+&gt; # For various visualizations and perform t-SNEs:
+&gt; BiocManager::install(c(&quot;DT&quot;, &quot;NMF&quot;, &quot;ComplexHeatmap&quot;, &quot;R2HTML&quot;, &quot;Rtsne&quot;))
+&gt; # To support paralell execution (not available in Windows):
+&gt; BiocManager::install(c(&quot;doMC&quot;, &quot;doRNG&quot;))
+&gt; &gt; # To export/visualize in http://scope.aertslab.org
+&gt; if (!requireNamespace(&quot;devtools&quot;, quietly = TRUE)) install.packages(&quot;devtools&quot;)
+&gt; devtools::install_github(&quot;aertslab/SCopeLoomR&quot;, build_vignettes = TRUE)
+</code></pre><p>These worked fine.</p>
+<p>Then, when installing SCENIC using <code>devtools</code>:</p>
+<pre tabindex="0"><code>&gt; if (!requireNamespace(&quot;devtools&quot;, quietly = TRUE)) install.packages(&quot;devtools&quot;)
+&gt; devtools::install_github(&quot;aertslab/SCENIC&quot;) 
+Downloading GitHub repo aertslab/SCENIC@HEAD
+Error in utils::download.file(url, path, method = method, quiet = quiet,  : 
+  download from 'https://api.github.com/repos/aertslab/SCENIC/tarball/HEAD' failed
+</code></pre><p>Tried several times with no success.</p>
+<p>There are some discussions on this behavior with <code>devtools</code> and <code>remotes</code>, for example this <a href="https://github.com/r-lib/remotes/issues/130">issue</a>, but I find it un-straightforward.</p>
+<p>Instead, I decided to switch to SCENIC(R) github page and install directly from there.
+First tried directly cloning the repo:</p>
+<pre tabindex="0"><code>$ git clone https://github.com/aertslab/SCENIC.git
+Cloning into 'SCENIC'...
+fatal: unable to access 'https://github.com/aertslab/SCENIC.git/': Could not resolve host: github.com
+</code></pre><p>This also failed!</p>
+<p>Then tried <code>Download ZIP</code> to local and unzip <code>SCENIC-master.zip</code>. Create a new project in Rstudio from the directory containing SCENIC build and hit the <code>Install and Restart</code> button.</p>
+<p>This also failed because of an error of the sort &ldquo;Dependency &lsquo;dynamicTreeCut&rsquo; not available&rdquo;, but this won&rsquo;t be very difficult to solve.</p>
+<p>Install <code>dynamicTreeCut</code> manually:</p>
+<pre tabindex="0"><code>&gt; install.packages(&quot;dynamicTreeCut&quot;)
+Warning in install.packages :
+  unable to access index for repository https://cran.rstudio.com/src/contrib:
+  cannot open URL 'https://cran.rstudio.com/src/contrib/PACKAGES'
+Installing package into ‘/home/luolab/R/x86_64-pc-linux-gnu-library/4.0’
+(as ‘lib’ is unspecified)
+Warning in install.packages :
+  unable to access index for repository https://cran.rstudio.com/src/contrib:
+  cannot open URL 'https://cran.rstudio.com/src/contrib/PACKAGES'
+Warning in install.packages :
+  package ‘dynamicTreeCut’ is not available for this version of R
+
+A version of this package for your version of R might be available elsewhere,
+see the ideas at
+https://cran.r-project.org/doc/manuals/r-patched/R-admin.html#Installing-packages
+</code></pre><p>To <a href="https://community.rstudio.com/t/install-packages-unable-to-access-index-for-repository-try-disabling-secure-download-method-for-http/16578">fix this</a>, in Rstudio go to <code>Tools</code> &gt; <code>Global Options</code> &gt; <code>Packages</code> and <strong>Uncheck</strong> <code>Use secure download method for HTTP</code>. Then:</p>
+<pre tabindex="0"><code>&gt; install.packages(&quot;dynamicTreeCut&quot;)
+Installing package into ‘/home/luolab/R/x86_64-pc-linux-gnu-library/4.0’
+(as ‘lib’ is unspecified)
+trying URL 'http://cran.rstudio.com/src/contrib/dynamicTreeCut_1.63-1.tar.gz'
+Content type 'application/x-gzip' length 24027 bytes (23 KB)
+==================================================
+downloaded 23 KB
+
+* installing *source* package ‘dynamicTreeCut’ ...
+** package ‘dynamicTreeCut’ successfully unpacked and MD5 sums checked
+** using staged installation
+** R
+** byte-compile and prepare package for lazy loading
+** help
+*** installing help indices
+** building package indices
+** testing if installed package can be loaded from temporary location
+** testing if installed package can be loaded from final location
+** testing if installed package keeps a record of temporary installation path
+* DONE (dynamicTreeCut)
+
+The downloaded source packages are in
+	‘/tmp/RtmpgfV9Bj/downloaded_packages’
+</code></pre><p>Success!</p>
+<p>Now <code>Install and Restart</code> SCENIC again and everything worked.</p>
+<p>Next job is to import <code>pySCENIC</code> results to R <code>SCENIC</code>, consult the followings:</p>
+<pre><code>- [Github issue discussion](https://github.com/aertslab/pySCENIC/issues/180)
+- [Vignette](https://rawcdn.githack.com/aertslab/SCENIC/0a4c96ed8d930edd8868f07428090f9dae264705/inst/doc/importing_pySCENIC.html)
+</code></pre>
+<h2 id="ps">P.S.</h2>
+<p>When trying to push this post to github remote, failed again&hellip;</p>
+<pre tabindex="0"><code>$ git push -u --all
+fatal: unable to access 'https://github.com/RuiyuRayWang/blog.git/': Could not resolve host: github.com
+</code></pre><p>Looks like we&rsquo;re having a bad day with github server&hellip;</p>
 
 
                 
@@ -289,15 +353,10 @@
                 <ul class="pager">
                     
                     <li class="previous">
-                        <a href="/post/on-comp-bio/" data-toggle="tooltip" data-placement="top" title="So you want to be a computational biologist?">&larr;
+                        <a href="/post/using-scenic/" data-toggle="tooltip" data-placement="top" title="Working with pySCENIC">&larr;
                             Previous Post</a>
                     </li>
                     
-                    
-                    <li class="next">
-                        <a href="/post/mult-r/" data-toggle="tooltip" data-placement="top" title="Clean Built of Multiple R Versions on Ubuntu">Next
-                            Post &rarr;</a>
-                    </li>
                     
                 </ul>
                 

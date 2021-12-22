@@ -6,7 +6,19 @@
     <description>Recent content in Tech on RuiyuRay&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 15 Dec 2021 23:07:11 +0800</lastBuildDate><atom:link href="/categories/tech/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 22 Dec 2021 12:32:17 +0800</lastBuildDate><atom:link href="/categories/tech/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Documenting R SCENIC installation</title>
+      <link>/post/install-r-scenic/</link>
+      <pubDate>Wed, 22 Dec 2021 12:32:17 +0800</pubDate>
+      
+      <guid>/post/install-r-scenic/</guid>
+      <description>TL;DR First consulted this page
+I have R-4.0.5 with Bioconductor 3.12(4.0), use the latest scripts for installation.
+In Rstudio:
+&amp;gt; if (!requireNamespace(&amp;quot;BiocManager&amp;quot;, quietly = TRUE)) install.packages(&amp;quot;BiocManager&amp;quot;) &amp;gt; BiocManager::version() &amp;gt; # If your bioconductor version is previous to 4.0, see the section bellow &amp;gt; &amp;gt; ## Required &amp;gt; BiocManager::install(c(&amp;quot;AUCell&amp;quot;, &amp;quot;RcisTarget&amp;quot;)) &amp;gt; BiocManager::install(c(&amp;quot;GENIE3&amp;quot;)) # Optional. Can be replaced by GRNBoost &amp;gt; &amp;gt; ## Optional (but highly recommended): &amp;gt; # To score the network on cells (i.</description>
+    </item>
+    
     <item>
       <title>Working with pySCENIC</title>
       <link>/post/using-scenic/</link>

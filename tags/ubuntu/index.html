@@ -183,6 +183,32 @@
             
 
 <div class="post-preview">
+    <a href="/post/install-r-scenic/">
+        <h2 class="post-title">
+            Documenting R SCENIC installation
+        </h2>
+	
+        <div class="post-content-preview">
+	
+            TL;DR First consulted this page
+I have R-4.0.5 with Bioconductor 3.12(4.0), use the latest scripts for installation.
+In Rstudio:
+&gt; if (!requireNamespace(&quot;BiocManager&quot;, quietly = TRUE)) install.packages(&quot;BiocManager&quot;) &gt; BiocManager::version() &gt; # If your bioconductor version is previous to 4.0, see the section bellow &gt; &gt; ## Required &gt; BiocManager::install(c(&quot;AUCell&quot;, &quot;RcisTarget&quot;)) &gt; BiocManager::install(c(&quot;GENIE3&quot;)) # Optional. Can be replaced by GRNBoost &gt; &gt; ## Optional (but highly recommended): &gt; # To score the network on cells (i.
+       
+        </div>
+    </a>
+    <p class="post-meta">
+    
+        Posted by     Ruiyu Wang  Wednesday, December 22, 2021
+        
+        
+    
+    </p>
+
+</div>
+<hr>
+
+<div class="post-preview">
     <a href="/post/build-tensorflow/">
         <h2 class="post-title">
             Building Environments for Cellassign and CellBLAST with multiple GPU Supported Tensorflow Versions on Ubuntu
@@ -271,6 +297,12 @@ $ sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys E298A3A825C0D65D
             
                
             
+               
+            
+               
+                    <a href="/tags/single-cell-biology" title="single-cell-biology">
+                        single-cell-biology
+                    </a>
                
             
                
