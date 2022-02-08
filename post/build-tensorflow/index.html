@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html><head>
-<title>Building Environments for Cellassign and CellBLAST with multiple GPU Supported Tensorflow Versions on Ubuntu</title>
+<title>Tensorflow：多版本部署、系统配置与版本切换</title>
 
 
 
@@ -16,11 +16,10 @@
 
 
 
-<meta property="og:title" content="Building Environments for Cellassign and CellBLAST with multiple GPU Supported Tensorflow Versions on Ubuntu" />
-<meta property="og:description" content="As promised, I will write about my experience with installing tensorflow.
+<meta property="og:title" content="Tensorflow：多版本部署、系统配置与版本切换" />
+<meta property="og:description" content="Building Environments for Cellassign and CellBLAST with multiple Tensorflow (GPU) Versions on Ubuntu As promised, I will write about my experience with installing tensorflow.
 Why did I ever have to build Tensorflow myself?
-The reason is that I was trying to use two tools: cellassign and Cell_BLAST, but they depend on different tensorflow versions. To make them both work, I used the following build strategy that allows different Tensorflow versions installed and run in separate conda environments.
-Main References:  link1 - Best post for the job link2 - Official guide link3  Since I don&rsquo;t have time to write too much, I&rsquo;ll try to make things brief." />
+The reason is that I was trying to use two tools: cellassign and Cell_BLAST, but they depend on different tensorflow versions. To make them both work, I used the following build strategy that allows different Tensorflow versions installed and run in separate conda environments." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="/post/build-tensorflow/" /><meta property="article:section" content="post" />
 <meta property="article:published_time" content="2021-12-05T22:57:25+08:00" />
@@ -32,11 +31,10 @@ Main References:  link1 - Best post for the job link2 - Official guide link3  Si
 
 
 <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Building Environments for Cellassign and CellBLAST with multiple GPU Supported Tensorflow Versions on Ubuntu"/>
-<meta name="twitter:description" content="As promised, I will write about my experience with installing tensorflow.
+<meta name="twitter:title" content="Tensorflow：多版本部署、系统配置与版本切换"/>
+<meta name="twitter:description" content="Building Environments for Cellassign and CellBLAST with multiple Tensorflow (GPU) Versions on Ubuntu As promised, I will write about my experience with installing tensorflow.
 Why did I ever have to build Tensorflow myself?
-The reason is that I was trying to use two tools: cellassign and Cell_BLAST, but they depend on different tensorflow versions. To make them both work, I used the following build strategy that allows different Tensorflow versions installed and run in separate conda environments.
-Main References:  link1 - Best post for the job link2 - Official guide link3  Since I don&rsquo;t have time to write too much, I&rsquo;ll try to make things brief."/>
+The reason is that I was trying to use two tools: cellassign and Cell_BLAST, but they depend on different tensorflow versions. To make them both work, I used the following build strategy that allows different Tensorflow versions installed and run in separate conda environments."/>
 
 
 
@@ -154,7 +152,7 @@ Ported from <a href="https://mak1t0.cc/" target="_blank" rel="noreferrer noopene
 
 &copy;
 	
-	2021 Karmotrine Dream
+	2022 Karmotrine Dream
 	
 
     </div>
@@ -174,6 +172,24 @@ Ported from <a href="https://mak1t0.cc/" target="_blank" rel="noreferrer noopene
 		
 		
 		<ul>
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#building-environments-for-cellassign-and-cellblast-with-multiple-tensorflow-gpu-versions-on-ubuntu" onclick="onNavClick(`#building-environments-for-cellassign-and-cellblast-with-multiple-tensorflow-gpu-versions-on-ubuntu-nav`)" id="building-environments-for-cellassign-and-cellblast-with-multiple-tensorflow-gpu-versions-on-ubuntu-nav">
+									Building Environments for Cellassign and CellBLAST with multiple Tensorflow (GPU) Versions on Ubuntu
+								</a>
+							</li>
+						
+						
+					
+				
 			
 				
 				
@@ -598,6 +614,24 @@ Ported from <a href="https://mak1t0.cc/" target="_blank" rel="noreferrer noopene
 						
 						
 							<li>
+								<a href="#building-environments-for-cellassign-and-cellblast-with-multiple-tensorflow-gpu-versions-on-ubuntu" onclick="onNavClick(`#building-environments-for-cellassign-and-cellblast-with-multiple-tensorflow-gpu-versions-on-ubuntu-nav`)" id="building-environments-for-cellassign-and-cellblast-with-multiple-tensorflow-gpu-versions-on-ubuntu-nav">
+									Building Environments for Cellassign and CellBLAST with multiple Tensorflow (GPU) Versions on Ubuntu
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
 								<a href="#main-references" onclick="onNavClick(`#main-references-nav`)" id="main-references-nav">
 									Main References:
 								</a>
@@ -974,7 +1008,7 @@ Ported from <a href="https://mak1t0.cc/" target="_blank" rel="noreferrer noopene
                 
             >
                 <div class="post-title">
-                    Building Environments for Cellassign and CellBLAST with multiple GPU Supported Tensorflow Versions on Ubuntu
+                    Tensorflow：多版本部署、系统配置与版本切换
                     
                     <div class="post-meta">
                         
@@ -1014,7 +1048,8 @@ Ported from <a href="https://mak1t0.cc/" target="_blank" rel="noreferrer noopene
                 
                 <div class="post-body" v-pre>
                 
-                    <p>As promised, I will write about my experience with installing tensorflow.</p>
+                    <h1 id="building-environments-for-cellassign-and-cellblast-with-multiple-tensorflow-gpu-versions-on-ubuntu">Building Environments for Cellassign and CellBLAST with multiple Tensorflow (GPU) Versions on Ubuntu</h1>
+<p>As promised, I will write about my experience with installing tensorflow.</p>
 <p>Why did I ever have to build Tensorflow myself?<br>
 The reason is that I was trying to use two tools: <code>cellassign</code> and <code>Cell_BLAST</code>, but they depend on different tensorflow versions. To make them both work, I used the following build strategy that allows different Tensorflow versions installed and run in separate conda environments.</p>
 <h1 id="main-references">Main References:</h1>
@@ -1298,7 +1333,7 @@ The compatibilities between CUDA and cuDNN, as well as Tensorflow, python and gc
                 
                 
                 <a class="older-posts" href="/post/mult-r/">
-			Previous<br>Clean Built of Multiple R Versions on Ubuntu
+			Previous<br>R：同时部署多版本 &amp; 版本切换
                 </a>
                 
             </nav>
@@ -1328,7 +1363,7 @@ Ported from <a href="https://mak1t0.cc/" target="_blank" rel="noreferrer noopene
 
 &copy;
 	
-	2021 Karmotrine Dream
+	2022 Karmotrine Dream
 	
 </div>
             </div>

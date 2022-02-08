@@ -5,14 +5,25 @@
     <description>Recent content on Karmotrine Dream</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 22 Dec 2021 12:32:17 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 08 Feb 2022 22:05:51 +0800</lastBuildDate>
     
         <atom:link href="/index.xml" rel="self" type="application/rss+xml" />
     
     
     
         <item>
-        <title>Documenting R SCENIC installation</title>
+        <title>10X CellRanger 中测序饱和度的计算</title>
+        <link>/post/10x_calc_saturation/</link>
+        <pubDate>Tue, 08 Feb 2022 22:05:51 +0800</pubDate>
+        
+        <guid>/post/10x_calc_saturation/</guid>
+        <description>Karmotrine Dream /post/10x_calc_saturation/ -- /post/10x_calc_saturation/ - </description>
+        </item>
+    
+    
+    
+        <item>
+        <title>R SCENIC：安装与部署</title>
         <link>/post/install-r-scenic/</link>
         <pubDate>Wed, 22 Dec 2021 12:32:17 +0800</pubDate>
         
@@ -125,12 +136,13 @@ fatal: unable to access &#39;https://github.com/RuiyuRayWang/blog.git/&#39;: Cou
     
     
         <item>
-        <title>Building Environments for Cellassign and CellBLAST with multiple GPU Supported Tensorflow Versions on Ubuntu</title>
+        <title>Tensorflow：多版本部署、系统配置与版本切换</title>
         <link>/post/build-tensorflow/</link>
         <pubDate>Sun, 05 Dec 2021 22:57:25 +0800</pubDate>
         
         <guid>/post/build-tensorflow/</guid>
-        <description>Karmotrine Dream /post/build-tensorflow/ -&lt;p&gt;As promised, I will write about my experience with installing tensorflow.&lt;/p&gt;
+        <description>Karmotrine Dream /post/build-tensorflow/ -&lt;h1 id=&#34;building-environments-for-cellassign-and-cellblast-with-multiple-tensorflow-gpu-versions-on-ubuntu&#34;&gt;Building Environments for Cellassign and CellBLAST with multiple Tensorflow (GPU) Versions on Ubuntu&lt;/h1&gt;
+&lt;p&gt;As promised, I will write about my experience with installing tensorflow.&lt;/p&gt;
 &lt;p&gt;Why did I ever have to build Tensorflow myself?&lt;br&gt;
 The reason is that I was trying to use two tools: &lt;code&gt;cellassign&lt;/code&gt; and &lt;code&gt;Cell_BLAST&lt;/code&gt;, but they depend on different tensorflow versions. To make them both work, I used the following build strategy that allows different Tensorflow versions installed and run in separate conda environments.&lt;/p&gt;
 &lt;h1 id=&#34;main-references&#34;&gt;Main References:&lt;/h1&gt;
@@ -401,12 +413,13 @@ The compatibilities between CUDA and cuDNN, as well as Tensorflow, python and gc
     
     
         <item>
-        <title>Clean Built of Multiple R Versions on Ubuntu</title>
+        <title>R：同时部署多版本 &amp; 版本切换</title>
         <link>/post/mult-r/</link>
         <pubDate>Thu, 02 Dec 2021 19:54:09 +0800</pubDate>
         
         <guid>/post/mult-r/</guid>
-        <description>Karmotrine Dream /post/mult-r/ -&lt;p&gt;Long time ago I built R-4.0.3 on Ubuntu system following these guides: &lt;a href=&#34;https://www.digitalocean.com/community/tutorials/how-to-install-r-on-ubuntu-18-04-quickstart&#34;&gt;link1&lt;/a&gt;, &lt;a href=&#34;https://cran.r-project.org/bin/linux/ubuntu/&#34;&gt;link2&lt;/a&gt;. Briefly, I added GPG Key to APT (Advanced Package Tool) and added &lt;code&gt;CRAN&lt;/code&gt; repository and directly retrieved R by &lt;code&gt;apt&lt;/code&gt;.&lt;/p&gt;
+        <description>Karmotrine Dream /post/mult-r/ -&lt;h1 id=&#34;clean-built-of-multiple-r-versions-on-ubuntu&#34;&gt;Clean Built of Multiple R Versions on Ubuntu&lt;/h1&gt;
+&lt;p&gt;Long time ago I built R-4.0.3 on Ubuntu system following these guides: &lt;a href=&#34;https://www.digitalocean.com/community/tutorials/how-to-install-r-on-ubuntu-18-04-quickstart&#34;&gt;link1&lt;/a&gt;, &lt;a href=&#34;https://cran.r-project.org/bin/linux/ubuntu/&#34;&gt;link2&lt;/a&gt;. Briefly, I added GPG Key to APT (Advanced Package Tool) and added &lt;code&gt;CRAN&lt;/code&gt; repository and directly retrieved R by &lt;code&gt;apt&lt;/code&gt;.&lt;/p&gt;
 &lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;$ sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys E298A3A825C0D65DFD57CBB651716619E084DAB9
 $ sudo add-apt-repository &#39;deb https://cloud.r-project.org/bin/linux/ubuntu bionic-cran40/&#39;
 $ sudo apt update
@@ -512,12 +525,13 @@ Referring to this post: &lt;a href=&#34;https://support.rstudio.com/hc/en-us/art
     
     
         <item>
-        <title>Frquently Used Softwares</title>
+        <title>生物信息学&amp;计算生物学 常用装机软件汇总整理</title>
         <link>/post/frq-used/</link>
         <pubDate>Thu, 02 Dec 2021 17:41:03 +0800</pubDate>
         
         <guid>/post/frq-used/</guid>
-        <description>Karmotrine Dream /post/frq-used/ -&lt;p&gt;Softwares used in works. Some require built from scratch.&lt;/p&gt;
+        <description>Karmotrine Dream /post/frq-used/ -&lt;p&gt;（未完成，持续更新）&lt;/p&gt;
+&lt;p&gt;Softwares used in works. Some require built from scratch.&lt;/p&gt;
 &lt;h2 id=&#34;mac-ios&#34;&gt;Mac (iOS)&lt;/h2&gt;
 &lt;ol&gt;
 &lt;li&gt;bash tools
@@ -561,12 +575,17 @@ Referring to this post: &lt;a href=&#34;https://support.rstudio.com/hc/en-us/art
     
     
         <item>
-        <title>So you want to be a computational biologist?</title>
+        <title>咋地，你也想整点计算生物学玩玩？</title>
         <link>/post/on-comp-bio/</link>
         <pubDate>Thu, 02 Dec 2021 16:49:27 +0800</pubDate>
         
         <guid>/post/on-comp-bio/</guid>
-        <description>Karmotrine Dream /post/on-comp-bio/ -&lt;p&gt;Recently I ran into this wonderful &lt;a href=&#34;https://doi.org/10.1038/nbt.2740&#34;&gt;article&lt;/a&gt; published in Nature Biotechnology written by Nick Loman and Mick Watson, about how to become a computational biologist. The article is so brilliant and I thought I should dedicate my (actual) first post to write about it.&lt;/p&gt;
+        <description>Karmotrine Dream /post/on-comp-bio/ -&lt;p&gt;Nick Loman和Mick Watson在2013年写了一篇小短文发在NBT上，题为&lt;em&gt;So you want to be a computational biologist?&lt;/em&gt;&lt;br&gt;
+读后觉得受益颇多，忍不住写几句“读后感”。&lt;/p&gt;
+&lt;p&gt;几句题外话：Nick Loman 79年生人，年轻时曾与其兄弟Rupert Loman一同沉迷电子游戏，后来二人发现打游戏不如靠游戏赚钱，遂合伙创立了Eurogamer Network，后者逐渐发展为欧洲最大的电子媒体之一Gamer Network。&lt;br&gt;
+2004年，Nick老弟浪子回头（？），在大学阶段闯入生命医学领域，开始了长达8年的本硕博学习生涯，随后科研做得风生水起。2018年，Gamer Network被出版巨头Reed收购。&lt;/p&gt;
+&lt;p&gt;Recently I ran into this wonderful &lt;a href=&#34;https://doi.org/10.1038/nbt.2740&#34;&gt;article&lt;/a&gt; published in Nature Biotechnology written by Nick Loman and Mick Watson, about how to become a computational biologist. The article is so brilliant and I thought I should dedicate my (actual) first post to write about it.&lt;/p&gt;
+&lt;hr&gt;
 &lt;h3 id=&#34;understand-your-goals-and-choose-appropriate-methods&#34;&gt;Understand your goals and choose appropriate methods&lt;/h3&gt;
 &lt;blockquote&gt;
 &lt;p&gt;Key to good computational biology is the selection and use of appropriate software. Before you can usefully interpret the output of a piece of software, you must understand what the software is doing. &amp;hellip; Understanding the underlying methods and algorithms gives you the tools to interpret the results. That doesn’t mean you need to read through each line of source code, but you should have a grasp of the concepts.&lt;/p&gt;
@@ -590,12 +609,56 @@ Working my way over the years, I find that I&amp;rsquo;ve been unconsciously for
     
     
         <item>
-        <title>My First Post</title>
+        <title>我的Hugo blog，新主题，新开始</title>
         <link>/post/my-first-post/</link>
         <pubDate>Tue, 23 Nov 2021 19:59:57 +0800</pubDate>
         
         <guid>/post/my-first-post/</guid>
-        <description>Karmotrine Dream /post/my-first-post/ -&lt;p&gt;Hosting my first Blog with Hugo on Github!&lt;/p&gt;
+        <description>Karmotrine Dream /post/my-first-post/ -&lt;p&gt;2022-02-28更新：&lt;/p&gt;
+&lt;p&gt;去年年底拿Hugo搭了一个博客，但用了没几日就没有动力再写了。我反思了一下可能主要有两个原因，总结一下：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;1. 长篇累牍使用英文撰写，逼格定调定得太高。造成的后果是可读性差，且效率又低。
+   今后还是老老实实用母语行文，必要时候可以加入洋文。
+2. 选用的主题（hugo-theme-cleanwhite by Huabing）过于花里胡哨。
+   每次翻阅过去的记录都感觉头晕目眩，遂挑了一个简约的主题重新搭了博客。
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;业精于勤而荒于嬉。今后还要再接再厉，也许做不到笔耕不辍，但至少也应该保持三天两头写点东西。&lt;/p&gt;
+&lt;p&gt;这里就先记录下我是如何从hugo-theme-cleanwhite跳到新的主题Diary的。&lt;/p&gt;
+&lt;p&gt;新主题Diary地址：(&lt;a href=&#34;https://themes.gohugo.io/themes/hugo-theme-diary/&#34;&gt;https://themes.gohugo.io/themes/hugo-theme-diary/&lt;/a&gt;)&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;下面是具体步骤。&lt;/p&gt;
+&lt;p&gt;如链接教程中的Quick Start所述，先用&lt;code&gt;git submodule&lt;/code&gt;把Repo部署到本地的&lt;code&gt;blog/themes&lt;/code&gt;目录下：&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;cd my_hugo_site/blog
+git submodule add https://github.com/AmazingRise/hugo-theme-diary.git themes/diary
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;接下来可以跳过教程Quick Start中的步骤2、3。&lt;br&gt;
+直接到&lt;code&gt;blog&lt;/code&gt;目录下，用&lt;a href=&#34;https://github.com/AmazingRise/hugo-theme-diary/blob/1.2.1/exampleSite/config.toml&#34;&gt;这个模板&lt;/a&gt;，替换&lt;code&gt;config.toml&lt;/code&gt;文件中的内容。&lt;/p&gt;
+&lt;p&gt;由于最初将这个Hugo site部署到github时参考了&lt;a href=&#34;https://blog.csdn.net/kutawei/article/details/105421545&#34;&gt;这篇推文&lt;/a&gt;，需要对&lt;code&gt;config.toml&lt;/code&gt;进行修改，以满足本地的目录结构。&lt;/p&gt;
+&lt;p&gt;修改了下面几个参数：&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;baseURL = &amp;quot;/&amp;quot;
+title = &amp;quot;Karmotrine Dream&amp;quot;
+copyright = &amp;quot;&amp;quot;
+theme = &amp;quot;diary&amp;quot;
+subtitle = &amp;quot;&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;添加下面这个参数，使hugo命令生成的网页推到&lt;code&gt;public/&lt;/code&gt;目录下：&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;publishDir = &amp;quot;../public&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;删除原来&lt;code&gt;public/&lt;/code&gt;目录中所有内容（这些是旧theme生成的文件）。&lt;/p&gt;
+&lt;p&gt;最后，修改&lt;code&gt;deploy.sh&lt;/code&gt;中的命令，使用diary作为theme来生成新的site：&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;hugo -D -t diary # or `hugo -D` if no theme is specified
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;And Voila!&lt;br&gt;
+Hugo博客的theme变为Diary了！&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;最后写一下怎样在本地编辑、预览博客内容。&lt;/p&gt;
+&lt;p&gt;首先&lt;code&gt;cd&lt;/code&gt;到&lt;code&gt;blog/&lt;/code&gt;目录下，用&lt;code&gt;hugo new&lt;/code&gt;建新的post文件：&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;cd my_hugo_site/blog
+hugo new content/post/[new-post-name].md
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;在新的博客写好后，可用下面的指令在本地预览：&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;hugo server -D
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;若预览中发现错误，务必及时纠正。&lt;/p&gt;
+&lt;p&gt;确保无误后，用&lt;code&gt;deploy.sh&lt;/code&gt;脚本推送到github上即可：&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;./deploy.sh
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;这样就大功告成了！&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;(以下内容是旧时的博客，写于2021-11-23)&lt;/p&gt;
+&lt;p&gt;Hosting my first Blog with Hugo on Github!&lt;/p&gt;
 &lt;p&gt;For a starter, I&amp;rsquo;ll document in this post how the blog is managed and used.
 I&amp;rsquo;ve setup the site by referring to &lt;a href=&#34;https://blog.csdn.net/kutawei/article/details/105421545&#34;&gt;here&lt;/a&gt;, &lt;a href=&#34;https://zhuanlan.zhihu.com/p/150095964&#34;&gt;here&lt;/a&gt;, and &lt;a href=&#34;https://gohugo.io/getting-started/quick-start/&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;The first link is particularly useful. I&amp;rsquo;ve adopted its file structure for setting up privately managed (&lt;code&gt;/blog&lt;/code&gt;) and public sites (&lt;code&gt;/public&lt;/code&gt;).
@@ -604,7 +667,7 @@ Everytime contents in &lt;code&gt;/blog&lt;/code&gt; is updated, run &lt;code&gt
 &lt;p&gt;For automatic regeneration of the static site, a shell script is given (&lt;code&gt;./deploy.h&lt;/code&gt;). After editing contents in &lt;code&gt;/blog&lt;/code&gt;, simply do&lt;/p&gt;
 &lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;./deploy.sh
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;and the static sites will be updated.&lt;/p&gt;
-&lt;p&gt;To add new contents to the blog, open up a terminal and navigate to the &lt;code&gt;/blog&lt;/code&gt; directory and type:&lt;/p&gt;
+&lt;p&gt;To add new contents to the blog, open up a terminal and navigate to the &lt;code&gt;blog/&lt;/code&gt; directory and type:&lt;/p&gt;
 &lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;hugo new content/post/[new-post-name].md
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;The newly created markdown should assume a pre-defined format (headers, etc.). Edit the post contents and then set &lt;code&gt;draft&lt;/code&gt; to &lt;code&gt;false&lt;/code&gt;, the post will be updated marked and recognized the next time &lt;code&gt;hugo -D&lt;/code&gt; is invoked.&lt;/p&gt;
 &lt;p&gt;Before pushing to github remote site, check locally how the update looks, do:&lt;/p&gt;

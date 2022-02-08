@@ -8,7 +8,7 @@
     <language>en-us</language>
     <lastBuildDate>Wed, 22 Dec 2021 12:32:17 +0800</lastBuildDate><atom:link href="/tags/single-cell-biology/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Documenting R SCENIC installation</title>
+      <title>R SCENIC：安装与部署</title>
       <link>/post/install-r-scenic/</link>
       <pubDate>Wed, 22 Dec 2021 12:32:17 +0800</pubDate>
       
@@ -20,15 +20,14 @@ In Rstudio:
     </item>
     
     <item>
-      <title>Building Environments for Cellassign and CellBLAST with multiple GPU Supported Tensorflow Versions on Ubuntu</title>
+      <title>Tensorflow：多版本部署、系统配置与版本切换</title>
       <link>/post/build-tensorflow/</link>
       <pubDate>Sun, 05 Dec 2021 22:57:25 +0800</pubDate>
       
       <guid>/post/build-tensorflow/</guid>
-      <description>As promised, I will write about my experience with installing tensorflow.
+      <description>Building Environments for Cellassign and CellBLAST with multiple Tensorflow (GPU) Versions on Ubuntu As promised, I will write about my experience with installing tensorflow.
 Why did I ever have to build Tensorflow myself?
-The reason is that I was trying to use two tools: cellassign and Cell_BLAST, but they depend on different tensorflow versions. To make them both work, I used the following build strategy that allows different Tensorflow versions installed and run in separate conda environments.
-Main References:  link1 - Best post for the job link2 - Official guide link3  Since I don&amp;rsquo;t have time to write too much, I&amp;rsquo;ll try to make things brief.</description>
+The reason is that I was trying to use two tools: cellassign and Cell_BLAST, but they depend on different tensorflow versions. To make them both work, I used the following build strategy that allows different Tensorflow versions installed and run in separate conda environments.</description>
     </item>
     
   </channel>

@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Comp bio on Karmotrine Dream</title>
-    <link>/categories/comp-bio/</link>
-    <description>Recent content in Comp bio on Karmotrine Dream</description>
+    <title>Paper on Karmotrine Dream</title>
+    <link>/tags/paper/</link>
+    <description>Recent content in Paper on Karmotrine Dream</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 02 Dec 2021 16:49:27 +0800</lastBuildDate><atom:link href="/categories/comp-bio/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 02 Dec 2021 16:49:27 +0800</lastBuildDate><atom:link href="/tags/paper/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>咋地，你也想整点计算生物学玩玩？</title>
       <link>/post/on-comp-bio/</link>

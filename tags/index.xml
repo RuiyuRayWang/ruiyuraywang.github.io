@@ -98,20 +98,11 @@
     </item>
     
     <item>
-      <title>Journal</title>
-      <link>/tags/journal/</link>
+      <title>Paper</title>
+      <link>/tags/paper/</link>
       <pubDate>Thu, 02 Dec 2021 16:49:27 +0800</pubDate>
       
-      <guid>/tags/journal/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Science</title>
-      <link>/tags/science/</link>
-      <pubDate>Thu, 02 Dec 2021 16:49:27 +0800</pubDate>
-      
-      <guid>/tags/science/</guid>
+      <guid>/tags/paper/</guid>
       <description></description>
     </item>
     

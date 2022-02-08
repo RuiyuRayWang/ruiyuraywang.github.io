@@ -8,7 +8,7 @@
     <language>en-us</language>
     <lastBuildDate>Wed, 22 Dec 2021 12:32:17 +0800</lastBuildDate><atom:link href="/categories/tech/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Documenting R SCENIC installation</title>
+      <title>R SCENIC：安装与部署</title>
       <link>/post/install-r-scenic/</link>
       <pubDate>Wed, 22 Dec 2021 12:32:17 +0800</pubDate>
       
@@ -29,46 +29,59 @@ In Rstudio:
     </item>
     
     <item>
-      <title>Building Environments for Cellassign and CellBLAST with multiple GPU Supported Tensorflow Versions on Ubuntu</title>
+      <title>Tensorflow：多版本部署、系统配置与版本切换</title>
       <link>/post/build-tensorflow/</link>
       <pubDate>Sun, 05 Dec 2021 22:57:25 +0800</pubDate>
       
       <guid>/post/build-tensorflow/</guid>
-      <description>As promised, I will write about my experience with installing tensorflow.
+      <description>Building Environments for Cellassign and CellBLAST with multiple Tensorflow (GPU) Versions on Ubuntu As promised, I will write about my experience with installing tensorflow.
 Why did I ever have to build Tensorflow myself?
-The reason is that I was trying to use two tools: cellassign and Cell_BLAST, but they depend on different tensorflow versions. To make them both work, I used the following build strategy that allows different Tensorflow versions installed and run in separate conda environments.
-Main References:  link1 - Best post for the job link2 - Official guide link3  Since I don&amp;rsquo;t have time to write too much, I&amp;rsquo;ll try to make things brief.</description>
+The reason is that I was trying to use two tools: cellassign and Cell_BLAST, but they depend on different tensorflow versions. To make them both work, I used the following build strategy that allows different Tensorflow versions installed and run in separate conda environments.</description>
     </item>
     
     <item>
-      <title>Clean Built of Multiple R Versions on Ubuntu</title>
+      <title>R：同时部署多版本 &amp; 版本切换</title>
       <link>/post/mult-r/</link>
       <pubDate>Thu, 02 Dec 2021 19:54:09 +0800</pubDate>
       
       <guid>/post/mult-r/</guid>
-      <description>Long time ago I built R-4.0.3 on Ubuntu system following these guides: link1, link2. Briefly, I added GPG Key to APT (Advanced Package Tool) and added CRAN repository and directly retrieved R by apt.
-$ sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys E298A3A825C0D65DFD57CBB651716619E084DAB9 $ sudo add-apt-repository &#39;deb https://cloud.r-project.org/bin/linux/ubuntu bionic-cran40/&#39; $ sudo apt update $ sudo apt install r-base Recently, I ran into an issue with cellassign when analyzing single cell datasets. I suspected that reverting to previous R versions might resolve the problem.</description>
+      <description>Clean Built of Multiple R Versions on Ubuntu Long time ago I built R-4.0.3 on Ubuntu system following these guides: link1, link2. Briefly, I added GPG Key to APT (Advanced Package Tool) and added CRAN repository and directly retrieved R by apt.
+$ sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys E298A3A825C0D65DFD57CBB651716619E084DAB9 $ sudo add-apt-repository &#39;deb https://cloud.r-project.org/bin/linux/ubuntu bionic-cran40/&#39; $ sudo apt update $ sudo apt install r-base Recently, I ran into an issue with cellassign when analyzing single cell datasets.</description>
     </item>
     
     <item>
-      <title>Frquently Used Softwares</title>
+      <title>生物信息学&amp;计算生物学 常用装机软件汇总整理</title>
       <link>/post/frq-used/</link>
       <pubDate>Thu, 02 Dec 2021 17:41:03 +0800</pubDate>
       
       <guid>/post/frq-used/</guid>
-      <description>Softwares used in works. Some require built from scratch.
+      <description>（未完成，持续更新）
+Softwares used in works. Some require built from scratch.
 Mac (iOS)  bash tools  brew tree   softwares  R    Ubuntu  Bioinformatics  samtools STAR umi_tools    Single cell biology  R  Seurat   python  geosketch    </description>
     </item>
     
     <item>
-      <title>My First Post</title>
+      <title>我的Hugo blog，新主题，新开始</title>
       <link>/post/my-first-post/</link>
       <pubDate>Tue, 23 Nov 2021 19:59:57 +0800</pubDate>
       
       <guid>/post/my-first-post/</guid>
-      <description>Hosting my first Blog with Hugo on Github!
-For a starter, I&amp;rsquo;ll document in this post how the blog is managed and used. I&amp;rsquo;ve setup the site by referring to here, here, and here.
-The first link is particularly useful. I&amp;rsquo;ve adopted its file structure for setting up privately managed (/blog) and public sites (/public). Critically, the /public repo must be created with the following convention: https://github.com/RuiyuRayWang/ruiyuraywang.github.io Everytime contents in /blog is updated, run hugo -D to generate new site to /public and push /public to github accordingly.</description>
+      <description>2022-02-28更新：
+去年年底拿Hugo搭了一个博客，但用了没几日就没有动力再写了。我反思了一下可能主要有两个原因，总结一下：
+1. 长篇累牍使用英文撰写，逼格定调定得太高。造成的后果是可读性差，且效率又低。 今后还是老老实实用母语行文，必要时候可以加入洋文。 2. 选用的主题（hugo-theme-cleanwhite by Huabing）过于花里胡哨。 每次翻阅过去的记录都感觉头晕目眩，遂挑了一个简约的主题重新搭了博客。  业精于勤而荒于嬉。今后还要再接再厉，也许做不到笔耕不辍，但至少也应该保持三天两头写点东西。
+这里就先记录下我是如何从hugo-theme-cleanwhite跳到新的主题Diary的。
+新主题Diary地址：(https://themes.gohugo.io/themes/hugo-theme-diary/)
+ 下面是具体步骤。
+如链接教程中的Quick Start所述，先用git submodule把Repo部署到本地的blog/themes目录下：
+cd my_hugo_site/blog git submodule add https://github.com/AmazingRise/hugo-theme-diary.git themes/diary 接下来可以跳过教程Quick Start中的步骤2、3。
+直接到blog目录下，用这个模板，替换config.toml文件中的内容。
+由于最初将这个Hugo site部署到github时参考了这篇推文，需要对config.toml进行修改，以满足本地的目录结构。
+修改了下面几个参数：
+baseURL = &amp;quot;/&amp;quot; title = &amp;quot;Karmotrine Dream&amp;quot; copyright = &amp;quot;&amp;quot; theme = &amp;quot;diary&amp;quot; subtitle = &amp;quot;&amp;quot; 添加下面这个参数，使hugo命令生成的网页推到public/目录下：
+publishDir = &amp;quot;../public&amp;quot; 删除原来public/目录中所有内容（这些是旧theme生成的文件）。
+最后，修改deploy.sh中的命令，使用diary作为theme来生成新的site：
+hugo -D -t diary # or `hugo -D` if no theme is specified And Voila!
+Hugo博客的theme变为Diary了！</description>
     </item>
     
   </channel>

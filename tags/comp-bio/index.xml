@@ -8,13 +8,17 @@
     <language>en-us</language>
     <lastBuildDate>Thu, 02 Dec 2021 16:49:27 +0800</lastBuildDate><atom:link href="/tags/comp-bio/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>So you want to be a computational biologist?</title>
+      <title>咋地，你也想整点计算生物学玩玩？</title>
       <link>/post/on-comp-bio/</link>
       <pubDate>Thu, 02 Dec 2021 16:49:27 +0800</pubDate>
       
       <guid>/post/on-comp-bio/</guid>
-      <description>Recently I ran into this wonderful article published in Nature Biotechnology written by Nick Loman and Mick Watson, about how to become a computational biologist. The article is so brilliant and I thought I should dedicate my (actual) first post to write about it.
-Understand your goals and choose appropriate methods  Key to good computational biology is the selection and use of appropriate software. Before you can usefully interpret the output of a piece of software, you must understand what the software is doing.</description>
+      <description>Nick Loman和Mick Watson在2013年写了一篇小短文发在NBT上，题为So you want to be a computational biologist?
+读后觉得受益颇多，忍不住写几句“读后感”。
+几句题外话：Nick Loman 79年生人，年轻时曾与其兄弟Rupert Loman一同沉迷电子游戏，后来二人发现打游戏不如靠游戏赚钱，遂合伙创立了Eurogamer Network，后者逐渐发展为欧洲最大的电子媒体之一Gamer Network。
+2004年，Nick老弟浪子回头（？），在大学阶段闯入生命医学领域，开始了长达8年的本硕博学习生涯，随后科研做得风生水起。2018年，Gamer Network被出版巨头Reed收购。
+Recently I ran into this wonderful article published in Nature Biotechnology written by Nick Loman and Mick Watson, about how to become a computational biologist. The article is so brilliant and I thought I should dedicate my (actual) first post to write about it.
+ Understand your goals and choose appropriate methods  Key to good computational biology is the selection and use of appropriate software.</description>
     </item>
     
   </channel>
