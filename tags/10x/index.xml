@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>10X on Karmotrine Dream</title>
+    <link>/tags/10x/</link>
+    <description>Recent content in 10X on Karmotrine Dream</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 08 Feb 2022 22:05:51 +0800</lastBuildDate><atom:link href="/tags/10x/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>10X CellRanger 中测序饱和度的定义与计算（一）</title>
+      <link>/post/10x_calc_saturation_1/</link>
+      <pubDate>Tue, 08 Feb 2022 22:05:51 +0800</pubDate>
+      
+      <guid>/post/10x_calc_saturation_1/</guid>
+      <description>最近为了搭建单细胞测序上游分析的Pipeline，正在研究怎样对分析结果做质控（Pipeline详情移步https://github.com/RuiyuRayWang/ScRNAseq_smkpipe_at_Luolab）。参考了10X CellRanger官方网站中描述的对测序饱和度的定义和计算方法：
+ 10X 官方文档：什么是测序饱和度？ 10X 官方文档：测序饱和度怎样计算？  将用两篇文章记录这部分内容。
+这篇文章是本系列文章的第一篇，将对相关概念和计算公式的定义进行解读。
+ 一、测序饱和度 和 文库复杂度 关于测序饱和度的定义，引用10X文档中的说明：
+ Question: What is sequencing saturation?
+Answer: Sequencing saturation is a measure of the fraction of library complexity that was sequenced in a given experiment. The inverse of the sequencing saturation can be interpreted as the number of additional reads it would take to detect a new transcript.
+ 这两句话言简而意赅，点明了测序饱和度(sequencing saturation)与文库复杂度(library complexity)之间的关系。
+library complexity (文库复杂度)，指的是一个测序文库中非冗余的DNA片段的数量（the number of unique DNA fragments present in a given library）。</description>
+    </item>
+    
+    <item>
+      <title>10X CellRanger 中测序饱和度的定义与计算（二）</title>
+      <link>/post/10x_calc_saturation_2/</link>
+      <pubDate>Tue, 08 Feb 2022 22:05:51 +0800</pubDate>
+      
+      <guid>/post/10x_calc_saturation_2/</guid>
+      <description>最近为了搭建单细胞测序上游分析的Pipeline，正在研究怎样对分析结果做质控（Pipeline详情移步https://github.com/RuiyuRayWang/ScRNAseq_smkpipe_at_Luolab）。参考了10X CellRanger官方网站中描述的对测序饱和度的定义和计算方法：
+ 10X 官方文档：什么是测序饱和度？ 10X 官方文档：测序饱和度怎样计算？  将用两篇文章记录这部分内容。
+这篇文章是本系列文章的第二篇，将用10X官方文档中的示例数据来逐步解析代码实现过程。
+ </description>
+    </item>
+    
+  </channel>
+</rss>

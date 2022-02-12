@@ -19,5 +19,14 @@ In Rstudio:
 &amp;gt; if (!requireNamespace(&amp;quot;BiocManager&amp;quot;, quietly = TRUE)) install.packages(&amp;quot;BiocManager&amp;quot;) &amp;gt; BiocManager::version() &amp;gt; # If your bioconductor version is previous to 4.0, see the section bellow &amp;gt; &amp;gt; ## Required &amp;gt; BiocManager::install(c(&amp;quot;AUCell&amp;quot;, &amp;quot;RcisTarget&amp;quot;)) &amp;gt; BiocManager::install(c(&amp;quot;GENIE3&amp;quot;)) # Optional. Can be replaced by GRNBoost &amp;gt; &amp;gt; ## Optional (but highly recommended): &amp;gt; # To score the network on cells (i.</description>
     </item>
     
+    <item>
+      <title>Working with pySCENIC</title>
+      <link>/post/using-scenic/</link>
+      <pubDate>Wed, 15 Dec 2021 23:07:11 +0800</pubDate>
+      
+      <guid>/post/using-scenic/</guid>
+      <description></description>
+    </item>
+    
   </channel>
 </rss>

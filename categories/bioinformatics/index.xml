@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Bioinformatics on Karmotrine Dream</title>
+    <link>/categories/bioinformatics/</link>
+    <description>Recent content in Bioinformatics on Karmotrine Dream</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 08 Feb 2022 22:05:51 +0800</lastBuildDate><atom:link href="/categories/bioinformatics/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>10X CellRanger 中测序饱和度的定义与计算（一）</title>
+      <link>/post/10x_calc_saturation_1/</link>
+      <pubDate>Tue, 08 Feb 2022 22:05:51 +0800</pubDate>
+      
+      <guid>/post/10x_calc_saturation_1/</guid>
+      <description>最近为了搭建单细胞测序上游分析的Pipeline，正在研究怎样对分析结果做质控（Pipeline详情移步https://github.com/RuiyuRayWang/ScRNAseq_smkpipe_at_Luolab）。参考了10X CellRanger官方网站中描述的对测序饱和度的定义和计算方法：
+ 10X 官方文档：什么是测序饱和度？ 10X 官方文档：测序饱和度怎样计算？  将用两篇文章记录这部分内容。
+这篇文章是本系列文章的第一篇，将对相关概念和计算公式的定义进行解读。
+ 一、测序饱和度 和 文库复杂度 关于测序饱和度的定义，引用10X文档中的说明：
+ Question: What is sequencing saturation?
+Answer: Sequencing saturation is a measure of the fraction of library complexity that was sequenced in a given experiment. The inverse of the sequencing saturation can be interpreted as the number of additional reads it would take to detect a new transcript.
+ 这两句话言简而意赅，点明了测序饱和度(sequencing saturation)与文库复杂度(library complexity)之间的关系。
+library complexity (文库复杂度)，指的是一个测序文库中非冗余的DNA片段的数量（the number of unique DNA fragments present in a given library）。</description>
+    </item>
+    
+    <item>
+      <title>10X CellRanger 中测序饱和度的定义与计算（二）</title>
+      <link>/post/10x_calc_saturation_2/</link>
+      <pubDate>Tue, 08 Feb 2022 22:05:51 +0800</pubDate>
+      
+      <guid>/post/10x_calc_saturation_2/</guid>
+      <description>最近为了搭建单细胞测序上游分析的Pipeline，正在研究怎样对分析结果做质控（Pipeline详情移步https://github.com/RuiyuRayWang/ScRNAseq_smkpipe_at_Luolab）。参考了10X CellRanger官方网站中描述的对测序饱和度的定义和计算方法：
+ 10X 官方文档：什么是测序饱和度？ 10X 官方文档：测序饱和度怎样计算？  将用两篇文章记录这部分内容。
+这篇文章是本系列文章的第二篇，将用10X官方文档中的示例数据来逐步解析代码实现过程。
+ </description>
+    </item>
+    
+    <item>
+      <title>R SCENIC：安装与部署</title>
+      <link>/post/install-r-scenic/</link>
+      <pubDate>Wed, 22 Dec 2021 12:32:17 +0800</pubDate>
+      
+      <guid>/post/install-r-scenic/</guid>
+      <description>TL;DR First consulted this page
+I have R-4.0.5 with Bioconductor 3.12(4.0), use the latest scripts for installation.
+In Rstudio:
+&amp;gt; if (!requireNamespace(&amp;quot;BiocManager&amp;quot;, quietly = TRUE)) install.packages(&amp;quot;BiocManager&amp;quot;) &amp;gt; BiocManager::version() &amp;gt; # If your bioconductor version is previous to 4.0, see the section bellow &amp;gt; &amp;gt; ## Required &amp;gt; BiocManager::install(c(&amp;quot;AUCell&amp;quot;, &amp;quot;RcisTarget&amp;quot;)) &amp;gt; BiocManager::install(c(&amp;quot;GENIE3&amp;quot;)) # Optional. Can be replaced by GRNBoost &amp;gt; &amp;gt; ## Optional (but highly recommended): &amp;gt; # To score the network on cells (i.</description>
+    </item>
+    
+    <item>
+      <title>Working with pySCENIC</title>
+      <link>/post/using-scenic/</link>
+      <pubDate>Wed, 15 Dec 2021 23:07:11 +0800</pubDate>
+      
+      <guid>/post/using-scenic/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Tensorflow：多版本部署、系统配置与版本切换</title>
+      <link>/post/build-tensorflow/</link>
+      <pubDate>Sun, 05 Dec 2021 22:57:25 +0800</pubDate>
+      
+      <guid>/post/build-tensorflow/</guid>
+      <description>Building Environments for Cellassign and CellBLAST with multiple Tensorflow (GPU) Versions on Ubuntu As promised, I will write about my experience with installing tensorflow.
+Why did I ever have to build Tensorflow myself?
+The reason is that I was trying to use two tools: cellassign and Cell_BLAST, but they depend on different tensorflow versions. To make them both work, I used the following build strategy that allows different Tensorflow versions installed and run in separate conda environments.</description>
+    </item>
+    
+    <item>
+      <title>R：同时部署多版本 &amp; 版本切换</title>
+      <link>/post/mult-r/</link>
+      <pubDate>Thu, 02 Dec 2021 19:54:09 +0800</pubDate>
+      
+      <guid>/post/mult-r/</guid>
+      <description>Clean Built of Multiple R Versions on Ubuntu Long time ago I built R-4.0.3 on Ubuntu system following these guides: link1, link2. Briefly, I added GPG Key to APT (Advanced Package Tool) and added CRAN repository and directly retrieved R by apt.
+$ sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys E298A3A825C0D65DFD57CBB651716619E084DAB9 $ sudo add-apt-repository &#39;deb https://cloud.r-project.org/bin/linux/ubuntu bionic-cran40/&#39; $ sudo apt update $ sudo apt install r-base Recently, I ran into an issue with cellassign when analyzing single cell datasets.</description>
+    </item>
+    
+    <item>
+      <title>生物信息学&amp;计算生物学 常用装机软件汇总整理</title>
+      <link>/post/frq-used/</link>
+      <pubDate>Thu, 02 Dec 2021 17:41:03 +0800</pubDate>
+      
+      <guid>/post/frq-used/</guid>
+      <description>（未完成，持续更新）
+Softwares used in works. Some require built from scratch.
+Mac (iOS)  bash tools  brew tree   softwares  R    Ubuntu  Bioinformatics  samtools STAR umi_tools    Single cell biology  R  Seurat   python  geosketch    </description>
+    </item>
+    
+    <item>
+      <title>咋地，你也想整点计算生物学玩玩？</title>
+      <link>/post/on-comp-bio/</link>
+      <pubDate>Thu, 02 Dec 2021 16:49:27 +0800</pubDate>
+      
+      <guid>/post/on-comp-bio/</guid>
+      <description>Nick Loman和Mick Watson在2013年写了一篇小短文发在NBT上，题为So you want to be a computational biologist?
+读后觉得受益颇多，忍不住写几句“读后感”。
+几句题外话：Nick Loman 79年生人，年轻时曾与其兄弟Rupert Loman一同沉迷电子游戏，后来二人发现打游戏不如靠游戏赚钱，遂合伙创立了Eurogamer Network，后者逐渐发展为欧洲最大的电子媒体之一Gamer Network。
+2004年，Nick老弟浪子回头（？），在大学阶段闯入生命医学领域，开始了长达8年的本硕博学习生涯，随后科研做得风生水起。2018年，Gamer Network被出版巨头Reed收购。
+Recently I ran into this wonderful article published in Nature Biotechnology written by Nick Loman and Mick Watson, about how to become a computational biologist. The article is so brilliant and I thought I should dedicate my (actual) first post to write about it.
+ Understand your goals and choose appropriate methods  Key to good computational biology is the selection and use of appropriate software.</description>
+    </item>
+    
+  </channel>
+</rss>

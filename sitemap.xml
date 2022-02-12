@@ -2,17 +2,47 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>/post/10x_calc_saturation/</loc>
-    <lastmod>2022-02-08T22:05:51+08:00</lastmod>
-  </url><url>
-    <loc>/</loc>
-    <lastmod>2022-02-08T22:05:51+08:00</lastmod>
-  </url><url>
-    <loc>/post/</loc>
-    <lastmod>2022-02-08T22:05:51+08:00</lastmod>
+    <loc>/tags/blog/</loc>
+    <lastmod>2022-02-12T21:17:37+08:00</lastmod>
   </url><url>
     <loc>/categories/</loc>
-    <lastmod>2021-12-22T12:32:17+08:00</lastmod>
+    <lastmod>2022-02-12T21:17:37+08:00</lastmod>
+  </url><url>
+    <loc>/tags/hugo/</loc>
+    <lastmod>2022-02-12T21:17:37+08:00</lastmod>
+  </url><url>
+    <loc>/categories/hugo/</loc>
+    <lastmod>2022-02-12T21:17:37+08:00</lastmod>
+  </url><url>
+    <loc>/post/deploy_mathjax/</loc>
+    <lastmod>2022-02-12T21:17:37+08:00</lastmod>
+  </url><url>
+    <loc>/</loc>
+    <lastmod>2022-02-12T21:17:37+08:00</lastmod>
+  </url><url>
+    <loc>/tags/mathjax/</loc>
+    <lastmod>2022-02-12T21:17:37+08:00</lastmod>
+  </url><url>
+    <loc>/post/</loc>
+    <lastmod>2022-02-12T21:17:37+08:00</lastmod>
+  </url><url>
+    <loc>/tags/</loc>
+    <lastmod>2022-02-12T21:17:37+08:00</lastmod>
+  </url><url>
+    <loc>/tags/10x/</loc>
+    <lastmod>2022-02-08T22:05:51+08:00</lastmod>
+  </url><url>
+    <loc>/post/10x_calc_saturation_1/</loc>
+    <lastmod>2022-02-08T22:05:51+08:00</lastmod>
+  </url><url>
+    <loc>/post/10x_calc_saturation_2/</loc>
+    <lastmod>2022-02-08T22:05:51+08:00</lastmod>
+  </url><url>
+    <loc>/categories/bioinformatics/</loc>
+    <lastmod>2022-02-08T22:05:51+08:00</lastmod>
+  </url><url>
+    <loc>/tags/single-cell-biology/</loc>
+    <lastmod>2022-02-08T22:05:51+08:00</lastmod>
   </url><url>
     <loc>/post/install-r-scenic/</loc>
     <lastmod>2021-12-22T12:32:17+08:00</lastmod>
@@ -20,23 +50,8 @@
     <loc>/tags/scenic/</loc>
     <lastmod>2021-12-22T12:32:17+08:00</lastmod>
   </url><url>
-    <loc>/tags/single-cell-biology/</loc>
-    <lastmod>2021-12-22T12:32:17+08:00</lastmod>
-  </url><url>
-    <loc>/tags/</loc>
-    <lastmod>2021-12-22T12:32:17+08:00</lastmod>
-  </url><url>
-    <loc>/categories/tech/</loc>
-    <lastmod>2021-12-22T12:32:17+08:00</lastmod>
-  </url><url>
     <loc>/tags/ubuntu/</loc>
     <lastmod>2021-12-22T12:32:17+08:00</lastmod>
-  </url><url>
-    <loc>/tags/tag1/</loc>
-    <lastmod>2021-12-15T23:07:11+08:00</lastmod>
-  </url><url>
-    <loc>/tags/tag2/</loc>
-    <lastmod>2021-12-15T23:07:11+08:00</lastmod>
   </url><url>
     <loc>/post/using-scenic/</loc>
     <lastmod>2021-12-15T23:07:11+08:00</lastmod>
@@ -62,10 +77,10 @@
     <loc>/post/frq-used/</loc>
     <lastmod>2021-12-02T17:41:03+08:00</lastmod>
   </url><url>
-    <loc>/tags/comp-bio/</loc>
+    <loc>/tags/bioinformatics/</loc>
     <lastmod>2021-12-02T16:49:27+08:00</lastmod>
   </url><url>
-    <loc>/categories/comp-bio/</loc>
+    <loc>/tags/comp-bio/</loc>
     <lastmod>2021-12-02T16:49:27+08:00</lastmod>
   </url><url>
     <loc>/tags/paper/</loc>

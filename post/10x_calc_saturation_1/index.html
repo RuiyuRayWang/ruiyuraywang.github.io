@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html><head>
+<title>10X CellRanger 中测序饱和度的定义与计算（一）</title>
+
+
+
+
+<meta charset="utf-8">
+<meta name="X-UA-Compatible" content="IE=edge">
+<meta name="google-site-verification" content="">
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+<meta content="telephone=no" name="format-detection">
+<meta name="description" content="">
+<meta name="renderer" content="webkit">
+<meta name="theme-color" content="#ffffff">
+
+
+
+<meta property="og:title" content="10X CellRanger 中测序饱和度的定义与计算（一）" />
+<meta property="og:description" content="最近为了搭建单细胞测序上游分析的Pipeline，正在研究怎样对分析结果做质控（Pipeline详情移步https://github.com/RuiyuRayWang/ScRNAseq_smkpipe_at_Luolab）。参考了10X CellRanger官方网站中描述的对测序饱和度的定义和计算方法：
+ 10X 官方文档：什么是测序饱和度？ 10X 官方文档：测序饱和度怎样计算？  将用两篇文章记录这部分内容。
+这篇文章是本系列文章的第一篇，将对相关概念和计算公式的定义进行解读。
+ 一、测序饱和度 和 文库复杂度 关于测序饱和度的定义，引用10X文档中的说明：
+ Question: What is sequencing saturation?
+Answer: Sequencing saturation is a measure of the fraction of library complexity that was sequenced in a given experiment. The inverse of the sequencing saturation can be interpreted as the number of additional reads it would take to detect a new transcript.
+ 这两句话言简而意赅，点明了测序饱和度(sequencing saturation)与文库复杂度(library complexity)之间的关系。
+library complexity (文库复杂度)，指的是一个测序文库中非冗余的DNA片段的数量（the number of unique DNA fragments present in a given library）。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/post/10x_calc_saturation_1/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2022-02-08T22:05:51+08:00" />
+<meta property="article:modified_time" content="2022-02-08T22:05:51+08:00" /><meta property="og:site_name" content="My Blog" />
+
+
+
+
+
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="10X CellRanger 中测序饱和度的定义与计算（一）"/>
+<meta name="twitter:description" content="最近为了搭建单细胞测序上游分析的Pipeline，正在研究怎样对分析结果做质控（Pipeline详情移步https://github.com/RuiyuRayWang/ScRNAseq_smkpipe_at_Luolab）。参考了10X CellRanger官方网站中描述的对测序饱和度的定义和计算方法：
+ 10X 官方文档：什么是测序饱和度？ 10X 官方文档：测序饱和度怎样计算？  将用两篇文章记录这部分内容。
+这篇文章是本系列文章的第一篇，将对相关概念和计算公式的定义进行解读。
+ 一、测序饱和度 和 文库复杂度 关于测序饱和度的定义，引用10X文档中的说明：
+ Question: What is sequencing saturation?
+Answer: Sequencing saturation is a measure of the fraction of library complexity that was sequenced in a given experiment. The inverse of the sequencing saturation can be interpreted as the number of additional reads it would take to detect a new transcript.
+ 这两句话言简而意赅，点明了测序饱和度(sequencing saturation)与文库复杂度(library complexity)之间的关系。
+library complexity (文库复杂度)，指的是一个测序文库中非冗余的DNA片段的数量（the number of unique DNA fragments present in a given library）。"/>
+
+
+
+
+
+
+
+<link type="text/css" rel="stylesheet" href="/vendor/css/bootstrap.min.css">
+
+
+  
+
+
+
+
+
+
+<link rel="stylesheet" href="/scss/journal.min.3f72a5fc8f5b5dd732a4b476aced0eece2156958d9d414316494ddb10593ddf7.css" integrity="sha256-P3Kl/I9bXdcypLR2rO0O7OIVaVjZ1BQxZJTdsQWT3fc=" media="screen">
+
+
+
+<link rel="stylesheet" href="/scss/dark-mode.min.f7c2efa7183435a6bd1842f91c541481c7a5137b5991629a870f24e4a516ad4b.css" integrity="sha256-98Lvpxg0Naa9GEL5HFQUgcelE3tZkWKahw8k5KUWrUs=" media="screen">
+
+
+<script src="/vendor/js/loadCSS.js"></script>
+<script>
+  loadCSS("https://fonts.googleapis.com/css?family=Fira+Mono|Material+Icons");
+</script>
+
+
+
+
+
+
+  <script src="/js/toc.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script>
+    MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$','$$'], ['\\[', '\\]']],
+        processEscapes: true,
+        processEnvironments: true
+      },
+      options: {
+        skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+      }
+    };
+  
+    window.addEventListener('load', (event) => {
+        document.querySelectorAll("mjx-container").forEach(function(x){
+          x.parentElement.classList += 'has-jax'})
+      });
+  
+  </script>
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script type="text/javascript" id="MathJax-script" async
+    src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+<body>
+    	<div id="app"><div id="sideContainer" class="side-container">
+    
+    <a class="a-block nav-head false" href="/">
+    
+        <div class="nav-title">
+            Karmotrine Dream
+        </div>
+        
+    </a>
+
+    <div class="nav-link-list">
+        
+        
+            
+            
+            
+            
+            
+            <a class="a-block nav-link-item false" href="/posts">
+                Archive
+            </a>
+            
+        
+            
+            
+            
+            
+            
+            <a class="a-block nav-link-item false" href="/categories">
+                Categories
+            </a>
+            
+        
+            
+            
+            
+            
+            
+            <a class="a-block nav-link-item false" href="/tags">
+                Tags
+            </a>
+            
+        
+            
+            
+            
+            
+            
+            <a class="a-block nav-link-item false" href="/index.xml">
+                RSS Feed
+            </a>
+            
+        
+    </div>
+
+    
+
+    <div class="nav-footer">
+        
+Hugo Theme <a href="https://github.com/amazingrise/hugo-theme-diary">Diary</a> by <a href="https://amazingrise.net">Rise</a>
+<br>
+Ported from <a href="https://mak1t0.cc/" target="_blank" rel="noreferrer noopener">Makito</a>'s <a href="https://github.com/SumiMakito/hexo-theme-journal/" target="_blank" rel="noreferrer noopener">Journal.</a> <br>
+<br>
+
+&copy;
+	
+	2022 Karmotrine Dream
+	
+
+    </div>
+    
+</div><div id="extraContainer" class="extra-container">
+    
+    
+    <div class="toc animated-visibility" :class="{ invisible: scrollY <= 140 }">
+
+
+	<div class="toc-content">
+	
+		
+		
+		
+		<center>- CATALOG -</center>
+		
+		
+		<ul>
+			
+				
+				
+					
+						
+						
+						
+						
+							
+								
+									<ul>
+								
+							
+								
+									<ul>
+								
+							
+						
+						
+							<li>
+								<a href="#%e4%b8%80%e6%b5%8b%e5%ba%8f%e9%a5%b1%e5%92%8c%e5%ba%a6-%e5%92%8c-%e6%96%87%e5%ba%93%e5%a4%8d%e6%9d%82%e5%ba%a6" onclick="onNavClick(`#一测序饱和度-和-文库复杂度-nav`)" id="一测序饱和度-和-文库复杂度-nav">
+									一、测序饱和度 和 文库复杂度
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e4%ba%8c%e5%bd%b1%e5%93%8d%e6%b5%8b%e5%ba%8f%e9%a5%b1%e5%92%8c%e5%ba%a6%e7%9a%84%e5%9b%a0%e7%b4%a0" onclick="onNavClick(`#二影响测序饱和度的因素-nav`)" id="二影响测序饱和度的因素-nav">
+									二、影响测序饱和度的因素
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e4%b8%89%e6%b5%8b%e5%ba%8f%e9%a5%b1%e5%92%8c%e5%ba%a6%e7%9a%84%e8%ae%a1%e7%ae%97" onclick="onNavClick(`#三测序饱和度的计算-nav`)" id="三测序饱和度的计算-nav">
+									三、测序饱和度的计算
+								</a>
+							</li>
+						
+						
+					
+				
+			
+		</ul>
+	</div>
+
+</div>
+    
+    <div class="pagination">
+        <a id="globalBackToTop" class="pagination-action animated-visibility" href="#top" :class="{ invisible: scrollY == 0 }">
+            <i class="material-icons pagination-action-icon">
+                keyboard_arrow_up
+            </i>
+        </a>
+        
+        <a type="button" class="pagination-action" id="darkModeToggleButton">
+            <span class="material-icons pagination-action-icon" id="darkModeToggleIcon">
+                dark_mode
+            </span>
+        </a>
+        
+        
+    </div>
+</div>
+<div class="single-column-drawer-container" id="drawer"
+     v-bind:class="{ 'single-column-drawer-container-active': isDrawerOpen }">
+    <div class="drawer-content">
+        <div class="drawer-menu">
+            
+            
+            
+                
+                
+                
+                
+                
+                <a class="a-block drawer-menu-item false" href="/posts">
+                    Archive
+                </a>
+                
+            
+                
+                
+                
+                
+                
+                <a class="a-block drawer-menu-item false" href="/categories">
+                    Categories
+                </a>
+                
+            
+                
+                
+                
+                
+                
+                <a class="a-block drawer-menu-item false" href="/tags">
+                    Tags
+                </a>
+                
+            
+                
+                
+                
+                
+                
+                <a class="a-block drawer-menu-item false" href="/index.xml">
+                    RSS Feed
+                </a>
+                
+            
+            
+            <div class="toc">
+
+
+	<div class="toc-content">
+	
+		
+		
+		
+		<center>- CATALOG -</center>
+		
+		
+		<ul>
+			
+				
+				
+					
+						
+						
+						
+						
+							
+								
+									<ul>
+								
+							
+								
+									<ul>
+								
+							
+						
+						
+							<li>
+								<a href="#%e4%b8%80%e6%b5%8b%e5%ba%8f%e9%a5%b1%e5%92%8c%e5%ba%a6-%e5%92%8c-%e6%96%87%e5%ba%93%e5%a4%8d%e6%9d%82%e5%ba%a6" onclick="onNavClick(`#一测序饱和度-和-文库复杂度-nav`)" id="一测序饱和度-和-文库复杂度-nav">
+									一、测序饱和度 和 文库复杂度
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e4%ba%8c%e5%bd%b1%e5%93%8d%e6%b5%8b%e5%ba%8f%e9%a5%b1%e5%92%8c%e5%ba%a6%e7%9a%84%e5%9b%a0%e7%b4%a0" onclick="onNavClick(`#二影响测序饱和度的因素-nav`)" id="二影响测序饱和度的因素-nav">
+									二、影响测序饱和度的因素
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e4%b8%89%e6%b5%8b%e5%ba%8f%e9%a5%b1%e5%92%8c%e5%ba%a6%e7%9a%84%e8%ae%a1%e7%ae%97" onclick="onNavClick(`#三测序饱和度的计算-nav`)" id="三测序饱和度的计算-nav">
+									三、测序饱和度的计算
+								</a>
+							</li>
+						
+						
+					
+				
+			
+		</ul>
+	</div>
+
+</div>
+            
+        </div>
+    </div>
+</div>
+<transition name="fade">
+    <div id="drawer-mask" v-bind:class="{ 'single-column-drawer-mask': mounted }" v-if="isDrawerOpen" v-on:click="toggleDrawer"></div>
+</transition>
+<nav id="navBar" class="navbar sticky-top navbar-light single-column-nav-container">
+    <div id="navBackground" class="nav-background"></div>
+    <div class="container container-narrow nav-content">
+        <button id="nav_dropdown_btn" class="nav-dropdown-toggle" type="button" v-on:click="toggleDrawer">
+            <i class="material-icons">
+                menu
+            </i>
+        </button>
+        <a id="navTitle" class="navbar-brand" href="/">
+            Karmotrine Dream
+        </a>
+        
+        <button type="button" class="nav-darkmode-toggle" id="darkModeToggleButton2">
+            <i class="material-icons" id="darkModeToggleIcon2">
+                dark_mode
+            </i>
+        </button>
+        
+    </div>
+</nav>
+<div class="single-column-header-container" id="pageHead"
+     v-bind:style="{ transform: 'translateZ(0px) translateY('+.3*scrollY+'px)', opacity: 1-navOpacity }">
+    <a href="/">
+        <div class="single-column-header-title">Karmotrine Dream</div>
+        
+
+    </a>
+</div>
+
+            <div id="content">
+                <div id="streamContainer" class="stream-container">
+
+    <div class="post-list-container post-list-container-shadow">
+        <div class="post">
+            
+            
+            
+
+            <div class="post-head-wrapper-text-only"
+                
+            >
+                <div class="post-title">
+                    10X CellRanger 中测序饱和度的定义与计算（一）
+                    
+                    <div class="post-meta">
+                        
+                        <time itemprop="datePublished">
+                            2022-02-08 22:05
+                        </time>
+                        
+
+                        
+                            <i class="material-icons" style="">folder</i>
+                                <a href="/categories/">[Bioinformatics]</a>
+                                &nbsp;
+                        
+
+                        
+                            <i class="material-icons" style="">label</i>
+                            
+                                <a href="/tags/10x">10X</a>
+                                &nbsp;
+                            
+                                <a href="/tags/single-cell-biology">Single Cell Biology</a>
+                                &nbsp;
+                            
+                        
+                        
+                    </div>
+                </div>
+            </div>
+            
+            <div class="post-body-wrapper">
+                
+                <div class="post-body" v-pre>
+                
+                    <p>最近为了搭建单细胞测序上游分析的Pipeline，正在研究怎样对分析结果做质控（Pipeline详情移步<a href="https://github.com/RuiyuRayWang/ScRNAseq_smkpipe_at_Luolab">https://github.com/RuiyuRayWang/ScRNAseq_smkpipe_at_Luolab</a>）。参考了10X CellRanger官方网站中描述的对测序饱和度的定义和计算方法：</p>
+<ul>
+<li><a href="https://kb.10xgenomics.com/hc/en-us/articles/115005062366-What-is-sequencing-saturation-">10X 官方文档：什么是测序饱和度？</a></li>
+<li><a href="https://kb.10xgenomics.com/hc/en-us/articles/115003646912-How-is-sequencing-saturation-calculated-">10X 官方文档：测序饱和度怎样计算？</a></li>
+</ul>
+<p>将用两篇文章记录这部分内容。</p>
+<p>这篇文章是本系列文章的第一篇，将对相关概念和计算公式的定义进行解读。</p>
+<hr>
+<h3 id="一测序饱和度-和-文库复杂度">一、<code>测序饱和度</code> 和 <code>文库复杂度</code></h3>
+<p>关于测序饱和度的定义，引用10X文档中的说明：</p>
+<blockquote>
+<p><strong>Question:</strong> What is sequencing saturation?<br>
+<strong>Answer:</strong> Sequencing saturation is a measure of <em><strong>the fraction of library complexity</strong></em> that was sequenced in a given experiment. The <em><strong>inverse</strong></em> of the sequencing saturation can be interpreted as the number of additional reads it would take to detect a new transcript.</p>
+</blockquote>
+<p>这两句话言简而意赅，点明了测序饱和度(sequencing saturation)与文库复杂度(library complexity)之间的关系。</p>
+<p><a href="https://gatk.broadinstitute.org/hc/en-us/articles/360037591931-EstimateLibraryComplexity-Picard-">library complexity (文库复杂度)</a>，指的是一个测序文库中非冗余的DNA片段的数量（the number of unique DNA fragments present in a given library）。<br>
+<strong><code>测序饱和度</code>表征了当前的测序数据中测出了多少<code>文库复杂度</code>。</strong></p>
+<p>从逆命题的角度来看待这个问题：发明一个新名词<code>“测序不饱和度”</code>，则<code>“测序不饱和度”</code>可以定义为 <em>再多测序多少个Reads就可以检测到一个全新的转录本<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup></em>。<br>
+换句话说，<strong>如果我们只需要再测很少的Reads就可以得到一个全新的转录本，说明这个文库“测序不饱和”；反之，如果需要再测很多Reads才能得到一个全新的转录本，说明这个文库“测序饱和”。</strong></p>
+<p>其实我们还可以从<strong>冗余信息</strong>的角度来理解这个问题：<br>
+对于一个文库，<strong>如果仅再测很少Reads就检测到了全新的转录本，说明当前数据还远未挖掘出文库中的大部分信息，数据的信息冗余程度比较低，测序不饱和；</strong><br>
+而反过来，<strong>如果需要再测很多Reads才能检测到全新的转录本，说明当前数据对文库中包含的信息挖掘得比较充分，数据的信息冗余程度比较高，测序接近饱和。</strong></p>
+<p>所以本质上，测序饱和度可以间接地由<strong>信息冗余程度</strong>进行度量。<br>
+数据信息冗余度越高，测序饱和度越高；<br>
+数据信息冗余度越低，测序饱和度越低。</p>
+<p>从实际角度出发，我们有时候<strong>并不希望信息冗余度</strong>太高。因为冗余信息越多，浪费的资源越多。所以有些研究不会将 测序饱和度 的目标阈值设定到接近饱和（&gt;90%），而是测到70%左右就收工了。<br>
+在受经费条件等因素限制的情况下这是一种合理策略。</p>
+<hr>
+<h3 id="二影响测序饱和度的因素">二、影响测序饱和度的因素</h3>
+<p>在单细胞测序中，测序饱和度主要由两个因素决定：</p>
+<ul>
+<li>
+<p>文库复杂度(Biological Complxity)：</p>
+<blockquote>
+<p>Different cell types will have different amounts of RNA and thus will differ in the total number of different transcripts in the final library (also known as library complexity). The figure below illustrates the median number of genes recovered from different cell types. As sequencing depth increases, more genes are detected, but this reaches saturation at different sequencing depths depending on cell type.</p>
+</blockquote>
+<p>文库复杂度一般由生物学样本的复杂程度决定。而生物学样本的复杂度又由多个因素，如细胞异质性(Cell Heterogeneity)、转录组RNA含量、细胞质量、细胞数等共同决定。<del>越是简单均一的系统，生物复杂程度越低。</del><br>
+下图中，原代分离的PBMC(外周血单核细胞)和E18小鼠神经元细胞RNA含量较低（？）<sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup>，因此迅速达到测序饱和；而培养的永生细胞3T3和HEK293T的RNA含量比较高（？）<sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup>，测序不容易达到饱和。同样作为永生细胞，3T3细胞系的转录组比HEK293T细胞系的转录组复杂，因此相比之下不容易测序饱和。</p>
+</li>
+<li>
+<p>测序深度(Sequencing Depth)</p>
+<blockquote>
+<p>Sequencing depth also affects sequencing saturation; generally, the more sequencing reads, the more additional unique transcripts you can detect. However, this is limited by the library complexity.</p>
+</blockquote>
+<p>即每个文库实际测到的Reads数。在控制其他条件不变的情况下，一般来讲测序深度越高测序饱和度越高，直观上这很容易理解。</p>
+</li>
+</ul>
+<p><img src="https://kb.10xgenomics.com/hc/article_attachments/115016412246/SingleCell_GeneRecovery_by_SeqDepth_combined.png#middle" alt="Figure 1"></p>
+<p>上面的内容可以总结在一个公式中：</p>
+<p>$$测序饱和度\propto\frac{测序深度}{文库复杂度}$$</p>
+<p>如果一个样本的生物学成分比较复杂，那送样时就可以提前计划适当提高测序深度；如果测完发现测序饱和度还是不够，那就对文库进行加测（提高测序深度）。</p>
+<hr>
+<h3 id="三测序饱和度的计算">三、测序饱和度的计算</h3>
+<p>10X官方文档给出了测序饱和度计算公式：</p>
+<blockquote>
+<p>$$Sequencing\ Saturation = 1 - \frac{n_{deduped\ reads}}{n_{reads}}$$<br>
+where<br>
+$n_{deduped\ reads}$ = Number of unique (valid cell-barcode, valid UMI, gene) combinations among confidently mapped reads<br>
+$n_{reads}$ = Total number of confidently mapped, valid cell-barcode, valid UMI reads<br>
+.<br>
+Note that the numerator of the fraction is $n_{deduped\ reads}$, not the non-unique reads that are mentioned in the definition. $n_{deduped\ reads}$ is a degree of uniqueness, not a degree of duplication/saturation. Therefore we take the complement of $n_{deduped\ reads}/n_{reads}$ to measure saturation.</p>
+</blockquote>
+<p>即</p>
+<p>$$测序饱和度=1-\frac{去重后Reads数}{总Reads数}=\frac{重复Reads数}{总Reads数}$$</p>
+<p>注意重复Reads是通过Barcode和UMI定义的。两个Reads出现同样的Barcode + UMI组合，就将其中一个定义为重复；三个Reads出现同样的Barcode + UMI组合，其中两个定义为重复，剩下一个定义为去重后Read。</p>
+<p>从这个公式也可以看出，重复Reads数越高，冗余信息越多，测序饱和度也越高。</p>
+<section class="footnotes" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn:1" role="doc-endnote">
+<p>全新的转录本，在10X官方文档的语境下，指的是一个全新的 Barcode + UMI 组合（i.e. a previously unobserved, unique combination of valid cell-barcode and valid UMI）&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:2" role="doc-endnote">
+<p>直觉上这并不 make sense。原代细胞有较高的细胞异质性，如果其他条件相同，理应更难达到测序饱和。猜测也许是因为原代细胞分离下来细胞状态不如永生细胞，因此导致文库质量不佳。&#160;<a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+</ol>
+</section>
+
+                    
+                    <HR width="100%" id="EOF">
+		    <p style="color:#777;">Last modified on 2022-02-08</p>
+                    
+                </div>
+            </div>
+            
+            
+            <nav class="post-pagination">
+
+                
+                <a class="newer-posts" href="/post/deploy_mathjax/">
+			Next<br>Hugo：启用Mathjax实现数学公式的编辑与显示
+                </a>
+                
+                
+                
+                <a class="older-posts" href="/post/10x_calc_saturation_2/">
+			Previous<br>10X CellRanger 中测序饱和度的定义与计算（二）
+                </a>
+                
+            </nav>
+            <div class="post-comment-wrapper">
+                
+
+
+
+
+
+
+
+
+
+
+            </div>
+        </div>
+    </div>
+
+
+                    </div>
+            </div><div id="single-column-footer">
+Hugo Theme <a href="https://github.com/amazingrise/hugo-theme-diary">Diary</a> by <a href="https://amazingrise.net">Rise</a>
+<br>
+Ported from <a href="https://mak1t0.cc/" target="_blank" rel="noreferrer noopener">Makito</a>'s <a href="https://github.com/SumiMakito/hexo-theme-journal/" target="_blank" rel="noreferrer noopener">Journal.</a> <br>
+<br>
+
+&copy;
+	
+	2022 Karmotrine Dream
+	
+</div>
+            </div>
+    
+    <script src="/js/journal.js"></script>
+    </body>
+</html>

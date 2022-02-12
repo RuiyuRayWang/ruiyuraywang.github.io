@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html><head>
-<title>我的Hugo blog，新主题，新开始</title>
+<title>Hugo blog，新主题，新开始</title>
 
 
 
@@ -16,10 +16,10 @@
 
 
 
-<meta property="og:title" content="我的Hugo blog，新主题，新开始" />
+<meta property="og:title" content="Hugo blog，新主题，新开始" />
 <meta property="og:description" content="2022-02-28更新：
 去年年底拿Hugo搭了一个博客，但用了没几日就没有动力再写了。我反思了一下可能主要有两个原因，总结一下：
-1. 长篇累牍使用英文撰写，逼格定调定得太高。造成的后果是可读性差，且效率又低。 今后还是老老实实用母语行文，必要时候可以加入洋文。 2. 选用的主题（hugo-theme-cleanwhite by Huabing）过于花里胡哨。 每次翻阅过去的记录都感觉头晕目眩，遂挑了一个简约的主题重新搭了博客。  业精于勤而荒于嬉。今后还要再接再厉，也许做不到笔耕不辍，但至少也应该保持三天两头写点东西。
+ 长篇累牍使用英文撰写，逼格定调得太高。造成的后果是可读性差，效率又低。 今后还是老老实实用母语行文，必要时候可以加入洋文。 选用的主题（hugo-theme-cleanwhite by Huabing）过于花里胡哨。 每次翻阅过去的记录都感觉头晕目眩，遂挑了一个简约的主题重新搭了博客。  业精于勤而荒于嬉。今后还要再接再厉，也许做不到笔耕不辍，但至少也应该保持三天两头写点东西。
 这里就先记录下我是如何从hugo-theme-cleanwhite跳到新的主题Diary的。
 新主题Diary地址：(https://themes.gohugo.io/themes/hugo-theme-diary/)
  下面是具体步骤。
@@ -28,7 +28,7 @@ cd my_hugo_site/blog git submodule add https://github.com/AmazingRise/hugo-theme
 直接到blog目录下，用这个模板，替换config.toml文件中的内容。
 由于最初将这个Hugo site部署到github时参考了这篇推文，需要对config.toml进行修改，以满足本地的目录结构。
 修改了下面几个参数：
-baseURL = &quot;/&quot; title = &quot;Karmotrine Dream&quot; copyright = &quot;&quot; theme = &quot;diary&quot; subtitle = &quot;&quot; 添加下面这个参数，使hugo命令生成的网页推到public/目录下：
+baseURL = &quot;/&quot; title = &quot;Karmotrine Dream&quot; copyright = &quot;&quot; theme = &quot;diary&quot; subtitle = &quot;&quot; 添加下面这个参数，使hugo -D命令生成的网页推到public/目录下：
 publishDir = &quot;../public&quot; 删除原来public/目录中所有内容（这些是旧theme生成的文件）。
 最后，修改deploy.sh中的命令，使用diary作为theme来生成新的site：
 hugo -D -t diary # or `hugo -D` if no theme is specified And Voila!
@@ -44,10 +44,10 @@ Hugo博客的theme变为Diary了！" />
 
 
 <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="我的Hugo blog，新主题，新开始"/>
+<meta name="twitter:title" content="Hugo blog，新主题，新开始"/>
 <meta name="twitter:description" content="2022-02-28更新：
 去年年底拿Hugo搭了一个博客，但用了没几日就没有动力再写了。我反思了一下可能主要有两个原因，总结一下：
-1. 长篇累牍使用英文撰写，逼格定调定得太高。造成的后果是可读性差，且效率又低。 今后还是老老实实用母语行文，必要时候可以加入洋文。 2. 选用的主题（hugo-theme-cleanwhite by Huabing）过于花里胡哨。 每次翻阅过去的记录都感觉头晕目眩，遂挑了一个简约的主题重新搭了博客。  业精于勤而荒于嬉。今后还要再接再厉，也许做不到笔耕不辍，但至少也应该保持三天两头写点东西。
+ 长篇累牍使用英文撰写，逼格定调得太高。造成的后果是可读性差，效率又低。 今后还是老老实实用母语行文，必要时候可以加入洋文。 选用的主题（hugo-theme-cleanwhite by Huabing）过于花里胡哨。 每次翻阅过去的记录都感觉头晕目眩，遂挑了一个简约的主题重新搭了博客。  业精于勤而荒于嬉。今后还要再接再厉，也许做不到笔耕不辍，但至少也应该保持三天两头写点东西。
 这里就先记录下我是如何从hugo-theme-cleanwhite跳到新的主题Diary的。
 新主题Diary地址：(https://themes.gohugo.io/themes/hugo-theme-diary/)
  下面是具体步骤。
@@ -56,7 +56,7 @@ cd my_hugo_site/blog git submodule add https://github.com/AmazingRise/hugo-theme
 直接到blog目录下，用这个模板，替换config.toml文件中的内容。
 由于最初将这个Hugo site部署到github时参考了这篇推文，需要对config.toml进行修改，以满足本地的目录结构。
 修改了下面几个参数：
-baseURL = &quot;/&quot; title = &quot;Karmotrine Dream&quot; copyright = &quot;&quot; theme = &quot;diary&quot; subtitle = &quot;&quot; 添加下面这个参数，使hugo命令生成的网页推到public/目录下：
+baseURL = &quot;/&quot; title = &quot;Karmotrine Dream&quot; copyright = &quot;&quot; theme = &quot;diary&quot; subtitle = &quot;&quot; 添加下面这个参数，使hugo -D命令生成的网页推到public/目录下：
 publishDir = &quot;../public&quot; 删除原来public/目录中所有内容（这些是旧theme生成的文件）。
 最后，修改deploy.sh中的命令，使用diary作为theme来生成新的site：
 hugo -D -t diary # or `hugo -D` if no theme is specified And Voila!
@@ -308,7 +308,7 @@ Ported from <a href="https://mak1t0.cc/" target="_blank" rel="noreferrer noopene
                 
             >
                 <div class="post-title">
-                    我的Hugo blog，新主题，新开始
+                    Hugo blog，新主题，新开始
                     
                     <div class="post-meta">
                         
@@ -319,7 +319,7 @@ Ported from <a href="https://mak1t0.cc/" target="_blank" rel="noreferrer noopene
 
                         
                             <i class="material-icons" style="">folder</i>
-                                <a href="/categories/">[Tech]</a>
+                                <a href="/categories/">[Hugo]</a>
                                 &nbsp;
                         
 
@@ -335,11 +335,12 @@ Ported from <a href="https://mak1t0.cc/" target="_blank" rel="noreferrer noopene
                 
                     <p>2022-02-28更新：</p>
 <p>去年年底拿Hugo搭了一个博客，但用了没几日就没有动力再写了。我反思了一下可能主要有两个原因，总结一下：</p>
-<pre><code>1. 长篇累牍使用英文撰写，逼格定调定得太高。造成的后果是可读性差，且效率又低。
-   今后还是老老实实用母语行文，必要时候可以加入洋文。
-2. 选用的主题（hugo-theme-cleanwhite by Huabing）过于花里胡哨。
-   每次翻阅过去的记录都感觉头晕目眩，遂挑了一个简约的主题重新搭了博客。
-</code></pre>
+<ol>
+<li>长篇累牍使用英文撰写，逼格定调得太高。造成的后果是可读性差，效率又低。
+今后还是老老实实用母语行文，必要时候可以加入洋文。</li>
+<li>选用的主题（hugo-theme-cleanwhite by Huabing）过于花里胡哨。
+每次翻阅过去的记录都感觉头晕目眩，遂挑了一个简约的主题重新搭了博客。</li>
+</ol>
 <p>业精于勤而荒于嬉。今后还要再接再厉，也许做不到笔耕不辍，但至少也应该保持三天两头写点东西。</p>
 <p>这里就先记录下我是如何从hugo-theme-cleanwhite跳到新的主题Diary的。</p>
 <p>新主题Diary地址：(<a href="https://themes.gohugo.io/themes/hugo-theme-diary/">https://themes.gohugo.io/themes/hugo-theme-diary/</a>)</p>
@@ -357,7 +358,7 @@ title = &quot;Karmotrine Dream&quot;
 copyright = &quot;&quot;
 theme = &quot;diary&quot;
 subtitle = &quot;&quot;
-</code></pre><p>添加下面这个参数，使hugo命令生成的网页推到<code>public/</code>目录下：</p>
+</code></pre><p>添加下面这个参数，使<code>hugo -D</code>命令生成的网页推到<code>public/</code>目录下：</p>
 <pre tabindex="0"><code>publishDir = &quot;../public&quot;
 </code></pre><p>删除原来<code>public/</code>目录中所有内容（这些是旧theme生成的文件）。</p>
 <p>最后，修改<code>deploy.sh</code>中的命令，使用diary作为theme来生成新的site：</p>
