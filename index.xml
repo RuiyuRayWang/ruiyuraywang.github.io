@@ -50,12 +50,18 @@ Additionally, a blog written by Geoff Ruddock has a more concise solution: &lt;a
 &lt;/ol&gt;
 &lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;{{ if .Params.mathjax }}{{ partial &amp;quot;mathjax_support.html&amp;quot; . }}{{ end }}
 &lt;/code&gt;&lt;/pre&gt;&lt;ol start=&#34;3&#34;&gt;
-&lt;li&gt;Then, add the following lines to your CSS file. You may need to tinker with the contents here depending on your theme, these are just the settings which worked for me.&lt;br&gt;
-还没搞懂这步是怎么设置的。css文件看得头晕。&lt;/li&gt;
+&lt;li&gt;Then, add the following lines to your CSS file. You may need to tinker with the contents here depending on your theme, these are just the settings which worked for me.&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;$\textcolor{red}ssdfsdf$&lt;/p&gt;
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;$\[\color{red}abc\]$
-&lt;/code&gt;&lt;/pre&gt;- /post/deploy_mathjax/ - </description>
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;code.has-jax {font: inherit;
+              font-size: 100%;
+              background: inherit;
+              border: inherit;
+              color: #515151;}
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;To modify css, refer to &lt;a href=&#34;https://www.banjocode.com/post/hugo/custom-css/&#34;&gt;Add Custom CSS Or Javascript To Your Hugo Site&lt;/a&gt;。&lt;/p&gt;
+&lt;ol start=&#34;4&#34;&gt;
+&lt;li&gt;Finally, add &lt;code&gt;mathjax: true&lt;/code&gt; to the YAML frontmatter of any pages containing math markup. Alternatively, you could omit the outer &lt;code&gt;{{ if .Params.mathjax }} … {{ end }}&lt;/code&gt; conditional above to load the library automatically on all pages. However given that this library is quite heavy (it’s consistently the asset that Google PageSpeed Insights complains the most about) and that only &amp;lt;20% of my blog posts contain math at all, this is worth the extra effort for me.&lt;/li&gt;
+&lt;/ol&gt;
+- /post/deploy_mathjax/ - </description>
         </item>
     
     

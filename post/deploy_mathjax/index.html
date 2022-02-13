@@ -103,6 +103,8 @@ TL;DR  Create a file in your theme directory layouts/partials/mathjax_support.ht
   <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
   <script type="text/javascript" id="MathJax-script" async
     src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+
 </head>
 <body>
     	<div id="app"><div id="sideContainer" class="side-container">
@@ -433,12 +435,18 @@ Additionally, a blog written by Geoff Ruddock has a more concise solution: <a hr
 </ol>
 <pre tabindex="0"><code>{{ if .Params.mathjax }}{{ partial &quot;mathjax_support.html&quot; . }}{{ end }}
 </code></pre><ol start="3">
-<li>Then, add the following lines to your CSS file. You may need to tinker with the contents here depending on your theme, these are just the settings which worked for me.<br>
-还没搞懂这步是怎么设置的。css文件看得头晕。</li>
+<li>Then, add the following lines to your CSS file. You may need to tinker with the contents here depending on your theme, these are just the settings which worked for me.</li>
 </ol>
-<p>$\textcolor{red}ssdfsdf$</p>
-<pre tabindex="0"><code>$\[\color{red}abc\]$
-</code></pre>
+<pre tabindex="0"><code>code.has-jax {font: inherit;
+              font-size: 100%;
+              background: inherit;
+              border: inherit;
+              color: #515151;}
+</code></pre><p>To modify css, refer to <a href="https://www.banjocode.com/post/hugo/custom-css/">Add Custom CSS Or Javascript To Your Hugo Site</a>。</p>
+<ol start="4">
+<li>Finally, add <code>mathjax: true</code> to the YAML frontmatter of any pages containing math markup. Alternatively, you could omit the outer <code>{{ if .Params.mathjax }} … {{ end }}</code> conditional above to load the library automatically on all pages. However given that this library is quite heavy (it’s consistently the asset that Google PageSpeed Insights complains the most about) and that only &lt;20% of my blog posts contain math at all, this is worth the extra effort for me.</li>
+</ol>
+
                     
                     <HR width="100%" id="EOF">
 		    <p style="color:#777;">Last modified on 2022-02-12</p>
