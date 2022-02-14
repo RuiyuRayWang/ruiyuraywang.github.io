@@ -103,8 +103,6 @@ TL;DR  Create a file in your theme directory layouts/partials/mathjax_support.ht
   <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
   <script type="text/javascript" id="MathJax-script" async
     src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-
-
 </head>
 <body>
     	<div id="app"><div id="sideContainer" class="side-container">
@@ -212,6 +210,24 @@ Ported from <a href="https://mak1t0.cc/" target="_blank" rel="noreferrer noopene
 					
 				
 			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#todo" onclick="onNavClick(`#todo-nav`)" id="todo-nav">
+									TODO
+								</a>
+							</li>
+						
+						
+					
+				
+			
 		</ul>
 	</div>
 
@@ -305,6 +321,24 @@ Ported from <a href="https://mak1t0.cc/" target="_blank" rel="noreferrer noopene
 							<li>
 								<a href="#tldr" onclick="onNavClick(`#tldr-nav`)" id="tldr-nav">
 									TL;DR
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#todo" onclick="onNavClick(`#todo-nav`)" id="todo-nav">
+									TODO
 								</a>
 							</li>
 						
@@ -446,6 +480,10 @@ Additionally, a blog written by Geoff Ruddock has a more concise solution: <a hr
 <ol start="4">
 <li>Finally, add <code>mathjax: true</code> to the YAML frontmatter of any pages containing math markup. Alternatively, you could omit the outer <code>{{ if .Params.mathjax }} … {{ end }}</code> conditional above to load the library automatically on all pages. However given that this library is quite heavy (it’s consistently the asset that Google PageSpeed Insights complains the most about) and that only &lt;20% of my blog posts contain math at all, this is worth the extra effort for me.</li>
 </ol>
+<hr>
+<h1 id="todo">TODO</h1>
+<p>走完上面的流程后还是发现MathJax中<code>\color</code>和<code>\textcolor</code>不能修改字体颜色。<br>
+custom.css似乎也没有正确配置。</p>
 
                     
                     <HR width="100%" id="EOF">
