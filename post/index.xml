@@ -6,7 +6,18 @@
     <description>Recent content in Posts on Karmotrine Dream</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 12 Feb 2022 21:17:37 +0800</lastBuildDate><atom:link href="/post/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 20 Feb 2022 10:55:43 +0800</lastBuildDate><atom:link href="/post/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>一图看懂单细胞文库Reads的组成成分</title>
+      <link>/post/10x_reads_composition/</link>
+      <pubDate>Sun, 20 Feb 2022 10:55:43 +0800</pubDate>
+      
+      <guid>/post/10x_reads_composition/</guid>
+      <description>这篇文章是前两篇技术文档的后续：
+ 10X CellRanger 中测序饱和度的定义与计算（一） 10X CellRanger 中测序饱和度的定义与计算（二）  上两篇文章成文过程中，我意识到单细胞测序文库从rawdata到deduplicated reads这套分析流程，其实是non-trivial的。Input Raw Reads从下机开始，需经过层层筛选和运算，最终只有少部分信息能保留在表达矩阵（或counts table）中。这里用一张图总结，以帮助我们更好地理解单细胞文库的建库和上游分析（Upstream Analysis）。
+  本文以ScRNAseq_smkpipe_at_Luolab为例。该方法的Chemistry和10X v2/v3的Chemistry可能非常相似，引入了cell barcode和UMI，但二者在某些技术实现上有些不同，具体是哪些区别与本文无关，在此不再赘述。</description>
+    </item>
+    
     <item>
       <title>Hugo：启用Mathjax实现数学公式的编辑与显示</title>
       <link>/post/deploy_mathjax/</link>
@@ -25,6 +36,7 @@ TL;DR  Create a file in your theme directory layouts/partials/mathjax_support.ht
       <guid>/post/10x_calc_saturation_1/</guid>
       <description>最近为了搭建单细胞测序上游分析的Pipeline，正在研究怎样对分析结果做质控（Pipeline详情移步https://github.com/RuiyuRayWang/ScRNAseq_smkpipe_at_Luolab）。参考了10X CellRanger官方网站中描述的对测序饱和度的定义和计算方法：
  10X 官方文档：什么是测序饱和度？ 10X 官方文档：测序饱和度怎样计算？  将用两篇文章记录这部分内容。
+注意：本系列文章的参考来源均为10X官方公开的信息。
 这篇文章是本系列文章的第一篇，将对相关概念和计算公式的定义进行解读。
  一、测序饱和度 和 文库复杂度 关于测序饱和度的定义，引用10X文档中的说明：
  Question: What is sequencing saturation?
@@ -41,8 +53,14 @@ library complexity (文库复杂度)，指的是一个测序文库中非冗余�
       <guid>/post/10x_calc_saturation_2/</guid>
       <description>最近为了搭建单细胞测序上游分析的Pipeline，正在研究怎样对分析结果做质控（Pipeline详情移步https://github.com/RuiyuRayWang/ScRNAseq_smkpipe_at_Luolab）。参考了10X CellRanger官方网站中描述的对测序饱和度的定义和计算方法：
  10X 官方文档：什么是测序饱和度？ 10X 官方文档：测序饱和度怎样计算？  将用两篇文章记录这部分内容。
-这篇文章是本系列文章的第二篇，将用10X官方文档中的示例数据来逐步解析代码实现过程。
- </description>
+注意：本系列文章的参考来源均为10X官方公开的信息。
+这篇文章是本系列文章的第二篇，将利用10X官方文档中的示例数据来展示测序饱和度计算的代码复现。
+ 下载数据：
+ Uses dataset at https://support.10xgenomics.com/single-cell-gene-expression/datasets/3.0.0/pbmc_1k_v3, where the web summary report gives a sequencing saturation value of 0.7085123.​
+ web_summary.html
+ 计算公式：
+ The sequencing saturation calculation below matches the 0.7085123 sequencing saturation given in the web summary report.
+ unique_confidently_mapped_reads = 10,196,940 duplicate_reads = 24,785,461 x = 1 - (unique_confidently_mapped_reads/(unique_confidently_mapped_reads + duplicate_reads)) x = 1 - (10,196,940/(10,196,940 + 24,785,461)) x = 1 - (10,196,940/34,982,401) x = 1 - 0.</description>
     </item>
     
     <item>
@@ -104,9 +122,10 @@ Mac (iOS)  bash tools  brew tree   softwares  R    Ubuntu  Bioinformatics  samto
       <pubDate>Thu, 02 Dec 2021 16:49:27 +0800</pubDate>
       
       <guid>/post/on-comp-bio/</guid>
-      <description>Nick Loman和Mick Watson在2013年写了一篇小短文发在NBT上，题为So you want to be a computational biologist? 文章短小精悍，非常精彩。很多细节能够看出作者是实打实的计算生物学从业者。值得大家阅读。
-几句题外话：Nick Loman 79年生人，年轻时与其兄弟Rupert Loman沉迷电子游戏，后来二人发现相比于打游戏他们更擅长组织管理，于是合伙创立了公司Eurogamer Network，后者逐渐发展为欧洲最大的电子媒体之一Gamer Network。
-2004年，Nick步入大学，跳出Eurogamer，一头扎进生命医学领域，开始了自己的学术生涯。这哥们后来科研做得风生水起，h-index高达50+，现任伯明翰大学Research Fellow（居然还不是教授&amp;hellip;）。2018年，Gamer Network被出版巨头Reed收购。
+      <description>Nick Loman和Mick Watson在2013年写了一篇Commentary发在NBT上，题为 So you want to be a computational biologist?
+文章短小精悍，非常精彩。很多细节能够看出作者是实打实的计算生物学从业者，给出了很多中肯的建议。对于所有有志于从事计算生物学、生物信息学的人，这篇文章值得反复阅读。
+几句题外话：Nick Loman 79年生人，年轻时与其兄弟Rupert Loman沉迷电子游戏，后来二人发现比起打游戏他们更擅长组织管理，于是合伙创立了公司Eurogamer Network，后者逐渐发展为欧洲最大的电子媒体之一Gamer Network。
+2004年，Nick步入大学，跳出Eurogamer，一头扎进生命医学领域，开始了自己的学术生涯。这哥们后来科研做得风生水起，h-index高达68，现任伯明翰大学教授（2017年转正 #Twitter）~Research Fellow（居然还不是教授&amp;hellip;）~。2018年，Gamer Network被出版巨头Reed收购，说不定Nick利用自己学者身份从中斡旋了一番（没有实锤，我猜的）。
 Recently I ran into this wonderful article published in Nature Biotechnology written by Nick Loman and Mick Watson, about how to become a computational biologist. The article is so brilliant and I thought I should dedicate my (actual) first post to write about it.
 I&amp;rsquo;ll only put here excerptions of the article that I feel excited about.</description>
     </item>

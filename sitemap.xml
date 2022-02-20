@@ -2,10 +2,31 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>/tags/blog/</loc>
-    <lastmod>2022-02-12T21:17:37+08:00</lastmod>
+    <loc>/tags/10x/</loc>
+    <lastmod>2022-02-20T10:55:43+08:00</lastmod>
+  </url><url>
+    <loc>/categories/bioinformatics/</loc>
+    <lastmod>2022-02-20T10:55:43+08:00</lastmod>
   </url><url>
     <loc>/categories/</loc>
+    <lastmod>2022-02-20T10:55:43+08:00</lastmod>
+  </url><url>
+    <loc>/</loc>
+    <lastmod>2022-02-20T10:55:43+08:00</lastmod>
+  </url><url>
+    <loc>/post/</loc>
+    <lastmod>2022-02-20T10:55:43+08:00</lastmod>
+  </url><url>
+    <loc>/tags/single-cell-biology/</loc>
+    <lastmod>2022-02-20T10:55:43+08:00</lastmod>
+  </url><url>
+    <loc>/tags/</loc>
+    <lastmod>2022-02-20T10:55:43+08:00</lastmod>
+  </url><url>
+    <loc>/post/10x_reads_composition/</loc>
+    <lastmod>2022-02-20T10:55:43+08:00</lastmod>
+  </url><url>
+    <loc>/tags/blog/</loc>
     <lastmod>2022-02-12T21:17:37+08:00</lastmod>
   </url><url>
     <loc>/tags/hugo/</loc>
@@ -17,31 +38,13 @@
     <loc>/post/deploy_mathjax/</loc>
     <lastmod>2022-02-12T21:17:37+08:00</lastmod>
   </url><url>
-    <loc>/</loc>
-    <lastmod>2022-02-12T21:17:37+08:00</lastmod>
-  </url><url>
     <loc>/tags/mathjax/</loc>
     <lastmod>2022-02-12T21:17:37+08:00</lastmod>
-  </url><url>
-    <loc>/post/</loc>
-    <lastmod>2022-02-12T21:17:37+08:00</lastmod>
-  </url><url>
-    <loc>/tags/</loc>
-    <lastmod>2022-02-12T21:17:37+08:00</lastmod>
-  </url><url>
-    <loc>/tags/10x/</loc>
-    <lastmod>2022-02-08T22:05:51+08:00</lastmod>
   </url><url>
     <loc>/post/10x_calc_saturation_1/</loc>
     <lastmod>2022-02-08T22:05:51+08:00</lastmod>
   </url><url>
     <loc>/post/10x_calc_saturation_2/</loc>
-    <lastmod>2022-02-08T22:05:51+08:00</lastmod>
-  </url><url>
-    <loc>/categories/bioinformatics/</loc>
-    <lastmod>2022-02-08T22:05:51+08:00</lastmod>
-  </url><url>
-    <loc>/tags/single-cell-biology/</loc>
     <lastmod>2022-02-08T22:05:51+08:00</lastmod>
   </url><url>
     <loc>/post/install-r-scenic/</loc>

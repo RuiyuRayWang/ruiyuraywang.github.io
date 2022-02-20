@@ -19,8 +19,14 @@
 <meta property="og:title" content="10X CellRanger 中测序饱和度的定义与计算（二）" />
 <meta property="og:description" content="最近为了搭建单细胞测序上游分析的Pipeline，正在研究怎样对分析结果做质控（Pipeline详情移步https://github.com/RuiyuRayWang/ScRNAseq_smkpipe_at_Luolab）。参考了10X CellRanger官方网站中描述的对测序饱和度的定义和计算方法：
  10X 官方文档：什么是测序饱和度？ 10X 官方文档：测序饱和度怎样计算？  将用两篇文章记录这部分内容。
-这篇文章是本系列文章的第二篇，将用10X官方文档中的示例数据来逐步解析代码实现过程。
- " />
+注意：本系列文章的参考来源均为10X官方公开的信息。
+这篇文章是本系列文章的第二篇，将利用10X官方文档中的示例数据来展示测序饱和度计算的代码复现。
+ 下载数据：
+ Uses dataset at https://support.10xgenomics.com/single-cell-gene-expression/datasets/3.0.0/pbmc_1k_v3, where the web summary report gives a sequencing saturation value of 0.7085123.​
+ web_summary.html
+ 计算公式：
+ The sequencing saturation calculation below matches the 0.7085123 sequencing saturation given in the web summary report.
+ unique_confidently_mapped_reads = 10,196,940 duplicate_reads = 24,785,461 x = 1 - (unique_confidently_mapped_reads/(unique_confidently_mapped_reads &#43; duplicate_reads)) x = 1 - (10,196,940/(10,196,940 &#43; 24,785,461)) x = 1 - (10,196,940/34,982,401) x = 1 - 0." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="/post/10x_calc_saturation_2/" /><meta property="article:section" content="post" />
 <meta property="article:published_time" content="2022-02-08T22:05:51+08:00" />
@@ -35,8 +41,14 @@
 <meta name="twitter:title" content="10X CellRanger 中测序饱和度的定义与计算（二）"/>
 <meta name="twitter:description" content="最近为了搭建单细胞测序上游分析的Pipeline，正在研究怎样对分析结果做质控（Pipeline详情移步https://github.com/RuiyuRayWang/ScRNAseq_smkpipe_at_Luolab）。参考了10X CellRanger官方网站中描述的对测序饱和度的定义和计算方法：
  10X 官方文档：什么是测序饱和度？ 10X 官方文档：测序饱和度怎样计算？  将用两篇文章记录这部分内容。
-这篇文章是本系列文章的第二篇，将用10X官方文档中的示例数据来逐步解析代码实现过程。
- "/>
+注意：本系列文章的参考来源均为10X官方公开的信息。
+这篇文章是本系列文章的第二篇，将利用10X官方文档中的示例数据来展示测序饱和度计算的代码复现。
+ 下载数据：
+ Uses dataset at https://support.10xgenomics.com/single-cell-gene-expression/datasets/3.0.0/pbmc_1k_v3, where the web summary report gives a sequencing saturation value of 0.7085123.​
+ web_summary.html
+ 计算公式：
+ The sequencing saturation calculation below matches the 0.7085123 sequencing saturation given in the web summary report.
+ unique_confidently_mapped_reads = 10,196,940 duplicate_reads = 24,785,461 x = 1 - (unique_confidently_mapped_reads/(unique_confidently_mapped_reads &#43; duplicate_reads)) x = 1 - (10,196,940/(10,196,940 &#43; 24,785,461)) x = 1 - (10,196,940/34,982,401) x = 1 - 0."/>
 
 
 
@@ -345,8 +357,99 @@ Ported from <a href="https://mak1t0.cc/" target="_blank" rel="noreferrer noopene
 <li><a href="https://kb.10xgenomics.com/hc/en-us/articles/115003646912-How-is-sequencing-saturation-calculated-">10X 官方文档：测序饱和度怎样计算？</a></li>
 </ul>
 <p>将用两篇文章记录这部分内容。</p>
-<p>这篇文章是本系列文章的第二篇，将用10X官方文档中的示例数据来逐步解析代码实现过程。</p>
+<p><strong>注意：本系列文章的参考来源均为10X官方公开的信息。</strong></p>
+<p>这篇文章是本系列文章的第二篇，将利用10X官方文档中的示例数据来展示测序饱和度计算的代码复现。</p>
 <hr>
+<p>下载数据：</p>
+<blockquote>
+<p>Uses dataset at <a href="https://support.10xgenomics.com/single-cell-gene-expression/datasets/3.0.0/pbmc_1k_v3">https://support.10xgenomics.com/single-cell-gene-expression/datasets/3.0.0/pbmc_1k_v3</a>, where the web summary report gives a sequencing saturation value of 0.7085123.​</p>
+</blockquote>
+<p><a href="https://cf.10xgenomics.com/samples/cell-exp/3.0.0/pbmc_1k_v3/pbmc_1k_v3_web_summary.html">web_summary.html</a></p>
+<hr>
+<p>计算公式：</p>
+<blockquote>
+<p>The sequencing saturation calculation below matches the 0.7085123 sequencing saturation given in the web summary report.</p>
+</blockquote>
+<pre tabindex="0"><code>unique_confidently_mapped_reads = 10,196,940
+duplicate_reads = 24,785,461
+
+x = 1 - (unique_confidently_mapped_reads/(unique_confidently_mapped_reads + duplicate_reads))
+x = 1 - (10,196,940/(10,196,940 + 24,785,461))
+x = 1 - (10,196,940/34,982,401)
+x = 1 - 0.2148771
+x = 0.70851229
+</code></pre><hr>
+<p><code>web_summary.html</code>中并没有直接给出<code>unique_configdently_mapped_reads</code>和<code>duplicate_reads</code>具体是多少。实际上这两个参数都是可以从bam中抓取的。具体抓取方法在官方文档中也已经给出。我这里介绍另一种有点hacky的方法，可以从结果反推算出<code>unique_configdently_mapped_reads</code>是多少。从这个方法我们可以一窥10X输出的文件结构，也可以加深我们对数据含义的理解。</p>
+<p>下载<code>Feature / cell matrix (raw)</code>，得到文件<code>pbmc_1k_v3_raw_feature_bc_matrix.tar.gz</code>，将其解压：</p>
+<pre tabindex="0"><code>$ tar -xvzf pbmc_1k_v3_raw_feature_bc_matrix.tar.gz
+</code></pre><p>得到<code>raw_feature_bc_matrix/</code>文件夹，进入后将其中<code>matrix.mtx.gz</code>文件进一步解压出来：</p>
+<pre tabindex="0"><code>$ cd raw_feature_bc_matrix
+$ gunzip -k matrix.mtx.gz
+$ head matrix.mtx
+%%MatrixMarket matrix coordinate integer general
+%metadata_json: {&quot;format_version&quot;: 2, &quot;software_version&quot;: &quot;3.0.0&quot;}
+33538 6794880 3394796
+1815 9 1
+4027 9 1
+6626 9 1
+17060 9 1
+18003 9 1
+21000 9 1
+30469 9 1
+</code></pre><p>这个文件起始有两行header，随后是一个有三列的表，每列由空格分隔。这个表相当于一个DataFrame。<br>
+第一列表示基因，第二列表示细胞，第三列表示该基因在该细胞中Read的count数（和<code>umi_tools count</code>的输出一模一样）。</p>
+<p>将前两行的header去掉，把表读到R里：</p>
+<pre tabindex="0"><code>$ tail +3 matrix.mtx &gt; tmp
+$ mv tmp matrix.mtx
+$ R
+&gt; raw &lt;- read.table(&quot;matrix.mtx&quot;, sep=&quot; &quot;, header=T)
+&gt; head(raw)
+  X33538 X6794880 X3394796
+1   1815        9        1
+2   4027        9        1
+3   6626        9        1
+4  17060        9        1
+5  18003        9        1
+6  21000        9        1
+</code></pre><p>对第三列求和，这本质上相当于deduplicate之后数据里剩下的reads数：</p>
+<pre tabindex="0"><code>&gt; sum(raw$X3394796)
+[1] 10196940
+</code></pre><p>会发现这个数值就是<code>unique_confidently_mapped_reads</code>。</p>
+<p>上面介绍的方法相当于是“逆向工程”反推出<code>unique_confidently_mapped_reads</code>是多少，是一个比较hacky的办法。</p>
+<p>10X官方文档中是正儿八经从bam文件正向算的：</p>
+<blockquote>
+<p>The unique_confidently_mapped_reads are the reads with xf tag value 25, as described on <a href="https://support.10xgenomics.com/single-cell-gene-expression/software/pipelines/latest/output/bam">https://support.10xgenomics.com/single-cell-gene-expression/software/pipelines/latest/output/bam</a>. The bits are 1, 8, 16. You can obtain theunique_confidently_mapped_reads by parsing the BAM like so.</p>
+</blockquote>
+<pre tabindex="0"><code>samtools view pbmc_1k_v3_possorted_genome_bam.bam | grep 'xf:i:25' | wc -l
+</code></pre><p>可以看到，CellRanger在做Alignment时会给<code>unique_confidently_mapped_reads</code>打上一个tag<code>xf=25</code>。这里是用samtools在bam文件中抓取这些tag来计算<code>unique_confidently_mapped_reads</code>的。</p>
+<hr>
+<p>至于<code>duplicate_reads</code>，在10X给出的数据中似乎只能从bam文件抓取。</p>
+<blockquote>
+<p>The duplicate_reads are those marked with the sam flag 0x400 as explained on <a href="https://broadinstitute.github.io/picard/explain-flags.html">https://broadinstitute.github.io/picard/explain-flags.html</a> and can be obtained by running samtools flagstat.</p>
+</blockquote>
+<pre tabindex="0"><code>samtools flagstat pbmc_1k_v3_possorted_genome_bam.bam
+76920923 + 0 in total (QC-passed reads + QC-failed reads)
+10319036 + 0 secondary
+0 + 0 supplementary
+24785461 + 0 duplicates
+73840063 + 0 mapped (95.99% : N/A)
+...
+</code></pre><blockquote>
+<p>All of these samflag 0x400 reads have an xf tag value of 17, which consist of bits 1 and 16. This also means these reads do not have the xf bit of 8, which mark representative reads from a group of duplicates. The converse isn&rsquo;t true though. The xf17 consist mostly of samflag 0x400 duplicate reads but also of samflag nonduplicate reads.</p>
+</blockquote>
+<p>而如果使用<a href="https://github.com/RuiyuRayWang/ScRNAseq_smkpipe_at_Luolab"><code>ScRNAseq_smkpipe_at_Luolab</code></a>的protocol，则可以从<code>umi_tools</code>或者<code>featureCounts</code>输出的log文件抓取。</p>
+<hr>
+<p>有了<code>unique_configdently_mapped_reads</code>和<code>duplicate_reads</code>，测序饱和度就可以直接计算了：</p>
+<pre tabindex="0"><code>unique_confidently_mapped_reads = 10,196,940
+duplicate_reads = 24,785,461
+
+x = 1 - (unique_confidently_mapped_reads/(unique_confidently_mapped_reads + duplicate_reads))
+x = 1 - (10,196,940/(10,196,940 + 24,785,461))
+x = 1 - (10,196,940/34,982,401)
+x = 1 - 0.2148771
+x = 0.70851229
+</code></pre><p>这里只是计算了fastq文件全部分析完后的<code>测序饱和度</code>。如果要绘制测序饱和度曲线，则要在不同降采样水平的fastq上逐个计算。<br>
+如果利用10X给出的从bam文件抓取信息的方法，我们就可以在bam上做随机降采样，然后抓取数值，计算每个测序深度水平的<code>测序饱和度</code>了。</p>
 
                     
                     <HR width="100%" id="EOF">

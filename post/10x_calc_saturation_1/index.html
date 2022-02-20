@@ -19,6 +19,7 @@
 <meta property="og:title" content="10X CellRanger 中测序饱和度的定义与计算（一）" />
 <meta property="og:description" content="最近为了搭建单细胞测序上游分析的Pipeline，正在研究怎样对分析结果做质控（Pipeline详情移步https://github.com/RuiyuRayWang/ScRNAseq_smkpipe_at_Luolab）。参考了10X CellRanger官方网站中描述的对测序饱和度的定义和计算方法：
  10X 官方文档：什么是测序饱和度？ 10X 官方文档：测序饱和度怎样计算？  将用两篇文章记录这部分内容。
+注意：本系列文章的参考来源均为10X官方公开的信息。
 这篇文章是本系列文章的第一篇，将对相关概念和计算公式的定义进行解读。
  一、测序饱和度 和 文库复杂度 关于测序饱和度的定义，引用10X文档中的说明：
  Question: What is sequencing saturation?
@@ -39,6 +40,7 @@ library complexity (文库复杂度)，指的是一个测序文库中非冗余�
 <meta name="twitter:title" content="10X CellRanger 中测序饱和度的定义与计算（一）"/>
 <meta name="twitter:description" content="最近为了搭建单细胞测序上游分析的Pipeline，正在研究怎样对分析结果做质控（Pipeline详情移步https://github.com/RuiyuRayWang/ScRNAseq_smkpipe_at_Luolab）。参考了10X CellRanger官方网站中描述的对测序饱和度的定义和计算方法：
  10X 官方文档：什么是测序饱和度？ 10X 官方文档：测序饱和度怎样计算？  将用两篇文章记录这部分内容。
+注意：本系列文章的参考来源均为10X官方公开的信息。
 这篇文章是本系列文章的第一篇，将对相关概念和计算公式的定义进行解读。
  一、测序饱和度 和 文库复杂度 关于测序饱和度的定义，引用10X文档中的说明：
  Question: What is sequencing saturation?
@@ -507,6 +509,7 @@ Ported from <a href="https://mak1t0.cc/" target="_blank" rel="noreferrer noopene
 <li><a href="https://kb.10xgenomics.com/hc/en-us/articles/115003646912-How-is-sequencing-saturation-calculated-">10X 官方文档：测序饱和度怎样计算？</a></li>
 </ul>
 <p>将用两篇文章记录这部分内容。</p>
+<p><strong>注意：本系列文章的参考来源均为10X官方公开的信息。</strong></p>
 <p>这篇文章是本系列文章的第一篇，将对相关概念和计算公式的定义进行解读。</p>
 <hr>
 <h3 id="一测序饱和度-和-文库复杂度">一、<code>测序饱和度</code> 和 <code>文库复杂度</code></h3>
@@ -567,6 +570,8 @@ Note that the numerator of the fraction is $n_{deduped\ reads}$, not the non-uni
 <p>$$测序饱和度=1-\frac{去重后Reads数}{总Reads数}=\frac{重复Reads数}{总Reads数}$$</p>
 <p>注意重复Reads是通过Barcode和UMI定义的。两个Reads出现同样的Barcode + UMI组合，就将其中一个定义为重复；三个Reads出现同样的Barcode + UMI组合，其中两个定义为重复，剩下一个定义为去重后Read。</p>
 <p>从这个公式也可以看出，重复Reads数越高，冗余信息越多，测序饱和度也越高。</p>
+<p>该公式只计算了一个数值，代表某次测序fastq文件整个数据的测序饱和度。如果要实现10X CellRanger输出web_summary的中饱和度曲线的绘制，感觉还是比较麻烦的。理论上，需要对fastq文件做不同水平的降采样，再分别算测序饱和度。<br>
+目前还不清楚CellRanger是怎么实现一次alignment过程中输出不同测序深度下的测序饱和度的。</p>
 <section class="footnotes" role="doc-endnotes">
 <hr>
 <ol>

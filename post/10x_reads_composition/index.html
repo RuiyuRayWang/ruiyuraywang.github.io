@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html><head>
-<title>Hugo：启用Mathjax实现数学公式的编辑与显示</title>
+<title>一图看懂单细胞文库Reads的组成成分</title>
 
 
 
@@ -16,13 +16,14 @@
 
 
 
-<meta property="og:title" content="Hugo：启用Mathjax实现数学公式的编辑与显示" />
-<meta property="og:description" content="The HUGO official document has a nice blog about MathJax Support. Additionally, a blog written by Geoff Ruddock has a more concise solution: Render LaTeX math expressions in Hugo with MathJax 3.
-TL;DR  Create a file in your theme directory layouts/partials/mathjax_support.html as the following:  &lt;script&gt; MathJax = { tex: { inlineMath: [[&#39;$&#39;, &#39;$&#39;], [&#39;\\(&#39;, &#39;\\)&#39;]], displayMath: [[&#39;$$&#39;,&#39;$$&#39;], [&#39;\\[&#39;, &#39;\\]&#39;]], processEscapes: true, processEnvironments: true }, options: { skipHtmlTags: [&#39;script&#39;, &#39;noscript&#39;, &#39;style&#39;, &#39;textarea&#39;, &#39;pre&#39;] } }; window." />
+<meta property="og:title" content="一图看懂单细胞文库Reads的组成成分" />
+<meta property="og:description" content="这篇文章是前两篇技术文档的后续：
+ 10X CellRanger 中测序饱和度的定义与计算（一） 10X CellRanger 中测序饱和度的定义与计算（二）  上两篇文章成文过程中，我意识到单细胞测序文库从rawdata到deduplicated reads这套分析流程，其实是non-trivial的。Input Raw Reads从下机开始，需经过层层筛选和运算，最终只有少部分信息能保留在表达矩阵（或counts table）中。这里用一张图总结，以帮助我们更好地理解单细胞文库的建库和上游分析（Upstream Analysis）。
+  本文以ScRNAseq_smkpipe_at_Luolab为例。该方法的Chemistry和10X v2/v3的Chemistry可能非常相似，引入了cell barcode和UMI，但二者在某些技术实现上有些不同，具体是哪些区别与本文无关，在此不再赘述。" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="/post/deploy_mathjax/" /><meta property="article:section" content="post" />
-<meta property="article:published_time" content="2022-02-12T21:17:37+08:00" />
-<meta property="article:modified_time" content="2022-02-12T21:17:37+08:00" /><meta property="og:site_name" content="My Blog" />
+<meta property="og:url" content="/post/10x_reads_composition/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2022-02-20T10:55:43+08:00" />
+<meta property="article:modified_time" content="2022-02-20T10:55:43+08:00" /><meta property="og:site_name" content="My Blog" />
 
 
 
@@ -30,9 +31,10 @@ TL;DR  Create a file in your theme directory layouts/partials/mathjax_support.ht
 
 
 <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Hugo：启用Mathjax实现数学公式的编辑与显示"/>
-<meta name="twitter:description" content="The HUGO official document has a nice blog about MathJax Support. Additionally, a blog written by Geoff Ruddock has a more concise solution: Render LaTeX math expressions in Hugo with MathJax 3.
-TL;DR  Create a file in your theme directory layouts/partials/mathjax_support.html as the following:  &lt;script&gt; MathJax = { tex: { inlineMath: [[&#39;$&#39;, &#39;$&#39;], [&#39;\\(&#39;, &#39;\\)&#39;]], displayMath: [[&#39;$$&#39;,&#39;$$&#39;], [&#39;\\[&#39;, &#39;\\]&#39;]], processEscapes: true, processEnvironments: true }, options: { skipHtmlTags: [&#39;script&#39;, &#39;noscript&#39;, &#39;style&#39;, &#39;textarea&#39;, &#39;pre&#39;] } }; window."/>
+<meta name="twitter:title" content="一图看懂单细胞文库Reads的组成成分"/>
+<meta name="twitter:description" content="这篇文章是前两篇技术文档的后续：
+ 10X CellRanger 中测序饱和度的定义与计算（一） 10X CellRanger 中测序饱和度的定义与计算（二）  上两篇文章成文过程中，我意识到单细胞测序文库从rawdata到deduplicated reads这套分析流程，其实是non-trivial的。Input Raw Reads从下机开始，需经过层层筛选和运算，最终只有少部分信息能保留在表达矩阵（或counts table）中。这里用一张图总结，以帮助我们更好地理解单细胞文库的建库和上游分析（Upstream Analysis）。
+  本文以ScRNAseq_smkpipe_at_Luolab为例。该方法的Chemistry和10X v2/v3的Chemistry可能非常相似，引入了cell barcode和UMI，但二者在某些技术实现上有些不同，具体是哪些区别与本文无关，在此不再赘述。"/>
 
 
 
@@ -182,55 +184,6 @@ Ported from <a href="https://mak1t0.cc/" target="_blank" rel="noreferrer noopene
     <div class="toc animated-visibility" :class="{ invisible: scrollY <= 140 }">
 
 
-	<div class="toc-content">
-	
-		
-		
-		
-		<center>- CATALOG -</center>
-		
-		
-		<ul>
-			
-				
-				
-					
-						
-						
-						
-						
-						
-							<li>
-								<a href="#tldr" onclick="onNavClick(`#tldr-nav`)" id="tldr-nav">
-									TL;DR
-								</a>
-							</li>
-						
-						
-					
-				
-			
-				
-				
-					
-						
-						
-						
-						
-						
-							<li>
-								<a href="#todo" onclick="onNavClick(`#todo-nav`)" id="todo-nav">
-									TODO
-								</a>
-							</li>
-						
-						
-					
-				
-			
-		</ul>
-	</div>
-
 </div>
     
     <div class="pagination">
@@ -300,55 +253,6 @@ Ported from <a href="https://mak1t0.cc/" target="_blank" rel="noreferrer noopene
             <div class="toc">
 
 
-	<div class="toc-content">
-	
-		
-		
-		
-		<center>- CATALOG -</center>
-		
-		
-		<ul>
-			
-				
-				
-					
-						
-						
-						
-						
-						
-							<li>
-								<a href="#tldr" onclick="onNavClick(`#tldr-nav`)" id="tldr-nav">
-									TL;DR
-								</a>
-							</li>
-						
-						
-					
-				
-			
-				
-				
-					
-						
-						
-						
-						
-						
-							<li>
-								<a href="#todo" onclick="onNavClick(`#todo-nav`)" id="todo-nav">
-									TODO
-								</a>
-							</li>
-						
-						
-					
-				
-			
-		</ul>
-	</div>
-
 </div>
             
         </div>
@@ -399,31 +303,28 @@ Ported from <a href="https://mak1t0.cc/" target="_blank" rel="noreferrer noopene
                 
             >
                 <div class="post-title">
-                    Hugo：启用Mathjax实现数学公式的编辑与显示
+                    一图看懂单细胞文库Reads的组成成分
                     
                     <div class="post-meta">
                         
                         <time itemprop="datePublished">
-                            2022-02-12 21:17
+                            2022-02-20 10:55
                         </time>
                         
 
                         
                             <i class="material-icons" style="">folder</i>
-                                <a href="/categories/">[Hugo]</a>
+                                <a href="/categories/">[Bioinformatics]</a>
                                 &nbsp;
                         
 
                         
                             <i class="material-icons" style="">label</i>
                             
-                                <a href="/tags/hugo">Hugo</a>
+                                <a href="/tags/10x">10X</a>
                                 &nbsp;
                             
-                                <a href="/tags/blog">Blog</a>
-                                &nbsp;
-                            
-                                <a href="/tags/mathjax">Mathjax</a>
+                                <a href="/tags/single-cell-biology">Single Cell Biology</a>
                                 &nbsp;
                             
                         
@@ -436,58 +337,21 @@ Ported from <a href="https://mak1t0.cc/" target="_blank" rel="noreferrer noopene
                 
                 <div class="post-body" v-pre>
                 
-                    <p>The HUGO official document has a nice blog about <a href="https://bwaycer.github.io/hugo_tutorial.hugo/tutorials/mathjax/">MathJax Support</a>.
-Additionally, a blog written by Geoff Ruddock has a more concise solution: <a href="https://geoffruddock.com/math-typesetting-in-hugo/">Render LaTeX math expressions in Hugo with MathJax 3</a>.</p>
-<h1 id="tldr">TL;DR</h1>
-<ol>
-<li>Create a file in your theme directory <code>layouts/partials/mathjax_support.html</code> as the following:</li>
-</ol>
-<pre tabindex="0"><code>&lt;script&gt;
-  MathJax = {
-    tex: {
-      inlineMath: [['$', '$'], ['\\(', '\\)']],
-      displayMath: [['$$','$$'], ['\\[', '\\]']],
-      processEscapes: true,
-      processEnvironments: true
-    },
-    options: {
-      skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
-    }
-  };
-
-  window.addEventListener('load', (event) =&gt; {
-      document.querySelectorAll(&quot;mjx-container&quot;).forEach(function(x){
-        x.parentElement.classList += 'has-jax'})
-    });
-
-&lt;/script&gt;
-&lt;script src=&quot;https://polyfill.io/v3/polyfill.min.js?features=es6&quot;&gt;&lt;/script&gt;
-&lt;script type=&quot;text/javascript&quot; id=&quot;MathJax-script&quot; async
-  src=&quot;https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js&quot;&gt;&lt;/script&gt;
-</code></pre><ol start="2">
-<li>Next, open the file <code>layouts/partials/header.html</code> and add the following line just before the closing <!-- raw HTML omitted --> tag:</li>
-</ol>
-<pre tabindex="0"><code>{{ if .Params.mathjax }}{{ partial &quot;mathjax_support.html&quot; . }}{{ end }}
-</code></pre><ol start="3">
-<li>Then, add the following lines to your CSS file. You may need to tinker with the contents here depending on your theme, these are just the settings which worked for me.</li>
-</ol>
-<pre tabindex="0"><code>code.has-jax {font: inherit;
-              font-size: 100%;
-              background: inherit;
-              border: inherit;
-              color: #515151;}
-</code></pre><p>To modify css, refer to <a href="https://www.banjocode.com/post/hugo/custom-css/">Add Custom CSS Or Javascript To Your Hugo Site</a>。</p>
-<ol start="4">
-<li>Finally, add <code>mathjax: true</code> to the YAML frontmatter of any pages containing math markup. Alternatively, you could omit the outer <code>{{ if .Params.mathjax }} … {{ end }}</code> conditional above to load the library automatically on all pages. However given that this library is quite heavy (it’s consistently the asset that Google PageSpeed Insights complains the most about) and that only &lt;20% of my blog posts contain math at all, this is worth the extra effort for me.</li>
-</ol>
+                    <p>这篇文章是前两篇技术文档的后续：</p>
+<ul>
+<li><a href="/post/10x_calc_saturation_1/">10X CellRanger 中测序饱和度的定义与计算（一）</a></li>
+<li><a href="/post/10x_calc_saturation_2/">10X CellRanger 中测序饱和度的定义与计算（二）</a></li>
+</ul>
+<p>上两篇文章成文过程中，我意识到单细胞测序文库从rawdata到deduplicated reads这套分析流程，其实是non-trivial的。Input Raw Reads从下机开始，需经过层层筛选和运算，最终只有少部分信息能保留在表达矩阵（或counts table）中。这里用一张图总结，以帮助我们更好地理解单细胞文库的建库和上游分析（Upstream Analysis）。</p>
 <hr>
-<h1 id="todo">TODO</h1>
-<p>走完上面的流程后还是发现MathJax中<code>\color</code>和<code>\textcolor</code>不能修改字体颜色。<br>
-custom.css似乎也没有正确配置。</p>
+<!-- raw HTML omitted -->
+<p><img src="../figs/reads_composition.png" alt="Reads Composition in scRNA-seq with Barcodes and UMI"></p>
+<hr>
+<p>本文以<a href="https://github.com/RuiyuRayWang/ScRNAseq_smkpipe_at_Luolab">ScRNAseq_smkpipe_at_Luolab</a>为例。该方法的Chemistry和<a href="https://teichlab.github.io/scg_lib_structs/methods_html/10xChromium3.html">10X v2/v3的Chemistry</a>可能非常相似，引入了cell barcode和UMI，但二者在某些技术实现上有些不同，具体是哪些区别与本文无关，在此不再赘述。</p>
 
                     
                     <HR width="100%" id="EOF">
-		    <p style="color:#777;">Last modified on 2022-02-12</p>
+		    <p style="color:#777;">Last modified on 2022-02-20</p>
                     
                 </div>
             </div>
@@ -496,14 +360,14 @@ custom.css似乎也没有正确配置。</p>
             <nav class="post-pagination">
 
                 
-                <a class="newer-posts" href="/post/10x_reads_composition/">
-			Next<br>一图看懂单细胞文库Reads的组成成分
+                <a class="newer-posts">
+			Next<br>No newer posts.
                 </a>
                 
                 
                 
-                <a class="older-posts" href="/post/10x_calc_saturation_1/">
-			Previous<br>10X CellRanger 中测序饱和度的定义与计算（一）
+                <a class="older-posts" href="/post/deploy_mathjax/">
+			Previous<br>Hugo：启用Mathjax实现数学公式的编辑与显示
                 </a>
                 
             </nav>

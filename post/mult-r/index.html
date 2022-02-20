@@ -670,7 +670,7 @@ $ sudo add-apt-repository 'deb https://cloud.r-project.org/bin/linux/ubuntu bion
 $ sudo apt update
 $ sudo apt install r-base
 </code></pre><p>Recently, I ran into an issue with <a href="https://github.com/Irrationone/cellassign"><code>cellassign</code></a> when analyzing single cell datasets. I suspected that reverting to previous R versions might <a href="https://github.com/Irrationone/cellassign/issues/92">resolve the problem</a>.</p>
-<p>Plus, the GPG key added earlier is raising errors everytime I invoke <code>sudo apt update</code>, which is quite annoying. So I figured it might be better to build R from source.</p>
+<p>Plus, the GPG key added earlier is raising errors everytime I invoke <code>sudo apt update</code>, which is quite annoying. So I figured it might be better to re-build R from source.</p>
 <h2 id="uninstall-previously-built-r-versions">Uninstall previously built R versions</h2>
 <p>First check GPG Keys added by previous R built and remove it.</p>
 <pre tabindex="0"><code>$ sudo apt-key list
