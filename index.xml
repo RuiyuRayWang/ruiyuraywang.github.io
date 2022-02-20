@@ -25,7 +25,7 @@
 &lt;p&gt;上两篇文章成文过程中，我意识到单细胞测序文库从rawdata到deduplicated reads这套分析流程，其实是non-trivial的。Input Raw Reads从下机开始，需经过层层筛选和运算，最终只有少部分信息能保留在表达矩阵（或counts table）中。这里用一张图总结，以帮助我们更好地理解单细胞文库的建库和上游分析（Upstream Analysis）。&lt;/p&gt;
 &lt;hr&gt;
 &lt;!-- raw HTML omitted --&gt;
-&lt;p&gt;&lt;img src=&#34;../figs/reads_composition.png&#34; alt=&#34;Reads Composition in scRNA-seq with Barcodes and UMI&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;content/figs/reads_composition.png&#34;&gt;Reads Composition in scRNA-seq with Barcodes and UMI&lt;/a&gt;&lt;/p&gt;
 &lt;hr&gt;
 &lt;p&gt;本文以&lt;a href=&#34;https://github.com/RuiyuRayWang/ScRNAseq_smkpipe_at_Luolab&#34;&gt;ScRNAseq_smkpipe_at_Luolab&lt;/a&gt;为例。该方法的Chemistry和&lt;a href=&#34;https://teichlab.github.io/scg_lib_structs/methods_html/10xChromium3.html&#34;&gt;10X v2/v3的Chemistry&lt;/a&gt;可能非常相似，引入了cell barcode和UMI，但二者在某些技术实现上有些不同，具体是哪些区别与本文无关，在此不再赘述。&lt;/p&gt;
 - /post/10x_reads_composition/ - </description>

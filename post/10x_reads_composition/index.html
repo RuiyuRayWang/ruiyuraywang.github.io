@@ -19,7 +19,8 @@
 <meta property="og:title" content="一图看懂单细胞文库Reads的组成成分" />
 <meta property="og:description" content="这篇文章是前两篇技术文档的后续：
  10X CellRanger 中测序饱和度的定义与计算（一） 10X CellRanger 中测序饱和度的定义与计算（二）  上两篇文章成文过程中，我意识到单细胞测序文库从rawdata到deduplicated reads这套分析流程，其实是non-trivial的。Input Raw Reads从下机开始，需经过层层筛选和运算，最终只有少部分信息能保留在表达矩阵（或counts table）中。这里用一张图总结，以帮助我们更好地理解单细胞文库的建库和上游分析（Upstream Analysis）。
-  本文以ScRNAseq_smkpipe_at_Luolab为例。该方法的Chemistry和10X v2/v3的Chemistry可能非常相似，引入了cell barcode和UMI，但二者在某些技术实现上有些不同，具体是哪些区别与本文无关，在此不再赘述。" />
+ Reads Composition in scRNA-seq with Barcodes and UMI
+ 本文以ScRNAseq_smkpipe_at_Luolab为例。该方法的Chemistry和10X v2/v3的Chemistry可能非常相似，引入了cell barcode和UMI，但二者在某些技术实现上有些不同，具体是哪些区别与本文无关，在此不再赘述。" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="/post/10x_reads_composition/" /><meta property="article:section" content="post" />
 <meta property="article:published_time" content="2022-02-20T10:55:43+08:00" />
@@ -34,7 +35,8 @@
 <meta name="twitter:title" content="一图看懂单细胞文库Reads的组成成分"/>
 <meta name="twitter:description" content="这篇文章是前两篇技术文档的后续：
  10X CellRanger 中测序饱和度的定义与计算（一） 10X CellRanger 中测序饱和度的定义与计算（二）  上两篇文章成文过程中，我意识到单细胞测序文库从rawdata到deduplicated reads这套分析流程，其实是non-trivial的。Input Raw Reads从下机开始，需经过层层筛选和运算，最终只有少部分信息能保留在表达矩阵（或counts table）中。这里用一张图总结，以帮助我们更好地理解单细胞文库的建库和上游分析（Upstream Analysis）。
-  本文以ScRNAseq_smkpipe_at_Luolab为例。该方法的Chemistry和10X v2/v3的Chemistry可能非常相似，引入了cell barcode和UMI，但二者在某些技术实现上有些不同，具体是哪些区别与本文无关，在此不再赘述。"/>
+ Reads Composition in scRNA-seq with Barcodes and UMI
+ 本文以ScRNAseq_smkpipe_at_Luolab为例。该方法的Chemistry和10X v2/v3的Chemistry可能非常相似，引入了cell barcode和UMI，但二者在某些技术实现上有些不同，具体是哪些区别与本文无关，在此不再赘述。"/>
 
 
 
@@ -345,7 +347,7 @@ Ported from <a href="https://mak1t0.cc/" target="_blank" rel="noreferrer noopene
 <p>上两篇文章成文过程中，我意识到单细胞测序文库从rawdata到deduplicated reads这套分析流程，其实是non-trivial的。Input Raw Reads从下机开始，需经过层层筛选和运算，最终只有少部分信息能保留在表达矩阵（或counts table）中。这里用一张图总结，以帮助我们更好地理解单细胞文库的建库和上游分析（Upstream Analysis）。</p>
 <hr>
 <!-- raw HTML omitted -->
-<p><img src="../figs/reads_composition.png" alt="Reads Composition in scRNA-seq with Barcodes and UMI"></p>
+<p><a href="content/figs/reads_composition.png">Reads Composition in scRNA-seq with Barcodes and UMI</a></p>
 <hr>
 <p>本文以<a href="https://github.com/RuiyuRayWang/ScRNAseq_smkpipe_at_Luolab">ScRNAseq_smkpipe_at_Luolab</a>为例。该方法的Chemistry和<a href="https://teichlab.github.io/scg_lib_structs/methods_html/10xChromium3.html">10X v2/v3的Chemistry</a>可能非常相似，引入了cell barcode和UMI，但二者在某些技术实现上有些不同，具体是哪些区别与本文无关，在此不再赘述。</p>
 
