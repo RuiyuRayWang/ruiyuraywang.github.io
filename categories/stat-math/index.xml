@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Stat &amp; Math on Karmotrine Dream</title>
+    <link>/categories/stat-math/</link>
+    <description>Recent content in Stat &amp; Math on Karmotrine Dream</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 21 Feb 2022 18:56:53 +0800</lastBuildDate><atom:link href="/categories/stat-math/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Tidy Data</title>
+      <link>/post/tidy_data/</link>
+      <pubDate>Mon, 21 Feb 2022 18:56:53 +0800</pubDate>
+      
+      <guid>/post/tidy_data/</guid>
+      <description>Hadley Wickham提出的tidydata的概念如今已经深入人心，无论是R还是Python都能见到Tidy的身影。
+Tidydata的思维方式，无论是科研还是日常工作都非常有用。
+就好比进入21世纪，基本计算机操作逐渐演变为当下社会一项几乎必修的技能，将来50年内Tidydata的操作也一定会演变成社会的一项必修技能。
+我在想如果要开一个计算生物学101的课程，&amp;ldquo;Tidy Data&amp;quot;这篇文章一定是必读清单排前十的一篇文章。并且，一定要让学生花10个学时以上的时间，上机实操锻炼Tidydata的操作。</description>
+    </item>
+    
+  </channel>
+</rss>

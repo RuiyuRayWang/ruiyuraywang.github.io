@@ -6,7 +6,16 @@
     <description>Recent content in Categories on Karmotrine Dream</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 20 Feb 2022 10:55:43 +0800</lastBuildDate><atom:link href="/categories/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 21 Feb 2022 18:56:53 +0800</lastBuildDate><atom:link href="/categories/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Stat &amp; Math</title>
+      <link>/categories/stat-math/</link>
+      <pubDate>Mon, 21 Feb 2022 18:56:53 +0800</pubDate>
+      
+      <guid>/categories/stat-math/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>Bioinformatics</title>
       <link>/categories/bioinformatics/</link>

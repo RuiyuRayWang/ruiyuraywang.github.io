@@ -5,9 +5,27 @@
     <description>Recent content on Karmotrine Dream</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 20 Feb 2022 10:55:43 +0800</lastBuildDate>
+    <lastBuildDate>Mon, 21 Feb 2022 18:56:53 +0800</lastBuildDate>
     
         <atom:link href="/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    
+        <item>
+        <title>Tidy Data</title>
+        <link>/post/tidy_data/</link>
+        <pubDate>Mon, 21 Feb 2022 18:56:53 +0800</pubDate>
+        
+        <guid>/post/tidy_data/</guid>
+        <description>Karmotrine Dream /post/tidy_data/ -&lt;figure&gt;&lt;img src=&#34;../../figs/tidydata.png&#34;/&gt;
+&lt;/figure&gt;
+
+&lt;p&gt;Hadley Wickham提出的tidydata的概念如今已经深入人心，无论是R还是Python都能见到Tidy的身影。&lt;/p&gt;
+&lt;p&gt;Tidydata的思维方式，无论是科研还是日常工作都非常有用。&lt;/p&gt;
+&lt;p&gt;就好比进入21世纪，基本计算机操作逐渐演变为当下社会一项几乎必修的技能，将来50年内Tidydata的操作也一定会演变成社会的一项必修技能。&lt;/p&gt;
+&lt;p&gt;我在想如果要开一个&lt;code&gt;计算生物学101&lt;/code&gt;的课程，&amp;ldquo;Tidy Data&amp;quot;这篇文章一定是必读清单排前十的一篇文章。并且，一定要让学生花10个学时以上的时间，上机实操锻炼Tidydata的操作。&lt;/p&gt;
+- /post/tidy_data/ - </description>
+        </item>
     
     
     
@@ -868,98 +886,6 @@ Referring to this post: &lt;a href=&#34;https://support.rstudio.com/hc/en-us/art
 &lt;/li&gt;
 &lt;/ol&gt;
 - /post/frq-used/ - </description>
-        </item>
-    
-    
-    
-        <item>
-        <title>咋地，你也想整点计算生物学玩玩？</title>
-        <link>/post/on-comp-bio/</link>
-        <pubDate>Thu, 02 Dec 2021 16:49:27 +0800</pubDate>
-        
-        <guid>/post/on-comp-bio/</guid>
-        <description>Karmotrine Dream /post/on-comp-bio/ -&lt;p&gt;Nick Loman和Mick Watson在2013年写了一篇Commentary发在NBT上，题为 &lt;a href=&#34;https://doi.org/10.1038/nbt.2740&#34;&gt;&lt;em&gt;So you want to be a computational biologist?&lt;/em&gt;&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;文章短小精悍，非常精彩。很多细节能够看出作者是实打实的计算生物学从业者，给出了很多中肯的建议。对于所有有志于从事计算生物学、生物信息学的人，这篇文章值得反复阅读。&lt;/p&gt;
-&lt;p&gt;几句题外话：Nick Loman 79年生人，年轻时与其兄弟Rupert Loman沉迷电子游戏，后来二人发现比起打游戏他们更擅长组织管理，于是合伙创立了公司Eurogamer Network，后者逐渐发展为欧洲最大的电子媒体之一Gamer Network。&lt;br&gt;
-2004年，Nick步入大学，跳出Eurogamer，一头扎进生命医学领域，开始了自己的学术生涯。这哥们后来科研做得风生水起，h-index高达68，现任伯明翰大学教授（2017年转正 #Twitter）~Research Fellow（居然还不是教授&amp;hellip;）~。2018年，Gamer Network被出版巨头Reed收购，说不定Nick利用自己学者身份从中斡旋了一番（没有实锤，我猜的）。&lt;/p&gt;
-&lt;p&gt;Recently I ran into this wonderful &lt;a href=&#34;https://doi.org/10.1038/nbt.2740&#34;&gt;article&lt;/a&gt; published in Nature Biotechnology written by Nick Loman and Mick Watson, about how to become a computational biologist. The article is so brilliant and I thought I should dedicate my (actual) first post to write about it.&lt;/p&gt;
-&lt;p&gt;I&amp;rsquo;ll only put here excerptions of the article that I feel excited about. For full article, refer to the links above.&lt;/p&gt;
-&lt;hr&gt;
-&lt;blockquote&gt;
-&lt;p&gt;The term ‘computational biologist’ can encompass several roles, including data analyst, data curator, database developer, statistician, mathematical modeler, bioinformatician, software developer, ontologist — and many more. What’s clear is that computers are now essential components of modern biological research, and scientists are being asked to adopt new skills in computational biology and master new terminology. Whether you’re a student, a professor or somewhere in between, if you increasingly find that computational analysis is important to your research, follow the advice below and start along the road towards becoming a computational biologist!&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h2 id=&#34;1-understand-your-goals-and-choose-appropriate-methods&#34;&gt;1. Understand your goals and choose appropriate methods&lt;/h2&gt;
-&lt;blockquote&gt;
-&lt;p&gt;Key to good computational biology is the selection and use of appropriate software. Before you can usefully interpret the output of a piece of software, you must understand what the software is doing. &amp;hellip; That doesn’t mean you need to read through each line of source code, but you should have a grasp of the concepts.&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;There is always more tools to choose from than we can actually use. Choose tools wisely. Define your work with words accurately and search carefully. Use well-maintained tools. Use tools with higher user base. High popularity of a tool usually indicates good maintenance. If you decide to use a less popular tool, know the risk: you may experience more bugs or even criticisms during publication.&lt;/p&gt;
-&lt;p&gt;Understand what the tool is doing, but don&amp;rsquo;t dive into the technical details too early. Having a good grasp of what the inputs and outputs are is usually enough for doing the job.&lt;/p&gt;
-&lt;p&gt;Critically, one must also have a good understanding of the biological question at hand. No tool fits all problems. Under different scenarios, one may have to look for different tools to solve the problem.&lt;/p&gt;
-&lt;h2 id=&#34;2-set-traps-for-your-own-scripts-and-other-peoples&#34;&gt;2. Set traps for your own scripts and other people’s&lt;/h2&gt;
-&lt;blockquote&gt;
-&lt;p&gt;How do you know your script, software or pipe- line is working? Computers will happily output results for the most bizarre of input data, and the absence of an error message is not an indica- tion of success.&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;Write tests!&lt;/p&gt;
-&lt;p&gt;Okay I concede, I don&amp;rsquo;t like writing tests, but I have my own ways to check my codes. If you like me, at least make your codes output some intermediate steps, and design a &amp;ldquo;protocol&amp;rdquo; to manually check with them to ensure that the codes worked properly.&lt;/p&gt;
-&lt;h2 id=&#34;3-youre-a-scientist-not-a-programmer&#34;&gt;3. You’re a scientist, not a programmer(!!!)&lt;/h2&gt;
-&lt;blockquote&gt;
-&lt;p&gt;The perfect is the enemy of the good. Remember you are a scientist and the quality of your research is what is important, &lt;strong&gt;NOT&lt;/strong&gt; how pretty your source code looks. Perfectly written, extensively documented, elegant code that gets the answer wrong is not as useful as a basic script that gets it right. Having said that, once you’re sure your core algorithm works, spend time making it elegant and documenting how to use it. Use your biological knowledge as much as possible—that’s what makes you a computational biologist.&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;&lt;strong&gt;This is THE most important take home message.&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;The first rule of being a computational biologicst, is that you should make the center of your work biology, not programming.&lt;/p&gt;
-&lt;h2 id=&#34;4-use-version-control-software&#34;&gt;4. Use Version Control Software&lt;/h2&gt;
-&lt;blockquote&gt;
-&lt;p&gt;Versioning will help you track changes to your code, maintain multiple versions and to work collaboratively with others. Using a standard tool, such as Git or Subversion, you will also be able to publish your code easily. Be nice to your future self. A few well-placed README files explaining the choices you made and why you made them will be a boon in months or years when you return to a project. Document your code and scripts so that you understand what they do. When you come to publish your work, try publishing the scripts and methods you used to generate your results so that others can reproduce them. Also consider keeping a digital laboratory notebook to document your analyses as you perform them. Repositories, such as Github, are ideal for this and also help you maintain copies of the repository to serve as off-site backups.&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;Learn to use Git!&lt;/p&gt;
-&lt;p&gt;It&amp;rsquo;s extremely powerful and useful.&lt;/p&gt;
-&lt;p&gt;If you haven&amp;rsquo;t already, sign up for github.&lt;/p&gt;
-&lt;p&gt;With github, you can setup a personal blog just like I do, and even use it as a digital laboratory notebook.&lt;/p&gt;
-&lt;h2 id=&#34;5-pipelineitis-is-a-nasty-disease&#34;&gt;5. Pipelineitis is a nasty disease(!!)&lt;/h2&gt;
-&lt;blockquote&gt;
-&lt;p&gt;Pipelines are great for running exactly the same set of steps in a repetitive fashion, and for sharing protocols with others, but they force you into a rigid way of thinking and can decrease creativity.&lt;br&gt;
-&lt;strong&gt;Warning: don’t pipeline too early.&lt;/strong&gt; Get a method working before you turn it into a pipeline. And even then, does it need to be a pipeline? Have you saved time? Is your pipeline really of use to others? If those steps are only ever going to be run by you, then a simple script will suffice and any attempts at pipelining will simply waste time. Similarly, if those steps will only ever be run once, just run them once, document the fact you did so and move on.&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;This is mind blowing. Indeed, fancy pipelines may make you look super geeky and professional, but it&amp;rsquo;s really not the center of the work for a computational biologist.&lt;/p&gt;
-&lt;p&gt;As a scientist, focus on solving scientific questions, and avoid falling into the trap of &amp;ldquo;coding frenzy&amp;rdquo;.&lt;/p&gt;
-&lt;h2 id=&#34;6-an-obama-frame-of-mind&#34;&gt;6. An Obama frame of mind&lt;/h2&gt;
-&lt;blockquote&gt;
-&lt;p&gt;Yes you can! As a computational biologist, you will need to be creative, from tweaking exist- ing methods to developing entirely new ones. Be adventurous, be prepared to fail, but keep going. It’s amazing what you can achieve by using Google, by asking other people in the field and by teaching yourself how to solve particular problems.&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;Make good use of Google.&lt;/p&gt;
-&lt;h2 id=&#34;7-be-suspicious-and-trust-nobody&#34;&gt;7. Be suspicious and trust nobody&lt;/h2&gt;
-&lt;blockquote&gt;
-&lt;p&gt;The following experiment is often performed during statistics training. First, a large matrix of random numbers is created and each column is designated as ‘case’ or ‘control’. A statistical test is then applied to each row to test for significant differences between the case data and the control data. You should not be surprised to learn that hundreds of rows come back with P values indicating statistical significance. Biological datasets, such as those generated by genomics experiments are just like this, large and full of noise. &lt;strong&gt;Your data analysis will produce both false positives and false negatives; and there may be systematic bias in the data, introduced either in the experiment or during the analysis.&lt;/strong&gt;&lt;br&gt;
-There is a temptation, even among biologists trained in statistical techniques, to throw caution to the wind when particular software or pipelines produce an interesting result. Instead, treat results with great suspicion, and carry out further tests to determine whether the results can be explained by experimental error or bias. If multiple approaches agree, then your confidence in those answers increases. But for many findings, validation and further work in the laboratory may be necessary. Knowledge of biology is vital in the interpretation of computational results. Setting traps, or tests, as mentioned above, is only part of this. Those tests are meant to ensure that your software or pipeline is working as you expect it to work; it doesn’t necessarily mean that the answers produced are correct.&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h2 id=&#34;8-the-right-tool-for-the-job&#34;&gt;8. The right tool for the job&lt;/h2&gt;
-&lt;blockquote&gt;
-&lt;p&gt;Become comfortable working from the UNIX/Linux command line. &lt;strong&gt;The command line is incredibly powerful&lt;/strong&gt;, allowing you greater control over what software is doing and allowing you to run and control multiple jobs at once. Most bioinformatics software is designed to be run from the command line. Learn about compute clusters and how to run hundreds of jobs in parallel. You’ll need to be able to code, but the choice of language is not as critical as you may be led to believe by computer scientists. Each language has strengths and weaknesses, and you may have to use more than one to get the job done.&lt;br&gt;
-Bear in mind that choosing a more popular language will let you benefit from a larger library of existing toolsets, for example the &lt;a href=&#34;http://www.open-bio.org/wiki/Main_Page&#34;&gt;Bio* projects&lt;/a&gt; from the Open Bioinformatics Foundation. Microsoft Excel is a spreadsheet program, and unless used very carefully, is not suitable for biological data. Store your experimental data, in structured text files or in an SQL database. Employing basic database practice, such as normalization (i.e., ensuring a single place for each piece of data associated with your project), means there are fewer chances to make a mistake later. Make sure everything is backed up, regularly.&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;These are very basic yet critical advice for computational biology. Let me summarize these in shorter phrases:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Learn UNIX/Linux command line&lt;/li&gt;
-&lt;li&gt;Learn about computer clusters and parallel processing&lt;/li&gt;
-&lt;li&gt;Learn a few coding languages, but don&amp;rsquo;t be too obsessed with them&lt;/li&gt;
-&lt;li&gt;Learn to manage data properly: storage, processing, backup&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2 id=&#34;9-be-a-detective&#34;&gt;9. Be a detective&lt;/h2&gt;
-&lt;blockquote&gt;
-&lt;p&gt;As a computational biologist, a lot of your time will be spent analyzing and interpreting data. The data are telling you something. They contain a story and it’s your job to find out what that story is. Unless you’re very lucky, it probably won’t be obvious. Finding out will not be easy. You will have to think about &lt;strong&gt;how the experiment was performed&lt;/strong&gt;; &lt;strong&gt;how the analysis was performed&lt;/strong&gt;; and &lt;strong&gt;what the results are telling you&lt;/strong&gt;. You will need to confidently disregard, or control for, what you think are errors and systematic biases in the data.&lt;br&gt;
-To do the above you may need to talk to other scientists involved in the work, or integrate and analyze additional data. You may need to propose follow-up experiments, designed to test any hypotheses you generate. Remember, the real story may not be in your data at all! If the biological system you’re interested in hinges on phosphorylation of a protein, then you probably won’t see this effect in your RNA-seq data. You are basically a detective. Work the data. Figure it out.&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h2 id=&#34;10-someone-has-already-done-this-find-them&#34;&gt;10. Someone has already done this. Find them!&lt;/h2&gt;
-&lt;blockquote&gt;
-&lt;p&gt;No matter how gnarly a problem or how cutting-edge a method, there is a pretty good chance someone out there has tried to tackle it already. Two excellent resources for discussing problems with software are BioStars (&lt;a href=&#34;http://www.biostars.org/&#34;&gt;http://www.biostars.org/&lt;/a&gt;) and SEQanswers (&lt;a href=&#34;http://seqanswers.com/)&#34;&gt;http://seqanswers.com/)&lt;/a&gt;. Twitter is another place where you will be able to find advice and links to resources and papers. Hook up with other computational biologists in your department or institute. There is likely to be a local computational biology meeting or interest group in your area, so find it and join up; if there isn’t, why not start your own like Nick did!&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;Biostar, SEQanswers, and StackOverflow are the bests!&lt;/p&gt;
-&lt;hr&gt;
-&lt;p&gt;上面这些讲得总归是理想情况。做计算生物学（除了做算法开发方向)，只要是研究生物学问题，必然还是要等生物学家做完实验，然后才能拿到数据。&lt;/p&gt;
-&lt;p&gt;如果课题组氛围好，能和生物学家好好交流，那是最好的情况。在实验开始前大家坐下来先聊一聊：Define The Biological Question，明确研究目标，尽可能将实验设计完善，将可能出现的问题讨论交流清楚，再开展实验。当然这也是极为理想的情况，实际做研究可能没有机会做这么充分的准备。&lt;/p&gt;
-&lt;p&gt;最常见的情况是生物学家做了个实验，然后把数据丢到我们手里，读入数据一看发现数据质量多少有点问题，实验设计也许也没那么“工整”，这时的分析就有讲究了。当然这些内容和本文无关，在此不再赘述。&lt;/p&gt;
-&lt;p&gt;不管怎么说，一个训练有素的计算生物学家需要对生物学问题有比较好的把握，对工具也得具备一定程度的理解。不见得需要精通每一个工具，但是基本的计算机操作是基础中的基础，比如UNIX/LINUX操作系统的大体框架应该有个概念（Windows不算！），硬件知识比如CPU显卡内存主板硬盘多少得懂一点，CLI/bash的操作必须熟练掌握，能熟练使用vim绝对是加分项，脚本语言（i.e. Python、R）至少掌握一个，这些都是基本功。建立在这些的基础上，还要寻找有意义的、新颖的生物学课题。好的科学问题才是一切的核心！&lt;/p&gt;
-- /post/on-comp-bio/ - </description>
         </item>
     
     
