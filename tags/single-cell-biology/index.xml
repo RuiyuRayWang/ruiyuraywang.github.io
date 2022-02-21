@@ -14,9 +14,11 @@
       
       <guid>/post/10x_reads_composition/</guid>
       <description>这篇文章是前两篇技术文档的后续：
- 10X CellRanger 中测序饱和度的定义与计算（一） 10X CellRanger 中测序饱和度的定义与计算（二）  上两篇文章成文过程中，我意识到单细胞测序文库从rawdata到deduplicated reads这套分析流程，其实是non-trivial的。Input Raw Reads从下机开始，需经过层层筛选和运算，最终只有少部分信息能保留在表达矩阵（或counts table）中。这里用一张图总结，以帮助我们更好地理解单细胞文库的建库和上游分析（Upstream Analysis）。
- Reads Composition in scRNA-seq with Barcodes and UMI
- 本文以ScRNAseq_smkpipe_at_Luolab为例。该方法的Chemistry和10X v2/v3的Chemistry可能非常相似，引入了cell barcode和UMI，但二者在某些技术实现上有些不同，具体是哪些区别与本文无关，在此不再赘述。</description>
+ 10X CellRanger 中测序饱和度的定义与计算（一） 10X CellRanger 中测序饱和度的定义与计算（二）  前两篇文章成文过程中我意识到，单细胞测序文库从Raw Data到Deduplicated Reads，其实是一个non-trivial的流程。从fastq文件下机开始，不同来源的Reads需经过层层计算和筛选，最终只有少部分Reads能保留在表达矩阵（或counts table）中。这里用一张图总结，以帮助我们更好地理解单细胞文库的建库和上游分析（Upstream Analysis）。
+   以ScRNAseq_smkpipe_at_Luolab的分析pipeline为例。
+这套流程主要针对使用了Barcode + UMI的技术。
+流程图读法：从下往上读，不同颜色代表不同分析阶段的Reads；画斜条纹阴影的线段表示当前步骤到下一步中被清除掉的Reads。
+ 黑色：Total Input Reads，一般我用的是测序下机后的Clean Reads（公司给的QC质控后的Cleandata） 黑色-&amp;gt;紫色：umi_tools whitelist, wash_whitelist, umi_tools extract 黑色阴影：Reads with Non-correctable Reads, invalid Barcode &amp;amp; UMI (discarded) 紫色：Barcode有效的Reads（Reads with valid Barcode &amp;amp; UMI） 紫色-&amp;gt;黄色：STAR 紫色阴影：Reads NOT Unique Mapped to Genome (discarded) 黄色：Unique Mapped Reads，在10X中也叫Confidently Mapped Reads（Unique Mapped, valid Barcode &amp;amp; UMI Reads） 黄色-&amp;gt;绿色：featureCounts 黄色阴影：Unique Mapped, valid Barcode &amp;amp; UMI but NOT assigned to feature 绿色：Effective Reads，即Unique Mapped, valid Barcode &amp;amp; UMI, feature assigned Reads 绿色-&amp;gt;蓝色：umi_tools count 蓝色阴影：Reads Collapsed due to UMI deduplication 蓝色：Deduplicated Reads，即最终用于生成表达矩阵的对Reads计数的结果  有了这张图，我们可以做一个简单直观的推论：如果想提高单细胞测序的技术质量，则必须尽可能减少阴影部分的Reads在总文库中的比例。</description>
     </item>
     
     <item>
