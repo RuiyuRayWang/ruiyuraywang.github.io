@@ -11,7 +11,13 @@
     <loc>/post/</loc>
     <lastmod>2022-02-21T18:56:53+08:00</lastmod>
   </url><url>
+    <loc>/tags/r/</loc>
+    <lastmod>2022-02-21T18:56:53+08:00</lastmod>
+  </url><url>
     <loc>/categories/stat-math/</loc>
+    <lastmod>2022-02-21T18:56:53+08:00</lastmod>
+  </url><url>
+    <loc>/tags/</loc>
     <lastmod>2022-02-21T18:56:53+08:00</lastmod>
   </url><url>
     <loc>/post/tidy_data/</loc>
@@ -24,9 +30,6 @@
     <lastmod>2022-02-20T10:55:43+08:00</lastmod>
   </url><url>
     <loc>/tags/single-cell-biology/</loc>
-    <lastmod>2022-02-20T10:55:43+08:00</lastmod>
-  </url><url>
-    <loc>/tags/</loc>
     <lastmod>2022-02-20T10:55:43+08:00</lastmod>
   </url><url>
     <loc>/post/10x_reads_composition/</loc>
@@ -73,9 +76,6 @@
   </url><url>
     <loc>/post/build-tensorflow/</loc>
     <lastmod>2021-12-05T22:57:25+08:00</lastmod>
-  </url><url>
-    <loc>/tags/r/</loc>
-    <lastmod>2021-12-02T19:54:09+08:00</lastmod>
   </url><url>
     <loc>/tags/rstudio/</loc>
     <lastmod>2021-12-02T19:54:09+08:00</lastmod>
