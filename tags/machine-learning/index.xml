@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Machine Learning on Karmotrine Dream</title>
+    <link>/tags/machine-learning/</link>
+    <description>Recent content in Machine Learning on Karmotrine Dream</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 27 May 2022 09:21:08 +0800</lastBuildDate><atom:link href="/tags/machine-learning/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>The Bitter Lesson</title>
+      <link>/post/the_bitter_lesson/</link>
+      <pubDate>Fri, 27 May 2022 09:21:08 +0800</pubDate>
+      
+      <guid>/post/the_bitter_lesson/</guid>
+      <description>1
+ Most AI research has been conducted as if the computation available to the agent were constant (in which case leveraging human knowledge would be one of the only ways to improve performance) but, over a slightly longer time than a typical research project, massively more computation inevitably becomes available. Seeking an improvement that makes a difference in the shorter term, researchers seek to leverage their human knowledge of the domain, but the only thing that matters in the long run is the leveraging of computation.</description>
+    </item>
+    
+    <item>
+      <title>Tensorflow：多版本部署、系统配置与版本切换</title>
+      <link>/post/build-tensorflow/</link>
+      <pubDate>Sun, 05 Dec 2021 22:57:25 +0800</pubDate>
+      
+      <guid>/post/build-tensorflow/</guid>
+      <description>Building Environments for Cellassign and CellBLAST with multiple Tensorflow (GPU) Versions on Ubuntu As promised, I will write about my experience with installing tensorflow.
+Why did I ever have to build Tensorflow myself?
+The reason is that I was trying to use two tools: cellassign and Cell_BLAST, but they depend on different tensorflow versions. To make them both work, I used the following build strategy that allows different Tensorflow versions installed and run in separate conda environments.</description>
+    </item>
+    
+  </channel>
+</rss>

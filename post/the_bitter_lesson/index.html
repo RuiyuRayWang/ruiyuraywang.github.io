@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html><head>
-<title>多重比较与P值矫正(一)：FWER</title>
+<title>The Bitter Lesson</title>
 
 
 
@@ -16,12 +16,13 @@
 
 
 
-<meta property="og:title" content="多重比较与P值矫正(一)：FWER" />
-<meta property="og:description" content="随着高通量技术逐渐发展完善，现代生物学的组学实验已经可以实现同时测量成百上千甚至上万个变量（variables）。如一次转录组实验可以得到10000-20000个基因的转录本丰度，蛋白组实验可以得到几千个有效蛋白肽段的丰度，磷酸化蛋白组可以得到~10000个磷酸化位点的肽段丰度。一组实验中我们往往会设置至少两个条件，而" />
+<meta property="og:title" content="The Bitter Lesson" />
+<meta property="og:description" content="1
+ Most AI research has been conducted as if the computation available to the agent were constant (in which case leveraging human knowledge would be one of the only ways to improve performance) but, over a slightly longer time than a typical research project, massively more computation inevitably becomes available. Seeking an improvement that makes a difference in the shorter term, researchers seek to leverage their human knowledge of the domain, but the only thing that matters in the long run is the leveraging of computation." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="/post/p_correction_fdr/" /><meta property="article:section" content="post" />
-<meta property="article:published_time" content="2022-02-27T22:57:36+08:00" />
-<meta property="article:modified_time" content="2022-02-27T22:57:36+08:00" /><meta property="og:site_name" content="My Blog" />
+<meta property="og:url" content="/post/the_bitter_lesson/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2022-05-27T09:21:08+08:00" />
+<meta property="article:modified_time" content="2022-05-27T09:21:08+08:00" /><meta property="og:site_name" content="My Blog" />
 
 
 
@@ -29,8 +30,9 @@
 
 
 <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="多重比较与P值矫正(一)：FWER"/>
-<meta name="twitter:description" content="随着高通量技术逐渐发展完善，现代生物学的组学实验已经可以实现同时测量成百上千甚至上万个变量（variables）。如一次转录组实验可以得到10000-20000个基因的转录本丰度，蛋白组实验可以得到几千个有效蛋白肽段的丰度，磷酸化蛋白组可以得到~10000个磷酸化位点的肽段丰度。一组实验中我们往往会设置至少两个条件，而"/>
+<meta name="twitter:title" content="The Bitter Lesson"/>
+<meta name="twitter:description" content="1
+ Most AI research has been conducted as if the computation available to the agent were constant (in which case leveraging human knowledge would be one of the only ways to improve performance) but, over a slightly longer time than a typical research project, massively more computation inevitably becomes available. Seeking an improvement that makes a difference in the shorter term, researchers seek to leverage their human knowledge of the domain, but the only thing that matters in the long run is the leveraging of computation."/>
 
 
 
@@ -292,28 +294,25 @@ Ported from <a href="https://mak1t0.cc/" target="_blank" rel="noreferrer noopene
                 
             >
                 <div class="post-title">
-                    多重比较与P值矫正(一)：FWER
+                    The Bitter Lesson
                     
                     <div class="post-meta">
                         
                         <time itemprop="datePublished">
-                            2022-02-27 22:57
+                            2022-05-27 09:21
                         </time>
                         
 
                         
                             <i class="material-icons" style="">folder</i>
-                                <a href="/categories/">[杂谈]</a>
+                                <a href="/categories/">[Stat &amp; Math]</a>
                                 &nbsp;
                         
 
                         
                             <i class="material-icons" style="">label</i>
                             
-                                <a href="/tags/news">News</a>
-                                &nbsp;
-                            
-                                <a href="/tags/politics">Politics</a>
+                                <a href="/tags/machine-learning">Machine Learning</a>
                                 &nbsp;
                             
                         
@@ -326,11 +325,43 @@ Ported from <a href="https://mak1t0.cc/" target="_blank" rel="noreferrer noopene
                 
                 <div class="post-body" v-pre>
                 
-                    <p>随着高通量技术逐渐发展完善，现代生物学的组学实验已经可以实现同时测量成百上千甚至上万个变量（variables）。如一次转录组实验可以得到10000-20000个基因的转录本丰度，蛋白组实验可以得到几千个有效蛋白肽段的丰度，磷酸化蛋白组可以得到~10000个磷酸化位点的肽段丰度。一组实验中我们往往会设置至少两个条件，而</p>
+                    <p><figure><img src="../../figs/the_bitter_lesson.png"/>
+</figure>
+<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup></p>
+<blockquote>
+<p>Most AI research has been conducted as if the computation available to the agent were constant (in which case leveraging human knowledge would be one of the only ways to improve performance) but, over a slightly longer time than a typical research project, massively more computation inevitably becomes available. Seeking an improvement that makes a difference in the shorter term, researchers seek to leverage their human knowledge of the domain, but the only thing that matters in the long run is the leveraging of computation. These two need not run counter to each other, but in practice they tend to.</p>
+</blockquote>
+<blockquote>
+<p>In computer chess, the methods that defeated the world champion, Kasparov, in 1997, were based on massive, deep search. At the time, this was looked upon with dismay by the majority of computer-chess researchers who had pursued methods that leveraged human understanding of the special structure of chess. &hellip; These researchers wanted methods based on human input to win and were disappointed when they did not.</p>
+</blockquote>
+<blockquote>
+<p>A similar pattern of research progress was seen in computer Go, only delayed by a further 20 years. &hellip; In computer Go, as in computer chess, researchers' initial effort was directed towards utilizing human understanding (so that less search was needed) and only much later was much greater success had by embracing search and learning.</p>
+</blockquote>
+<blockquote>
+<p>In speech recognition, there was an early competition, sponsored by DARPA, in the 1970s. &hellip; As in the games, researchers always tried to make systems that worked the way the researchers thought their own minds worked&mdash;they tried to put that knowledge in their systems&mdash;but it proved ultimately counterproductive, and a colossal waste of researcher&rsquo;s time, when, through Moore&rsquo;s law, massive computation became available and a means was found to put it to good use.</p>
+</blockquote>
+<blockquote>
+<p>This is a big lesson. As a field, we still have not thoroughly learned it, as we are continuing to make the same kind of mistakes. To see this, and to effectively resist it, we have to understand the appeal of these mistakes. <strong>We have to learn the bitter lesson that building in how we think we think does not work in the long run.</strong> The bitter lesson is based on the historical observations that 1) AI researchers have often tried to build knowledge into their agents, 2) this always helps in the short term, and is personally satisfying to the researcher, but 3) in the long run it plateaus and even inhibits further progress, and 4) breakthrough progress eventually arrives by an opposing approach based on scaling computation by search and learning. The eventual success is tinged with bitterness, and often incompletely digested, because it is success over a favored, human-centric approach.</p>
+</blockquote>
+<blockquote>
+<p>One thing that should be learned from the bitter lesson is the great power of general purpose methods, of methods that continue to scale with increased computation even as the available computation becomes very great. The two methods that seem to scale arbitrarily in this way are <em>search</em> and <em>learning</em>.</p>
+</blockquote>
+<blockquote>
+<p>The second general point to be learned from the bitter lesson is that <strong>the actual contents of minds are tremendously, irredeemably complex; we should stop trying to find simple ways to think about the contents of minds</strong>, such as simple ways to think about space, objects, multiple agents, or symmetries. All these are part of the arbitrary, intrinsically-complex, outside world. They are not what should be built in, as their complexity is endless; instead we should build in only the meta-methods that can find and capture this arbitrary complexity. Essential to these methods is that they can find good approximations, but the search for them should be by our methods, not by us. <strong>We want AI agents that can discover like we can, not which contain what we have discovered.</strong> Building in our discoveries only makes it harder to see how the discovering process can be done.</p>
+</blockquote>
+<p>Another way to put this: be humble.</p>
+<section class="footnotes" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn:1" role="doc-endnote">
+<p>Richard Sutton是强化学习经典教科书&quot;Reinforcement Learning&quot;的作者。&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+</ol>
+</section>
 
                     
                     <HR width="100%" id="EOF">
-		    <p style="color:#777;">Last modified on 2022-02-27</p>
+		    <p style="color:#777;">Last modified on 2022-05-27</p>
                     
                 </div>
             </div>
@@ -339,14 +370,14 @@ Ported from <a href="https://mak1t0.cc/" target="_blank" rel="noreferrer noopene
             <nav class="post-pagination">
 
                 
-                <a class="newer-posts" href="/post/the_bitter_lesson/">
-			Next<br>The Bitter Lesson
+                <a class="newer-posts">
+			Next<br>No newer posts.
                 </a>
                 
                 
                 
-                <a class="older-posts" href="/post/tidy_data/">
-			Previous<br>Tidy Data
+                <a class="older-posts" href="/post/p_correction_fdr/">
+			Previous<br>多重比较与P值矫正(一)：FWER
                 </a>
                 
             </nav>

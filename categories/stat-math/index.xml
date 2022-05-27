@@ -6,7 +6,17 @@
     <description>Recent content in Stat &amp; Math on Karmotrine Dream</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 21 Feb 2022 18:56:53 +0800</lastBuildDate><atom:link href="/categories/stat-math/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 27 May 2022 09:21:08 +0800</lastBuildDate><atom:link href="/categories/stat-math/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>The Bitter Lesson</title>
+      <link>/post/the_bitter_lesson/</link>
+      <pubDate>Fri, 27 May 2022 09:21:08 +0800</pubDate>
+      
+      <guid>/post/the_bitter_lesson/</guid>
+      <description>1
+ Most AI research has been conducted as if the computation available to the agent were constant (in which case leveraging human knowledge would be one of the only ways to improve performance) but, over a slightly longer time than a typical research project, massively more computation inevitably becomes available. Seeking an improvement that makes a difference in the shorter term, researchers seek to leverage their human knowledge of the domain, but the only thing that matters in the long run is the leveraging of computation.</description>
+    </item>
+    
     <item>
       <title>Tidy Data</title>
       <link>/post/tidy_data/</link>
