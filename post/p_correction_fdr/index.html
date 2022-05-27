@@ -1,11 +1,8 @@
 <!DOCTYPE html>
 <html><head>
-	<meta name="generator" content="Hugo 0.89.4" />
-<title>Karmotrine Dream</title>
+<title>多重比较与P值矫正(一)：FWER</title>
 
 
-
-  
 
 
 <meta charset="utf-8">
@@ -13,16 +10,18 @@
 <meta name="google-site-verification" content="">
 <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
 <meta content="telephone=no" name="format-detection">
-<meta name="description" content="My HomePage Description">
+<meta name="description" content="">
 <meta name="renderer" content="webkit">
 <meta name="theme-color" content="#ffffff">
 
 
 
-<meta property="og:title" content="Karmotrine Dream" />
-<meta property="og:description" content="My HomePage Description" />
-<meta property="og:type" content="website" />
-<meta property="og:url" content="/" /><meta property="og:site_name" content="My Blog" />
+<meta property="og:title" content="多重比较与P值矫正(一)：FWER" />
+<meta property="og:description" content="随着高通量技术逐渐发展完善，现代生物学的组学实验已经可以实现同时测量成百上千甚至上万个变量（variables）。如一次转录组实验可以得到10000-20000个基因的转录本丰度，蛋白组实验可以得到几千个有效蛋白肽段的丰度，磷酸化蛋白组可以得到~10000个磷酸化位点的肽段丰度。一组实验中我们往往会设置至少两个条件，而" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/post/p_correction_fdr/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2022-02-27T22:57:36+08:00" />
+<meta property="article:modified_time" content="2022-02-27T22:57:36+08:00" /><meta property="og:site_name" content="My Blog" />
 
 
 
@@ -30,8 +29,8 @@
 
 
 <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Karmotrine Dream"/>
-<meta name="twitter:description" content="My HomePage Description"/>
+<meta name="twitter:title" content="多重比较与P值矫正(一)：FWER"/>
+<meta name="twitter:description" content="随着高通量技术逐渐发展完善，现代生物学的组学实验已经可以实现同时测量成百上千甚至上万个变量（variables）。如一次转录组实验可以得到10000-20000个基因的转录本丰度，蛋白组实验可以得到几千个有效蛋白肽段的丰度，磷酸化蛋白组可以得到~10000个磷酸化位点的肽段丰度。一组实验中我们往往会设置至少两个条件，而"/>
 
 
 
@@ -80,6 +79,8 @@ if (!doNotTrack) {
 
 
 
+  <script src="/js/toc.js"></script>
+
 
 
 
@@ -97,7 +98,7 @@ if (!doNotTrack) {
 <body>
     	<div id="app"><div id="sideContainer" class="side-container">
     
-    <a class="a-block nav-head active" href="/">
+    <a class="a-block nav-head false" href="/">
     
         <div class="nav-title">
             Karmotrine Dream
@@ -169,6 +170,11 @@ Ported from <a href="https://mak1t0.cc/" target="_blank" rel="noreferrer noopene
 </div><div id="extraContainer" class="extra-container">
     
     
+    <div class="toc animated-visibility" :class="{ invisible: scrollY <= 140 }">
+
+
+</div>
+    
     <div class="pagination">
         <a id="globalBackToTop" class="pagination-action animated-visibility" href="#top" :class="{ invisible: scrollY == 0 }">
             <i class="material-icons pagination-action-icon">
@@ -181,24 +187,6 @@ Ported from <a href="https://mak1t0.cc/" target="_blank" rel="noreferrer noopene
                 dark_mode
             </span>
         </a>
-        
-        
-        
-            <div class="pagination-indicator">
-                <span style="text-align: center">
-                    2<br><div style="display: inline-block; transform: rotate(-28deg)">-</div><br>2
-                </span>
-            </div>
-            
-            
-            <a class="pagination-action" href="/">
-                <i class="material-icons pagination-action-icon">
-                    chevron_left
-                </i>
-            </a>
-            
-
-            
         
         
     </div>
@@ -251,6 +239,11 @@ Ported from <a href="https://mak1t0.cc/" target="_blank" rel="noreferrer noopene
                 
             
             
+            <div class="toc">
+
+
+</div>
+            
         </div>
     </div>
 </div>
@@ -289,154 +282,93 @@ Ported from <a href="https://mak1t0.cc/" target="_blank" rel="noreferrer noopene
             <div id="content">
                 <div id="streamContainer" class="stream-container">
 
-
-    <div class="post-list-container post-list-container-no-background">
-        
+    <div class="post-list-container post-list-container-shadow">
+        <div class="post">
             
-            <a href="/post/mult-r/" class="a-block">
-                <div class="post-item-wrapper">
-                    <div class="post-item post-item-no-divider">
-                        <div class="post-item-info-wrapper">
-                            <div class="post-item-title">
-                                R：同时部署多版本 &amp; 版本切换
-                            </div>
-                            <div class="post-item-summary">
-                                
-                            </div>
-                            <div class="post-item-meta">
-    2021-12-02
-    &emsp;
-    
-    
-    
-    &emsp;
-    
-</div>
+            
+            
 
-                        </div>
+            <div class="post-head-wrapper-text-only"
+                
+            >
+                <div class="post-title">
+                    多重比较与P值矫正(一)：FWER
+                    
+                    <div class="post-meta">
+                        
+                        <time itemprop="datePublished">
+                            2022-02-27 22:57
+                        </time>
+                        
+
+                        
+                            <i class="material-icons" style="">folder</i>
+                                <a href="/categories/">[杂谈]</a>
+                                &nbsp;
+                        
+
+                        
+                            <i class="material-icons" style="">label</i>
+                            
+                                <a href="/tags/news">News</a>
+                                &nbsp;
+                            
+                                <a href="/tags/politics">Politics</a>
+                                &nbsp;
+                            
                         
                         
                     </div>
                 </div>
+            </div>
             
-        
-            
-            <a href="/post/frq-used/" class="a-block">
-                <div class="post-item-wrapper">
-                    <div class="post-item post-item-no-divider">
-                        <div class="post-item-info-wrapper">
-                            <div class="post-item-title">
-                                生物信息学&amp;计算生物学 常用装机软件汇总整理
-                            </div>
-                            <div class="post-item-summary">
-                                
-                            </div>
-                            <div class="post-item-meta">
-    2021-12-02
-    &emsp;
-    
-    
-    
-    &emsp;
-    
-    <span class="draft-label">DRAFT</span>
-    
-</div>
+            <div class="post-body-wrapper">
+                
+                <div class="post-body" v-pre>
+                
+                    <p>随着高通量技术逐渐发展完善，现代生物学的组学实验已经可以实现同时测量成百上千甚至上万个变量（variables）。如一次转录组实验可以得到10000-20000个基因的转录本丰度，蛋白组实验可以得到几千个有效蛋白肽段的丰度，磷酸化蛋白组可以得到~10000个磷酸化位点的肽段丰度。一组实验中我们往往会设置至少两个条件，而</p>
 
-                        </div>
-                        
-                        
-                    </div>
+                    
+                    <HR width="100%" id="EOF">
+		    <p style="color:#777;">Last modified on 2022-02-27</p>
+                    
                 </div>
+            </div>
             
-        
             
-            <a href="/post/on-comp-bio/" class="a-block">
-                <div class="post-item-wrapper">
-                    <div class="post-item post-item-no-divider">
-                        <div class="post-item-info-wrapper">
-                            <div class="post-item-title">
-                                咋地，你也想整点计算生物学玩玩？
-                            </div>
-                            <div class="post-item-summary">
-                                
-                            </div>
-                            <div class="post-item-meta">
-    2021-12-02
-    &emsp;
-    
-    
-    
-    &emsp;
-    
-</div>
+            <nav class="post-pagination">
 
-                        </div>
-                        
-                        
-                    </div>
-                </div>
-            
-        
-            
-            <a href="/post/my-first-post/" class="a-block">
-                <div class="post-item-wrapper">
-                    <div class="post-item post-item-no-divider">
-                        <div class="post-item-info-wrapper">
-                            <div class="post-item-title">
-                                Hugo blog，新主题，新开始
-                            </div>
-                            <div class="post-item-summary">
-                                
-                            </div>
-                            <div class="post-item-meta">
-    2021-11-23
-    &emsp;
-    
-    
-    
-    &emsp;
-    
-</div>
+                
+                <a class="newer-posts">
+			Next<br>No newer posts.
+                </a>
+                
+                
+                
+                <a class="older-posts" href="/post/%D1%83%D1%80%D0%B0/">
+			Previous<br>纪念今天这个必将载入史册的日子
+                </a>
+                
+            </nav>
+            <div class="post-comment-wrapper">
+                
 
-                        </div>
-                        
-                        
-                    </div>
-                </div>
-            
-        
-        </a>
+
+
+
+
+
+
+
+
+
+            </div>
+        </div>
     </div>
 
 
                     </div>
-            </div>
-
-<div class="pagination">
-    
-    <a class="pagination-action" href="/" style="opacity:1">
-    
-        <i class="material-icons pagination-action-icon">
-            chevron_left
-        </i>
-    </a>
-
-        <div class="pagination-indicator">
-            <span>2/2</span>
-        </div>
-
-        
-            <a class="pagination-action" style="opacity:0">
-        
-                <i class="material-icons pagination-action-icon">
-                    chevron_right
-                </i>
-            </a>
-</div>
-
-
-<div id="single-column-footer">
+            </div><div id="single-column-footer">
 Hugo Theme <a href="https://github.com/amazingrise/hugo-theme-diary">Diary</a> by <a href="https://amazingrise.net">Rise</a>
 <br>
 Ported from <a href="https://mak1t0.cc/" target="_blank" rel="noreferrer noopener">Makito</a>'s <a href="https://github.com/SumiMakito/hexo-theme-journal/" target="_blank" rel="noreferrer noopener">Journal.</a> <br>
