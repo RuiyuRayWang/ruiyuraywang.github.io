@@ -13,7 +13,7 @@
       <pubDate>Fri, 27 May 2022 09:21:08 +0800</pubDate>
       
       <guid>/post/the_bitter_lesson/</guid>
-      <description>1
+      <description>http://www.incompleteideas.net/IncIdeas/BitterLesson.html
  Most AI research has been conducted as if the computation available to the agent were constant (in which case leveraging human knowledge would be one of the only ways to improve performance) but, over a slightly longer time than a typical research project, massively more computation inevitably becomes available. Seeking an improvement that makes a difference in the shorter term, researchers seek to leverage their human knowledge of the domain, but the only thing that matters in the long run is the leveraging of computation.</description>
     </item>
     

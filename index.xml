@@ -17,9 +17,10 @@
         <pubDate>Fri, 27 May 2022 09:21:08 +0800</pubDate>
         
         <guid>/post/the_bitter_lesson/</guid>
-        <description>Karmotrine Dream /post/the_bitter_lesson/ -&lt;p&gt;&lt;figure&gt;&lt;img src=&#34;../../figs/the_bitter_lesson.png&#34;/&gt;
+        <description>Karmotrine Dream /post/the_bitter_lesson/ -&lt;figure&gt;&lt;img src=&#34;../../figs/the_bitter_lesson.png&#34;/&gt;
 &lt;/figure&gt;
-&lt;sup id=&#34;fnref:1&#34;&gt;&lt;a href=&#34;#fn:1&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;1&lt;/a&gt;&lt;/sup&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://www.incompleteideas.net/IncIdeas/BitterLesson.html&#34;&gt;http://www.incompleteideas.net/IncIdeas/BitterLesson.html&lt;/a&gt;&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;Most AI research has been conducted as if the computation available to the agent were constant (in which case leveraging human knowledge would be one of the only ways to improve performance) but, over a slightly longer time than a typical research project, massively more computation inevitably becomes available. Seeking an improvement that makes a difference in the shorter term, researchers seek to leverage their human knowledge of the domain, but the only thing that matters in the long run is the leveraging of computation. These two need not run counter to each other, but in practice they tend to.&lt;/p&gt;
 &lt;/blockquote&gt;
@@ -42,14 +43,6 @@
 &lt;p&gt;The second general point to be learned from the bitter lesson is that &lt;strong&gt;the actual contents of minds are tremendously, irredeemably complex; we should stop trying to find simple ways to think about the contents of minds&lt;/strong&gt;, such as simple ways to think about space, objects, multiple agents, or symmetries. All these are part of the arbitrary, intrinsically-complex, outside world. They are not what should be built in, as their complexity is endless; instead we should build in only the meta-methods that can find and capture this arbitrary complexity. Essential to these methods is that they can find good approximations, but the search for them should be by our methods, not by us. &lt;strong&gt;We want AI agents that can discover like we can, not which contain what we have discovered.&lt;/strong&gt; Building in our discoveries only makes it harder to see how the discovering process can be done.&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;Another way to put this: be humble.&lt;/p&gt;
-&lt;section class=&#34;footnotes&#34; role=&#34;doc-endnotes&#34;&gt;
-&lt;hr&gt;
-&lt;ol&gt;
-&lt;li id=&#34;fn:1&#34; role=&#34;doc-endnote&#34;&gt;
-&lt;p&gt;Richard Sutton是强化学习经典教科书&amp;quot;Reinforcement Learning&amp;quot;的作者。&amp;#160;&lt;a href=&#34;#fnref:1&#34; class=&#34;footnote-backref&#34; role=&#34;doc-backlink&#34;&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ol&gt;
-&lt;/section&gt;
 - /post/the_bitter_lesson/ - </description>
         </item>
     
