@@ -6,15 +6,29 @@
     <description>Recent content in Posts on Karmotrine Dream</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 27 May 2022 09:21:08 +0800</lastBuildDate><atom:link href="/post/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 15 Jun 2022 20:52:38 +0800</lastBuildDate><atom:link href="/post/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Switch R Faster</title>
+      <link>/post/switch-r-faster/</link>
+      <pubDate>Wed, 15 Jun 2022 20:52:38 +0800</pubDate>
+      
+      <guid>/post/switch-r-faster/</guid>
+      <description>Previously I wrote about how to build multiple R versions on Ubuntu and how to switch versions.
+/post/mult-r/ It turns out that my &amp;ldquo;old school&amp;rdquo; move (ln -s) is outdated. Now there are many handy tools to do the job for you.
+RSwitch is based on macOS. I&amp;rsquo;m using it personally, simply because I used it before and don&amp;rsquo;t want to bother changing gear.
+rig supports multiple platforms and is probably the best choice for most users.</description>
+    </item>
+    
     <item>
       <title>The Bitter Lesson</title>
       <link>/post/the_bitter_lesson/</link>
       <pubDate>Fri, 27 May 2022 09:21:08 +0800</pubDate>
       
       <guid>/post/the_bitter_lesson/</guid>
-      <description>http://www.incompleteideas.net/IncIdeas/BitterLesson.html
- Most AI research has been conducted as if the computation available to the agent were constant (in which case leveraging human knowledge would be one of the only ways to improve performance) but, over a slightly longer time than a typical research project, massively more computation inevitably becomes available. Seeking an improvement that makes a difference in the shorter term, researchers seek to leverage their human knowledge of the domain, but the only thing that matters in the long run is the leveraging of computation.</description>
+      <description>Richard Sutton, the reknowned computer scientist, author of the AI bible: &amp;lsquo;Reinforcement Learning&amp;rsquo;, wrote this essay three years after Alphago beat Lee Sedol.
+ http://www.incompleteideas.net/IncIdeas/BitterLesson.html
+Here are some excerptions from the article:
+ Most AI research has been conducted as if the computation available to the agent were constant (in which case leveraging human knowledge would be one of the only ways to improve performance) but, over a slightly longer time than a typical research project, massively more computation inevitably becomes available.</description>
     </item>
     
     <item>

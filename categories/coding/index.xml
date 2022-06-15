@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>R on Karmotrine Dream</title>
-    <link>/tags/r/</link>
-    <description>Recent content in R on Karmotrine Dream</description>
+    <title>Coding on Karmotrine Dream</title>
+    <link>/categories/coding/</link>
+    <description>Recent content in Coding on Karmotrine Dream</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 15 Jun 2022 20:52:38 +0800</lastBuildDate><atom:link href="/tags/r/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 15 Jun 2022 20:52:38 +0800</lastBuildDate><atom:link href="/categories/coding/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Switch R Faster</title>
       <link>/post/switch-r-faster/</link>
@@ -20,14 +20,14 @@ rig supports multiple platforms and is probably the best choice for most users.<
     </item>
     
     <item>
-      <title>Tidy Data</title>
-      <link>/post/tidy_data/</link>
-      <pubDate>Mon, 21 Feb 2022 18:56:53 +0800</pubDate>
+      <title>Tensorflow：多版本部署、系统配置与版本切换</title>
+      <link>/post/build-tensorflow/</link>
+      <pubDate>Sun, 05 Dec 2021 22:57:25 +0800</pubDate>
       
-      <guid>/post/tidy_data/</guid>
-      <description>Hadley Wickham提出的Tidy Data的概念方兴未艾，如今无论是R还是Python都能见到Tidy的身影。Tidydata的思维方式，将来必定会越来越深入人心。
-正如进入21世纪，计算机基本操作逐渐变为一项几乎必修的技能一样，将来十几年内，Tidydata对DataFrame的操作也一定会演变成一项必修技能。
-如果要开一个计算生物学101的课程，&amp;ldquo;Tidy Data&amp;quot;这篇文章一定是必读清单的一篇文章。而且应该安排学生每学期花60个学时以上的时间上机实操锻炼Tidydata的操作。（我真是魔鬼）</description>
+      <guid>/post/build-tensorflow/</guid>
+      <description>Building Environments for Cellassign and CellBLAST with multiple Tensorflow (GPU) Versions on Ubuntu As promised, I will write about my experience with installing tensorflow.
+Why did I ever have to build Tensorflow myself?
+The reason is that I was trying to use two tools: cellassign and Cell_BLAST, but they depend on different tensorflow versions. To make them both work, I used the following build strategy that allows different Tensorflow versions installed and run in separate conda environments.</description>
     </item>
     
     <item>
