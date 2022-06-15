@@ -14,7 +14,8 @@
       
       <guid>/post/switch-r-faster/</guid>
       <description>Previously I wrote about how to build multiple R versions on Ubuntu and how to switch versions.
-/post/mult-r/ It turns out that my &amp;ldquo;old school&amp;rdquo; move (ln -s) is outdated. Now there are many handy tools to do the job for you.
+R：同时部署多版本 &amp;amp; 版本切换
+It turns out that my &amp;ldquo;old school&amp;rdquo; move (ln -s) is outdated. Now there are many handy tools to do the job for you.
 RSwitch is based on macOS. I&amp;rsquo;m using it personally, simply because I used it before and don&amp;rsquo;t want to bother changing gear.
 rig supports multiple platforms and is probably the best choice for most users.</description>
     </item>

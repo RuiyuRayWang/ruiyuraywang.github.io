@@ -18,7 +18,7 @@
         
         <guid>/post/switch-r-faster/</guid>
         <description>Karmotrine Dream /post/switch-r-faster/ -&lt;p&gt;Previously I wrote about how to build multiple R versions on Ubuntu and how to switch versions.&lt;/p&gt;
-/post/mult-r/
+&lt;p&gt;&lt;a href=&#34;https://ruiyuraywang.github.io/post/mult-r/&#34;&gt;R：同时部署多版本 &amp;amp; 版本切换&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;It turns out that my &amp;ldquo;old school&amp;rdquo; move (&lt;code&gt;ln -s&lt;/code&gt;) is outdated. Now there are many handy tools to do the job for you.&lt;/p&gt;
 &lt;p&gt;&lt;a href=&#34;https://rud.is/rswitch/&#34;&gt;RSwitch&lt;/a&gt; is based on macOS. I&amp;rsquo;m using it personally, simply because I used it before and don&amp;rsquo;t want to bother changing gear.&lt;/p&gt;
 &lt;p&gt;&lt;a href=&#34;https://github.com/r-lib/rig&#34;&gt;rig&lt;/a&gt; supports multiple platforms and is probably the best choice for most users.&lt;/p&gt;
