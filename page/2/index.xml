@@ -434,11 +434,57 @@ Referring to this post: &lt;a href=&#34;https://support.rstudio.com/hc/en-us/art
 &lt;/ol&gt;
 &lt;h2 id=&#34;single-cell-biology&#34;&gt;Single cell biology&lt;/h2&gt;
 &lt;ol&gt;
-&lt;li&gt;R
-&lt;ul&gt;
-&lt;li&gt;Seurat&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
+&lt;li&gt;R&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;## tidyverse
+install.packages(&amp;quot;tidyverse&amp;quot;)
+
+## Bioconductor
+if (!require(&amp;quot;BiocManager&amp;quot;, quietly = TRUE))
+    install.packages(&amp;quot;BiocManager&amp;quot;)
+BiocManager::install(version = &amp;quot;3.15&amp;quot;)  ## Specify version explicitly
+
+## devtools
+install.packages(&amp;quot;devtools&amp;quot;)
+
+## Seurat and relatives
+if (!requireNamespace(&amp;quot;remotes&amp;quot;, quietly = TRUE)) {
+  install.packages(&amp;quot;remotes&amp;quot;)
+}
+remotes::install_github(&amp;quot;mojaveazure/seurat-disk&amp;quot;)
+install.packages(&amp;quot;Seurat&amp;quot;)
+BiocManager::install(&amp;quot;MAST&amp;quot;)
+setRepositories(ind=1:3)
+install.packages(&amp;quot;Signac&amp;quot;)
+install.packages(&amp;quot;tidyseurat&amp;quot;)
+
+## RNAseq bundle
+BiocManager::install(&amp;quot;DESeq2&amp;quot;)
+BiocManager::install(&amp;quot;tximeta&amp;quot;)
+
+## clusterProfiler
+BiocManager::install(&amp;quot;clusterProfiler&amp;quot;)
+&lt;/code&gt;&lt;/pre&gt;&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;## Augur
+devtools::install_github(&amp;quot;const-ae/sparseMatrixStats&amp;quot;)
+devtools::install_github(&amp;quot;neurorestore/Augur&amp;quot;)
+
+## ComplexHeatmap
+BiocManager::install(&amp;quot;ComplexHeatmap&amp;quot;)
+
+## pheatmap
+install.packages(&amp;quot;pheatmap&amp;quot;)
+
+## CellChat
+install.packages(&#39;NMF&#39;)
+devtools::install_github(&amp;quot;jokergoo/circlize&amp;quot;)
+devtools::install_github(&amp;quot;sqjin/CellChat&amp;quot;)
+
+## Org database
+BiocManager::install(&amp;quot;org.Hs.eg.db&amp;quot;)
+BiocManager::install(&amp;quot;org.Mm.eg.db&amp;quot;)
+
+
+&lt;/code&gt;&lt;/pre&gt;&lt;ol start=&#34;2&#34;&gt;
 &lt;li&gt;python
 &lt;ul&gt;
 &lt;li&gt;geosketch&lt;/li&gt;

@@ -19,7 +19,7 @@
 <meta property="og:title" content="生物信息学&amp;计算生物学 常用装机软件汇总整理" />
 <meta property="og:description" content="（未完成，持续更新）
 Softwares used in works. Some require built from scratch.
-Mac (iOS)  bash tools  brew tree   softwares  R    Ubuntu  Bioinformatics  samtools STAR umi_tools    Single cell biology  R  Seurat   python  geosketch    " />
+Mac (iOS)  bash tools  brew tree   softwares  R    Ubuntu  Bioinformatics  samtools STAR umi_tools    Single cell biology  R  ## tidyverse install.packages(&quot;tidyverse&quot;) ## Bioconductor if (!require(&quot;BiocManager&quot;, quietly = TRUE)) install.packages(&quot;BiocManager&quot;) BiocManager::install(version = &quot;3.15&quot;) ## Specify version explicitly ## devtools install.packages(&quot;devtools&quot;) ## Seurat and relatives if (!requireNamespace(&quot;remotes&quot;, quietly = TRUE)) { install." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="/post/frq-used/" /><meta property="article:section" content="post" />
 <meta property="article:published_time" content="2021-12-02T17:41:03+08:00" />
@@ -34,7 +34,7 @@ Mac (iOS)  bash tools  brew tree   softwares  R    Ubuntu  Bioinformatics  samto
 <meta name="twitter:title" content="生物信息学&amp;计算生物学 常用装机软件汇总整理"/>
 <meta name="twitter:description" content="（未完成，持续更新）
 Softwares used in works. Some require built from scratch.
-Mac (iOS)  bash tools  brew tree   softwares  R    Ubuntu  Bioinformatics  samtools STAR umi_tools    Single cell biology  R  Seurat   python  geosketch    "/>
+Mac (iOS)  bash tools  brew tree   softwares  R    Ubuntu  Bioinformatics  samtools STAR umi_tools    Single cell biology  R  ## tidyverse install.packages(&quot;tidyverse&quot;) ## Bioconductor if (!require(&quot;BiocManager&quot;, quietly = TRUE)) install.packages(&quot;BiocManager&quot;) BiocManager::install(version = &quot;3.15&quot;) ## Specify version explicitly ## devtools install.packages(&quot;devtools&quot;) ## Seurat and relatives if (!requireNamespace(&quot;remotes&quot;, quietly = TRUE)) { install."/>
 
 
 
@@ -495,11 +495,57 @@ Ported from <a href="https://mak1t0.cc/" target="_blank" rel="noreferrer noopene
 </ol>
 <h2 id="single-cell-biology">Single cell biology</h2>
 <ol>
-<li>R
-<ul>
-<li>Seurat</li>
-</ul>
-</li>
+<li>R</li>
+</ol>
+<pre tabindex="0"><code>## tidyverse
+install.packages(&quot;tidyverse&quot;)
+
+## Bioconductor
+if (!require(&quot;BiocManager&quot;, quietly = TRUE))
+    install.packages(&quot;BiocManager&quot;)
+BiocManager::install(version = &quot;3.15&quot;)  ## Specify version explicitly
+
+## devtools
+install.packages(&quot;devtools&quot;)
+
+## Seurat and relatives
+if (!requireNamespace(&quot;remotes&quot;, quietly = TRUE)) {
+  install.packages(&quot;remotes&quot;)
+}
+remotes::install_github(&quot;mojaveazure/seurat-disk&quot;)
+install.packages(&quot;Seurat&quot;)
+BiocManager::install(&quot;MAST&quot;)
+setRepositories(ind=1:3)
+install.packages(&quot;Signac&quot;)
+install.packages(&quot;tidyseurat&quot;)
+
+## RNAseq bundle
+BiocManager::install(&quot;DESeq2&quot;)
+BiocManager::install(&quot;tximeta&quot;)
+
+## clusterProfiler
+BiocManager::install(&quot;clusterProfiler&quot;)
+</code></pre><pre tabindex="0"><code>## Augur
+devtools::install_github(&quot;const-ae/sparseMatrixStats&quot;)
+devtools::install_github(&quot;neurorestore/Augur&quot;)
+
+## ComplexHeatmap
+BiocManager::install(&quot;ComplexHeatmap&quot;)
+
+## pheatmap
+install.packages(&quot;pheatmap&quot;)
+
+## CellChat
+install.packages('NMF')
+devtools::install_github(&quot;jokergoo/circlize&quot;)
+devtools::install_github(&quot;sqjin/CellChat&quot;)
+
+## Org database
+BiocManager::install(&quot;org.Hs.eg.db&quot;)
+BiocManager::install(&quot;org.Mm.eg.db&quot;)
+
+
+</code></pre><ol start="2">
 <li>python
 <ul>
 <li>geosketch</li>
