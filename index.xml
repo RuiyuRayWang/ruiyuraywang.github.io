@@ -5,9 +5,86 @@
     <description>Recent content on Karmotrine Dream</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 15 Jun 2022 20:52:38 +0800</lastBuildDate>
+    <lastBuildDate>Fri, 17 Jun 2022 22:01:10 +0800</lastBuildDate>
     
         <atom:link href="/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    
+        <item>
+        <title>Fixing a Bug in R After Ubuntu Upgrade</title>
+        <link>/post/fixing-a-bug-in-r-after-ubuntu-upgrade/</link>
+        <pubDate>Fri, 17 Jun 2022 22:01:10 +0800</pubDate>
+        
+        <guid>/post/fixing-a-bug-in-r-after-ubuntu-upgrade/</guid>
+        <description>Karmotrine Dream /post/fixing-a-bug-in-r-after-ubuntu-upgrade/ -&lt;p&gt;Everybody knows the painstaking experience of system update, expecially when it comes to reconfiguring the environments and re-installing previously installed packages. Even with package management softwares like conda, bad things could still happen.&lt;/p&gt;
+&lt;p&gt;Recently I updated Ubuntu from 18.04 LTS to 20.04 LTS. At the same time I also decided to install the latest R 4.2.0 since there are some new features worth the bother.&lt;/p&gt;
+&lt;p&gt;I use &lt;code&gt;rig&lt;/code&gt; to install R 4.2.0, and here comes the trouble.&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;(base) luolab@luolab-Z10PE-D16-WS:~$ rig add 4.2.0
+[INFO] Running `sudo` for adding new R versions. This might need your password.
+[INFO] Downloading https://cdn.rstudio.com/r/ubuntu-2004/pkgs/r-4.2.0_1_amd64.deb -&amp;gt;
+    /tmp/rig/r-4.2.0_1_amd64.deb
+[INFO] Running apt-get update
+--nnn-- Start of apt-get output -------------------
+Hit:1 https://dl.google.com/linux/chrome/deb stable InRelease
+Hit:2 https://download.docker.com/linux/ubuntu bionic InRelease                
+Hit:3 http://cn.archive.ubuntu.com/ubuntu focal InRelease                      
+Get:4 http://security.ubuntu.com/ubuntu focal-security InRelease [114 kB]
+Get:5 http://cn.archive.ubuntu.com/ubuntu focal-updates InRelease [114 kB]
+Get:6 http://security.ubuntu.com/ubuntu focal-security/main amd64 DEP-11 Metadata [40.7 kB]
+Get:7 http://cn.archive.ubuntu.com/ubuntu focal-backports InRelease [108 kB]
+Get:8 http://security.ubuntu.com/ubuntu focal-security/universe amd64 DEP-11 Metadata [66.6 kB]
+Get:9 http://cn.archive.ubuntu.com/ubuntu focal-updates/main amd64 Packages [1,924 kB]
+Get:10 http://security.ubuntu.com/ubuntu focal-security/multiverse amd64 DEP-11 Metadata [2,464 B]
+Get:11 http://cn.archive.ubuntu.com/ubuntu focal-updates/main i386 Packages [678 kB]
+Get:12 http://cn.archive.ubuntu.com/ubuntu focal-updates/main amd64 DEP-11 Metadata [278 kB]
+Get:13 http://cn.archive.ubuntu.com/ubuntu focal-updates/universe amd64 Packages [931 kB]
+Get:14 http://cn.archive.ubuntu.com/ubuntu focal-updates/universe i386 Packages [684 kB]
+Get:15 http://cn.archive.ubuntu.com/ubuntu focal-updates/universe amd64 DEP-11 Metadata [391 kB]
+Get:16 http://cn.archive.ubuntu.com/ubuntu focal-updates/multiverse amd64 DEP-11 Metadata [944 B]
+Get:17 http://cn.archive.ubuntu.com/ubuntu focal-backports/main amd64 DEP-11 Metadata [7,992 B]
+Get:18 http://cn.archive.ubuntu.com/ubuntu focal-backports/universe amd64 DEP-11 Metadata [30.5 kB]
+Fetched 5,370 kB in 8s (668 kB/s)                                              
+Reading package lists... Done
+--uuu-- End of apt-get output ---------------------
+[INFO] Running apt-get install
+--nnn-- Start of apt-get output -------------------
+Reading package lists... Done
+Building dependency tree       
+Reading state information... Done
+gdebi-core is already the newest version (0.9.5.7+nmu3).
+0 upgraded, 0 newly installed, 0 to remove and 0 not upgraded.
+--uuu-- End of apt-get output ---------------------
+[INFO] Running gdebi
+--nnn-- Start of gdebi output ---------------------
+Reading package lists... Done
+Building dependency tree        
+Reading state information... Done
+Reading state information... Done
+Selecting previously unselected package r-4.2.0.
+(Reading database ... 276977 files and directories currently installed.)
+Preparing to unpack /tmp/rig/r-4.2.0_1_amd64.deb ...
+Unpacking r-4.2.0 (1) ...
+Setting up r-4.2.0 (1) ...
+--uuu-- End of gdebi output -----------------------
+[INFO] Adding /usr/local/bin/R-4.2.0 -&amp;gt; /opt/R/4.2.0/bin/R
+[INFO] Setting default CRAN mirror
+[INFO] Setting up RSPM
+[INFO] Setting up automatic system requirements installation.
+[INFO] Installing pak for R 4.2.0 (if not installed yet)
+/opt/R/4.2.0/bin/R: line 193: /usr/bin/sed: No such file or directory
+ERROR: option &#39;-e&#39; requires a non-empty argument
+[ERROR] Failed to run R 4.2.0 to install pak
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;How come! The ubiquitous &lt;code&gt;sed&lt;/code&gt; is missing!&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;(base) luolab@luolab-Z10PE-D16-WS:~$ which sed
+/bin/sed
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;It turns out that &lt;code&gt;sed&lt;/code&gt; is located at &lt;code&gt;/bin/sed&lt;/code&gt; after Ubuntu upgrade whereas R still looks for it at &lt;code&gt;/usr/bin/sed&lt;/code&gt;.
+To fix that, we have to use &lt;code&gt;sudo&lt;/code&gt; power.&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;(base) luolab@luolab-Z10PE-D16-WS:~$ sudo mv /bin/sed /usr/bin
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;In fact I&amp;rsquo;ve had the same error (cannot find utility in &lt;code&gt;/usr/bin&lt;/code&gt; because it&amp;rsquo;s located in &lt;code&gt;/bin&lt;/code&gt;) with multiple package installations, such as &lt;code&gt;tar&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;The above method fix the issue just fine.&lt;/p&gt;
+- /post/fixing-a-bug-in-r-after-ubuntu-upgrade/ - </description>
+        </item>
     
     
     
@@ -503,17 +580,6 @@ The downloaded source packages are in
 fatal: unable to access &#39;https://github.com/RuiyuRayWang/blog.git/&#39;: Could not resolve host: github.com
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Looks like we&amp;rsquo;re having a bad day with github server&amp;hellip;&lt;/p&gt;
 - /post/install-r-scenic/ - </description>
-        </item>
-    
-    
-    
-        <item>
-        <title>Working with pySCENIC</title>
-        <link>/post/using-scenic/</link>
-        <pubDate>Wed, 15 Dec 2021 23:07:11 +0800</pubDate>
-        
-        <guid>/post/using-scenic/</guid>
-        <description>Karmotrine Dream /post/using-scenic/ -- /post/using-scenic/ - </description>
         </item>
     
     
