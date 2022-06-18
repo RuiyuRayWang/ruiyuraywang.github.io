@@ -5,9 +5,28 @@
     <description>Recent content on Karmotrine Dream</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 17 Jun 2022 22:01:10 +0800</lastBuildDate>
+    <lastBuildDate>Sat, 18 Jun 2022 15:44:29 +0800</lastBuildDate>
     
         <atom:link href="/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    
+        <item>
+        <title>Pytorch: End of Agony</title>
+        <link>/post/pytorch-end-of-agony/</link>
+        <pubDate>Sat, 18 Jun 2022 15:44:29 +0800</pubDate>
+        
+        <guid>/post/pytorch-end-of-agony/</guid>
+        <description>Karmotrine Dream /post/pytorch-end-of-agony/ -&lt;p&gt;The agonizing days of building everything from scratch (NVIDIA driver, CUDA, cuDNN) is over.&lt;/p&gt;
+&lt;p&gt;Don&amp;rsquo;t have to spend time on&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://docs.nvidia.com/cuda/index.html&#34;&gt;&lt;del&gt;CUDA documentaion&lt;/del&gt;&lt;/a&gt;,&lt;/p&gt;
+&lt;p&gt;or building&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://ruiyuraywang.github.io/post/build-tensorflow/&#34;&gt;&lt;del&gt;Tensorflow：多版本部署、系统配置与版本切换&lt;/del&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Now, use PyTorch, and you will be amazed at ease of building a GPU capable meachine learning model with neural network.&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://amytabb.com/til/2020/10/05/cudnn-pytorch/&#34;&gt;The PyTorch binaries include the CUDA and cuDNN libraries.&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://discuss.pytorch.org/t/how-to-check-if-torch-uses-cudnn/21933&#34;&gt;How to check if torch uses cuDNN&lt;/a&gt;&lt;/p&gt;
+- /post/pytorch-end-of-agony/ - </description>
+        </item>
     
     
     
@@ -478,108 +497,6 @@ x = 0.70851229
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;这里只是计算了fastq文件全部分析完后的&lt;code&gt;测序饱和度&lt;/code&gt;。如果要绘制测序饱和度曲线，则要在不同降采样水平的fastq上逐个计算。&lt;br&gt;
 如果利用10X给出的从bam文件抓取信息的方法，我们就可以在bam上做随机降采样，然后抓取数值，计算每个测序深度水平的&lt;code&gt;测序饱和度&lt;/code&gt;了。&lt;/p&gt;
 - /post/10x_calc_saturation_2/ - </description>
-        </item>
-    
-    
-    
-        <item>
-        <title>R SCENIC：安装与部署</title>
-        <link>/post/install-r-scenic/</link>
-        <pubDate>Wed, 22 Dec 2021 12:32:17 +0800</pubDate>
-        
-        <guid>/post/install-r-scenic/</guid>
-        <description>Karmotrine Dream /post/install-r-scenic/ -&lt;h1 id=&#34;tldr&#34;&gt;TL;DR&lt;/h1&gt;
-&lt;p&gt;First consulted &lt;a href=&#34;http://htmlpreview.github.io/?https://github.com/aertslab/SCENIC/blob/master/inst/doc/SCENIC_Setup.html&#34;&gt;this page&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;I have &lt;code&gt;R-4.0.5&lt;/code&gt; with &lt;code&gt;Bioconductor 3.12(4.0)&lt;/code&gt;, use the latest scripts for installation.&lt;/p&gt;
-&lt;p&gt;In Rstudio:&lt;/p&gt;
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;&amp;gt; if (!requireNamespace(&amp;quot;BiocManager&amp;quot;, quietly = TRUE)) install.packages(&amp;quot;BiocManager&amp;quot;)
-&amp;gt; BiocManager::version()
-&amp;gt; # If your bioconductor version is previous to 4.0, see the section bellow
-&amp;gt; 
-&amp;gt; ## Required
-&amp;gt; BiocManager::install(c(&amp;quot;AUCell&amp;quot;, &amp;quot;RcisTarget&amp;quot;))
-&amp;gt; BiocManager::install(c(&amp;quot;GENIE3&amp;quot;)) # Optional. Can be replaced by GRNBoost
-&amp;gt; 
-&amp;gt; ## Optional (but highly recommended):
-&amp;gt; # To score the network on cells (i.e. run AUCell):
-&amp;gt; BiocManager::install(c(&amp;quot;zoo&amp;quot;, &amp;quot;mixtools&amp;quot;, &amp;quot;rbokeh&amp;quot;))
-&amp;gt; # For various visualizations and perform t-SNEs:
-&amp;gt; BiocManager::install(c(&amp;quot;DT&amp;quot;, &amp;quot;NMF&amp;quot;, &amp;quot;ComplexHeatmap&amp;quot;, &amp;quot;R2HTML&amp;quot;, &amp;quot;Rtsne&amp;quot;))
-&amp;gt; # To support paralell execution (not available in Windows):
-&amp;gt; BiocManager::install(c(&amp;quot;doMC&amp;quot;, &amp;quot;doRNG&amp;quot;))
-&amp;gt; &amp;gt; # To export/visualize in http://scope.aertslab.org
-&amp;gt; if (!requireNamespace(&amp;quot;devtools&amp;quot;, quietly = TRUE)) install.packages(&amp;quot;devtools&amp;quot;)
-&amp;gt; devtools::install_github(&amp;quot;aertslab/SCopeLoomR&amp;quot;, build_vignettes = TRUE)
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;These worked fine.&lt;/p&gt;
-&lt;p&gt;Then, when installing SCENIC using &lt;code&gt;devtools&lt;/code&gt;:&lt;/p&gt;
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;&amp;gt; if (!requireNamespace(&amp;quot;devtools&amp;quot;, quietly = TRUE)) install.packages(&amp;quot;devtools&amp;quot;)
-&amp;gt; devtools::install_github(&amp;quot;aertslab/SCENIC&amp;quot;) 
-Downloading GitHub repo aertslab/SCENIC@HEAD
-Error in utils::download.file(url, path, method = method, quiet = quiet,  : 
-  download from &#39;https://api.github.com/repos/aertslab/SCENIC/tarball/HEAD&#39; failed
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Tried several times with no success.&lt;/p&gt;
-&lt;p&gt;There are some discussions on this behavior with &lt;code&gt;devtools&lt;/code&gt; and &lt;code&gt;remotes&lt;/code&gt;, for example this &lt;a href=&#34;https://github.com/r-lib/remotes/issues/130&#34;&gt;issue&lt;/a&gt;, but I find it un-straightforward.&lt;/p&gt;
-&lt;p&gt;Instead, I decided to switch to SCENIC(R) github page and install directly from there.
-First tried directly cloning the repo:&lt;/p&gt;
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;$ git clone https://github.com/aertslab/SCENIC.git
-Cloning into &#39;SCENIC&#39;...
-fatal: unable to access &#39;https://github.com/aertslab/SCENIC.git/&#39;: Could not resolve host: github.com
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;This also failed!&lt;/p&gt;
-&lt;p&gt;Then tried &lt;code&gt;Download ZIP&lt;/code&gt; to local and unzip &lt;code&gt;SCENIC-master.zip&lt;/code&gt;. Create a new project in Rstudio from the directory containing SCENIC build and hit the &lt;code&gt;Install and Restart&lt;/code&gt; button.&lt;/p&gt;
-&lt;p&gt;This also failed because of an error of the sort &amp;ldquo;Dependency &amp;lsquo;dynamicTreeCut&amp;rsquo; not available&amp;rdquo;, but this won&amp;rsquo;t be very difficult to solve.&lt;/p&gt;
-&lt;p&gt;Install &lt;code&gt;dynamicTreeCut&lt;/code&gt; manually:&lt;/p&gt;
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;&amp;gt; install.packages(&amp;quot;dynamicTreeCut&amp;quot;)
-Warning in install.packages :
-  unable to access index for repository https://cran.rstudio.com/src/contrib:
-  cannot open URL &#39;https://cran.rstudio.com/src/contrib/PACKAGES&#39;
-Installing package into ‘/home/luolab/R/x86_64-pc-linux-gnu-library/4.0’
-(as ‘lib’ is unspecified)
-Warning in install.packages :
-  unable to access index for repository https://cran.rstudio.com/src/contrib:
-  cannot open URL &#39;https://cran.rstudio.com/src/contrib/PACKAGES&#39;
-Warning in install.packages :
-  package ‘dynamicTreeCut’ is not available for this version of R
-
-A version of this package for your version of R might be available elsewhere,
-see the ideas at
-https://cran.r-project.org/doc/manuals/r-patched/R-admin.html#Installing-packages
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;To &lt;a href=&#34;https://community.rstudio.com/t/install-packages-unable-to-access-index-for-repository-try-disabling-secure-download-method-for-http/16578&#34;&gt;fix this&lt;/a&gt;, in Rstudio go to &lt;code&gt;Tools&lt;/code&gt; &amp;gt; &lt;code&gt;Global Options&lt;/code&gt; &amp;gt; &lt;code&gt;Packages&lt;/code&gt; and &lt;strong&gt;Uncheck&lt;/strong&gt; &lt;code&gt;Use secure download method for HTTP&lt;/code&gt;. Then:&lt;/p&gt;
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;&amp;gt; install.packages(&amp;quot;dynamicTreeCut&amp;quot;)
-Installing package into ‘/home/luolab/R/x86_64-pc-linux-gnu-library/4.0’
-(as ‘lib’ is unspecified)
-trying URL &#39;http://cran.rstudio.com/src/contrib/dynamicTreeCut_1.63-1.tar.gz&#39;
-Content type &#39;application/x-gzip&#39; length 24027 bytes (23 KB)
-==================================================
-downloaded 23 KB
-
-* installing *source* package ‘dynamicTreeCut’ ...
-** package ‘dynamicTreeCut’ successfully unpacked and MD5 sums checked
-** using staged installation
-** R
-** byte-compile and prepare package for lazy loading
-** help
-*** installing help indices
-** building package indices
-** testing if installed package can be loaded from temporary location
-** testing if installed package can be loaded from final location
-** testing if installed package keeps a record of temporary installation path
-* DONE (dynamicTreeCut)
-
-The downloaded source packages are in
-	‘/tmp/RtmpgfV9Bj/downloaded_packages’
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Success!&lt;/p&gt;
-&lt;p&gt;Now &lt;code&gt;Install and Restart&lt;/code&gt; SCENIC again and everything worked.&lt;/p&gt;
-&lt;p&gt;Next job is to import &lt;code&gt;pySCENIC&lt;/code&gt; results to R &lt;code&gt;SCENIC&lt;/code&gt;, consult the followings:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://github.com/aertslab/pySCENIC/issues/180&#34;&gt;Github issue discussion&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://rawcdn.githack.com/aertslab/SCENIC/0a4c96ed8d930edd8868f07428090f9dae264705/inst/doc/importing_pySCENIC.html&#34;&gt;Vignette&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2 id=&#34;ps&#34;&gt;P.S.&lt;/h2&gt;
-&lt;p&gt;When trying to push this post to github remote, failed again&amp;hellip;&lt;/p&gt;
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;$ git push -u --all
-fatal: unable to access &#39;https://github.com/RuiyuRayWang/blog.git/&#39;: Could not resolve host: github.com
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Looks like we&amp;rsquo;re having a bad day with github server&amp;hellip;&lt;/p&gt;
-- /post/install-r-scenic/ - </description>
         </item>
     
     

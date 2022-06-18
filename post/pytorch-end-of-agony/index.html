@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html><head>
-<title>Fixing a Bug in R After Ubuntu Upgrade</title>
+<title>Pytorch: End of Agony</title>
 
 
 
@@ -16,14 +16,19 @@
 
 
 
-<meta property="og:title" content="Fixing a Bug in R After Ubuntu Upgrade" />
-<meta property="og:description" content="Everybody knows the painstaking experience of system update, expecially when it comes to reconfiguring the environments and re-installing previously installed packages. Even with package management softwares like conda, bad things could still happen.
-Recently I updated Ubuntu from 18.04 LTS to 20.04 LTS. At the same time I also decided to install the latest R 4.2.0 since there are some new features worth the bother.
-I use rig to install R 4." />
+<meta property="og:title" content="Pytorch: End of Agony" />
+<meta property="og:description" content="The agonizing days of building everything from scratch (NVIDIA driver, CUDA, cuDNN) is over.
+Don&rsquo;t have to spend time on
+CUDA documentaion,
+or building
+Tensorflow：多版本部署、系统配置与版本切换.
+Now, use PyTorch, and you will be amazed at ease of building a GPU capable meachine learning model with neural network.
+The PyTorch binaries include the CUDA and cuDNN libraries.
+How to check if torch uses cuDNN" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="/post/fixing-a-bug-in-r-after-ubuntu-upgrade/" /><meta property="article:section" content="post" />
-<meta property="article:published_time" content="2022-06-17T22:01:10+08:00" />
-<meta property="article:modified_time" content="2022-06-17T22:01:10+08:00" /><meta property="og:site_name" content="My Blog" />
+<meta property="og:url" content="/post/pytorch-end-of-agony/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2022-06-18T15:44:29+08:00" />
+<meta property="article:modified_time" content="2022-06-18T15:44:29+08:00" /><meta property="og:site_name" content="My Blog" />
 
 
 
@@ -31,10 +36,15 @@ I use rig to install R 4." />
 
 
 <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Fixing a Bug in R After Ubuntu Upgrade"/>
-<meta name="twitter:description" content="Everybody knows the painstaking experience of system update, expecially when it comes to reconfiguring the environments and re-installing previously installed packages. Even with package management softwares like conda, bad things could still happen.
-Recently I updated Ubuntu from 18.04 LTS to 20.04 LTS. At the same time I also decided to install the latest R 4.2.0 since there are some new features worth the bother.
-I use rig to install R 4."/>
+<meta name="twitter:title" content="Pytorch: End of Agony"/>
+<meta name="twitter:description" content="The agonizing days of building everything from scratch (NVIDIA driver, CUDA, cuDNN) is over.
+Don&rsquo;t have to spend time on
+CUDA documentaion,
+or building
+Tensorflow：多版本部署、系统配置与版本切换.
+Now, use PyTorch, and you will be amazed at ease of building a GPU capable meachine learning model with neural network.
+The PyTorch binaries include the CUDA and cuDNN libraries.
+How to check if torch uses cuDNN"/>
 
 
 
@@ -296,12 +306,12 @@ Ported from <a href="https://mak1t0.cc/" target="_blank" rel="noreferrer noopene
                 
             >
                 <div class="post-title">
-                    Fixing a Bug in R After Ubuntu Upgrade
+                    Pytorch: End of Agony
                     
                     <div class="post-meta">
                         
                         <time itemprop="datePublished">
-                            2022-06-17 22:01
+                            2022-06-18 15:44
                         </time>
                         
 
@@ -314,7 +324,10 @@ Ported from <a href="https://mak1t0.cc/" target="_blank" rel="noreferrer noopene
                         
                             <i class="material-icons" style="">label</i>
                             
-                                <a href="/tags/r">R</a>
+                                <a href="/tags/machine-learning">Machine Learning</a>
+                                &nbsp;
+                            
+                                <a href="/tags/pytorch">PyTorch</a>
                                 &nbsp;
                             
                         
@@ -327,76 +340,18 @@ Ported from <a href="https://mak1t0.cc/" target="_blank" rel="noreferrer noopene
                 
                 <div class="post-body" v-pre>
                 
-                    <p>Everybody knows the painstaking experience of system update, expecially when it comes to reconfiguring the environments and re-installing previously installed packages. Even with package management softwares like conda, bad things could still happen.</p>
-<p>Recently I updated Ubuntu from 18.04 LTS to 20.04 LTS. At the same time I also decided to install the latest R 4.2.0 since there are some new features worth the bother.</p>
-<p>I use <code>rig</code> to install R 4.2.0, and here comes the trouble.</p>
-<pre tabindex="0"><code>(base) luolab@luolab-Z10PE-D16-WS:~$ rig add 4.2.0
-[INFO] Running `sudo` for adding new R versions. This might need your password.
-[INFO] Downloading https://cdn.rstudio.com/r/ubuntu-2004/pkgs/r-4.2.0_1_amd64.deb -&gt;
-    /tmp/rig/r-4.2.0_1_amd64.deb
-[INFO] Running apt-get update
---nnn-- Start of apt-get output -------------------
-Hit:1 https://dl.google.com/linux/chrome/deb stable InRelease
-Hit:2 https://download.docker.com/linux/ubuntu bionic InRelease                
-Hit:3 http://cn.archive.ubuntu.com/ubuntu focal InRelease                      
-Get:4 http://security.ubuntu.com/ubuntu focal-security InRelease [114 kB]
-Get:5 http://cn.archive.ubuntu.com/ubuntu focal-updates InRelease [114 kB]
-Get:6 http://security.ubuntu.com/ubuntu focal-security/main amd64 DEP-11 Metadata [40.7 kB]
-Get:7 http://cn.archive.ubuntu.com/ubuntu focal-backports InRelease [108 kB]
-Get:8 http://security.ubuntu.com/ubuntu focal-security/universe amd64 DEP-11 Metadata [66.6 kB]
-Get:9 http://cn.archive.ubuntu.com/ubuntu focal-updates/main amd64 Packages [1,924 kB]
-Get:10 http://security.ubuntu.com/ubuntu focal-security/multiverse amd64 DEP-11 Metadata [2,464 B]
-Get:11 http://cn.archive.ubuntu.com/ubuntu focal-updates/main i386 Packages [678 kB]
-Get:12 http://cn.archive.ubuntu.com/ubuntu focal-updates/main amd64 DEP-11 Metadata [278 kB]
-Get:13 http://cn.archive.ubuntu.com/ubuntu focal-updates/universe amd64 Packages [931 kB]
-Get:14 http://cn.archive.ubuntu.com/ubuntu focal-updates/universe i386 Packages [684 kB]
-Get:15 http://cn.archive.ubuntu.com/ubuntu focal-updates/universe amd64 DEP-11 Metadata [391 kB]
-Get:16 http://cn.archive.ubuntu.com/ubuntu focal-updates/multiverse amd64 DEP-11 Metadata [944 B]
-Get:17 http://cn.archive.ubuntu.com/ubuntu focal-backports/main amd64 DEP-11 Metadata [7,992 B]
-Get:18 http://cn.archive.ubuntu.com/ubuntu focal-backports/universe amd64 DEP-11 Metadata [30.5 kB]
-Fetched 5,370 kB in 8s (668 kB/s)                                              
-Reading package lists... Done
---uuu-- End of apt-get output ---------------------
-[INFO] Running apt-get install
---nnn-- Start of apt-get output -------------------
-Reading package lists... Done
-Building dependency tree       
-Reading state information... Done
-gdebi-core is already the newest version (0.9.5.7+nmu3).
-0 upgraded, 0 newly installed, 0 to remove and 0 not upgraded.
---uuu-- End of apt-get output ---------------------
-[INFO] Running gdebi
---nnn-- Start of gdebi output ---------------------
-Reading package lists... Done
-Building dependency tree        
-Reading state information... Done
-Reading state information... Done
-Selecting previously unselected package r-4.2.0.
-(Reading database ... 276977 files and directories currently installed.)
-Preparing to unpack /tmp/rig/r-4.2.0_1_amd64.deb ...
-Unpacking r-4.2.0 (1) ...
-Setting up r-4.2.0 (1) ...
---uuu-- End of gdebi output -----------------------
-[INFO] Adding /usr/local/bin/R-4.2.0 -&gt; /opt/R/4.2.0/bin/R
-[INFO] Setting default CRAN mirror
-[INFO] Setting up RSPM
-[INFO] Setting up automatic system requirements installation.
-[INFO] Installing pak for R 4.2.0 (if not installed yet)
-/opt/R/4.2.0/bin/R: line 193: /usr/bin/sed: No such file or directory
-ERROR: option '-e' requires a non-empty argument
-[ERROR] Failed to run R 4.2.0 to install pak
-</code></pre><p>How come! The ubiquitous <code>sed</code> is missing!</p>
-<pre tabindex="0"><code>(base) luolab@luolab-Z10PE-D16-WS:~$ which sed
-/bin/sed
-</code></pre><p>It turns out that <code>sed</code> is located at <code>/bin/sed</code> after Ubuntu upgrade whereas R still looks for it at <code>/usr/bin/sed</code>.
-To fix that, we have to use <code>sudo</code> power.</p>
-<pre tabindex="0"><code>(base) luolab@luolab-Z10PE-D16-WS:~$ sudo mv /bin/sed /usr/bin
-</code></pre><p>In fact I&rsquo;ve had the same error (cannot find utility in <code>/usr/bin</code> because it&rsquo;s located in <code>/bin</code>) with multiple package installations, such as <code>tar</code>.</p>
-<p>The above method fix the issue just fine.</p>
+                    <p>The agonizing days of building everything from scratch (NVIDIA driver, CUDA, cuDNN) is over.</p>
+<p>Don&rsquo;t have to spend time on</p>
+<p><a href="https://docs.nvidia.com/cuda/index.html"><del>CUDA documentaion</del></a>,</p>
+<p>or building</p>
+<p><a href="https://ruiyuraywang.github.io/post/build-tensorflow/"><del>Tensorflow：多版本部署、系统配置与版本切换</del></a>.</p>
+<p>Now, use PyTorch, and you will be amazed at ease of building a GPU capable meachine learning model with neural network.</p>
+<p><a href="https://amytabb.com/til/2020/10/05/cudnn-pytorch/">The PyTorch binaries include the CUDA and cuDNN libraries.</a></p>
+<p><a href="https://discuss.pytorch.org/t/how-to-check-if-torch-uses-cudnn/21933">How to check if torch uses cuDNN</a></p>
 
                     
                     <HR width="100%" id="EOF">
-		    <p style="color:#777;">Last modified on 2022-06-17</p>
+		    <p style="color:#777;">Last modified on 2022-06-18</p>
                     
                 </div>
             </div>
@@ -405,14 +360,14 @@ To fix that, we have to use <code>sudo</code> power.</p>
             <nav class="post-pagination">
 
                 
-                <a class="newer-posts" href="/post/pytorch-end-of-agony/">
-			Next<br>Pytorch: End of Agony
+                <a class="newer-posts">
+			Next<br>No newer posts.
                 </a>
                 
                 
                 
-                <a class="older-posts" href="/post/switch-r-faster/">
-			Previous<br>Switch R Faster
+                <a class="older-posts" href="/post/fixing-a-bug-in-r-after-ubuntu-upgrade/">
+			Previous<br>Fixing a Bug in R After Ubuntu Upgrade
                 </a>
                 
             </nav>

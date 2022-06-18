@@ -6,7 +6,23 @@
     <description>Recent content in Machine Learning on Karmotrine Dream</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 27 May 2022 09:21:08 +0800</lastBuildDate><atom:link href="/tags/machine-learning/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 18 Jun 2022 15:44:29 +0800</lastBuildDate><atom:link href="/tags/machine-learning/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Pytorch: End of Agony</title>
+      <link>/post/pytorch-end-of-agony/</link>
+      <pubDate>Sat, 18 Jun 2022 15:44:29 +0800</pubDate>
+      
+      <guid>/post/pytorch-end-of-agony/</guid>
+      <description>The agonizing days of building everything from scratch (NVIDIA driver, CUDA, cuDNN) is over.
+Don&amp;rsquo;t have to spend time on
+CUDA documentaion,
+or building
+Tensorflow：多版本部署、系统配置与版本切换.
+Now, use PyTorch, and you will be amazed at ease of building a GPU capable meachine learning model with neural network.
+The PyTorch binaries include the CUDA and cuDNN libraries.
+How to check if torch uses cuDNN</description>
+    </item>
+    
     <item>
       <title>The Bitter Lesson</title>
       <link>/post/the_bitter_lesson/</link>
