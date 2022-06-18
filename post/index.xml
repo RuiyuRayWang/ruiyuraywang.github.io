@@ -181,14 +181,13 @@ $ sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys E298A3A825C0D65D
     </item>
     
     <item>
-      <title>生物信息学&amp;计算生物学 常用装机软件汇总整理</title>
+      <title>生物信息学&amp;计算生物学 常用装机软件汇总</title>
       <link>/post/frq-used/</link>
       <pubDate>Thu, 02 Dec 2021 17:41:03 +0800</pubDate>
       
       <guid>/post/frq-used/</guid>
       <description>（未完成，持续更新）
-Softwares used in works. Some require built from scratch.
-Mac (iOS)  bash tools  brew tree   softwares  R    Ubuntu  Bioinformatics  samtools STAR umi_tools    Single cell biology  R  ## tidyverse install.packages(&amp;quot;tidyverse&amp;quot;) ## Bioconductor if (!require(&amp;quot;BiocManager&amp;quot;, quietly = TRUE)) install.packages(&amp;quot;BiocManager&amp;quot;) BiocManager::install(version = &amp;quot;3.15&amp;quot;) ## Specify version explicitly ## devtools install.packages(&amp;quot;devtools&amp;quot;) ## Seurat and relatives if (!requireNamespace(&amp;quot;remotes&amp;quot;, quietly = TRUE)) { install.</description>
+Mac (iOS)  bash tools  brew tree   softwares  miniconda R Rstudio jupyter-lab / jupyter notebook    Ubuntu  Basic Bioinformatics  samtools STAR IGV   Single Cell Biology  umi_tools subread velocyto    Conda envs pytorch (Deep Learning) - NVIDIA driver (if using GPU) - numpy - pandas - scipy - matplotlib - pytorch  Single cell biology  R  ## tidyverse install.</description>
     </item>
     
     <item>

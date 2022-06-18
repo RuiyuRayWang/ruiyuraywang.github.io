@@ -514,13 +514,12 @@ Referring to this post: &lt;a href=&#34;https://support.rstudio.com/hc/en-us/art
     
     
         <item>
-        <title>生物信息学&amp;计算生物学 常用装机软件汇总整理</title>
+        <title>生物信息学&amp;计算生物学 常用装机软件汇总</title>
         <link>/post/frq-used/</link>
         <pubDate>Thu, 02 Dec 2021 17:41:03 +0800</pubDate>
         
         <guid>/post/frq-used/</guid>
         <description>Karmotrine Dream /post/frq-used/ -&lt;p&gt;（未完成，持续更新）&lt;/p&gt;
-&lt;p&gt;Softwares used in works. Some require built from scratch.&lt;/p&gt;
 &lt;h2 id=&#34;mac-ios&#34;&gt;Mac (iOS)&lt;/h2&gt;
 &lt;ol&gt;
 &lt;li&gt;bash tools
@@ -531,21 +530,40 @@ Referring to this post: &lt;a href=&#34;https://support.rstudio.com/hc/en-us/art
 &lt;/li&gt;
 &lt;li&gt;softwares
 &lt;ul&gt;
+&lt;li&gt;miniconda&lt;/li&gt;
 &lt;li&gt;R&lt;/li&gt;
+&lt;li&gt;Rstudio&lt;/li&gt;
+&lt;li&gt;jupyter-lab / jupyter notebook&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
 &lt;h2 id=&#34;ubuntu&#34;&gt;Ubuntu&lt;/h2&gt;
 &lt;ol&gt;
-&lt;li&gt;Bioinformatics
+&lt;li&gt;Basic Bioinformatics
 &lt;ul&gt;
 &lt;li&gt;samtools&lt;/li&gt;
 &lt;li&gt;STAR&lt;/li&gt;
+&lt;li&gt;IGV&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Single Cell Biology
+&lt;ul&gt;
 &lt;li&gt;umi_tools&lt;/li&gt;
+&lt;li&gt;subread&lt;/li&gt;
+&lt;li&gt;velocyto&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
-&lt;h2 id=&#34;single-cell-biology&#34;&gt;Single cell biology&lt;/h2&gt;
+&lt;h1 id=&#34;conda-envs&#34;&gt;Conda envs&lt;/h1&gt;
+&lt;h2 id=&#34;pytorch-deep-learning&#34;&gt;pytorch (Deep Learning)&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;- NVIDIA driver (if using GPU)
+- numpy
+- pandas
+- scipy
+- matplotlib
+- pytorch
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;single-cell-biology&#34;&gt;Single cell biology&lt;/h1&gt;
 &lt;ol&gt;
 &lt;li&gt;R&lt;/li&gt;
 &lt;/ol&gt;
@@ -608,7 +626,10 @@ install.packages(&amp;quot;nVennR&amp;quot;)
 &lt;/code&gt;&lt;/pre&gt;&lt;ol start=&#34;2&#34;&gt;
 &lt;li&gt;python
 &lt;ul&gt;
-&lt;li&gt;geosketch&lt;/li&gt;
+&lt;li&gt;anndata&lt;/li&gt;
+&lt;li&gt;scanpy&lt;/li&gt;
+&lt;li&gt;scvelo&lt;/li&gt;
+&lt;li&gt;loompy&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
