@@ -181,13 +181,15 @@ $ sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys E298A3A825C0D65D
     </item>
     
     <item>
-      <title>生物信息学&amp;计算生物学 常用装机软件汇总</title>
+      <title>装机</title>
       <link>/post/frq-used/</link>
       <pubDate>Thu, 02 Dec 2021 17:41:03 +0800</pubDate>
       
       <guid>/post/frq-used/</guid>
-      <description>（未完成，持续更新）
-Mac (iOS)  bash tools  brew tree   softwares  miniconda R Rstudio jupyter-lab / jupyter notebook    Ubuntu  Basic Bioinformatics  samtools STAR IGV   Single Cell Biology  umi_tools subread velocyto    Conda envs pytorch (Deep Learning) - NVIDIA driver (if using GPU) - numpy - pandas - scipy - matplotlib - pytorch  Single cell biology  R  ## tidyverse install.</description>
+      <description>Mac (iOS) Reconfiguring conda env.
+$ rm -rf miniconda3/ $ curl -O https://repo.anaconda.com/miniconda/Miniconda3-latest-MacOSX-x86_64.sh # Download miniconda $ shasum -a 256 Miniconda3-latest-MacOSX-x86_64.sh # verify installer hashes $ bash Miniconda3-latest-MacOSX-x86_64.sh base environment.
+(base) conda install mamba -n base -c conda-forge # installing `mamba` to `base` allows other envs to use it Single Cell Biology.
+(base) $ conda create -n SCBiology python=3.9 (base) $ conda activate SCBiology (SCBiology) $ conda install -c conda-forge scanpy python-igraph leidenalg (SCBiology) $ pip install -U scvelo (SCBiology) $ conda deactivate PyTorch.</description>
     </item>
     
     <item>

@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html><head>
-<title>生物信息学&amp;计算生物学 常用装机软件汇总</title>
+<title>装机</title>
 
 
 
@@ -16,9 +16,11 @@
 
 
 
-<meta property="og:title" content="生物信息学&amp;计算生物学 常用装机软件汇总" />
-<meta property="og:description" content="（未完成，持续更新）
-Mac (iOS)  bash tools  brew tree   softwares  miniconda R Rstudio jupyter-lab / jupyter notebook    Ubuntu  Basic Bioinformatics  samtools STAR IGV   Single Cell Biology  umi_tools subread velocyto    Conda envs pytorch (Deep Learning) - NVIDIA driver (if using GPU) - numpy - pandas - scipy - matplotlib - pytorch  Single cell biology  R  ## tidyverse install." />
+<meta property="og:title" content="装机" />
+<meta property="og:description" content="Mac (iOS) Reconfiguring conda env.
+$ rm -rf miniconda3/ $ curl -O https://repo.anaconda.com/miniconda/Miniconda3-latest-MacOSX-x86_64.sh # Download miniconda $ shasum -a 256 Miniconda3-latest-MacOSX-x86_64.sh # verify installer hashes $ bash Miniconda3-latest-MacOSX-x86_64.sh base environment.
+(base) conda install mamba -n base -c conda-forge # installing `mamba` to `base` allows other envs to use it Single Cell Biology.
+(base) $ conda create -n SCBiology python=3.9 (base) $ conda activate SCBiology (SCBiology) $ conda install -c conda-forge scanpy python-igraph leidenalg (SCBiology) $ pip install -U scvelo (SCBiology) $ conda deactivate PyTorch." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="/post/frq-used/" /><meta property="article:section" content="post" />
 <meta property="article:published_time" content="2021-12-02T17:41:03+08:00" />
@@ -30,9 +32,11 @@ Mac (iOS)  bash tools  brew tree   softwares  miniconda R Rstudio jupyter-lab / 
 
 
 <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="生物信息学&amp;计算生物学 常用装机软件汇总"/>
-<meta name="twitter:description" content="（未完成，持续更新）
-Mac (iOS)  bash tools  brew tree   softwares  miniconda R Rstudio jupyter-lab / jupyter notebook    Ubuntu  Basic Bioinformatics  samtools STAR IGV   Single Cell Biology  umi_tools subread velocyto    Conda envs pytorch (Deep Learning) - NVIDIA driver (if using GPU) - numpy - pandas - scipy - matplotlib - pytorch  Single cell biology  R  ## tidyverse install."/>
+<meta name="twitter:title" content="装机"/>
+<meta name="twitter:description" content="Mac (iOS) Reconfiguring conda env.
+$ rm -rf miniconda3/ $ curl -O https://repo.anaconda.com/miniconda/Miniconda3-latest-MacOSX-x86_64.sh # Download miniconda $ shasum -a 256 Miniconda3-latest-MacOSX-x86_64.sh # verify installer hashes $ bash Miniconda3-latest-MacOSX-x86_64.sh base environment.
+(base) conda install mamba -n base -c conda-forge # installing `mamba` to `base` allows other envs to use it Single Cell Biology.
+(base) $ conda create -n SCBiology python=3.9 (base) $ conda activate SCBiology (SCBiology) $ conda install -c conda-forge scanpy python-igraph leidenalg (SCBiology) $ pip install -U scvelo (SCBiology) $ conda deactivate PyTorch."/>
 
 
 
@@ -540,7 +544,7 @@ Ported from <a href="https://mak1t0.cc/" target="_blank" rel="noreferrer noopene
                 
             >
                 <div class="post-title">
-                    生物信息学&amp;计算生物学 常用装机软件汇总
+                    装机
                     
                     <div class="post-meta">
                         
@@ -551,7 +555,7 @@ Ported from <a href="https://mak1t0.cc/" target="_blank" rel="noreferrer noopene
 
                         
                             <i class="material-icons" style="">folder</i>
-                                <a href="/categories/">[Bioinformatics]</a>
+                                <a href="/categories/">[Coding]</a>
                                 &nbsp;
                         
 
@@ -565,9 +569,69 @@ Ported from <a href="https://mak1t0.cc/" target="_blank" rel="noreferrer noopene
                 
                 <div class="post-body" v-pre>
                 
-                    <p>（未完成，持续更新）</p>
-<h2 id="mac-ios">Mac (iOS)</h2>
-<ol>
+                    <h2 id="mac-ios">Mac (iOS)</h2>
+<p>Reconfiguring conda env.</p>
+<pre tabindex="0"><code>$ rm -rf miniconda3/
+$ curl -O https://repo.anaconda.com/miniconda/Miniconda3-latest-MacOSX-x86_64.sh  # Download miniconda
+$ shasum -a 256 Miniconda3-latest-MacOSX-x86_64.sh  # verify installer hashes
+$ bash Miniconda3-latest-MacOSX-x86_64.sh
+</code></pre><p><code>base</code> environment.</p>
+<pre tabindex="0"><code>(base) conda install mamba -n base -c conda-forge  # installing `mamba` to `base` allows other envs to use it
+</code></pre><p>Single Cell Biology.</p>
+<pre tabindex="0"><code>(base) $ conda create -n SCBiology python=3.9
+(base) $ conda activate SCBiology
+(SCBiology) $ conda install -c conda-forge scanpy python-igraph leidenalg
+(SCBiology) $ pip install -U scvelo
+(SCBiology) $ conda deactivate
+</code></pre><p>PyTorch.</p>
+<pre tabindex="0"><code>(base) $ conda create -n pytorch python=3.9
+(base) $ conda activate pytorch
+(pytorch) $ conda install pandas
+(pytorch) $ conda install matplotlib
+(pytorch) $ conda install pytorch torchvision torchaudio -c pytorch
+(pytorch) $ conda install ipykernel  # configure ipython kernel
+(pytorch) $ conda deactivate
+</code></pre><p>Jupyter lab.</p>
+<pre tabindex="0"><code>(base) $ conda create -n jupyter python=3.9
+(base) $ mamba install jupyterlab -n jupyter -c conda-forge
+(base) $ conda activate jupyter
+(jupyter) $ pip install notebook
+(jupyter) $ pip install hugo_jupyter
+(jupyter) $ conda deactivate
+</code></pre><p>Configure ipython kernels</p>
+<pre tabindex="0"><code>(base) $ conda activate jupyter
+(jupyter) $ jupyter kernelspec list
+[ListKernelSpecs] WARNING | Kernel Provisioning: The 'local-provisioner' is not found.  This is likely due to the presence of multiple jupyter_client distributions and a previous distribution is being used as the source for entrypoints - which does not include 'local-provisioner'.  That distribution should be removed such that only the version-appropriate distribution remains (version &gt;= 7).  Until then, a 'local-provisioner' entrypoint will be automatically constructed and used.
+The candidate distribution locations are: ['/Users/Ray/miniconda3/envs/jupyter/lib/python3.9/site-packages/jupyter_client-7.3.2.dist-info']
+Available kernels:
+  python3    /Users/Ray/miniconda3/envs/jupyter/share/jupyter/kernels/python3
+  pytorch    /usr/local/share/jupyter/kernels/pytorch
+</code></pre><p><a href="https://discourse.jupyter.org/t/kernel-python-3-is-referencing-a-kernel-provisioner-local-provisioner-that-is-not-available-ensure-the-appropriate-package-has-been-installed-and-retry/10436/3">Fix</a>:</p>
+<pre tabindex="0"><code>(jupyter) $ conda install --force-reinstall jupyter_client
+</code></pre><p>To remove a deprecated kernel.</p>
+<pre tabindex="0"><code>(jupyter) $ jupyter kernelspec remove pytorch
+(pytroch)$ jupyter kernelspec list
+Available kernels:
+  python3    /Users/Ray/miniconda3/envs/pytorch/share/jupyter/kernels/python3
+</code></pre><p>To add a new kernel, switch to the conda env with which the kernel will be created and install <code>ipykernel</code>.</p>
+<pre tabindex="0"><code>(jupyter) $ conda install -n pytorch ipykernel
+(jupyter) $ conda activate pytorch
+(pytroch) $ python -m ipykernel install --name pytorch
+Installed kernelspec pytorch in /usr/local/share/jupyter/kernels/pytorch
+(pytroch)$ jupyter kernelspec list
+Available kernels:
+  python3    /Users/Ray/miniconda3/envs/pytorch/share/jupyter/kernels/python3
+  pytorch    /usr/local/share/jupyter/kernels/pytorch
+</code></pre><p>Summary:</p>
+<pre tabindex="0"><code># 为jupyter添加kernel
+python -m ipykernel install  --name kernelname
+ 
+# 删除已存在的kernel
+jupyter kernelspec remove kernelname
+ 
+# 查看kernel列表
+jupyter kernelspec list
+</code></pre><ol>
 <li>bash tools
 <ul>
 <li>brew</li>
@@ -590,6 +654,11 @@ Ported from <a href="https://mak1t0.cc/" target="_blank" rel="noreferrer noopene
 <li>samtools</li>
 <li>STAR</li>
 <li>IGV</li>
+</ul>
+</li>
+<li>RNAseq
+<ul>
+<li>Salmon</li>
 </ul>
 </li>
 <li>Single Cell Biology
@@ -641,6 +710,7 @@ BiocManager::install(&quot;tximeta&quot;)
 
 </code></pre><pre tabindex="0"><code>install.packages('rmarkdown')
 install.packages(&quot;knitr&quot;, dependencies = TRUE)
+install.packages(&quot;rstudioapi&quot;)
 install.packages('extrafont')
 </code></pre><pre tabindex="0"><code>## clusterProfiler
 BiocManager::install(&quot;clusterProfiler&quot;)

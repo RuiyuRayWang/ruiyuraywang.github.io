@@ -514,14 +514,74 @@ Referring to this post: &lt;a href=&#34;https://support.rstudio.com/hc/en-us/art
     
     
         <item>
-        <title>生物信息学&amp;计算生物学 常用装机软件汇总</title>
+        <title>装机</title>
         <link>/post/frq-used/</link>
         <pubDate>Thu, 02 Dec 2021 17:41:03 +0800</pubDate>
         
         <guid>/post/frq-used/</guid>
-        <description>Karmotrine Dream /post/frq-used/ -&lt;p&gt;（未完成，持续更新）&lt;/p&gt;
-&lt;h2 id=&#34;mac-ios&#34;&gt;Mac (iOS)&lt;/h2&gt;
-&lt;ol&gt;
+        <description>Karmotrine Dream /post/frq-used/ -&lt;h2 id=&#34;mac-ios&#34;&gt;Mac (iOS)&lt;/h2&gt;
+&lt;p&gt;Reconfiguring conda env.&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;$ rm -rf miniconda3/
+$ curl -O https://repo.anaconda.com/miniconda/Miniconda3-latest-MacOSX-x86_64.sh  # Download miniconda
+$ shasum -a 256 Miniconda3-latest-MacOSX-x86_64.sh  # verify installer hashes
+$ bash Miniconda3-latest-MacOSX-x86_64.sh
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;code&gt;base&lt;/code&gt; environment.&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;(base) conda install mamba -n base -c conda-forge  # installing `mamba` to `base` allows other envs to use it
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Single Cell Biology.&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;(base) $ conda create -n SCBiology python=3.9
+(base) $ conda activate SCBiology
+(SCBiology) $ conda install -c conda-forge scanpy python-igraph leidenalg
+(SCBiology) $ pip install -U scvelo
+(SCBiology) $ conda deactivate
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;PyTorch.&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;(base) $ conda create -n pytorch python=3.9
+(base) $ conda activate pytorch
+(pytorch) $ conda install pandas
+(pytorch) $ conda install matplotlib
+(pytorch) $ conda install pytorch torchvision torchaudio -c pytorch
+(pytorch) $ conda install ipykernel  # configure ipython kernel
+(pytorch) $ conda deactivate
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Jupyter lab.&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;(base) $ conda create -n jupyter python=3.9
+(base) $ mamba install jupyterlab -n jupyter -c conda-forge
+(base) $ conda activate jupyter
+(jupyter) $ pip install notebook
+(jupyter) $ pip install hugo_jupyter
+(jupyter) $ conda deactivate
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Configure ipython kernels&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;(base) $ conda activate jupyter
+(jupyter) $ jupyter kernelspec list
+[ListKernelSpecs] WARNING | Kernel Provisioning: The &#39;local-provisioner&#39; is not found.  This is likely due to the presence of multiple jupyter_client distributions and a previous distribution is being used as the source for entrypoints - which does not include &#39;local-provisioner&#39;.  That distribution should be removed such that only the version-appropriate distribution remains (version &amp;gt;= 7).  Until then, a &#39;local-provisioner&#39; entrypoint will be automatically constructed and used.
+The candidate distribution locations are: [&#39;/Users/Ray/miniconda3/envs/jupyter/lib/python3.9/site-packages/jupyter_client-7.3.2.dist-info&#39;]
+Available kernels:
+  python3    /Users/Ray/miniconda3/envs/jupyter/share/jupyter/kernels/python3
+  pytorch    /usr/local/share/jupyter/kernels/pytorch
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;a href=&#34;https://discourse.jupyter.org/t/kernel-python-3-is-referencing-a-kernel-provisioner-local-provisioner-that-is-not-available-ensure-the-appropriate-package-has-been-installed-and-retry/10436/3&#34;&gt;Fix&lt;/a&gt;:&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;(jupyter) $ conda install --force-reinstall jupyter_client
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;To remove a deprecated kernel.&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;(jupyter) $ jupyter kernelspec remove pytorch
+(pytroch)$ jupyter kernelspec list
+Available kernels:
+  python3    /Users/Ray/miniconda3/envs/pytorch/share/jupyter/kernels/python3
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;To add a new kernel, switch to the conda env with which the kernel will be created and install &lt;code&gt;ipykernel&lt;/code&gt;.&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;(jupyter) $ conda install -n pytorch ipykernel
+(jupyter) $ conda activate pytorch
+(pytroch) $ python -m ipykernel install --name pytorch
+Installed kernelspec pytorch in /usr/local/share/jupyter/kernels/pytorch
+(pytroch)$ jupyter kernelspec list
+Available kernels:
+  python3    /Users/Ray/miniconda3/envs/pytorch/share/jupyter/kernels/python3
+  pytorch    /usr/local/share/jupyter/kernels/pytorch
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Summary:&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;# 为jupyter添加kernel
+python -m ipykernel install  --name kernelname
+ 
+# 删除已存在的kernel
+jupyter kernelspec remove kernelname
+ 
+# 查看kernel列表
+jupyter kernelspec list
+&lt;/code&gt;&lt;/pre&gt;&lt;ol&gt;
 &lt;li&gt;bash tools
 &lt;ul&gt;
 &lt;li&gt;brew&lt;/li&gt;
@@ -544,6 +604,11 @@ Referring to this post: &lt;a href=&#34;https://support.rstudio.com/hc/en-us/art
 &lt;li&gt;samtools&lt;/li&gt;
 &lt;li&gt;STAR&lt;/li&gt;
 &lt;li&gt;IGV&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;RNAseq
+&lt;ul&gt;
+&lt;li&gt;Salmon&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;li&gt;Single Cell Biology
@@ -595,6 +660,7 @@ BiocManager::install(&amp;quot;tximeta&amp;quot;)
 
 &lt;/code&gt;&lt;/pre&gt;&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;install.packages(&#39;rmarkdown&#39;)
 install.packages(&amp;quot;knitr&amp;quot;, dependencies = TRUE)
+install.packages(&amp;quot;rstudioapi&amp;quot;)
 install.packages(&#39;extrafont&#39;)
 &lt;/code&gt;&lt;/pre&gt;&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;## clusterProfiler
 BiocManager::install(&amp;quot;clusterProfiler&amp;quot;)

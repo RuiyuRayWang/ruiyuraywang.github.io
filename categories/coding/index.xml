@@ -68,5 +68,17 @@ The reason is that I was trying to use two tools: cellassign and Cell_BLAST, but
 $ sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys E298A3A825C0D65DFD57CBB651716619E084DAB9 $ sudo add-apt-repository &#39;deb https://cloud.r-project.org/bin/linux/ubuntu bionic-cran40/&#39; $ sudo apt update $ sudo apt install r-base Recently, I ran into an issue with cellassign when analyzing single cell datasets.</description>
     </item>
     
+    <item>
+      <title>装机</title>
+      <link>/post/frq-used/</link>
+      <pubDate>Thu, 02 Dec 2021 17:41:03 +0800</pubDate>
+      
+      <guid>/post/frq-used/</guid>
+      <description>Mac (iOS) Reconfiguring conda env.
+$ rm -rf miniconda3/ $ curl -O https://repo.anaconda.com/miniconda/Miniconda3-latest-MacOSX-x86_64.sh # Download miniconda $ shasum -a 256 Miniconda3-latest-MacOSX-x86_64.sh # verify installer hashes $ bash Miniconda3-latest-MacOSX-x86_64.sh base environment.
+(base) conda install mamba -n base -c conda-forge # installing `mamba` to `base` allows other envs to use it Single Cell Biology.
+(base) $ conda create -n SCBiology python=3.9 (base) $ conda activate SCBiology (SCBiology) $ conda install -c conda-forge scanpy python-igraph leidenalg (SCBiology) $ pip install -U scvelo (SCBiology) $ conda deactivate PyTorch.</description>
+    </item>
+    
   </channel>
 </rss>
