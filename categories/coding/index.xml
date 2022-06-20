@@ -8,13 +8,13 @@
     <language>en-us</language>
     <lastBuildDate>Mon, 20 Jun 2022 16:07:43 +0800</lastBuildDate><atom:link href="/categories/coding/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Debug: Installation of celda failed</title>
+      <title>Debug: celda installation failed</title>
       <link>/post/debug-celda-magick-install/</link>
       <pubDate>Mon, 20 Jun 2022 16:07:43 +0800</pubDate>
       
       <guid>/post/debug-celda-magick-install/</guid>
-      <description>While installing celda via bioconductor:
-BiocManager::install(&#39;celda&#39;) ... ... Error: package or namespace load failed for ‘magick’ in dyn.load(file, DLLpath = DLLpath, ...): unable to load shared object &#39;/home/luolab/R/x86_64-pc-linux-gnu-library/4.2/magick/libs/magick.so&#39;: ... no such file or directory I&amp;rsquo;m running on Ubuntu 20.04 LTS.
+      <description>While installing celda:
+BiocManager::install(&#39;celda&#39;) ... Error: package or namespace load failed for ‘magick’ in dyn.load(file, DLLpath = DLLpath, ...): unable to load shared object &#39;/home/luolab/R/x86_64-pc-linux-gnu-library/4.2/magick/libs/magick.so&#39;: ... no such file or directory I&amp;rsquo;m running on Ubuntu 20.04 LTS.
 Installing imagemagick Magick++ library resolved the issue. See https://github.com/ropensci/magick
 $ sudo apt-get install -y libmagick++-dev # Everything works fine BiocManager::install(&#39;celda&#39;) </description>
     </item>

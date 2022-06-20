@@ -12,15 +12,14 @@
     
     
         <item>
-        <title>Debug: Installation of celda failed</title>
+        <title>Debug: celda installation failed</title>
         <link>/post/debug-celda-magick-install/</link>
         <pubDate>Mon, 20 Jun 2022 16:07:43 +0800</pubDate>
         
         <guid>/post/debug-celda-magick-install/</guid>
-        <description>Karmotrine Dream /post/debug-celda-magick-install/ -&lt;p&gt;While installing celda via bioconductor:&lt;/p&gt;
+        <description>Karmotrine Dream /post/debug-celda-magick-install/ -&lt;p&gt;While installing &lt;code&gt;celda&lt;/code&gt;:&lt;/p&gt;
 &lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;BiocManager::install(&#39;celda&#39;)
 
-...
 ...
 
 Error: package or namespace load failed for ‘magick’ in dyn.load(file, DLLpath = DLLpath, ...):

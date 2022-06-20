@@ -712,7 +712,10 @@ BiocManager::install(&quot;tximeta&quot;)
 install.packages(&quot;knitr&quot;, dependencies = TRUE)
 install.packages(&quot;rstudioapi&quot;)
 install.packages('extrafont')
-</code></pre><pre tabindex="0"><code>## Decontamination
+</code></pre><pre tabindex="0"><code>## Drop-utils
+BiocManager::install(&quot;DropletUtils&quot;)
+
+## Decontamination
 BiocManager::install(&quot;celda&quot;)  ## DecontX: a bit difficult to build
 install.packages(&quot;SoupX&quot;)  ## SoupX
 
