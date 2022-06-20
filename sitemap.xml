@@ -3,18 +3,30 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>/categories/</loc>
-    <lastmod>2022-06-18T15:44:29+08:00</lastmod>
+    <lastmod>2022-06-20T16:07:43+08:00</lastmod>
   </url><url>
     <loc>/categories/coding/</loc>
-    <lastmod>2022-06-18T15:44:29+08:00</lastmod>
+    <lastmod>2022-06-20T16:07:43+08:00</lastmod>
+  </url><url>
+    <loc>/post/debug-celda-magick-install/</loc>
+    <lastmod>2022-06-20T16:07:43+08:00</lastmod>
   </url><url>
     <loc>/</loc>
-    <lastmod>2022-06-18T15:44:29+08:00</lastmod>
-  </url><url>
-    <loc>/tags/machine-learning/</loc>
-    <lastmod>2022-06-18T15:44:29+08:00</lastmod>
+    <lastmod>2022-06-20T16:07:43+08:00</lastmod>
   </url><url>
     <loc>/post/</loc>
+    <lastmod>2022-06-20T16:07:43+08:00</lastmod>
+  </url><url>
+    <loc>/tags/r/</loc>
+    <lastmod>2022-06-20T16:07:43+08:00</lastmod>
+  </url><url>
+    <loc>/tags/single-cell-biology/</loc>
+    <lastmod>2022-06-20T16:07:43+08:00</lastmod>
+  </url><url>
+    <loc>/tags/</loc>
+    <lastmod>2022-06-20T16:07:43+08:00</lastmod>
+  </url><url>
+    <loc>/tags/machine-learning/</loc>
     <lastmod>2022-06-18T15:44:29+08:00</lastmod>
   </url><url>
     <loc>/tags/pytorch/</loc>
@@ -23,13 +35,7 @@
     <loc>/post/pytorch-end-of-agony/</loc>
     <lastmod>2022-06-18T15:44:29+08:00</lastmod>
   </url><url>
-    <loc>/tags/</loc>
-    <lastmod>2022-06-18T15:44:29+08:00</lastmod>
-  </url><url>
     <loc>/post/fixing-a-bug-in-r-after-ubuntu-upgrade/</loc>
-    <lastmod>2022-06-17T22:01:10+08:00</lastmod>
-  </url><url>
-    <loc>/tags/r/</loc>
     <lastmod>2022-06-17T22:01:10+08:00</lastmod>
   </url><url>
     <loc>/post/switch-r-faster/</loc>
@@ -60,9 +66,6 @@
     <lastmod>2022-02-20T10:55:43+08:00</lastmod>
   </url><url>
     <loc>/categories/bioinformatics/</loc>
-    <lastmod>2022-02-20T10:55:43+08:00</lastmod>
-  </url><url>
-    <loc>/tags/single-cell-biology/</loc>
     <lastmod>2022-02-20T10:55:43+08:00</lastmod>
   </url><url>
     <loc>/post/10x_reads_composition/</loc>

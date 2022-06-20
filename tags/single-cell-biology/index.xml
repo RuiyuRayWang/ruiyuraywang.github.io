@@ -6,7 +6,19 @@
     <description>Recent content in Single Cell Biology on Karmotrine Dream</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 20 Feb 2022 10:55:43 +0800</lastBuildDate><atom:link href="/tags/single-cell-biology/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 20 Jun 2022 16:07:43 +0800</lastBuildDate><atom:link href="/tags/single-cell-biology/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Debug: Installation of celda failed</title>
+      <link>/post/debug-celda-magick-install/</link>
+      <pubDate>Mon, 20 Jun 2022 16:07:43 +0800</pubDate>
+      
+      <guid>/post/debug-celda-magick-install/</guid>
+      <description>While installing celda via bioconductor:
+BiocManager::install(&#39;celda&#39;) ... ... Error: package or namespace load failed for ‘magick’ in dyn.load(file, DLLpath = DLLpath, ...): unable to load shared object &#39;/home/luolab/R/x86_64-pc-linux-gnu-library/4.2/magick/libs/magick.so&#39;: ... no such file or directory I&amp;rsquo;m running on Ubuntu 20.04 LTS.
+Installing imagemagick Magick++ library resolved the issue. See https://github.com/ropensci/magick
+$ sudo apt-get install -y libmagick++-dev # Everything works fine BiocManager::install(&#39;celda&#39;) </description>
+    </item>
+    
     <item>
       <title>一图看懂单细胞文库Reads的组成成分</title>
       <link>/post/10x_reads_composition/</link>

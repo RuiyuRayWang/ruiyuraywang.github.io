@@ -5,9 +5,34 @@
     <description>Recent content on Karmotrine Dream</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 18 Jun 2022 15:44:29 +0800</lastBuildDate>
+    <lastBuildDate>Mon, 20 Jun 2022 16:07:43 +0800</lastBuildDate>
     
         <atom:link href="/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    
+        <item>
+        <title>Debug: Installation of celda failed</title>
+        <link>/post/debug-celda-magick-install/</link>
+        <pubDate>Mon, 20 Jun 2022 16:07:43 +0800</pubDate>
+        
+        <guid>/post/debug-celda-magick-install/</guid>
+        <description>Karmotrine Dream /post/debug-celda-magick-install/ -&lt;p&gt;While installing celda via bioconductor:&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;BiocManager::install(&#39;celda&#39;)
+
+...
+...
+
+Error: package or namespace load failed for ‘magick’ in dyn.load(file, DLLpath = DLLpath, ...):
+ unable to load shared object &#39;/home/luolab/R/x86_64-pc-linux-gnu-library/4.2/magick/libs/magick.so&#39;:
+  ... no such file or directory
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;I&amp;rsquo;m running on Ubuntu 20.04 LTS.&lt;/p&gt;
+&lt;p&gt;Installing imagemagick &lt;code&gt;Magick++&lt;/code&gt; library resolved the issue. See &lt;a href=&#34;https://github.com/ropensci/magick&#34;&gt;https://github.com/ropensci/magick&lt;/a&gt;&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;$ sudo apt-get install -y libmagick++-dev
+&lt;/code&gt;&lt;/pre&gt;&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;# Everything works fine
+BiocManager::install(&#39;celda&#39;)
+&lt;/code&gt;&lt;/pre&gt;- /post/debug-celda-magick-install/ - </description>
+        </item>
     
     
     
@@ -387,116 +412,6 @@ Note that the numerator of the fraction is $n_{deduped\ reads}$, not the non-uni
 &lt;/ol&gt;
 &lt;/section&gt;
 - /post/10x_calc_saturation_1/ - </description>
-        </item>
-    
-    
-    
-        <item>
-        <title>10X CellRanger 中测序饱和度的定义与计算（二）</title>
-        <link>/post/10x_calc_saturation_2/</link>
-        <pubDate>Tue, 08 Feb 2022 22:05:51 +0800</pubDate>
-        
-        <guid>/post/10x_calc_saturation_2/</guid>
-        <description>Karmotrine Dream /post/10x_calc_saturation_2/ -&lt;p&gt;最近为了搭建单细胞测序上游分析的Pipeline，正在研究怎样对分析结果做质控（Pipeline详情移步&lt;a href=&#34;https://github.com/RuiyuRayWang/ScRNAseq_smkpipe_at_Luolab&#34;&gt;https://github.com/RuiyuRayWang/ScRNAseq_smkpipe_at_Luolab&lt;/a&gt;）。参考了10X CellRanger官方网站中描述的对测序饱和度的定义和计算方法：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://kb.10xgenomics.com/hc/en-us/articles/115005062366-What-is-sequencing-saturation-&#34;&gt;10X 官方文档：什么是测序饱和度？&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://kb.10xgenomics.com/hc/en-us/articles/115003646912-How-is-sequencing-saturation-calculated-&#34;&gt;10X 官方文档：测序饱和度怎样计算？&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;将用两篇文章记录这部分内容。&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;注意：本系列文章的参考来源均为10X官方公开的信息。&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;这篇文章是本系列文章的第二篇，将利用10X官方文档中的示例数据来展示测序饱和度计算的代码复现。&lt;/p&gt;
-&lt;hr&gt;
-&lt;p&gt;下载数据：&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;Uses dataset at &lt;a href=&#34;https://support.10xgenomics.com/single-cell-gene-expression/datasets/3.0.0/pbmc_1k_v3&#34;&gt;https://support.10xgenomics.com/single-cell-gene-expression/datasets/3.0.0/pbmc_1k_v3&lt;/a&gt;, where the web summary report gives a sequencing saturation value of 0.7085123.​&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;&lt;a href=&#34;https://cf.10xgenomics.com/samples/cell-exp/3.0.0/pbmc_1k_v3/pbmc_1k_v3_web_summary.html&#34;&gt;web_summary.html&lt;/a&gt;&lt;/p&gt;
-&lt;hr&gt;
-&lt;p&gt;计算公式：&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;The sequencing saturation calculation below matches the 0.7085123 sequencing saturation given in the web summary report.&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;unique_confidently_mapped_reads = 10,196,940
-duplicate_reads = 24,785,461
-
-x = 1 - (unique_confidently_mapped_reads/(unique_confidently_mapped_reads + duplicate_reads))
-x = 1 - (10,196,940/(10,196,940 + 24,785,461))
-x = 1 - (10,196,940/34,982,401)
-x = 1 - 0.2148771
-x = 0.70851229
-&lt;/code&gt;&lt;/pre&gt;&lt;hr&gt;
-&lt;p&gt;&lt;code&gt;web_summary.html&lt;/code&gt;中并没有直接给出&lt;code&gt;unique_configdently_mapped_reads&lt;/code&gt;和&lt;code&gt;duplicate_reads&lt;/code&gt;具体是多少。实际上这两个参数都是可以从bam中抓取的。具体抓取方法在官方文档中也已经给出。我这里介绍另一种有点hacky的方法，可以从结果反推算出&lt;code&gt;unique_configdently_mapped_reads&lt;/code&gt;是多少。从这个方法我们可以一窥10X输出的文件结构，也可以加深我们对数据含义的理解。&lt;/p&gt;
-&lt;p&gt;下载&lt;code&gt;Feature / cell matrix (raw)&lt;/code&gt;，得到文件&lt;code&gt;pbmc_1k_v3_raw_feature_bc_matrix.tar.gz&lt;/code&gt;，将其解压：&lt;/p&gt;
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;$ tar -xvzf pbmc_1k_v3_raw_feature_bc_matrix.tar.gz
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;得到&lt;code&gt;raw_feature_bc_matrix/&lt;/code&gt;文件夹，进入后将其中&lt;code&gt;matrix.mtx.gz&lt;/code&gt;文件进一步解压出来：&lt;/p&gt;
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;$ cd raw_feature_bc_matrix
-$ gunzip -k matrix.mtx.gz
-$ head matrix.mtx
-%%MatrixMarket matrix coordinate integer general
-%metadata_json: {&amp;quot;format_version&amp;quot;: 2, &amp;quot;software_version&amp;quot;: &amp;quot;3.0.0&amp;quot;}
-33538 6794880 3394796
-1815 9 1
-4027 9 1
-6626 9 1
-17060 9 1
-18003 9 1
-21000 9 1
-30469 9 1
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;这个文件起始有两行header，随后是一个有三列的表，每列由空格分隔。这个表相当于一个DataFrame。&lt;br&gt;
-第一列表示基因，第二列表示细胞，第三列表示该基因在该细胞中Read的count数（和&lt;code&gt;umi_tools count&lt;/code&gt;的输出一模一样）。&lt;/p&gt;
-&lt;p&gt;将前两行的header去掉，把表读到R里：&lt;/p&gt;
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;$ tail +3 matrix.mtx &amp;gt; tmp
-$ mv tmp matrix.mtx
-$ R
-&amp;gt; raw &amp;lt;- read.table(&amp;quot;matrix.mtx&amp;quot;, sep=&amp;quot; &amp;quot;, header=T)
-&amp;gt; head(raw)
-  X33538 X6794880 X3394796
-1   1815        9        1
-2   4027        9        1
-3   6626        9        1
-4  17060        9        1
-5  18003        9        1
-6  21000        9        1
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;对第三列求和，这本质上相当于deduplicate之后数据里剩下的reads数：&lt;/p&gt;
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;&amp;gt; sum(raw$X3394796)
-[1] 10196940
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;会发现这个数值就是&lt;code&gt;unique_confidently_mapped_reads&lt;/code&gt;。&lt;/p&gt;
-&lt;p&gt;上面介绍的方法相当于是“逆向工程”反推出&lt;code&gt;unique_confidently_mapped_reads&lt;/code&gt;是多少，是一个比较hacky的办法。&lt;/p&gt;
-&lt;p&gt;10X官方文档中是正儿八经从bam文件正向算的：&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;The unique_confidently_mapped_reads are the reads with xf tag value 25, as described on &lt;a href=&#34;https://support.10xgenomics.com/single-cell-gene-expression/software/pipelines/latest/output/bam&#34;&gt;https://support.10xgenomics.com/single-cell-gene-expression/software/pipelines/latest/output/bam&lt;/a&gt;. The bits are 1, 8, 16. You can obtain theunique_confidently_mapped_reads by parsing the BAM like so.&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;samtools view pbmc_1k_v3_possorted_genome_bam.bam | grep &#39;xf:i:25&#39; | wc -l
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;可以看到，CellRanger在做Alignment时会给&lt;code&gt;unique_confidently_mapped_reads&lt;/code&gt;打上一个tag&lt;code&gt;xf=25&lt;/code&gt;。这里是用samtools在bam文件中抓取这些tag来计算&lt;code&gt;unique_confidently_mapped_reads&lt;/code&gt;的。&lt;/p&gt;
-&lt;hr&gt;
-&lt;p&gt;至于&lt;code&gt;duplicate_reads&lt;/code&gt;，在10X给出的数据中似乎只能从bam文件抓取。&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;The duplicate_reads are those marked with the sam flag 0x400 as explained on &lt;a href=&#34;https://broadinstitute.github.io/picard/explain-flags.html&#34;&gt;https://broadinstitute.github.io/picard/explain-flags.html&lt;/a&gt; and can be obtained by running samtools flagstat.&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;samtools flagstat pbmc_1k_v3_possorted_genome_bam.bam
-76920923 + 0 in total (QC-passed reads + QC-failed reads)
-10319036 + 0 secondary
-0 + 0 supplementary
-24785461 + 0 duplicates
-73840063 + 0 mapped (95.99% : N/A)
-...
-&lt;/code&gt;&lt;/pre&gt;&lt;blockquote&gt;
-&lt;p&gt;All of these samflag 0x400 reads have an xf tag value of 17, which consist of bits 1 and 16. This also means these reads do not have the xf bit of 8, which mark representative reads from a group of duplicates. The converse isn&amp;rsquo;t true though. The xf17 consist mostly of samflag 0x400 duplicate reads but also of samflag nonduplicate reads.&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;而如果使用&lt;a href=&#34;https://github.com/RuiyuRayWang/ScRNAseq_smkpipe_at_Luolab&#34;&gt;&lt;code&gt;ScRNAseq_smkpipe_at_Luolab&lt;/code&gt;&lt;/a&gt;的protocol，则可以从&lt;code&gt;umi_tools&lt;/code&gt;或者&lt;code&gt;featureCounts&lt;/code&gt;输出的log文件抓取。&lt;/p&gt;
-&lt;hr&gt;
-&lt;p&gt;有了&lt;code&gt;unique_configdently_mapped_reads&lt;/code&gt;和&lt;code&gt;duplicate_reads&lt;/code&gt;，测序饱和度就可以直接计算了：&lt;/p&gt;
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;unique_confidently_mapped_reads = 10,196,940
-duplicate_reads = 24,785,461
-
-x = 1 - (unique_confidently_mapped_reads/(unique_confidently_mapped_reads + duplicate_reads))
-x = 1 - (10,196,940/(10,196,940 + 24,785,461))
-x = 1 - (10,196,940/34,982,401)
-x = 1 - 0.2148771
-x = 0.70851229
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;这里只是计算了fastq文件全部分析完后的&lt;code&gt;测序饱和度&lt;/code&gt;。如果要绘制测序饱和度曲线，则要在不同降采样水平的fastq上逐个计算。&lt;br&gt;
-如果利用10X给出的从bam文件抓取信息的方法，我们就可以在bam上做随机降采样，然后抓取数值，计算每个测序深度水平的&lt;code&gt;测序饱和度&lt;/code&gt;了。&lt;/p&gt;
-- /post/10x_calc_saturation_2/ - </description>
         </item>
     
     

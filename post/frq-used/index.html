@@ -712,7 +712,11 @@ BiocManager::install(&quot;tximeta&quot;)
 install.packages(&quot;knitr&quot;, dependencies = TRUE)
 install.packages(&quot;rstudioapi&quot;)
 install.packages('extrafont')
-</code></pre><pre tabindex="0"><code>## clusterProfiler
+</code></pre><pre tabindex="0"><code>## Decontamination
+BiocManager::install(&quot;celda&quot;)  ## DecontX: a bit difficult to build
+install.packages(&quot;SoupX&quot;)  ## SoupX
+
+## clusterProfiler
 BiocManager::install(&quot;clusterProfiler&quot;)
 
 ## Augur
