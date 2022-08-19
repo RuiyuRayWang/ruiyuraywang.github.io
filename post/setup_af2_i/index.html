@@ -712,7 +712,6 @@ Ported from <a href="https://mak1t0.cc/" target="_blank" rel="noreferrer noopene
 </code></pre><hr>
 <p><strong>Documenting commands to keep track of what I&rsquo;ve done.</strong></p>
 <h2 id="install-nvidia-container-toolkit">Install <code>NVIDIA Container Toolkit</code></h2>
-<p>Core step is to install the <code>NVIDIA Container Toolkit</code>.</p>
 <p>Check <a href="https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/install-guide.html#platform-requirements">Platform requirements</a></p>
 <p>GNU/Linux x86_64 with kernel version &gt; 3.10</p>
 <pre tabindex="0"><code>$ uname -r
@@ -755,7 +754,8 @@ GCC version:  gcc version 9.4.0 (Ubuntu 9.4.0-1ubuntu1~20.04.1)
 <p>Following <a href="https://docs.docker.com/engine/install/ubuntu/">this</a> instruction to install Docker Engine on Ubuntu.</p>
 <h3 id="uninstall-old-versions">Uninstall old versions</h3>
 <pre tabindex="0"><code>$ sudo apt-get remove docker docker-engine docker.io containerd runc
-</code></pre><h3 id="installing-using-the-repository-1st-of-3-methods">Installing using the repository (1st of 3 methods)</h3>
+</code></pre><p><em>NOTE: It’s OK if <code>apt-get</code> reports that none of these packages are installed.</em></p>
+<h3 id="installing-using-the-repository-1st-of-3-methods">Installing using the repository (1st of 3 methods)</h3>
 <h4 id="set-up-the-repository">Set up the repository</h4>
 <ol>
 <li>Update the <code>apt</code> package index and install packages to allow <code>apt</code> to use a repository over HTTPS:</li>

@@ -1843,7 +1843,6 @@ Successfully installed absl-py-0.13.0 certifi-2022.6.15 charset-normalizer-2.1.0
 &lt;/code&gt;&lt;/pre&gt;&lt;hr&gt;
 &lt;p&gt;&lt;strong&gt;Documenting commands to keep track of what I&amp;rsquo;ve done.&lt;/strong&gt;&lt;/p&gt;
 &lt;h2 id=&#34;install-nvidia-container-toolkit&#34;&gt;Install &lt;code&gt;NVIDIA Container Toolkit&lt;/code&gt;&lt;/h2&gt;
-&lt;p&gt;Core step is to install the &lt;code&gt;NVIDIA Container Toolkit&lt;/code&gt;.&lt;/p&gt;
 &lt;p&gt;Check &lt;a href=&#34;https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/install-guide.html#platform-requirements&#34;&gt;Platform requirements&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;GNU/Linux x86_64 with kernel version &amp;gt; 3.10&lt;/p&gt;
 &lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;$ uname -r
@@ -1886,7 +1885,8 @@ GCC version:  gcc version 9.4.0 (Ubuntu 9.4.0-1ubuntu1~20.04.1)
 &lt;p&gt;Following &lt;a href=&#34;https://docs.docker.com/engine/install/ubuntu/&#34;&gt;this&lt;/a&gt; instruction to install Docker Engine on Ubuntu.&lt;/p&gt;
 &lt;h3 id=&#34;uninstall-old-versions&#34;&gt;Uninstall old versions&lt;/h3&gt;
 &lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;$ sudo apt-get remove docker docker-engine docker.io containerd runc
-&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;installing-using-the-repository-1st-of-3-methods&#34;&gt;Installing using the repository (1st of 3 methods)&lt;/h3&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;em&gt;NOTE: It’s OK if &lt;code&gt;apt-get&lt;/code&gt; reports that none of these packages are installed.&lt;/em&gt;&lt;/p&gt;
+&lt;h3 id=&#34;installing-using-the-repository-1st-of-3-methods&#34;&gt;Installing using the repository (1st of 3 methods)&lt;/h3&gt;
 &lt;h4 id=&#34;set-up-the-repository&#34;&gt;Set up the repository&lt;/h4&gt;
 &lt;ol&gt;
 &lt;li&gt;Update the &lt;code&gt;apt&lt;/code&gt; package index and install packages to allow &lt;code&gt;apt&lt;/code&gt; to use a repository over HTTPS:&lt;/li&gt;
