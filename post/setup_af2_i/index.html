@@ -1,0 +1,1047 @@
+<!DOCTYPE html>
+<html><head>
+<title>Install Alphafold2 Docker Version (I)</title>
+
+
+
+
+<meta charset="utf-8">
+<meta name="X-UA-Compatible" content="IE=edge">
+<meta name="google-site-verification" content="">
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+<meta content="telephone=no" name="format-detection">
+<meta name="description" content="">
+<meta name="renderer" content="webkit">
+<meta name="theme-color" content="#ffffff">
+
+
+
+<meta property="og:title" content="Install Alphafold2 Docker Version (I)" />
+<meta property="og:description" content="https://github.com/deepmind/alphafold
+First time setup You will need a machine running Linux, AlphaFold does not support other operating systems.
+The following steps are required in order to run AlphaFold:
+ Install Docker.  Install NVIDIA Container Toolkit for GPU support. Setup running Docker as a non-root user.   Download genetic databases (see below). Download model parameters (see below). Check that AlphaFold will be able to use a GPU by running:  docker run --rm --gpus all nvidia/cuda:11." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/post/setup_af2_i/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2022-08-19T20:41:29+08:00" />
+<meta property="article:modified_time" content="2022-08-19T20:41:29+08:00" /><meta property="og:site_name" content="My Blog" />
+
+
+
+
+
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Install Alphafold2 Docker Version (I)"/>
+<meta name="twitter:description" content="https://github.com/deepmind/alphafold
+First time setup You will need a machine running Linux, AlphaFold does not support other operating systems.
+The following steps are required in order to run AlphaFold:
+ Install Docker.  Install NVIDIA Container Toolkit for GPU support. Setup running Docker as a non-root user.   Download genetic databases (see below). Download model parameters (see below). Check that AlphaFold will be able to use a GPU by running:  docker run --rm --gpus all nvidia/cuda:11."/>
+
+
+
+
+
+
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-123-45', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+
+
+<link type="text/css" rel="stylesheet" href="/vendor/css/bootstrap.min.css">
+
+
+  
+
+
+
+
+
+
+<link rel="stylesheet" href="/scss/journal.min.3f72a5fc8f5b5dd732a4b476aced0eece2156958d9d414316494ddb10593ddf7.css" integrity="sha256-P3Kl/I9bXdcypLR2rO0O7OIVaVjZ1BQxZJTdsQWT3fc=" media="screen">
+
+
+
+<link rel="stylesheet" href="/scss/dark-mode.min.f7c2efa7183435a6bd1842f91c541481c7a5137b5991629a870f24e4a516ad4b.css" integrity="sha256-98Lvpxg0Naa9GEL5HFQUgcelE3tZkWKahw8k5KUWrUs=" media="screen">
+
+
+<script src="/vendor/js/loadCSS.js"></script>
+<script>
+  loadCSS("https://fonts.googleapis.com/css?family=Fira+Mono|Material+Icons");
+</script>
+
+
+
+
+
+
+  <script src="/js/toc.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+<body>
+    	<div id="app"><div id="sideContainer" class="side-container">
+    
+    <a class="a-block nav-head false" href="/">
+    
+        <div class="nav-title">
+            Karmotrine Dream
+        </div>
+        
+    </a>
+
+    <div class="nav-link-list">
+        
+        
+            
+            
+            
+            
+            
+            <a class="a-block nav-link-item false" href="/posts">
+                Archive
+            </a>
+            
+        
+            
+            
+            
+            
+            
+            <a class="a-block nav-link-item false" href="/categories">
+                Categories
+            </a>
+            
+        
+            
+            
+            
+            
+            
+            <a class="a-block nav-link-item false" href="/tags">
+                Tags
+            </a>
+            
+        
+            
+            
+            
+            
+            
+            <a class="a-block nav-link-item false" href="/index.xml">
+                RSS Feed
+            </a>
+            
+        
+    </div>
+
+    
+
+    <div class="nav-footer">
+        
+Hugo Theme <a href="https://github.com/amazingrise/hugo-theme-diary">Diary</a> by <a href="https://amazingrise.net">Rise</a>
+<br>
+Ported from <a href="https://mak1t0.cc/" target="_blank" rel="noreferrer noopener">Makito</a>'s <a href="https://github.com/SumiMakito/hexo-theme-journal/" target="_blank" rel="noreferrer noopener">Journal.</a> <br>
+<br>
+
+&copy;
+	
+	2022 Karmotrine Dream
+	
+
+    </div>
+    
+</div><div id="extraContainer" class="extra-container">
+    
+    
+    <div class="toc animated-visibility" :class="{ invisible: scrollY <= 140 }">
+
+
+	<div class="toc-content">
+	
+		
+		
+		
+		<center>- CATALOG -</center>
+		
+		
+		<ul>
+			
+				
+				
+					
+						
+						
+						
+						
+							
+								
+									<ul>
+								
+							
+						
+						
+							<li>
+								<a href="#first-time-setup" onclick="onNavClick(`#first-time-setup-nav`)" id="first-time-setup-nav">
+									First time setup
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#install-nvidia-container-toolkit" onclick="onNavClick(`#install-nvidia-container-toolkit-nav`)" id="install-nvidia-container-toolkit-nav">
+									Install NVIDIA Container Toolkit
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#dockerhttpsdocsnvidiacomdatacentercloud-nativecontainer-toolkitinstall-guidehtmldocker" onclick="onNavClick(`#dockerhttpsdocsnvidiacomdatacentercloud-nativecontainer-toolkitinstall-guidehtmldocker-nav`)" id="dockerhttpsdocsnvidiacomdatacentercloud-nativecontainer-toolkitinstall-guidehtmldocker-nav">
+									Docker
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+							
+								
+									<ul>
+								
+							
+						
+						
+							<li>
+								<a href="#uninstall-old-versions" onclick="onNavClick(`#uninstall-old-versions-nav`)" id="uninstall-old-versions-nav">
+									Uninstall old versions
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#installing-using-the-repository-1st-of-3-methods" onclick="onNavClick(`#installing-using-the-repository-1st-of-3-methods-nav`)" id="installing-using-the-repository-1st-of-3-methods-nav">
+									Installing using the repository (1st of 3 methods)
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+							
+								
+									<ul>
+								
+							
+						
+						
+							<li>
+								<a href="#set-up-the-repository" onclick="onNavClick(`#set-up-the-repository-nav`)" id="set-up-the-repository-nav">
+									Set up the repository
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#install-docker-engine" onclick="onNavClick(`#install-docker-engine-nav`)" id="install-docker-engine-nav">
+									Install Docker Engine
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+							
+								</ul>
+							
+						
+						
+						
+							<li>
+								<a href="#setting-up-nvidia-container-toolkithttpsdocsnvidiacomdatacentercloud-nativecontainer-toolkitinstall-guidehtmlsetting-up-nvidia-container-toolkit" onclick="onNavClick(`#setting-up-nvidia-container-toolkithttpsdocsnvidiacomdatacentercloud-nativecontainer-toolkitinstall-guidehtmlsetting-up-nvidia-container-toolkit-nav`)" id="setting-up-nvidia-container-toolkithttpsdocsnvidiacomdatacentercloud-nativecontainer-toolkitinstall-guidehtmlsetting-up-nvidia-container-toolkit-nav">
+									Setting up NVIDIA Container Toolkit
+								</a>
+							</li>
+						
+						
+					
+				
+			
+		</ul>
+	</div>
+
+</div>
+    
+    <div class="pagination">
+        <a id="globalBackToTop" class="pagination-action animated-visibility" href="#top" :class="{ invisible: scrollY == 0 }">
+            <i class="material-icons pagination-action-icon">
+                keyboard_arrow_up
+            </i>
+        </a>
+        
+        <a type="button" class="pagination-action" id="darkModeToggleButton">
+            <span class="material-icons pagination-action-icon" id="darkModeToggleIcon">
+                dark_mode
+            </span>
+        </a>
+        
+        
+    </div>
+</div>
+<div class="single-column-drawer-container" id="drawer"
+     v-bind:class="{ 'single-column-drawer-container-active': isDrawerOpen }">
+    <div class="drawer-content">
+        <div class="drawer-menu">
+            
+            
+            
+                
+                
+                
+                
+                
+                <a class="a-block drawer-menu-item false" href="/posts">
+                    Archive
+                </a>
+                
+            
+                
+                
+                
+                
+                
+                <a class="a-block drawer-menu-item false" href="/categories">
+                    Categories
+                </a>
+                
+            
+                
+                
+                
+                
+                
+                <a class="a-block drawer-menu-item false" href="/tags">
+                    Tags
+                </a>
+                
+            
+                
+                
+                
+                
+                
+                <a class="a-block drawer-menu-item false" href="/index.xml">
+                    RSS Feed
+                </a>
+                
+            
+            
+            <div class="toc">
+
+
+	<div class="toc-content">
+	
+		
+		
+		
+		<center>- CATALOG -</center>
+		
+		
+		<ul>
+			
+				
+				
+					
+						
+						
+						
+						
+							
+								
+									<ul>
+								
+							
+						
+						
+							<li>
+								<a href="#first-time-setup" onclick="onNavClick(`#first-time-setup-nav`)" id="first-time-setup-nav">
+									First time setup
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#install-nvidia-container-toolkit" onclick="onNavClick(`#install-nvidia-container-toolkit-nav`)" id="install-nvidia-container-toolkit-nav">
+									Install NVIDIA Container Toolkit
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#dockerhttpsdocsnvidiacomdatacentercloud-nativecontainer-toolkitinstall-guidehtmldocker" onclick="onNavClick(`#dockerhttpsdocsnvidiacomdatacentercloud-nativecontainer-toolkitinstall-guidehtmldocker-nav`)" id="dockerhttpsdocsnvidiacomdatacentercloud-nativecontainer-toolkitinstall-guidehtmldocker-nav">
+									Docker
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+							
+								
+									<ul>
+								
+							
+						
+						
+							<li>
+								<a href="#uninstall-old-versions" onclick="onNavClick(`#uninstall-old-versions-nav`)" id="uninstall-old-versions-nav">
+									Uninstall old versions
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#installing-using-the-repository-1st-of-3-methods" onclick="onNavClick(`#installing-using-the-repository-1st-of-3-methods-nav`)" id="installing-using-the-repository-1st-of-3-methods-nav">
+									Installing using the repository (1st of 3 methods)
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+							
+								
+									<ul>
+								
+							
+						
+						
+							<li>
+								<a href="#set-up-the-repository" onclick="onNavClick(`#set-up-the-repository-nav`)" id="set-up-the-repository-nav">
+									Set up the repository
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#install-docker-engine" onclick="onNavClick(`#install-docker-engine-nav`)" id="install-docker-engine-nav">
+									Install Docker Engine
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+							
+								</ul>
+							
+						
+						
+						
+							<li>
+								<a href="#setting-up-nvidia-container-toolkithttpsdocsnvidiacomdatacentercloud-nativecontainer-toolkitinstall-guidehtmlsetting-up-nvidia-container-toolkit" onclick="onNavClick(`#setting-up-nvidia-container-toolkithttpsdocsnvidiacomdatacentercloud-nativecontainer-toolkitinstall-guidehtmlsetting-up-nvidia-container-toolkit-nav`)" id="setting-up-nvidia-container-toolkithttpsdocsnvidiacomdatacentercloud-nativecontainer-toolkitinstall-guidehtmlsetting-up-nvidia-container-toolkit-nav">
+									Setting up NVIDIA Container Toolkit
+								</a>
+							</li>
+						
+						
+					
+				
+			
+		</ul>
+	</div>
+
+</div>
+            
+        </div>
+    </div>
+</div>
+<transition name="fade">
+    <div id="drawer-mask" v-bind:class="{ 'single-column-drawer-mask': mounted }" v-if="isDrawerOpen" v-on:click="toggleDrawer"></div>
+</transition>
+<nav id="navBar" class="navbar sticky-top navbar-light single-column-nav-container">
+    <div id="navBackground" class="nav-background"></div>
+    <div class="container container-narrow nav-content">
+        <button id="nav_dropdown_btn" class="nav-dropdown-toggle" type="button" v-on:click="toggleDrawer">
+            <i class="material-icons">
+                menu
+            </i>
+        </button>
+        <a id="navTitle" class="navbar-brand" href="/">
+            Karmotrine Dream
+        </a>
+        
+        <button type="button" class="nav-darkmode-toggle" id="darkModeToggleButton2">
+            <i class="material-icons" id="darkModeToggleIcon2">
+                dark_mode
+            </i>
+        </button>
+        
+    </div>
+</nav>
+<div class="single-column-header-container" id="pageHead"
+     v-bind:style="{ transform: 'translateZ(0px) translateY('+.3*scrollY+'px)', opacity: 1-navOpacity }">
+    <a href="/">
+        <div class="single-column-header-title">Karmotrine Dream</div>
+        
+
+    </a>
+</div>
+
+            <div id="content">
+                <div id="streamContainer" class="stream-container">
+
+    <div class="post-list-container post-list-container-shadow">
+        <div class="post">
+            
+            
+            
+
+            <div class="post-head-wrapper-text-only"
+                
+            >
+                <div class="post-title">
+                    Install Alphafold2 Docker Version (I)
+                    
+                    <div class="post-meta">
+                        
+                        <time itemprop="datePublished">
+                            2022-08-19 20:41
+                        </time>
+                        
+
+                        
+                            <i class="material-icons" style="">folder</i>
+                                <a href="/categories/">[Coding]</a>
+                                &nbsp;
+                        
+
+                        
+                            <i class="material-icons" style="">label</i>
+                            
+                                <a href="/tags/machine-learning">Machine Learning</a>
+                                &nbsp;
+                            
+                                <a href="/tags/alphafold">Alphafold</a>
+                                &nbsp;
+                            
+                                <a href="/tags/comp-bio">Comp bio</a>
+                                &nbsp;
+                            
+                        
+                        
+                    </div>
+                </div>
+            </div>
+            
+            <div class="post-body-wrapper">
+                
+                <div class="post-body" v-pre>
+                
+                    <p><a href="https://github.com/deepmind/alphafold">https://github.com/deepmind/alphafold</a></p>
+<h2 id="first-time-setup">First time setup</h2>
+<p>You will need a machine running Linux, AlphaFold does not support other operating systems.</p>
+<p>The following steps are required in order to run AlphaFold:</p>
+<ol>
+<li>Install <a href="https://www.docker.com/">Docker</a>.
+<ul>
+<li>Install <a href="https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/install-guide.html">NVIDIA Container Toolkit</a> for GPU support.</li>
+<li>Setup running <a href="https://docs.docker.com/engine/install/linux-postinstall/#manage-docker-as-a-non-root-user">Docker as a non-root user</a>.</li>
+</ul>
+</li>
+<li>Download genetic databases (see below).</li>
+<li>Download model parameters (see below).</li>
+<li>Check that AlphaFold will be able to use a GPU by running:</li>
+</ol>
+<pre tabindex="0"><code>docker run --rm --gpus all nvidia/cuda:11.0-base nvidia-smi
+</code></pre><hr>
+<p><strong>Documenting commands to keep track of what I&rsquo;ve done.</strong></p>
+<h2 id="install-nvidia-container-toolkit">Install <code>NVIDIA Container Toolkit</code></h2>
+<p>Core step is to install the <code>NVIDIA Container Toolkit</code>.</p>
+<p>Check <a href="https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/install-guide.html#platform-requirements">Platform requirements</a></p>
+<p>GNU/Linux x86_64 with kernel version &gt; 3.10</p>
+<pre tabindex="0"><code>$ uname -r
+5.4.0-124-generic
+</code></pre><p>Docker &gt;= 19.03</p>
+<pre tabindex="0"><code>$ docker --version
+Docker version 20.10.17, build 100c701
+</code></pre><p>NVIDIA GPU with Architecture &gt;= Kepler (or compute capability 3.0)
+NVIDIA Linux drivers &gt;= 418.81.07</p>
+<pre tabindex="0"><code>$ nvidia-smi
+Thu Aug 18 21:01:02 2022       
++-----------------------------------------------------------------------------+
+| NVIDIA-SMI 470.141.03   Driver Version: 470.141.03   CUDA Version: 11.4     |
+|-------------------------------+----------------------+----------------------+
+| GPU  Name        Persistence-M| Bus-Id        Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp  Perf  Pwr:Usage/Cap|         Memory-Usage | GPU-Util  Compute M. |
+|                               |                      |               MIG M. |
+|===============================+======================+======================|
+|   0  Quadro M4000        Off  | 00000000:02:00.0  On |                  N/A |
+| 54%   56C    P8    18W / 120W |    630MiB /  8125MiB |     21%      Default |
+|                               |                      |                  N/A |
++-------------------------------+----------------------+----------------------+
+                                                                               
++-----------------------------------------------------------------------------+
+| Processes:                                                                  |
+|  GPU   GI   CI        PID   Type   Process name                  GPU Memory |
+|        ID   ID                                                   Usage      |
+|=============================================================================|
+|    0   N/A  N/A      2185      G   /usr/lib/xorg/Xorg                 59MiB |
+|    0   N/A  N/A      3200      G   /usr/lib/xorg/Xorg                324MiB |
+|    0   N/A  N/A      3461      G   /usr/bin/gnome-shell               32MiB |
+|    0   N/A  N/A      4592      G   ...398429094371090466,131072      105MiB |
+|    0   N/A  N/A      5271      G   /usr/lib/rstudio/bin/rstudio       74MiB |
++-----------------------------------------------------------------------------+
+</code></pre><p>Alternatively, NVIDIA driver version can be obtained using the following command:</p>
+<pre tabindex="0"><code>$ cat /proc/driver/nvidia/version 
+NVRM version: NVIDIA UNIX x86_64 Kernel Module  470.141.03  Thu Jun 30 18:45:31 UTC 2022
+GCC version:  gcc version 9.4.0 (Ubuntu 9.4.0-1ubuntu1~20.04.1)
+</code></pre><h2 id="dockerhttpsdocsnvidiacomdatacentercloud-nativecontainer-toolkitinstall-guidehtmldocker"><a href="https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/install-guide.html#docker">Docker</a></h2>
+<p>Following <a href="https://docs.docker.com/engine/install/ubuntu/">this</a> instruction to install Docker Engine on Ubuntu.</p>
+<h3 id="uninstall-old-versions">Uninstall old versions</h3>
+<pre tabindex="0"><code>$ sudo apt-get remove docker docker-engine docker.io containerd runc
+</code></pre><h3 id="installing-using-the-repository-1st-of-3-methods">Installing using the repository (1st of 3 methods)</h3>
+<h4 id="set-up-the-repository">Set up the repository</h4>
+<ol>
+<li>Update the <code>apt</code> package index and install packages to allow <code>apt</code> to use a repository over HTTPS:</li>
+</ol>
+<pre tabindex="0"><code>$ sudo apt-get update
+Hit:1 https://download.docker.com/linux/ubuntu bionic InRelease
+Hit:2 https://dl.google.com/linux/chrome/deb stable InRelease                 
+Get:3 http://security.ubuntu.com/ubuntu focal-security InRelease [114 kB]     
+Hit:4 http://cn.archive.ubuntu.com/ubuntu focal InRelease
+Get:5 http://cn.archive.ubuntu.com/ubuntu focal-updates InRelease [114 kB]
+Get:6 http://cn.archive.ubuntu.com/ubuntu focal-backports InRelease [108 kB]
+Get:7 http://cn.archive.ubuntu.com/ubuntu focal-updates/main amd64 Packages [2,039 kB]
+Get:8 http://cn.archive.ubuntu.com/ubuntu focal-updates/main i386 Packages [706 kB]
+Get:9 http://cn.archive.ubuntu.com/ubuntu focal-updates/universe i386 Packages [687 kB]
+Get:10 http://cn.archive.ubuntu.com/ubuntu focal-updates/universe amd64 Packages [939 kB]
+Fetched 4,708 kB in 4s (1,056 kB/s)                       
+Reading package lists... Done
+</code></pre><pre tabindex="0"><code>$ sudo apt-get install \
+&gt; ca-certificates \
+&gt; curl \
+&gt; gnupg \
+&gt; lsb-release
+Reading package lists... Done
+Building dependency tree       
+Reading state information... Done
+lsb-release is already the newest version (11.1.0ubuntu2).
+ca-certificates is already the newest version (20211016~20.04.1).
+curl is already the newest version (7.68.0-1ubuntu2.12).
+gnupg is already the newest version (2.2.19-3ubuntu2.2).
+0 upgraded, 0 newly installed, 0 to remove and 5 not upgraded.
+</code></pre><ol start="2">
+<li>Add Docker’s official GPG key:</li>
+</ol>
+<pre tabindex="0"><code>$ sudo mkdir -p /etc/apt/keyrings
+$ curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
+</code></pre><ol start="3">
+<li>Set up the repository:</li>
+</ol>
+<pre tabindex="0"><code>$ echo &quot;deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable&quot; | sudo tee /etc/apt/sources.list.d/docker.list &gt; /dev/null
+</code></pre><h4 id="install-docker-engine">Install Docker Engine</h4>
+<ol>
+<li>Update the <code>apt</code> package index, and install the <em>latest version</em> of Docker Engine, containerd, and Docker Compose:</li>
+</ol>
+<pre tabindex="0"><code>$ sudo apt-get update
+Get:1 https://download.docker.com/linux/ubuntu focal InRelease [57.7 kB]
+Hit:2 https://dl.google.com/linux/chrome/deb stable InRelease                 
+Get:3 https://download.docker.com/linux/ubuntu focal/stable amd64 Packages [17.7 kB]
+Get:4 http://security.ubuntu.com/ubuntu focal-security InRelease [114 kB]     
+Hit:5 http://cn.archive.ubuntu.com/ubuntu focal InRelease                     
+Hit:6 http://cn.archive.ubuntu.com/ubuntu focal-updates InRelease             
+Get:7 http://cn.archive.ubuntu.com/ubuntu focal-backports InRelease [108 kB]  
+Fetched 298 kB in 8s (35.7 kB/s)                                              
+Reading package lists... Done
+</code></pre><pre tabindex="0"><code>$ sudo apt-get install docker-ce docker-ce-cli containerd.io docker-compose-plugin
+Reading package lists... Done
+Building dependency tree       
+Reading state information... Done
+Suggested packages:
+  aufs-tools cgroupfs-mount | cgroup-lite
+The following NEW packages will be installed:
+  docker-compose-plugin
+The following packages will be upgraded:
+  containerd.io docker-ce docker-ce-cli
+3 upgraded, 1 newly installed, 0 to remove and 7 not upgraded.
+Need to get 96.3 MB of archives.
+After this operation, 26.6 MB of additional disk space will be used.
+Get:1 https://download.docker.com/linux/ubuntu focal/stable amd64 containerd.io amd64 1.6.7-1 [28.1 MB]
+Get:2 https://download.docker.com/linux/ubuntu focal/stable amd64 docker-ce-cli amd64 5:20.10.17~3-0~ubuntu-focal [40.6 MB]
+Get:3 https://download.docker.com/linux/ubuntu focal/stable amd64 docker-ce amd64 5:20.10.17~3-0~ubuntu-focal [21.0 MB]
+Get:4 https://download.docker.com/linux/ubuntu focal/stable amd64 docker-compose-plugin amd64 2.6.0~ubuntu-focal [6,560 kB]
+Fetched 96.3 MB in 49s (1,957 kB/s)                                           
+(Reading database ... 310677 files and directories currently installed.)
+Preparing to unpack .../containerd.io_1.6.7-1_amd64.deb ...
+Unpacking containerd.io (1.6.7-1) over (1.6.7-1) ...
+Preparing to unpack .../docker-ce-cli_5%3a20.10.17~3-0~ubuntu-focal_amd64.deb ...
+Unpacking docker-ce-cli (5:20.10.17~3-0~ubuntu-focal) over (5:20.10.17~3-0~ubuntu-bionic) ...
+Preparing to unpack .../docker-ce_5%3a20.10.17~3-0~ubuntu-focal_amd64.deb ...
+Unpacking docker-ce (5:20.10.17~3-0~ubuntu-focal) over (5:20.10.17~3-0~ubuntu-bionic) ...
+Selecting previously unselected package docker-compose-plugin.
+Preparing to unpack .../docker-compose-plugin_2.6.0~ubuntu-focal_amd64.deb ...
+Unpacking docker-compose-plugin (2.6.0~ubuntu-focal) ...
+Setting up containerd.io (1.6.7-1) ...
+Setting up docker-compose-plugin (2.6.0~ubuntu-focal) ...
+Setting up docker-ce-cli (5:20.10.17~3-0~ubuntu-focal) ...
+Setting up docker-ce (5:20.10.17~3-0~ubuntu-focal) ...
+Processing triggers for man-db (2.9.1-1) ...
+Processing triggers for systemd (245.4-4ubuntu3.17) ...
+</code></pre><ol start="2">
+<li>Verify that Docker Engine is installed correctly by running the <code>hello-world</code> image.</li>
+</ol>
+<pre tabindex="0"><code>$ sudo docker run hello-world
+Unable to find image 'hello-world:latest' locally
+latest: Pulling from library/hello-world
+2db29710123e: Already exists 
+Digest: sha256:7d246653d0511db2a6b2e0436cfd0e52ac8c066000264b3ce63331ac66dca625
+Status: Downloaded newer image for hello-world:latest
+
+Hello from Docker!
+This message shows that your installation appears to be working correctly.
+
+To generate this message, Docker took the following steps:
+ 1. The Docker client contacted the Docker daemon.
+ 2. The Docker daemon pulled the &quot;hello-world&quot; image from the Docker Hub.
+    (amd64)
+ 3. The Docker daemon created a new container from that image which runs the
+    executable that produces the output you are currently reading.
+ 4. The Docker daemon streamed that output to the Docker client, which sent it
+    to your terminal.
+
+To try something more ambitious, you can run an Ubuntu container with:
+ $ docker run -it ubuntu bash
+
+Share images, automate workflows, and more with a free Docker ID:
+ https://hub.docker.com/
+
+For more examples and ideas, visit:
+ https://docs.docker.com/get-started/
+</code></pre><p>This command downloads a test image and runs it in a container. When the container runs, it prints a message and exits.</p>
+<p><del>Docker Engine is installed and running. The <code>docker</code> group is created but no users are added to it. You need to use <code>sudo</code> to run Docker commands. Continue to <a href="https://docs.docker.com/engine/install/linux-postinstall/">Linux postinstall</a> to allow non-privileged users to run Docker commands and for other optional configuration steps.</del> Already done.</p>
+<pre tabindex="0"><code>$ groups
+luolab adm cdrom sudo dip plugdev lpadmin sambashare docker
+$ groups luolab
+luolab : luolab adm cdrom sudo dip plugdev lpadmin sambashare docker
+</code></pre><h3 id="setting-up-nvidia-container-toolkithttpsdocsnvidiacomdatacentercloud-nativecontainer-toolkitinstall-guidehtmlsetting-up-nvidia-container-toolkit"><a href="https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/install-guide.html#setting-up-nvidia-container-toolkit">Setting up NVIDIA Container Toolkit</a></h3>
+<p>Setup the package repository and the GPG key:</p>
+<pre tabindex="0"><code>$ distribution=$(. /etc/os-release;echo $ID$VERSION_ID) \
+&gt;       &amp;&amp; curl -fsSL https://nvidia.github.io/libnvidia-container/gpgkey | sudo gpg --dearmor -o /usr/share/keyrings/nvidia-container-toolkit-keyring.gpg \
+&gt;       &amp;&amp; curl -s -L https://nvidia.github.io/libnvidia-container/$distribution/libnvidia-container.list | \
+&gt;             sed 's#deb https://#deb [signed-by=/usr/share/keyrings/nvidia-container-toolkit-keyring.gpg] https://#g' | \
+&gt;             sudo tee /etc/apt/sources.list.d/nvidia-container-toolkit.list
+deb [signed-by=/usr/share/keyrings/nvidia-container-toolkit-keyring.gpg] https://nvidia.github.io/libnvidia-container/stable/ubuntu18.04/$(ARCH) /
+#deb [signed-by=/usr/share/keyrings/nvidia-container-toolkit-keyring.gpg] https://nvidia.github.io/libnvidia-container/experimental/ubuntu18.04/$(ARCH) /
+</code></pre><p>Install the <code>nvidia-docker2</code> package (and dependencies) after updating the package listing:</p>
+<pre tabindex="0"><code>$ sudo apt-get update
+Get:1 https://nvidia.github.io/libnvidia-container/stable/ubuntu18.04/amd64  InRelease [1,484 B]
+Hit:2 https://download.docker.com/linux/ubuntu focal InRelease                                                                                                                                            
+Hit:3 https://dl.google.com/linux/chrome/deb stable InRelease                                                                                                                                 
+Get:4 http://security.ubuntu.com/ubuntu focal-security InRelease [114 kB]           
+Get:5 https://nvidia.github.io/libnvidia-container/stable/ubuntu18.04/amd64  Packages [19.9 kB]               
+Hit:6 http://cn.archive.ubuntu.com/ubuntu focal InRelease                                                               
+Hit:7 http://cn.archive.ubuntu.com/ubuntu focal-updates InRelease                       
+Get:8 http://cn.archive.ubuntu.com/ubuntu focal-backports InRelease [108 kB]
+Fetched 244 kB in 3s (93.6 kB/s)   
+Reading package lists... Done
+</code></pre><pre tabindex="0"><code>$ sudo apt-get install -y nvidia-docker2
+Reading package lists... Done
+Building dependency tree       
+Reading state information... Done
+The following additional packages will be installed:
+  libnvidia-container-tools libnvidia-container1 nvidia-container-toolkit
+The following NEW packages will be installed:
+  libnvidia-container-tools libnvidia-container1 nvidia-container-toolkit nvidia-docker2
+0 upgraded, 4 newly installed, 0 to remove and 7 not upgraded.
+Need to get 2,917 kB of archives.
+After this operation, 12.5 MB of additional disk space will be used.
+Get:1 https://nvidia.github.io/libnvidia-container/stable/ubuntu18.04/amd64  libnvidia-container1 1.10.0-1 [926 kB]
+Get:2 https://nvidia.github.io/libnvidia-container/stable/ubuntu18.04/amd64  libnvidia-container-tools 1.10.0-1 [24.1 kB]
+Get:3 https://nvidia.github.io/libnvidia-container/stable/ubuntu18.04/amd64  nvidia-container-toolkit 1.10.0-1 [1,961 kB]
+Get:4 https://nvidia.github.io/libnvidia-container/stable/ubuntu18.04/amd64  nvidia-docker2 2.11.0-1 [5,544 B]
+Fetched 2,917 kB in 1s (2,853 kB/s)        
+Selecting previously unselected package libnvidia-container1:amd64.
+(Reading database ... 310680 files and directories currently installed.)
+Preparing to unpack .../libnvidia-container1_1.10.0-1_amd64.deb ...
+Unpacking libnvidia-container1:amd64 (1.10.0-1) ...
+Selecting previously unselected package libnvidia-container-tools.
+Preparing to unpack .../libnvidia-container-tools_1.10.0-1_amd64.deb ...
+Unpacking libnvidia-container-tools (1.10.0-1) ...
+Selecting previously unselected package nvidia-container-toolkit.
+Preparing to unpack .../nvidia-container-toolkit_1.10.0-1_amd64.deb ...
+Unpacking nvidia-container-toolkit (1.10.0-1) ...
+Selecting previously unselected package nvidia-docker2.
+Preparing to unpack .../nvidia-docker2_2.11.0-1_all.deb ...
+Unpacking nvidia-docker2 (2.11.0-1) ...
+Setting up libnvidia-container1:amd64 (1.10.0-1) ...
+Setting up libnvidia-container-tools (1.10.0-1) ...
+Setting up nvidia-container-toolkit (1.10.0-1) ...
+Setting up nvidia-docker2 (2.11.0-1) ...
+Processing triggers for libc-bin (2.31-0ubuntu9.9) ...
+/sbin/ldconfig.real: /usr/local/cuda-11.0/targets/x86_64-linux/lib/libcudnn_ops_infer.so.8 is not a symbolic link
+
+/sbin/ldconfig.real: /usr/local/cuda-11.0/targets/x86_64-linux/lib/libcudnn_ops_train.so.8 is not a symbolic link
+
+/sbin/ldconfig.real: /usr/local/cuda-11.0/targets/x86_64-linux/lib/libcudnn.so.8 is not a symbolic link
+
+/sbin/ldconfig.real: /usr/local/cuda-11.0/targets/x86_64-linux/lib/libcudnn_adv_infer.so.8 is not a symbolic link
+
+/sbin/ldconfig.real: /usr/local/cuda-11.0/targets/x86_64-linux/lib/libcudnn_adv_train.so.8 is not a symbolic link
+
+/sbin/ldconfig.real: /usr/local/cuda-11.0/targets/x86_64-linux/lib/libcudnn_cnn_infer.so.8 is not a symbolic link
+
+/sbin/ldconfig.real: /usr/local/cuda-11.0/targets/x86_64-linux/lib/libcudnn_cnn_train.so.8 is not a symbolic link
+</code></pre><p><!-- raw HTML omitted -->Do I have to worry about the symlinks warnings above?<!-- raw HTML omitted --></p>
+<p>Restart the Docker daemon to complete the installation after setting the default runtime:</p>
+<pre tabindex="0"><code>$ sudo systemctl restart docker
+</code></pre><p>At this point, a working setup can be tested by running a base CUDA container:</p>
+<pre tabindex="0"><code>$ sudo docker run --rm --gpus all nvidia/cuda:11.0.3-base-ubuntu20.04 nvidia-smi
+Unable to find image 'nvidia/cuda:11.0.3-base-ubuntu20.04' locally
+11.0.3-base-ubuntu20.04: Pulling from nvidia/cuda
+d7bfe07ed847: Pull complete 
+75eccf561042: Pull complete 
+191419884744: Pull complete 
+a17a942db7e1: Pull complete 
+16156c70987f: Pull complete 
+Digest: sha256:57455121f3393b7ed9e5a0bc2b046f57ee7187ea9ec562a7d17bf8c97174040d
+Status: Downloaded newer image for nvidia/cuda:11.0.3-base-ubuntu20.04
+Thu Aug 18 14:45:51 2022       
++-----------------------------------------------------------------------------+
+| NVIDIA-SMI 470.141.03   Driver Version: 470.141.03   CUDA Version: 11.4     |
+|-------------------------------+----------------------+----------------------+
+| GPU  Name        Persistence-M| Bus-Id        Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp  Perf  Pwr:Usage/Cap|         Memory-Usage | GPU-Util  Compute M. |
+|                               |                      |               MIG M. |
+|===============================+======================+======================|
+|   0  Quadro M4000        Off  | 00000000:02:00.0  On |                  N/A |
+| 56%   71C    P0    44W / 120W |    743MiB /  8125MiB |      4%      Default |
+|                               |                      |                  N/A |
++-------------------------------+----------------------+----------------------+
+                                                                               
++-----------------------------------------------------------------------------+
+| Processes:                                                                  |
+|  GPU   GI   CI        PID   Type   Process name                  GPU Memory |
+|        ID   ID                                                   Usage      |
+|=============================================================================|
++-----------------------------------------------------------------------------+
+</code></pre><p><!-- raw HTML omitted -->The nvidia-docker does seem to work normally despite the symlink warnings.<!-- raw HTML omitted --></p>
+<hr>
+<p>The Check command 4. listed in the <code>First time setup</code> section failed.</p>
+<pre tabindex="0"><code>$ sudo docker run --rm --gpus all nvidia/cuda:11.0-base nvidia-smi
+Unable to find image 'nvidia/cuda:11.0-base' locally
+docker: Error response from daemon: manifest for nvidia/cuda:11.0-base not found: manifest unknown: manifest unknown.
+See 'docker run --help'.
+</code></pre><p>The command in <code>READMD.md</code> is out-of-date, as in this <a href="https://github.com/NVIDIA/nvidia-docker/issues/1454">issue</a>.</p>
+
+                    
+                    <HR width="100%" id="EOF">
+		    <p style="color:#777;">Last modified on 2022-08-19</p>
+                    
+                </div>
+            </div>
+            
+            
+            <nav class="post-pagination">
+
+                
+                <a class="newer-posts" href="/post/setup_af2_ii/">
+			Next<br>Install Alphafold2 Docker Version (II)
+                </a>
+                
+                
+                
+                <a class="older-posts" href="/post/debug-celda-magick-install/">
+			Previous<br>Debug: celda installation failed
+                </a>
+                
+            </nav>
+            <div class="post-comment-wrapper">
+                
+
+
+
+
+
+
+
+
+
+
+            </div>
+        </div>
+    </div>
+
+
+                    </div>
+            </div><div id="single-column-footer">
+Hugo Theme <a href="https://github.com/amazingrise/hugo-theme-diary">Diary</a> by <a href="https://amazingrise.net">Rise</a>
+<br>
+Ported from <a href="https://mak1t0.cc/" target="_blank" rel="noreferrer noopener">Makito</a>'s <a href="https://github.com/SumiMakito/hexo-theme-journal/" target="_blank" rel="noreferrer noopener">Journal.</a> <br>
+<br>
+
+&copy;
+	
+	2022 Karmotrine Dream
+	
+</div>
+            </div>
+    
+    <script src="/js/journal.js"></script>
+    </body>
+</html>

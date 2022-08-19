@@ -5,9 +5,159 @@
     <description>Recent content on Karmotrine Dream</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 20 Jun 2022 16:07:43 +0800</lastBuildDate>
+    <lastBuildDate>Fri, 19 Aug 2022 21:50:00 +0800</lastBuildDate>
     
         <atom:link href="/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    
+        <item>
+        <title>Hugo：启用Mathjax实现数学公式的编辑与显示</title>
+        <link>/post/deploy_mathjax/</link>
+        <pubDate>Sat, 12 Feb 2022 21:17:37 +0800</pubDate>
+        
+        <guid>/post/deploy_mathjax/</guid>
+        <description>Karmotrine Dream /post/deploy_mathjax/ -&lt;p&gt;The HUGO official document has a nice blog about &lt;a href=&#34;https://bwaycer.github.io/hugo_tutorial.hugo/tutorials/mathjax/&#34;&gt;MathJax Support&lt;/a&gt;.
+Additionally, a blog written by Geoff Ruddock has a more concise solution: &lt;a href=&#34;https://geoffruddock.com/math-typesetting-in-hugo/&#34;&gt;Render LaTeX math expressions in Hugo with MathJax 3&lt;/a&gt;.&lt;/p&gt;
+&lt;h1 id=&#34;tldr&#34;&gt;TL;DR&lt;/h1&gt;
+&lt;ol&gt;
+&lt;li&gt;Create a file in your theme directory &lt;code&gt;layouts/partials/mathjax_support.html&lt;/code&gt; as the following:&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;&amp;lt;script&amp;gt;
+  MathJax = {
+    tex: {
+      inlineMath: [[&#39;$&#39;, &#39;$&#39;], [&#39;\\(&#39;, &#39;\\)&#39;]],
+      displayMath: [[&#39;$$&#39;,&#39;$$&#39;], [&#39;\\[&#39;, &#39;\\]&#39;]],
+      processEscapes: true,
+      processEnvironments: true
+    },
+    options: {
+      skipHtmlTags: [&#39;script&#39;, &#39;noscript&#39;, &#39;style&#39;, &#39;textarea&#39;, &#39;pre&#39;]
+    }
+  };
+
+  window.addEventListener(&#39;load&#39;, (event) =&amp;gt; {
+      document.querySelectorAll(&amp;quot;mjx-container&amp;quot;).forEach(function(x){
+        x.parentElement.classList += &#39;has-jax&#39;})
+    });
+
+&amp;lt;/script&amp;gt;
+&amp;lt;script src=&amp;quot;https://polyfill.io/v3/polyfill.min.js?features=es6&amp;quot;&amp;gt;&amp;lt;/script&amp;gt;
+&amp;lt;script type=&amp;quot;text/javascript&amp;quot; id=&amp;quot;MathJax-script&amp;quot; async
+  src=&amp;quot;https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;ol start=&#34;2&#34;&gt;
+&lt;li&gt;Next, open the file &lt;code&gt;layouts/partials/header.html&lt;/code&gt; and add the following line just before the closing &lt;!-- raw HTML omitted --&gt; tag:&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;{{ if .Params.mathjax }}{{ partial &amp;quot;mathjax_support.html&amp;quot; . }}{{ end }}
+&lt;/code&gt;&lt;/pre&gt;&lt;ol start=&#34;3&#34;&gt;
+&lt;li&gt;Then, add the following lines to your CSS file. You may need to tinker with the contents here depending on your theme, these are just the settings which worked for me.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;code.has-jax {font: inherit;
+              font-size: 100%;
+              background: inherit;
+              border: inherit;
+              color: #515151;}
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;To modify css, refer to &lt;a href=&#34;https://www.banjocode.com/post/hugo/custom-css/&#34;&gt;Add Custom CSS Or Javascript To Your Hugo Site&lt;/a&gt;。&lt;/p&gt;
+&lt;ol start=&#34;4&#34;&gt;
+&lt;li&gt;Finally, add &lt;code&gt;mathjax: true&lt;/code&gt; to the YAML frontmatter of any pages containing math markup. Alternatively, you could omit the outer &lt;code&gt;{{ if .Params.mathjax }} … {{ end }}&lt;/code&gt; conditional above to load the library automatically on all pages. However given that this library is quite heavy (it’s consistently the asset that Google PageSpeed Insights complains the most about) and that only &amp;lt;20% of my blog posts contain math at all, this is worth the extra effort for me.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;todo&#34;&gt;TODO&lt;/h1&gt;
+&lt;p&gt;走完上面的流程后还是发现MathJax中&lt;code&gt;\color&lt;/code&gt;和&lt;code&gt;\textcolor&lt;/code&gt;不能修改字体颜色。&lt;br&gt;
+custom.css似乎也没有正确配置。&lt;/p&gt;
+- /post/deploy_mathjax/ - </description>
+        </item>
+    
+    
+    
+        <item>
+        <title>10X CellRanger 中测序饱和度的定义与计算（一）</title>
+        <link>/post/10x_calc_saturation_1/</link>
+        <pubDate>Tue, 08 Feb 2022 22:05:51 +0800</pubDate>
+        
+        <guid>/post/10x_calc_saturation_1/</guid>
+        <description>Karmotrine Dream /post/10x_calc_saturation_1/ -&lt;p&gt;最近为了搭建单细胞测序上游分析的Pipeline，正在研究怎样对分析结果做质控（Pipeline详情移步&lt;a href=&#34;https://github.com/RuiyuRayWang/ScRNAseq_smkpipe_at_Luolab&#34;&gt;https://github.com/RuiyuRayWang/ScRNAseq_smkpipe_at_Luolab&lt;/a&gt;）。参考了10X CellRanger官方网站中描述的对测序饱和度的定义和计算方法：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://kb.10xgenomics.com/hc/en-us/articles/115005062366-What-is-sequencing-saturation-&#34;&gt;10X 官方文档：什么是测序饱和度？&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://kb.10xgenomics.com/hc/en-us/articles/115003646912-How-is-sequencing-saturation-calculated-&#34;&gt;10X 官方文档：测序饱和度怎样计算？&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;将用两篇文章记录这部分内容。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;注意：本系列文章的参考来源均为10X官方公开的信息。&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;这篇文章是本系列文章的第一篇，将对相关概念和计算公式的定义进行解读。&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;一测序饱和度-和-文库复杂度&#34;&gt;一、&lt;code&gt;测序饱和度&lt;/code&gt; 和 &lt;code&gt;文库复杂度&lt;/code&gt;&lt;/h3&gt;
+&lt;p&gt;关于测序饱和度的定义，引用10X文档中的说明：&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;Question:&lt;/strong&gt; What is sequencing saturation?&lt;br&gt;
+&lt;strong&gt;Answer:&lt;/strong&gt; Sequencing saturation is a measure of &lt;em&gt;&lt;strong&gt;the fraction of library complexity&lt;/strong&gt;&lt;/em&gt; that was sequenced in a given experiment. The &lt;em&gt;&lt;strong&gt;inverse&lt;/strong&gt;&lt;/em&gt; of the sequencing saturation can be interpreted as the number of additional reads it would take to detect a new transcript.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;这两句话言简而意赅，点明了测序饱和度(sequencing saturation)与文库复杂度(library complexity)之间的关系。&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://gatk.broadinstitute.org/hc/en-us/articles/360037591931-EstimateLibraryComplexity-Picard-&#34;&gt;library complexity (文库复杂度)&lt;/a&gt;，指的是一个测序文库中非冗余的DNA片段的数量（the number of unique DNA fragments present in a given library）。&lt;br&gt;
+&lt;strong&gt;&lt;code&gt;测序饱和度&lt;/code&gt;表征了当前的测序数据中测出了多少&lt;code&gt;文库复杂度&lt;/code&gt;。&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;从逆命题的角度来看待这个问题：发明一个新名词&lt;code&gt;“测序不饱和度”&lt;/code&gt;，则&lt;code&gt;“测序不饱和度”&lt;/code&gt;可以定义为 &lt;em&gt;再多测序多少个Reads就可以检测到一个全新的转录本&lt;sup id=&#34;fnref:1&#34;&gt;&lt;a href=&#34;#fn:1&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;1&lt;/a&gt;&lt;/sup&gt;&lt;/em&gt;。&lt;br&gt;
+换句话说，&lt;strong&gt;如果我们只需要再测很少的Reads就可以得到一个全新的转录本，说明这个文库“测序不饱和”；反之，如果需要再测很多Reads才能得到一个全新的转录本，说明这个文库“测序饱和”。&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;其实我们还可以从&lt;strong&gt;冗余信息&lt;/strong&gt;的角度来理解这个问题：&lt;br&gt;
+对于一个文库，&lt;strong&gt;如果仅再测很少Reads就检测到了全新的转录本，说明当前数据还远未挖掘出文库中的大部分信息，数据的信息冗余程度比较低，测序不饱和；&lt;/strong&gt;&lt;br&gt;
+而反过来，&lt;strong&gt;如果需要再测很多Reads才能检测到全新的转录本，说明当前数据对文库中包含的信息挖掘得比较充分，数据的信息冗余程度比较高，测序接近饱和。&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;所以本质上，测序饱和度可以间接地由&lt;strong&gt;信息冗余程度&lt;/strong&gt;进行度量。&lt;br&gt;
+数据信息冗余度越高，测序饱和度越高；&lt;br&gt;
+数据信息冗余度越低，测序饱和度越低。&lt;/p&gt;
+&lt;p&gt;从实际角度出发，我们有时候&lt;strong&gt;并不希望信息冗余度&lt;/strong&gt;太高。因为冗余信息越多，浪费的资源越多。所以有些研究不会将 测序饱和度 的目标阈值设定到接近饱和（&amp;gt;90%），而是测到70%左右就收工了。&lt;br&gt;
+在受经费条件等因素限制的情况下这是一种合理策略。&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;二影响测序饱和度的因素&#34;&gt;二、影响测序饱和度的因素&lt;/h3&gt;
+&lt;p&gt;在单细胞测序中，测序饱和度主要由两个因素决定：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;文库复杂度(Biological Complxity)：&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Different cell types will have different amounts of RNA and thus will differ in the total number of different transcripts in the final library (also known as library complexity). The figure below illustrates the median number of genes recovered from different cell types. As sequencing depth increases, more genes are detected, but this reaches saturation at different sequencing depths depending on cell type.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;文库复杂度一般由生物学样本的复杂程度决定。而生物学样本的复杂度又由多个因素，如细胞异质性(Cell Heterogeneity)、转录组RNA含量、细胞质量、细胞数等共同决定。&lt;del&gt;越是简单均一的系统，生物复杂程度越低。&lt;/del&gt;&lt;br&gt;
+下图中，原代分离的PBMC(外周血单核细胞)和E18小鼠神经元细胞RNA含量较低（？）&lt;sup id=&#34;fnref:2&#34;&gt;&lt;a href=&#34;#fn:2&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;2&lt;/a&gt;&lt;/sup&gt;，因此迅速达到测序饱和；而培养的永生细胞3T3和HEK293T的RNA含量比较高（？）&lt;sup id=&#34;fnref:2&#34;&gt;&lt;a href=&#34;#fn:2&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;2&lt;/a&gt;&lt;/sup&gt;，测序不容易达到饱和。同样作为永生细胞，3T3细胞系的转录组比HEK293T细胞系的转录组复杂，因此相比之下不容易测序饱和。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;测序深度(Sequencing Depth)&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Sequencing depth also affects sequencing saturation; generally, the more sequencing reads, the more additional unique transcripts you can detect. However, this is limited by the library complexity.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;即每个文库实际测到的Reads数。在控制其他条件不变的情况下，一般来讲测序深度越高测序饱和度越高，直观上这很容易理解。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&#34;https://kb.10xgenomics.com/hc/article_attachments/115016412246/SingleCell_GeneRecovery_by_SeqDepth_combined.png#middle&#34; alt=&#34;Figure 1&#34;&gt;&lt;/p&gt;
+&lt;p&gt;上面的内容可以总结在一个公式中：&lt;/p&gt;
+&lt;p&gt;$$测序饱和度\propto\frac{测序深度}{文库复杂度}$$&lt;/p&gt;
+&lt;p&gt;如果一个样本的生物学成分比较复杂，那送样时就可以提前计划适当提高测序深度；如果测完发现测序饱和度还是不够，那就对文库进行加测（提高测序深度）。&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;三测序饱和度的计算&#34;&gt;三、测序饱和度的计算&lt;/h3&gt;
+&lt;p&gt;10X官方文档给出了测序饱和度计算公式：&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;$$Sequencing\ Saturation = 1 - \frac{n_{deduped\ reads}}{n_{reads}}$$&lt;br&gt;
+where&lt;br&gt;
+$n_{deduped\ reads}$ = Number of unique (valid cell-barcode, valid UMI, gene) combinations among confidently mapped reads&lt;br&gt;
+$n_{reads}$ = Total number of confidently mapped, valid cell-barcode, valid UMI reads&lt;br&gt;
+.&lt;br&gt;
+Note that the numerator of the fraction is $n_{deduped\ reads}$, not the non-unique reads that are mentioned in the definition. $n_{deduped\ reads}$ is a degree of uniqueness, not a degree of duplication/saturation. Therefore we take the complement of $n_{deduped\ reads}/n_{reads}$ to measure saturation.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;即&lt;/p&gt;
+&lt;p&gt;$$测序饱和度=1-\frac{去重后Reads数}{总Reads数}=\frac{重复Reads数}{总Reads数}$$&lt;/p&gt;
+&lt;p&gt;注意重复Reads是通过Barcode和UMI定义的。两个Reads出现同样的Barcode + UMI组合，就将其中一个定义为重复；三个Reads出现同样的Barcode + UMI组合，其中两个定义为重复，剩下一个定义为去重后Read。&lt;/p&gt;
+&lt;p&gt;从这个公式也可以看出，重复Reads数越高，冗余信息越多，测序饱和度也越高。&lt;/p&gt;
+&lt;p&gt;该公式只计算了一个数值，代表某次测序fastq文件整个数据的测序饱和度。如果要实现10X CellRanger输出web_summary的中饱和度曲线的绘制，感觉还是比较麻烦的。理论上，需要对fastq文件做不同水平的降采样，再分别算测序饱和度。&lt;br&gt;
+目前还不清楚CellRanger是怎么实现一次alignment过程中输出不同测序深度下的测序饱和度的。&lt;/p&gt;
+&lt;section class=&#34;footnotes&#34; role=&#34;doc-endnotes&#34;&gt;
+&lt;hr&gt;
+&lt;ol&gt;
+&lt;li id=&#34;fn:1&#34; role=&#34;doc-endnote&#34;&gt;
+&lt;p&gt;全新的转录本，在10X官方文档的语境下，指的是一个全新的 Barcode + UMI 组合（i.e. a previously unobserved, unique combination of valid cell-barcode and valid UMI）&amp;#160;&lt;a href=&#34;#fnref:1&#34; class=&#34;footnote-backref&#34; role=&#34;doc-backlink&#34;&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li id=&#34;fn:2&#34; role=&#34;doc-endnote&#34;&gt;
+&lt;p&gt;直觉上这并不 make sense。原代细胞有较高的细胞异质性，如果其他条件相同，理应更难达到测序饱和。猜测也许是因为原代细胞分离下来细胞状态不如永生细胞，因此导致文库质量不佳。&amp;#160;&lt;a href=&#34;#fnref:2&#34; class=&#34;footnote-backref&#34; role=&#34;doc-backlink&#34;&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/section&gt;
+- /post/10x_calc_saturation_1/ - </description>
+        </item>
     
     
     

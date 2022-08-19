@@ -6,7 +6,30 @@
     <description>Recent content in Comp bio on Karmotrine Dream</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 02 Dec 2021 16:49:27 +0800</lastBuildDate><atom:link href="/tags/comp-bio/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 19 Aug 2022 21:50:00 +0800</lastBuildDate><atom:link href="/tags/comp-bio/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Install Alphafold2 Docker Version (II)</title>
+      <link>/post/setup_af2_ii/</link>
+      <pubDate>Fri, 19 Aug 2022 21:50:00 +0800</pubDate>
+      
+      <guid>/post/setup_af2_ii/</guid>
+      <description>https://github.com/deepmind/alphafold
+Running AlphaFold The simplest way to run AlphaFold is using the provided Docker script. This was tested on Google Cloud with a machine using the nvidia-gpu-cloud-image with 12 vCPUs, 85 GB of RAM, a 100 GB boot disk, the databases on an additional 3 TB disk, and an A100 GPU.
+ Clone this repository and cd into it.  (base) luolab@luolab-Z10PE-D16-WS:~/GITHUB_REPO$ git clone https://github.com/deepmind/alphafold.git Cloning into &#39;alphafold&#39;... remote: Enumerating objects: 569, done.</description>
+    </item>
+    
+    <item>
+      <title>Install Alphafold2 Docker Version (I)</title>
+      <link>/post/setup_af2_i/</link>
+      <pubDate>Fri, 19 Aug 2022 20:41:29 +0800</pubDate>
+      
+      <guid>/post/setup_af2_i/</guid>
+      <description>https://github.com/deepmind/alphafold
+First time setup You will need a machine running Linux, AlphaFold does not support other operating systems.
+The following steps are required in order to run AlphaFold:
+ Install Docker.  Install NVIDIA Container Toolkit for GPU support. Setup running Docker as a non-root user.   Download genetic databases (see below). Download model parameters (see below). Check that AlphaFold will be able to use a GPU by running:  docker run --rm --gpus all nvidia/cuda:11.</description>
+    </item>
+    
     <item>
       <title>咋地，你也想整点计算生物学玩玩？</title>
       <link>/post/on-comp-bio/</link>
