@@ -31,7 +31,7 @@ How to check if torch uses cuDNN</description>
       <guid>/post/the_bitter_lesson/</guid>
       <description>Richard Sutton, the reknowned computer scientist, author of the AI bible: &amp;lsquo;Reinforcement Learning&amp;rsquo;, wrote this essay three years after Alphago beat Lee Sedol.
  http://www.incompleteideas.net/IncIdeas/BitterLesson.html
-Here are some excerptions from the article:
+The article was originally written for AI researches, but the idea can be extrapolated to other fields.
  Most AI research has been conducted as if the computation available to the agent were constant (in which case leveraging human knowledge would be one of the only ways to improve performance) but, over a slightly longer time than a typical research project, massively more computation inevitably becomes available.</description>
     </item>
     

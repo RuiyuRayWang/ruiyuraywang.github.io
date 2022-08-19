@@ -159,16 +159,18 @@ To fix that, we have to use &lt;code&gt;sudo&lt;/code&gt; power.&lt;/p&gt;
 &lt;/figure&gt;
 
 &lt;p&gt;&lt;a href=&#34;http://www.incompleteideas.net/IncIdeas/BitterLesson.html&#34;&gt;http://www.incompleteideas.net/IncIdeas/BitterLesson.html&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;Here are some excerptions from the article:&lt;/p&gt;
+&lt;p&gt;The article was originally written for AI researches, but the idea can be extrapolated to other fields.&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;Most AI research has been conducted as if the computation available to the agent were constant (in which case leveraging human knowledge would be one of the only ways to improve performance) but, over a slightly longer time than a typical research project, massively more computation inevitably becomes available. Seeking an improvement that makes a difference in the shorter term, researchers seek to leverage their human knowledge of the domain, but the only thing that matters in the long run is the leveraging of computation. These two need not run counter to each other, but in practice they tend to.&lt;/p&gt;
+&lt;p&gt;Most AI research has been conducted as if the computation available to the agent were constant (in which case leveraging human knowledge would be one of the only ways to improve performance) but, over a slightly longer time than a typical research project, massively more computation inevitably becomes available.&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;blockquote&gt;
-&lt;p&gt;In computer chess, the methods that defeated the world champion, Kasparov, in 1997, were based on massive, deep search. At the time, this was looked upon with dismay by the majority of computer-chess researchers who had pursued methods that leveraged human understanding of the special structure of chess. &amp;hellip; These researchers wanted methods based on human input to win and were disappointed when they did not.&lt;/p&gt;
+&lt;p&gt;Seeking an improvement that makes a difference in the shorter term, researchers seek to leverage their human knowledge of the domain, but the only thing that matters in the long run is the leveraging of computation. &lt;strong&gt;These two need not run counter to each other, but in practice they tend to. Time spent on one is time not spent on the other.&lt;/strong&gt; There are psychological commitments to investment in one approach or the other. And the human-knowledge approach tends to complicate methods in ways that make them less suited to taking advantage of general methods leveraging computation.&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;blockquote&gt;
-&lt;p&gt;A similar pattern of research progress was seen in computer Go, only delayed by a further 20 years. &amp;hellip; In computer Go, as in computer chess, researchers&#39; initial effort was directed towards utilizing human understanding (so that less search was needed) and only much later was much greater success had by embracing search and learning.&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;The take home message: one should resist the temptation of using too much human knowledge.&lt;br&gt;
+By saying this I do not mean that one should forfeit human knowledge completely. Note that I&amp;rsquo;ve used the word &amp;ldquo;temptation&amp;rdquo;. The habit of using human knowledge can be quite addictive, and one should be cautious not to be obsessed to it.&lt;/p&gt;
+&lt;p&gt;Being in a biological institute for 7 years, I&amp;rsquo;ve seen so many people trapping themselves into the deep hole in the way they practice biological science. There&amp;rsquo;s no doubt that these people are intellectually gifted.&lt;/p&gt;
+&lt;p&gt;But the world we live in is far more complicated than what brain can comprehend.&lt;/p&gt;
+&lt;p&gt;&amp;hellip;to be continued&amp;hellip;&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;In speech recognition, there was an early competition, sponsored by DARPA, in the 1970s. &amp;hellip; As in the games, researchers always tried to make systems that worked the way the researchers thought their own minds worked&amp;mdash;they tried to put that knowledge in their systems&amp;mdash;but it proved ultimately counterproductive, and a colossal waste of researcher&amp;rsquo;s time, when, through Moore&amp;rsquo;s law, massive computation became available and a means was found to put it to good use.&lt;/p&gt;
 &lt;/blockquote&gt;
@@ -181,7 +183,6 @@ To fix that, we have to use &lt;code&gt;sudo&lt;/code&gt; power.&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;The second general point to be learned from the bitter lesson is that &lt;strong&gt;the actual contents of minds are tremendously, irredeemably complex; we should stop trying to find simple ways to think about the contents of minds&lt;/strong&gt;, such as simple ways to think about space, objects, multiple agents, or symmetries. All these are part of the arbitrary, intrinsically-complex, outside world. They are not what should be built in, as their complexity is endless; instead we should build in only the meta-methods that can find and capture this arbitrary complexity. Essential to these methods is that they can find good approximations, but the search for them should be by our methods, not by us. &lt;strong&gt;We want AI agents that can discover like we can, not which contain what we have discovered.&lt;/strong&gt; Building in our discoveries only makes it harder to see how the discovering process can be done.&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;p&gt;These points seem relevant not just to the fields of AI, but to other fields of science as well.&lt;/p&gt;
 - /post/the_bitter_lesson/ - </description>
         </item>
     
