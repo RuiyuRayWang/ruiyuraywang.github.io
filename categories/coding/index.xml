@@ -15,7 +15,7 @@
       <guid>/post/setup_af2_ii/</guid>
       <description>https://github.com/deepmind/alphafold
 Running AlphaFold The simplest way to run AlphaFold is using the provided Docker script. This was tested on Google Cloud with a machine using the nvidia-gpu-cloud-image with 12 vCPUs, 85 GB of RAM, a 100 GB boot disk, the databases on an additional 3 TB disk, and an A100 GPU.
- Clone this repository and cd into it.  (base) luolab@luolab-Z10PE-D16-WS:~/GITHUB_REPO$ git clone https://github.com/deepmind/alphafold.git Cloning into &#39;alphafold&#39;... remote: Enumerating objects: 569, done.</description>
+Clone this repository and cd into it. (base) luolab@luolab-Z10PE-D16-WS:~/GITHUB_REPO$ git clone https://github.com/deepmind/alphafold.git Cloning into &amp;#39;alphafold&amp;#39;... remote: Enumerating objects: 569, done.</description>
     </item>
     
     <item>
@@ -27,7 +27,7 @@ Running AlphaFold The simplest way to run AlphaFold is using the provided Docker
       <description>https://github.com/deepmind/alphafold
 First time setup You will need a machine running Linux, AlphaFold does not support other operating systems.
 The following steps are required in order to run AlphaFold:
- Install Docker.  Install NVIDIA Container Toolkit for GPU support. Setup running Docker as a non-root user.   Download genetic databases (see below). Download model parameters (see below). Check that AlphaFold will be able to use a GPU by running:  docker run --rm --gpus all nvidia/cuda:11.</description>
+Install Docker. Install NVIDIA Container Toolkit for GPU support. Setup running Docker as a non-root user. Download genetic databases (see below). Download model parameters (see below). Check that AlphaFold will be able to use a GPU by running: docker run --rm --gpus all nvidia/cuda:11.</description>
     </item>
     
     <item>
@@ -37,9 +37,9 @@ The following steps are required in order to run AlphaFold:
       
       <guid>/post/debug-celda-magick-install/</guid>
       <description>While installing celda:
-BiocManager::install(&#39;celda&#39;) ... Error: package or namespace load failed for ‘magick’ in dyn.load(file, DLLpath = DLLpath, ...): unable to load shared object &#39;/home/luolab/R/x86_64-pc-linux-gnu-library/4.2/magick/libs/magick.so&#39;: ... no such file or directory I&amp;rsquo;m running on Ubuntu 20.04 LTS.
+BiocManager::install(&amp;#39;celda&amp;#39;) ... Error: package or namespace load failed for ‘magick’ in dyn.load(file, DLLpath = DLLpath, ...): unable to load shared object &amp;#39;/home/luolab/R/x86_64-pc-linux-gnu-library/4.2/magick/libs/magick.so&amp;#39;: ... no such file or directory I&amp;rsquo;m running on Ubuntu 20.04 LTS.
 Installing imagemagick Magick++ library resolved the issue. See https://github.com/ropensci/magick
-$ sudo apt-get install -y libmagick++-dev # Everything works fine BiocManager::install(&#39;celda&#39;) </description>
+$ sudo apt-get install -y libmagick++-dev # Everything works fine BiocManager::install(&amp;#39;celda&amp;#39;) </description>
     </item>
     
     <item>
@@ -100,7 +100,7 @@ The reason is that I was trying to use two tools: cellassign and Cell_BLAST, but
       
       <guid>/post/mult-r/</guid>
       <description>Clean Built of Multiple R Versions on Ubuntu Long time ago I built R-4.0.3 on Ubuntu system following these guides: link1, link2. Briefly, I added GPG Key to APT (Advanced Package Tool) and added CRAN repository and directly retrieved R by apt.
-$ sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys E298A3A825C0D65DFD57CBB651716619E084DAB9 $ sudo add-apt-repository &#39;deb https://cloud.r-project.org/bin/linux/ubuntu bionic-cran40/&#39; $ sudo apt update $ sudo apt install r-base Recently, I ran into an issue with cellassign when analyzing single cell datasets.</description>
+$ sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys E298A3A825C0D65DFD57CBB651716619E084DAB9 $ sudo add-apt-repository &amp;#39;deb https://cloud.r-project.org/bin/linux/ubuntu bionic-cran40/&amp;#39; $ sudo apt update $ sudo apt install r-base Recently, I ran into an issue with cellassign when analyzing single cell datasets.</description>
     </item>
     
     <item>

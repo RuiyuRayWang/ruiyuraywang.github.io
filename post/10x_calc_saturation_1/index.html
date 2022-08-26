@@ -18,13 +18,13 @@
 
 <meta property="og:title" content="10X CellRanger 中测序饱和度的定义与计算（一）" />
 <meta property="og:description" content="最近为了搭建单细胞测序上游分析的Pipeline，正在研究怎样对分析结果做质控（Pipeline详情移步https://github.com/RuiyuRayWang/ScRNAseq_smkpipe_at_Luolab）。参考了10X CellRanger官方网站中描述的对测序饱和度的定义和计算方法：
- 10X 官方文档：什么是测序饱和度？ 10X 官方文档：测序饱和度怎样计算？  将用两篇文章记录这部分内容。
+10X 官方文档：什么是测序饱和度？ 10X 官方文档：测序饱和度怎样计算？ 将用两篇文章记录这部分内容。
 注意：本系列文章的参考来源均为10X官方公开的信息。
 这篇文章是本系列文章的第一篇，将对相关概念和计算公式的定义进行解读。
- 一、测序饱和度 和 文库复杂度 关于测序饱和度的定义，引用10X文档中的说明：
- Question: What is sequencing saturation?
+一、测序饱和度 和 文库复杂度 关于测序饱和度的定义，引用10X文档中的说明：
+Question: What is sequencing saturation?
 Answer: Sequencing saturation is a measure of the fraction of library complexity that was sequenced in a given experiment. The inverse of the sequencing saturation can be interpreted as the number of additional reads it would take to detect a new transcript.
- 这两句话言简而意赅，点明了测序饱和度(sequencing saturation)与文库复杂度(library complexity)之间的关系。
+这两句话言简而意赅，点明了测序饱和度(sequencing saturation)与文库复杂度(library complexity)之间的关系。
 library complexity (文库复杂度)，指的是一个测序文库中非冗余的DNA片段的数量（the number of unique DNA fragments present in a given library）。" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="/post/10x_calc_saturation_1/" /><meta property="article:section" content="post" />
@@ -39,13 +39,13 @@ library complexity (文库复杂度)，指的是一个测序文库中非冗余�
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="10X CellRanger 中测序饱和度的定义与计算（一）"/>
 <meta name="twitter:description" content="最近为了搭建单细胞测序上游分析的Pipeline，正在研究怎样对分析结果做质控（Pipeline详情移步https://github.com/RuiyuRayWang/ScRNAseq_smkpipe_at_Luolab）。参考了10X CellRanger官方网站中描述的对测序饱和度的定义和计算方法：
- 10X 官方文档：什么是测序饱和度？ 10X 官方文档：测序饱和度怎样计算？  将用两篇文章记录这部分内容。
+10X 官方文档：什么是测序饱和度？ 10X 官方文档：测序饱和度怎样计算？ 将用两篇文章记录这部分内容。
 注意：本系列文章的参考来源均为10X官方公开的信息。
 这篇文章是本系列文章的第一篇，将对相关概念和计算公式的定义进行解读。
- 一、测序饱和度 和 文库复杂度 关于测序饱和度的定义，引用10X文档中的说明：
- Question: What is sequencing saturation?
+一、测序饱和度 和 文库复杂度 关于测序饱和度的定义，引用10X文档中的说明：
+Question: What is sequencing saturation?
 Answer: Sequencing saturation is a measure of the fraction of library complexity that was sequenced in a given experiment. The inverse of the sequencing saturation can be interpreted as the number of additional reads it would take to detect a new transcript.
- 这两句话言简而意赅，点明了测序饱和度(sequencing saturation)与文库复杂度(library complexity)之间的关系。
+这两句话言简而意赅，点明了测序饱和度(sequencing saturation)与文库复杂度(library complexity)之间的关系。
 library complexity (文库复杂度)，指的是一个测序文库中非冗余的DNA片段的数量（the number of unique DNA fragments present in a given library）。"/>
 
 
@@ -555,7 +555,7 @@ Ported from <a href="https://mak1t0.cc/" target="_blank" rel="noreferrer noopene
 <p>Different cell types will have different amounts of RNA and thus will differ in the total number of different transcripts in the final library (also known as library complexity). The figure below illustrates the median number of genes recovered from different cell types. As sequencing depth increases, more genes are detected, but this reaches saturation at different sequencing depths depending on cell type.</p>
 </blockquote>
 <p>文库复杂度一般由生物学样本的复杂程度决定。而生物学样本的复杂度又由多个因素，如细胞异质性(Cell Heterogeneity)、转录组RNA含量、细胞质量、细胞数等共同决定。<del>越是简单均一的系统，生物复杂程度越低。</del><br>
-下图中，原代分离的PBMC(外周血单核细胞)和E18小鼠神经元细胞RNA含量较低（？）<sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup>，因此迅速达到测序饱和；而培养的永生细胞3T3和HEK293T的RNA含量比较高（？）<sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup>，测序不容易达到饱和。同样作为永生细胞，3T3细胞系的转录组比HEK293T细胞系的转录组复杂，因此相比之下不容易测序饱和。</p>
+下图中，原代分离的PBMC(外周血单核细胞)和E18小鼠神经元细胞RNA含量较低（？）<sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup>，因此迅速达到测序饱和；而培养的永生细胞3T3和HEK293T的RNA含量比较高（？）<sup id="fnref1:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup>，测序不容易达到饱和。同样作为永生细胞，3T3细胞系的转录组比HEK293T细胞系的转录组复杂，因此相比之下不容易测序饱和。</p>
 </li>
 <li>
 <p>测序深度(Sequencing Depth)</p>
@@ -586,17 +586,17 @@ Note that the numerator of the fraction is $n_{deduped\ reads}$, not the non-uni
 <p>从这个公式也可以看出，重复Reads数越高，冗余信息越多，测序饱和度也越高。</p>
 <p>该公式只计算了一个数值，代表某次测序fastq文件整个数据的测序饱和度。如果要实现10X CellRanger输出web_summary的中饱和度曲线的绘制，感觉还是比较麻烦的。理论上，需要对fastq文件做不同水平的降采样，再分别算测序饱和度。<br>
 目前还不清楚CellRanger是怎么实现一次alignment过程中输出不同测序深度下的测序饱和度的。</p>
-<section class="footnotes" role="doc-endnotes">
+<div class="footnotes" role="doc-endnotes">
 <hr>
 <ol>
-<li id="fn:1" role="doc-endnote">
+<li id="fn:1">
 <p>全新的转录本，在10X官方文档的语境下，指的是一个全新的 Barcode + UMI 组合（i.e. a previously unobserved, unique combination of valid cell-barcode and valid UMI）&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
-<li id="fn:2" role="doc-endnote">
-<p>直觉上这并不 make sense。原代细胞有较高的细胞异质性，如果其他条件相同，理应更难达到测序饱和。猜测也许是因为原代细胞分离下来细胞状态不如永生细胞，因此导致文库质量不佳。&#160;<a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<li id="fn:2">
+<p>直觉上这并不 make sense。原代细胞有较高的细胞异质性，如果其他条件相同，理应更难达到测序饱和。猜测也许是因为原代细胞分离下来细胞状态不如永生细胞，因此导致文库质量不佳。&#160;<a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a>&#160;<a href="#fnref1:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 </ol>
-</section>
+</div>
 
                     
                     <HR width="100%" id="EOF">

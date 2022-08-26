@@ -14,7 +14,7 @@
       
       <guid>/post/deploy_mathjax/</guid>
       <description>The HUGO official document has a nice blog about MathJax Support. Additionally, a blog written by Geoff Ruddock has a more concise solution: Render LaTeX math expressions in Hugo with MathJax 3.
-TL;DR  Create a file in your theme directory layouts/partials/mathjax_support.html as the following:  &amp;lt;script&amp;gt; MathJax = { tex: { inlineMath: [[&#39;$&#39;, &#39;$&#39;], [&#39;\\(&#39;, &#39;\\)&#39;]], displayMath: [[&#39;$$&#39;,&#39;$$&#39;], [&#39;\\[&#39;, &#39;\\]&#39;]], processEscapes: true, processEnvironments: true }, options: { skipHtmlTags: [&#39;script&#39;, &#39;noscript&#39;, &#39;style&#39;, &#39;textarea&#39;, &#39;pre&#39;] } }; window.</description>
+TL;DR Create a file in your theme directory layouts/partials/mathjax_support.html as the following: &amp;lt;script&amp;gt; MathJax = { tex: { inlineMath: [[&amp;#39;$&amp;#39;, &amp;#39;$&amp;#39;], [&amp;#39;\\(&amp;#39;, &amp;#39;\\)&amp;#39;]], displayMath: [[&amp;#39;$$&amp;#39;,&amp;#39;$$&amp;#39;], [&amp;#39;\\[&amp;#39;, &amp;#39;\\]&amp;#39;]], processEscapes: true, processEnvironments: true }, options: { skipHtmlTags: [&amp;#39;script&amp;#39;, &amp;#39;noscript&amp;#39;, &amp;#39;style&amp;#39;, &amp;#39;textarea&amp;#39;, &amp;#39;pre&amp;#39;] } }; window.</description>
     </item>
     
     <item>
@@ -25,20 +25,22 @@ TL;DR  Create a file in your theme directory layouts/partials/mathjax_support.ht
       <guid>/post/my-first-post/</guid>
       <description>2022-02-28更新：
 去年年底拿Hugo搭了一个博客，但用了没几日就没有动力再写了。我反思了一下可能主要有两个原因，总结一下：
- 长篇累牍使用英文撰写，逼格定调得太高。造成的后果是可读性差，效率又低。 今后还是老老实实用母语行文，必要时候可以加入洋文。 选用的主题（hugo-theme-cleanwhite by Huabing）过于花里胡哨。 每次翻阅过去的记录都感觉头晕目眩，遂挑了一个简约的主题重新搭了博客。  业精于勤而荒于嬉。今后还要再接再厉，也许做不到笔耕不辍，但至少也应该保持三天两头写点东西。
+长篇累牍使用英文撰写，逼格定调得太高。造成的后果是可读性差，效率又低。 今后还是老老实实用母语行文，必要时候可以加入洋文。 选用的主题（hugo-theme-cleanwhite by Huabing）过于花里胡哨。 每次翻阅过去的记录都感觉头晕目眩，遂挑了一个简约的主题重新搭了博客。 业精于勤而荒于嬉。今后还要再接再厉，也许做不到笔耕不辍，但至少也应该保持三天两头写点东西。
 这里就先记录下我是如何从hugo-theme-cleanwhite跳到新的主题Diary的。
 新主题Diary地址：(https://themes.gohugo.io/themes/hugo-theme-diary/)
- 下面是具体步骤。
+下面是具体步骤。
 如链接教程中的Quick Start所述，先用git submodule把Repo部署到本地的blog/themes目录下：
 cd my_hugo_site/blog git submodule add https://github.com/AmazingRise/hugo-theme-diary.git themes/diary 接下来可以跳过教程Quick Start中的步骤2、3。
 直接到blog目录下，用这个模板，替换config.toml文件中的内容。
 由于最初将这个Hugo site部署到github时参考了这篇推文，需要对config.toml进行修改，以满足本地的目录结构。
 修改了下面几个参数：
-baseURL = &amp;quot;/&amp;quot; title = &amp;quot;Karmotrine Dream&amp;quot; copyright = &amp;quot;&amp;quot; theme = &amp;quot;diary&amp;quot; subtitle = &amp;quot;&amp;quot; 添加下面这个参数，使hugo -D命令生成的网页推到public/目录下：
-publishDir = &amp;quot;../public&amp;quot; 删除原来public/目录中所有内容（这些是旧theme生成的文件）。
+baseURL = &amp;#34;/&amp;#34; title = &amp;#34;Karmotrine Dream&amp;#34; copyright = &amp;#34;&amp;#34; theme = &amp;#34;diary&amp;#34; subtitle = &amp;#34;&amp;#34; 添加下面这个参数，使hugo -D命令生成的网页推到public/目录下：
+publishDir = &amp;#34;../public&amp;#34; 删除原来public/目录中所有内容（这些是旧theme生成的文件）。
 最后，修改deploy.sh中的命令，使用diary作为theme来生成新的site：
 hugo -D -t diary # or `hugo -D` if no theme is specified And Voila!
-Hugo博客的theme变为Diary了！</description>
+Hugo博客的theme变为Diary了！
+最后写一下怎样在本地编辑、预览博客内容。
+首先cd到blog/目录下，用hugo new建新的post文件：</description>
     </item>
     
   </channel>

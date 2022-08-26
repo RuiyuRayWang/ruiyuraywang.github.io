@@ -18,15 +18,15 @@
 
 <meta property="og:title" content="10X CellRanger 中测序饱和度的定义与计算（二）" />
 <meta property="og:description" content="最近为了搭建单细胞测序上游分析的Pipeline，正在研究怎样对分析结果做质控（Pipeline详情移步https://github.com/RuiyuRayWang/ScRNAseq_smkpipe_at_Luolab）。参考了10X CellRanger官方网站中描述的对测序饱和度的定义和计算方法：
- 10X 官方文档：什么是测序饱和度？ 10X 官方文档：测序饱和度怎样计算？  将用两篇文章记录这部分内容。
+10X 官方文档：什么是测序饱和度？ 10X 官方文档：测序饱和度怎样计算？ 将用两篇文章记录这部分内容。
 注意：本系列文章的参考来源均为10X官方公开的信息。
 这篇文章是本系列文章的第二篇，将利用10X官方文档中的示例数据来展示测序饱和度计算的代码复现。
- 下载数据：
- Uses dataset at https://support.10xgenomics.com/single-cell-gene-expression/datasets/3.0.0/pbmc_1k_v3, where the web summary report gives a sequencing saturation value of 0.7085123.​
- web_summary.html
- 计算公式：
- The sequencing saturation calculation below matches the 0.7085123 sequencing saturation given in the web summary report.
- unique_confidently_mapped_reads = 10,196,940 duplicate_reads = 24,785,461 x = 1 - (unique_confidently_mapped_reads/(unique_confidently_mapped_reads &#43; duplicate_reads)) x = 1 - (10,196,940/(10,196,940 &#43; 24,785,461)) x = 1 - (10,196,940/34,982,401) x = 1 - 0." />
+下载数据：
+Uses dataset at https://support.10xgenomics.com/single-cell-gene-expression/datasets/3.0.0/pbmc_1k_v3, where the web summary report gives a sequencing saturation value of 0.7085123.​
+web_summary.html
+计算公式：
+The sequencing saturation calculation below matches the 0.7085123 sequencing saturation given in the web summary report.
+unique_confidently_mapped_reads = 10,196,940 duplicate_reads = 24,785,461 x = 1 - (unique_confidently_mapped_reads/(unique_confidently_mapped_reads &#43; duplicate_reads)) x = 1 - (10,196,940/(10,196,940 &#43; 24,785,461)) x = 1 - (10,196,940/34,982,401) x = 1 - 0." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="/post/10x_calc_saturation_2/" /><meta property="article:section" content="post" />
 <meta property="article:published_time" content="2022-02-08T22:05:51+08:00" />
@@ -40,15 +40,15 @@
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="10X CellRanger 中测序饱和度的定义与计算（二）"/>
 <meta name="twitter:description" content="最近为了搭建单细胞测序上游分析的Pipeline，正在研究怎样对分析结果做质控（Pipeline详情移步https://github.com/RuiyuRayWang/ScRNAseq_smkpipe_at_Luolab）。参考了10X CellRanger官方网站中描述的对测序饱和度的定义和计算方法：
- 10X 官方文档：什么是测序饱和度？ 10X 官方文档：测序饱和度怎样计算？  将用两篇文章记录这部分内容。
+10X 官方文档：什么是测序饱和度？ 10X 官方文档：测序饱和度怎样计算？ 将用两篇文章记录这部分内容。
 注意：本系列文章的参考来源均为10X官方公开的信息。
 这篇文章是本系列文章的第二篇，将利用10X官方文档中的示例数据来展示测序饱和度计算的代码复现。
- 下载数据：
- Uses dataset at https://support.10xgenomics.com/single-cell-gene-expression/datasets/3.0.0/pbmc_1k_v3, where the web summary report gives a sequencing saturation value of 0.7085123.​
- web_summary.html
- 计算公式：
- The sequencing saturation calculation below matches the 0.7085123 sequencing saturation given in the web summary report.
- unique_confidently_mapped_reads = 10,196,940 duplicate_reads = 24,785,461 x = 1 - (unique_confidently_mapped_reads/(unique_confidently_mapped_reads &#43; duplicate_reads)) x = 1 - (10,196,940/(10,196,940 &#43; 24,785,461)) x = 1 - (10,196,940/34,982,401) x = 1 - 0."/>
+下载数据：
+Uses dataset at https://support.10xgenomics.com/single-cell-gene-expression/datasets/3.0.0/pbmc_1k_v3, where the web summary report gives a sequencing saturation value of 0.7085123.​
+web_summary.html
+计算公式：
+The sequencing saturation calculation below matches the 0.7085123 sequencing saturation given in the web summary report.
+unique_confidently_mapped_reads = 10,196,940 duplicate_reads = 24,785,461 x = 1 - (unique_confidently_mapped_reads/(unique_confidently_mapped_reads &#43; duplicate_reads)) x = 1 - (10,196,940/(10,196,940 &#43; 24,785,461)) x = 1 - (10,196,940/34,982,401) x = 1 - 0."/>
 
 
 
@@ -401,7 +401,7 @@ x = 0.70851229
 $ gunzip -k matrix.mtx.gz
 $ head matrix.mtx
 %%MatrixMarket matrix coordinate integer general
-%metadata_json: {&quot;format_version&quot;: 2, &quot;software_version&quot;: &quot;3.0.0&quot;}
+%metadata_json: {&#34;format_version&#34;: 2, &#34;software_version&#34;: &#34;3.0.0&#34;}
 33538 6794880 3394796
 1815 9 1
 4027 9 1
@@ -416,7 +416,7 @@ $ head matrix.mtx
 <pre tabindex="0"><code>$ tail +3 matrix.mtx &gt; tmp
 $ mv tmp matrix.mtx
 $ R
-&gt; raw &lt;- read.table(&quot;matrix.mtx&quot;, sep=&quot; &quot;, header=T)
+&gt; raw &lt;- read.table(&#34;matrix.mtx&#34;, sep=&#34; &#34;, header=T)
 &gt; head(raw)
   X33538 X6794880 X3394796
 1   1815        9        1
@@ -434,7 +434,7 @@ $ R
 <blockquote>
 <p>The unique_confidently_mapped_reads are the reads with xf tag value 25, as described on <a href="https://support.10xgenomics.com/single-cell-gene-expression/software/pipelines/latest/output/bam">https://support.10xgenomics.com/single-cell-gene-expression/software/pipelines/latest/output/bam</a>. The bits are 1, 8, 16. You can obtain theunique_confidently_mapped_reads by parsing the BAM like so.</p>
 </blockquote>
-<pre tabindex="0"><code>samtools view pbmc_1k_v3_possorted_genome_bam.bam | grep 'xf:i:25' | wc -l
+<pre tabindex="0"><code>samtools view pbmc_1k_v3_possorted_genome_bam.bam | grep &#39;xf:i:25&#39; | wc -l
 </code></pre><p>可以看到，CellRanger在做Alignment时会给<code>unique_confidently_mapped_reads</code>打上一个tag<code>xf=25</code>。这里是用samtools在bam文件中抓取这些tag来计算<code>unique_confidently_mapped_reads</code>的。</p>
 <hr>
 <p>至于<code>duplicate_reads</code>，在10X给出的数据中似乎只能从bam文件抓取。</p>

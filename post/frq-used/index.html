@@ -601,8 +601,8 @@ $ bash Miniconda3-latest-MacOSX-x86_64.sh
 </code></pre><p>Configure ipython kernels</p>
 <pre tabindex="0"><code>(base) $ conda activate jupyter
 (jupyter) $ jupyter kernelspec list
-[ListKernelSpecs] WARNING | Kernel Provisioning: The 'local-provisioner' is not found.  This is likely due to the presence of multiple jupyter_client distributions and a previous distribution is being used as the source for entrypoints - which does not include 'local-provisioner'.  That distribution should be removed such that only the version-appropriate distribution remains (version &gt;= 7).  Until then, a 'local-provisioner' entrypoint will be automatically constructed and used.
-The candidate distribution locations are: ['/Users/Ray/miniconda3/envs/jupyter/lib/python3.9/site-packages/jupyter_client-7.3.2.dist-info']
+[ListKernelSpecs] WARNING | Kernel Provisioning: The &#39;local-provisioner&#39; is not found.  This is likely due to the presence of multiple jupyter_client distributions and a previous distribution is being used as the source for entrypoints - which does not include &#39;local-provisioner&#39;.  That distribution should be removed such that only the version-appropriate distribution remains (version &gt;= 7).  Until then, a &#39;local-provisioner&#39; entrypoint will be automatically constructed and used.
+The candidate distribution locations are: [&#39;/Users/Ray/miniconda3/envs/jupyter/lib/python3.9/site-packages/jupyter_client-7.3.2.dist-info&#39;]
 Available kernels:
   python3    /Users/Ray/miniconda3/envs/jupyter/share/jupyter/kernels/python3
   pytorch    /usr/local/share/jupyter/kernels/pytorch
@@ -683,74 +683,73 @@ jupyter kernelspec list
 <li>R</li>
 </ol>
 <pre tabindex="0"><code>## tidyverse
-install.packages(&quot;tidyverse&quot;)
+install.packages(&#34;tidyverse&#34;)
 
 ## Bioconductor
-if (!require(&quot;BiocManager&quot;, quietly = TRUE))
-    install.packages(&quot;BiocManager&quot;)
-BiocManager::install(version = &quot;3.15&quot;)  ## Specify version explicitly
+if (!require(&#34;BiocManager&#34;, quietly = TRUE))
+    install.packages(&#34;BiocManager&#34;)
+BiocManager::install(version = &#34;3.15&#34;)  ## Specify version explicitly
 
 ## devtools
-install.packages(&quot;devtools&quot;)
+install.packages(&#34;devtools&#34;)
 
 ## Seurat and relatives
-if (!requireNamespace(&quot;remotes&quot;, quietly = TRUE)) {
-  install.packages(&quot;remotes&quot;)
+if (!requireNamespace(&#34;remotes&#34;, quietly = TRUE)) {
+  install.packages(&#34;remotes&#34;)
 }
-remotes::install_github(&quot;mojaveazure/seurat-disk&quot;)
-install.packages(&quot;Seurat&quot;)
-BiocManager::install(&quot;scater&quot;)
-BiocManager::install(&quot;MAST&quot;)
+remotes::install_github(&#34;mojaveazure/seurat-disk&#34;)
+install.packages(&#34;Seurat&#34;)
+BiocManager::install(&#34;scater&#34;)
+BiocManager::install(&#34;MAST&#34;)
 setRepositories(ind=1:3)
-install.packages(&quot;Signac&quot;)
-install.packages(&quot;tidyseurat&quot;)
+install.packages(&#34;Signac&#34;)
+install.packages(&#34;tidyseurat&#34;)
 
 ## RNAseq bundle
-BiocManager::install(&quot;DESeq2&quot;)
-BiocManager::install(&quot;tximeta&quot;)
-
-</code></pre><pre tabindex="0"><code>install.packages('rmarkdown')
-install.packages(&quot;knitr&quot;, dependencies = TRUE)
-install.packages(&quot;rstudioapi&quot;)
-install.packages('extrafont')
+BiocManager::install(&#34;DESeq2&#34;)
+BiocManager::install(&#34;tximeta&#34;)
+</code></pre><pre tabindex="0"><code>install.packages(&#39;rmarkdown&#39;)
+install.packages(&#34;knitr&#34;, dependencies = TRUE)
+install.packages(&#34;rstudioapi&#34;)
+install.packages(&#39;extrafont&#39;)
 </code></pre><pre tabindex="0"><code>## Drop-utils
-BiocManager::install(&quot;DropletUtils&quot;)
+BiocManager::install(&#34;DropletUtils&#34;)
 
 ## Decontamination
-BiocManager::install(&quot;celda&quot;)  ## DecontX
-BiocManager::install(&quot;singleCellTK&quot;)  ## suggested by Decontx
-install.packages(&quot;SoupX&quot;)  ## SoupX
+BiocManager::install(&#34;celda&#34;)  ## DecontX
+BiocManager::install(&#34;singleCellTK&#34;)  ## suggested by Decontx
+install.packages(&#34;SoupX&#34;)  ## SoupX
 
 ## Doublet removal
-remotes::install_github('chris-mcginnis-ucsf/DoubletFinder')
+remotes::install_github(&#39;chris-mcginnis-ucsf/DoubletFinder&#39;)
 
 ## clusterProfiler
-BiocManager::install(&quot;clusterProfiler&quot;)
+BiocManager::install(&#34;clusterProfiler&#34;)
 
 ## Augur
-devtools::install_github(&quot;const-ae/sparseMatrixStats&quot;)
-devtools::install_github(&quot;neurorestore/Augur&quot;)
+devtools::install_github(&#34;const-ae/sparseMatrixStats&#34;)
+devtools::install_github(&#34;neurorestore/Augur&#34;)
 
 ## ComplexHeatmap
-BiocManager::install(&quot;ComplexHeatmap&quot;)
+BiocManager::install(&#34;ComplexHeatmap&#34;)
 
 ## pheatmap
-install.packages(&quot;pheatmap&quot;)
+install.packages(&#34;pheatmap&#34;)
 
 ## CellChat
-install.packages('NMF')
-devtools::install_github(&quot;jokergoo/circlize&quot;)
-devtools::install_github(&quot;sqjin/CellChat&quot;)
+install.packages(&#39;NMF&#39;)
+devtools::install_github(&#34;jokergoo/circlize&#34;)
+devtools::install_github(&#34;sqjin/CellChat&#34;)
 
 ## Org database
-BiocManager::install(&quot;org.Hs.eg.db&quot;)
-BiocManager::install(&quot;org.Mm.eg.db&quot;)
+BiocManager::install(&#34;org.Hs.eg.db&#34;)
+BiocManager::install(&#34;org.Mm.eg.db&#34;)
 </code></pre><pre tabindex="0"><code>## Plotting engines
 
 ## Venn Plot
-install.packages(&quot;UpSetR&quot;)
-install.packages(&quot;VennDiagram&quot;)
-install.packages(&quot;nVennR&quot;)
+install.packages(&#34;UpSetR&#34;)
+install.packages(&#34;VennDiagram&#34;)
+install.packages(&#34;nVennR&#34;)
 </code></pre><ol start="2">
 <li>python
 <ul>

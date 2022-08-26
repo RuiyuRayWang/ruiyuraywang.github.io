@@ -677,7 +677,7 @@ Ported from <a href="https://mak1t0.cc/" target="_blank" rel="noreferrer noopene
                     <h1 id="clean-built-of-multiple-r-versions-on-ubuntu">Clean Built of Multiple R Versions on Ubuntu</h1>
 <p>Long time ago I built R-4.0.3 on Ubuntu system following these guides: <a href="https://www.digitalocean.com/community/tutorials/how-to-install-r-on-ubuntu-18-04-quickstart">link1</a>, <a href="https://cran.r-project.org/bin/linux/ubuntu/">link2</a>. Briefly, I added GPG Key to APT (Advanced Package Tool) and added <code>CRAN</code> repository and directly retrieved R by <code>apt</code>.</p>
 <pre tabindex="0"><code>$ sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys E298A3A825C0D65DFD57CBB651716619E084DAB9
-$ sudo add-apt-repository 'deb https://cloud.r-project.org/bin/linux/ubuntu bionic-cran40/'
+$ sudo add-apt-repository &#39;deb https://cloud.r-project.org/bin/linux/ubuntu bionic-cran40/&#39;
 $ sudo apt update
 $ sudo apt install r-base
 </code></pre><p>Recently, I ran into an issue with <a href="https://github.com/Irrationone/cellassign"><code>cellassign</code></a> when analyzing single cell datasets. I suspected that reverting to previous R versions might <a href="https://github.com/Irrationone/cellassign/issues/92">resolve the problem</a>.</p>
@@ -690,20 +690,20 @@ $ sudo apt install r-base
 uid           [ unknown] Launchpad PPA for cran
 
 /etc/apt/trusted.gpg.d/ubuntu-keyring-2012-archive.gpg
-</code></pre><pre tabindex="0"><code>$ sudo apt-key del &quot;4A0C 1931 1880 3EB4 A561  E569 B3CF 35C3 15B5 5A9F&quot;
+</code></pre><pre tabindex="0"><code>$ sudo apt-key del &#34;4A0C 1931 1880 3EB4 A561  E569 B3CF 35C3 15B5 5A9F&#34;
 </code></pre><p>Then remove <code>cran</code> repository from <code>apt</code> repository list:</p>
 <pre tabindex="0"><code>$ sudo vim /etc/apt/sources.list  # Manually edit, remove entries related to R or cran
 </code></pre><p>Before uninstalling R, we might want to check what packages are currently installed and back them up, in case they&rsquo;ll be needed later.</p>
 <pre tabindex="0"><code>$ R
-R version 4.0.3 (2020-10-10) -- &quot;Bunny-Wunnies Freak Out&quot;
+R version 4.0.3 (2020-10-10) -- &#34;Bunny-Wunnies Freak Out&#34;
 Copyright (C) 2020 The R Foundation for Statistical Computing
 Platform: x86_64-pc-linux-gnu (64-bit)
 
 &gt; .libPaths()
-[1] &quot;/home/luolab/R/x86_64-pc-linux-gnu-library/4.0&quot;
-[2] &quot;/usr/local/lib/R/site-library&quot;
-[3] &quot;/usr/lib/R/site-library&quot; # This one is empty
-[4] &quot;/usr/lib/R/library&quot;
+[1] &#34;/home/luolab/R/x86_64-pc-linux-gnu-library/4.0&#34;
+[2] &#34;/usr/local/lib/R/site-library&#34;
+[3] &#34;/usr/lib/R/site-library&#34; # This one is empty
+[4] &#34;/usr/lib/R/library&#34;
 </code></pre><p>In shell, backup the content listed in these paths.</p>
 <pre tabindex="0"><code>$ cp -r /home/luolab/R/x86_64-pc-linux-gnu-library/ /media/luolab/4A9623FA9623E563/R_bak/home.luolab.R.x86_64-pc-linux-gnu-library  # Moving to 120G SSD
 $ cp -r /usr/local/lib/R/site-library/ /media/luolab/4A9623FA9623E563/R_bak/usr.local.lib.R.site-library
@@ -714,7 +714,7 @@ $ sudo apt-get autoremove
 </code></pre><p>Make sure R is properly removed:</p>
 <pre tabindex="0"><code>$ R
 
-Command 'R' not found, but can be installed with:
+Command &#39;R&#39; not found, but can be installed with:
 
 sudo apt install r-base-core
 </code></pre><h2 id="install-r-from-precompiled-binaries">Install R from precompiled binaries</h2>
@@ -752,7 +752,7 @@ $ sudo ln -s /opt/R/${R_VERSION}/bin/Rscript /usr/local/bin/Rscript
 $ file /usr/local/bin/R
 /usr/local/bin/R: symbolic link to /opt/R/3.6.2/bin/R
 $ R --version
-R version 3.6.2 (2020-02-29) -- &quot;Holding the Windsock&quot;
+R version 3.6.2 (2020-02-29) -- &#34;Holding the Windsock&#34;
 Copyright (C) 2020 The R Foundation for Statistical Computing
 Platform: x86_64-pc-linux-gnu (64-bit)
 </code></pre><h3 id="method-2">Method 2</h3>

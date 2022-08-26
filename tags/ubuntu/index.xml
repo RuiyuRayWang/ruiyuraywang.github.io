@@ -16,7 +16,7 @@
       <description>TL;DR First consulted this page
 I have R-4.0.5 with Bioconductor 3.12(4.0), use the latest scripts for installation.
 In Rstudio:
-&amp;gt; if (!requireNamespace(&amp;quot;BiocManager&amp;quot;, quietly = TRUE)) install.packages(&amp;quot;BiocManager&amp;quot;) &amp;gt; BiocManager::version() &amp;gt; # If your bioconductor version is previous to 4.0, see the section bellow &amp;gt; &amp;gt; ## Required &amp;gt; BiocManager::install(c(&amp;quot;AUCell&amp;quot;, &amp;quot;RcisTarget&amp;quot;)) &amp;gt; BiocManager::install(c(&amp;quot;GENIE3&amp;quot;)) # Optional. Can be replaced by GRNBoost &amp;gt; &amp;gt; ## Optional (but highly recommended): &amp;gt; # To score the network on cells (i.</description>
+&amp;gt; if (!requireNamespace(&amp;#34;BiocManager&amp;#34;, quietly = TRUE)) install.packages(&amp;#34;BiocManager&amp;#34;) &amp;gt; BiocManager::version() &amp;gt; # If your bioconductor version is previous to 4.0, see the section bellow &amp;gt; &amp;gt; ## Required &amp;gt; BiocManager::install(c(&amp;#34;AUCell&amp;#34;, &amp;#34;RcisTarget&amp;#34;)) &amp;gt; BiocManager::install(c(&amp;#34;GENIE3&amp;#34;)) # Optional. Can be replaced by GRNBoost &amp;gt; &amp;gt; ## Optional (but highly recommended): &amp;gt; # To score the network on cells (i.</description>
     </item>
     
     <item>
@@ -37,7 +37,7 @@ The reason is that I was trying to use two tools: cellassign and Cell_BLAST, but
       
       <guid>/post/mult-r/</guid>
       <description>Clean Built of Multiple R Versions on Ubuntu Long time ago I built R-4.0.3 on Ubuntu system following these guides: link1, link2. Briefly, I added GPG Key to APT (Advanced Package Tool) and added CRAN repository and directly retrieved R by apt.
-$ sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys E298A3A825C0D65DFD57CBB651716619E084DAB9 $ sudo add-apt-repository &#39;deb https://cloud.r-project.org/bin/linux/ubuntu bionic-cran40/&#39; $ sudo apt update $ sudo apt install r-base Recently, I ran into an issue with cellassign when analyzing single cell datasets.</description>
+$ sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys E298A3A825C0D65DFD57CBB651716619E084DAB9 $ sudo add-apt-repository &amp;#39;deb https://cloud.r-project.org/bin/linux/ubuntu bionic-cran40/&amp;#39; $ sudo apt update $ sudo apt install r-base Recently, I ran into an issue with cellassign when analyzing single cell datasets.</description>
     </item>
     
   </channel>

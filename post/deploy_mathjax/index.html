@@ -18,7 +18,7 @@
 
 <meta property="og:title" content="Hugo：启用Mathjax实现数学公式的编辑与显示" />
 <meta property="og:description" content="The HUGO official document has a nice blog about MathJax Support. Additionally, a blog written by Geoff Ruddock has a more concise solution: Render LaTeX math expressions in Hugo with MathJax 3.
-TL;DR  Create a file in your theme directory layouts/partials/mathjax_support.html as the following:  &lt;script&gt; MathJax = { tex: { inlineMath: [[&#39;$&#39;, &#39;$&#39;], [&#39;\\(&#39;, &#39;\\)&#39;]], displayMath: [[&#39;$$&#39;,&#39;$$&#39;], [&#39;\\[&#39;, &#39;\\]&#39;]], processEscapes: true, processEnvironments: true }, options: { skipHtmlTags: [&#39;script&#39;, &#39;noscript&#39;, &#39;style&#39;, &#39;textarea&#39;, &#39;pre&#39;] } }; window." />
+TL;DR Create a file in your theme directory layouts/partials/mathjax_support.html as the following: &lt;script&gt; MathJax = { tex: { inlineMath: [[&#39;$&#39;, &#39;$&#39;], [&#39;\\(&#39;, &#39;\\)&#39;]], displayMath: [[&#39;$$&#39;,&#39;$$&#39;], [&#39;\\[&#39;, &#39;\\]&#39;]], processEscapes: true, processEnvironments: true }, options: { skipHtmlTags: [&#39;script&#39;, &#39;noscript&#39;, &#39;style&#39;, &#39;textarea&#39;, &#39;pre&#39;] } }; window." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="/post/deploy_mathjax/" /><meta property="article:section" content="post" />
 <meta property="article:published_time" content="2022-02-12T21:17:37+08:00" />
@@ -32,7 +32,7 @@ TL;DR  Create a file in your theme directory layouts/partials/mathjax_support.ht
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Hugo：启用Mathjax实现数学公式的编辑与显示"/>
 <meta name="twitter:description" content="The HUGO official document has a nice blog about MathJax Support. Additionally, a blog written by Geoff Ruddock has a more concise solution: Render LaTeX math expressions in Hugo with MathJax 3.
-TL;DR  Create a file in your theme directory layouts/partials/mathjax_support.html as the following:  &lt;script&gt; MathJax = { tex: { inlineMath: [[&#39;$&#39;, &#39;$&#39;], [&#39;\\(&#39;, &#39;\\)&#39;]], displayMath: [[&#39;$$&#39;,&#39;$$&#39;], [&#39;\\[&#39;, &#39;\\]&#39;]], processEscapes: true, processEnvironments: true }, options: { skipHtmlTags: [&#39;script&#39;, &#39;noscript&#39;, &#39;style&#39;, &#39;textarea&#39;, &#39;pre&#39;] } }; window."/>
+TL;DR Create a file in your theme directory layouts/partials/mathjax_support.html as the following: &lt;script&gt; MathJax = { tex: { inlineMath: [[&#39;$&#39;, &#39;$&#39;], [&#39;\\(&#39;, &#39;\\)&#39;]], displayMath: [[&#39;$$&#39;,&#39;$$&#39;], [&#39;\\[&#39;, &#39;\\]&#39;]], processEscapes: true, processEnvironments: true }, options: { skipHtmlTags: [&#39;script&#39;, &#39;noscript&#39;, &#39;style&#39;, &#39;textarea&#39;, &#39;pre&#39;] } }; window."/>
 
 
 
@@ -459,29 +459,29 @@ Additionally, a blog written by Geoff Ruddock has a more concise solution: <a hr
 <pre tabindex="0"><code>&lt;script&gt;
   MathJax = {
     tex: {
-      inlineMath: [['$', '$'], ['\\(', '\\)']],
-      displayMath: [['$$','$$'], ['\\[', '\\]']],
+      inlineMath: [[&#39;$&#39;, &#39;$&#39;], [&#39;\\(&#39;, &#39;\\)&#39;]],
+      displayMath: [[&#39;$$&#39;,&#39;$$&#39;], [&#39;\\[&#39;, &#39;\\]&#39;]],
       processEscapes: true,
       processEnvironments: true
     },
     options: {
-      skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+      skipHtmlTags: [&#39;script&#39;, &#39;noscript&#39;, &#39;style&#39;, &#39;textarea&#39;, &#39;pre&#39;]
     }
   };
 
-  window.addEventListener('load', (event) =&gt; {
-      document.querySelectorAll(&quot;mjx-container&quot;).forEach(function(x){
-        x.parentElement.classList += 'has-jax'})
+  window.addEventListener(&#39;load&#39;, (event) =&gt; {
+      document.querySelectorAll(&#34;mjx-container&#34;).forEach(function(x){
+        x.parentElement.classList += &#39;has-jax&#39;})
     });
 
 &lt;/script&gt;
-&lt;script src=&quot;https://polyfill.io/v3/polyfill.min.js?features=es6&quot;&gt;&lt;/script&gt;
-&lt;script type=&quot;text/javascript&quot; id=&quot;MathJax-script&quot; async
-  src=&quot;https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js&quot;&gt;&lt;/script&gt;
+&lt;script src=&#34;https://polyfill.io/v3/polyfill.min.js?features=es6&#34;&gt;&lt;/script&gt;
+&lt;script type=&#34;text/javascript&#34; id=&#34;MathJax-script&#34; async
+  src=&#34;https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js&#34;&gt;&lt;/script&gt;
 </code></pre><ol start="2">
 <li>Next, open the file <code>layouts/partials/header.html</code> and add the following line just before the closing <!-- raw HTML omitted --> tag:</li>
 </ol>
-<pre tabindex="0"><code>{{ if .Params.mathjax }}{{ partial &quot;mathjax_support.html&quot; . }}{{ end }}
+<pre tabindex="0"><code>{{ if .Params.mathjax }}{{ partial &#34;mathjax_support.html&#34; . }}{{ end }}
 </code></pre><ol start="3">
 <li>Then, add the following lines to your CSS file. You may need to tinker with the contents here depending on your theme, these are just the settings which worked for me.</li>
 </ol>

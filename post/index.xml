@@ -15,7 +15,7 @@
       <guid>/post/setup_af2_ii/</guid>
       <description>https://github.com/deepmind/alphafold
 Running AlphaFold The simplest way to run AlphaFold is using the provided Docker script. This was tested on Google Cloud with a machine using the nvidia-gpu-cloud-image with 12 vCPUs, 85 GB of RAM, a 100 GB boot disk, the databases on an additional 3 TB disk, and an A100 GPU.
- Clone this repository and cd into it.  (base) luolab@luolab-Z10PE-D16-WS:~/GITHUB_REPO$ git clone https://github.com/deepmind/alphafold.git Cloning into &#39;alphafold&#39;... remote: Enumerating objects: 569, done.</description>
+Clone this repository and cd into it. (base) luolab@luolab-Z10PE-D16-WS:~/GITHUB_REPO$ git clone https://github.com/deepmind/alphafold.git Cloning into &amp;#39;alphafold&amp;#39;... remote: Enumerating objects: 569, done.</description>
     </item>
     
     <item>
@@ -27,7 +27,7 @@ Running AlphaFold The simplest way to run AlphaFold is using the provided Docker
       <description>https://github.com/deepmind/alphafold
 First time setup You will need a machine running Linux, AlphaFold does not support other operating systems.
 The following steps are required in order to run AlphaFold:
- Install Docker.  Install NVIDIA Container Toolkit for GPU support. Setup running Docker as a non-root user.   Download genetic databases (see below). Download model parameters (see below). Check that AlphaFold will be able to use a GPU by running:  docker run --rm --gpus all nvidia/cuda:11.</description>
+Install Docker. Install NVIDIA Container Toolkit for GPU support. Setup running Docker as a non-root user. Download genetic databases (see below). Download model parameters (see below). Check that AlphaFold will be able to use a GPU by running: docker run --rm --gpus all nvidia/cuda:11.</description>
     </item>
     
     <item>
@@ -37,9 +37,9 @@ The following steps are required in order to run AlphaFold:
       
       <guid>/post/debug-celda-magick-install/</guid>
       <description>While installing celda:
-BiocManager::install(&#39;celda&#39;) ... Error: package or namespace load failed for ‘magick’ in dyn.load(file, DLLpath = DLLpath, ...): unable to load shared object &#39;/home/luolab/R/x86_64-pc-linux-gnu-library/4.2/magick/libs/magick.so&#39;: ... no such file or directory I&amp;rsquo;m running on Ubuntu 20.04 LTS.
+BiocManager::install(&amp;#39;celda&amp;#39;) ... Error: package or namespace load failed for ‘magick’ in dyn.load(file, DLLpath = DLLpath, ...): unable to load shared object &amp;#39;/home/luolab/R/x86_64-pc-linux-gnu-library/4.2/magick/libs/magick.so&amp;#39;: ... no such file or directory I&amp;rsquo;m running on Ubuntu 20.04 LTS.
 Installing imagemagick Magick++ library resolved the issue. See https://github.com/ropensci/magick
-$ sudo apt-get install -y libmagick++-dev # Everything works fine BiocManager::install(&#39;celda&#39;) </description>
+$ sudo apt-get install -y libmagick++-dev # Everything works fine BiocManager::install(&amp;#39;celda&amp;#39;) </description>
     </item>
     
     <item>
@@ -89,9 +89,9 @@ rig supports multiple platforms and is probably the best choice for most users.<
       
       <guid>/post/the_bitter_lesson/</guid>
       <description>Richard Sutton, the reknowned computer scientist, author of the AI bible: &amp;lsquo;Reinforcement Learning&amp;rsquo;, wrote this essay three years after Alphago beat Lee Sedol.
- http://www.incompleteideas.net/IncIdeas/BitterLesson.html
+http://www.incompleteideas.net/IncIdeas/BitterLesson.html
 The article was originally written for AI researches, but the idea can be extrapolated to other fields.
- Most AI research has been conducted as if the computation available to the agent were constant (in which case leveraging human knowledge would be one of the only ways to improve performance) but, over a slightly longer time than a typical research project, massively more computation inevitably becomes available.</description>
+Most AI research has been conducted as if the computation available to the agent were constant (in which case leveraging human knowledge would be one of the only ways to improve performance) but, over a slightly longer time than a typical research project, massively more computation inevitably becomes available.</description>
     </item>
     
     <item>
@@ -121,11 +121,11 @@ The article was originally written for AI researches, but the idea can be extrap
       
       <guid>/post/10x_reads_composition/</guid>
       <description>这篇文章是前两篇技术文档的后续：
- 10X CellRanger 中测序饱和度的定义与计算（一） 10X CellRanger 中测序饱和度的定义与计算（二）  前两篇文章成文过程中我意识到，单细胞测序文库从Raw Data到Deduplicated Reads，其实是一个non-trivial的流程。从fastq文件下机开始，不同来源的Reads需经过层层计算和筛选，最终只有少部分Reads能保留在表达矩阵（或counts table）中。这里用一张图总结，以帮助我们更好地理解单细胞文库的建库和上游分析（Upstream Analysis）。
-   以ScRNAseq_smkpipe_at_Luolab的分析pipeline为例。
+10X CellRanger 中测序饱和度的定义与计算（一） 10X CellRanger 中测序饱和度的定义与计算（二） 前两篇文章成文过程中我意识到，单细胞测序文库从Raw Data到Deduplicated Reads，其实是一个non-trivial的流程。从fastq文件下机开始，不同来源的Reads需经过层层计算和筛选，最终只有少部分Reads能保留在表达矩阵（或counts table）中。这里用一张图总结，以帮助我们更好地理解单细胞文库的建库和上游分析（Upstream Analysis）。
+以ScRNAseq_smkpipe_at_Luolab的分析pipeline为例。
 这套流程主要针对使用了Barcode + UMI的技术。
 流程图读法：从下往上读，不同颜色代表不同分析阶段的Reads；画斜条纹阴影的线段表示当前步骤到下一步中被清除掉的Reads。
- 黑色：Total Input Reads，一般我用的是测序下机后的Clean Reads（公司给的QC质控后的Cleandata） 黑色-&amp;gt;紫色：umi_tools whitelist, wash_whitelist, umi_tools extract 黑色阴影：Reads with Non-correctable Reads, invalid Barcode &amp;amp; UMI (discarded) 紫色：Barcode有效的Reads（Reads with valid Barcode &amp;amp; UMI） 紫色-&amp;gt;黄色：STAR 紫色阴影：Reads NOT Unique Mapped to Genome (discarded) 黄色：Unique Mapped Reads，在10X中也叫Confidently Mapped Reads（Unique Mapped, valid Barcode &amp;amp; UMI Reads） 黄色-&amp;gt;绿色：featureCounts 黄色阴影：Unique Mapped, valid Barcode &amp;amp; UMI but NOT assigned to feature 绿色：Effective Reads，即Unique Mapped, valid Barcode &amp;amp; UMI, feature assigned Reads 绿色-&amp;gt;蓝色：umi_tools count 蓝色阴影：Reads Collapsed due to UMI deduplication 蓝色：Deduplicated Reads，即最终用于生成表达矩阵的对Reads计数的结果  有了这张图，我们可以做一个简单直观的推论：如果想提高单细胞测序的技术质量，则必须尽可能减少阴影部分的Reads在总文库中的比例。</description>
+黑色：Total Input Reads，一般我用的是测序下机后的Clean Reads（公司给的QC质控后的Cleandata） 黑色-&amp;gt;紫色：umi_tools whitelist, wash_whitelist, umi_tools extract 黑色阴影：Reads with Non-correctable Reads, invalid Barcode &amp;amp; UMI (discarded) 紫色：Barcode有效的Reads（Reads with valid Barcode &amp;amp; UMI） 紫色-&amp;gt;黄色：STAR 紫色阴影：Reads NOT Unique Mapped to Genome (discarded) 黄色：Unique Mapped Reads，在10X中也叫Confidently Mapped Reads（Unique Mapped, valid Barcode &amp;amp; UMI Reads） 黄色-&amp;gt;绿色：featureCounts 黄色阴影：Unique Mapped, valid Barcode &amp;amp; UMI but NOT assigned to feature 绿色：Effective Reads，即Unique Mapped, valid Barcode &amp;amp; UMI, feature assigned Reads 绿色-&amp;gt;蓝色：umi_tools count 蓝色阴影：Reads Collapsed due to UMI deduplication 蓝色：Deduplicated Reads，即最终用于生成表达矩阵的对Reads计数的结果 有了这张图，我们可以做一个简单直观的推论：如果想提高单细胞测序的技术质量，则必须尽可能减少阴影部分的Reads在总文库中的比例。</description>
     </item>
     
     <item>
@@ -135,7 +135,7 @@ The article was originally written for AI researches, but the idea can be extrap
       
       <guid>/post/deploy_mathjax/</guid>
       <description>The HUGO official document has a nice blog about MathJax Support. Additionally, a blog written by Geoff Ruddock has a more concise solution: Render LaTeX math expressions in Hugo with MathJax 3.
-TL;DR  Create a file in your theme directory layouts/partials/mathjax_support.html as the following:  &amp;lt;script&amp;gt; MathJax = { tex: { inlineMath: [[&#39;$&#39;, &#39;$&#39;], [&#39;\\(&#39;, &#39;\\)&#39;]], displayMath: [[&#39;$$&#39;,&#39;$$&#39;], [&#39;\\[&#39;, &#39;\\]&#39;]], processEscapes: true, processEnvironments: true }, options: { skipHtmlTags: [&#39;script&#39;, &#39;noscript&#39;, &#39;style&#39;, &#39;textarea&#39;, &#39;pre&#39;] } }; window.</description>
+TL;DR Create a file in your theme directory layouts/partials/mathjax_support.html as the following: &amp;lt;script&amp;gt; MathJax = { tex: { inlineMath: [[&amp;#39;$&amp;#39;, &amp;#39;$&amp;#39;], [&amp;#39;\\(&amp;#39;, &amp;#39;\\)&amp;#39;]], displayMath: [[&amp;#39;$$&amp;#39;,&amp;#39;$$&amp;#39;], [&amp;#39;\\[&amp;#39;, &amp;#39;\\]&amp;#39;]], processEscapes: true, processEnvironments: true }, options: { skipHtmlTags: [&amp;#39;script&amp;#39;, &amp;#39;noscript&amp;#39;, &amp;#39;style&amp;#39;, &amp;#39;textarea&amp;#39;, &amp;#39;pre&amp;#39;] } }; window.</description>
     </item>
     
     <item>
@@ -145,13 +145,13 @@ TL;DR  Create a file in your theme directory layouts/partials/mathjax_support.ht
       
       <guid>/post/10x_calc_saturation_1/</guid>
       <description>最近为了搭建单细胞测序上游分析的Pipeline，正在研究怎样对分析结果做质控（Pipeline详情移步https://github.com/RuiyuRayWang/ScRNAseq_smkpipe_at_Luolab）。参考了10X CellRanger官方网站中描述的对测序饱和度的定义和计算方法：
- 10X 官方文档：什么是测序饱和度？ 10X 官方文档：测序饱和度怎样计算？  将用两篇文章记录这部分内容。
+10X 官方文档：什么是测序饱和度？ 10X 官方文档：测序饱和度怎样计算？ 将用两篇文章记录这部分内容。
 注意：本系列文章的参考来源均为10X官方公开的信息。
 这篇文章是本系列文章的第一篇，将对相关概念和计算公式的定义进行解读。
- 一、测序饱和度 和 文库复杂度 关于测序饱和度的定义，引用10X文档中的说明：
- Question: What is sequencing saturation?
+一、测序饱和度 和 文库复杂度 关于测序饱和度的定义，引用10X文档中的说明：
+Question: What is sequencing saturation?
 Answer: Sequencing saturation is a measure of the fraction of library complexity that was sequenced in a given experiment. The inverse of the sequencing saturation can be interpreted as the number of additional reads it would take to detect a new transcript.
- 这两句话言简而意赅，点明了测序饱和度(sequencing saturation)与文库复杂度(library complexity)之间的关系。
+这两句话言简而意赅，点明了测序饱和度(sequencing saturation)与文库复杂度(library complexity)之间的关系。
 library complexity (文库复杂度)，指的是一个测序文库中非冗余的DNA片段的数量（the number of unique DNA fragments present in a given library）。</description>
     </item>
     
@@ -162,15 +162,15 @@ library complexity (文库复杂度)，指的是一个测序文库中非冗余�
       
       <guid>/post/10x_calc_saturation_2/</guid>
       <description>最近为了搭建单细胞测序上游分析的Pipeline，正在研究怎样对分析结果做质控（Pipeline详情移步https://github.com/RuiyuRayWang/ScRNAseq_smkpipe_at_Luolab）。参考了10X CellRanger官方网站中描述的对测序饱和度的定义和计算方法：
- 10X 官方文档：什么是测序饱和度？ 10X 官方文档：测序饱和度怎样计算？  将用两篇文章记录这部分内容。
+10X 官方文档：什么是测序饱和度？ 10X 官方文档：测序饱和度怎样计算？ 将用两篇文章记录这部分内容。
 注意：本系列文章的参考来源均为10X官方公开的信息。
 这篇文章是本系列文章的第二篇，将利用10X官方文档中的示例数据来展示测序饱和度计算的代码复现。
- 下载数据：
- Uses dataset at https://support.10xgenomics.com/single-cell-gene-expression/datasets/3.0.0/pbmc_1k_v3, where the web summary report gives a sequencing saturation value of 0.7085123.​
- web_summary.html
- 计算公式：
- The sequencing saturation calculation below matches the 0.7085123 sequencing saturation given in the web summary report.
- unique_confidently_mapped_reads = 10,196,940 duplicate_reads = 24,785,461 x = 1 - (unique_confidently_mapped_reads/(unique_confidently_mapped_reads + duplicate_reads)) x = 1 - (10,196,940/(10,196,940 + 24,785,461)) x = 1 - (10,196,940/34,982,401) x = 1 - 0.</description>
+下载数据：
+Uses dataset at https://support.10xgenomics.com/single-cell-gene-expression/datasets/3.0.0/pbmc_1k_v3, where the web summary report gives a sequencing saturation value of 0.7085123.​
+web_summary.html
+计算公式：
+The sequencing saturation calculation below matches the 0.7085123 sequencing saturation given in the web summary report.
+unique_confidently_mapped_reads = 10,196,940 duplicate_reads = 24,785,461 x = 1 - (unique_confidently_mapped_reads/(unique_confidently_mapped_reads + duplicate_reads)) x = 1 - (10,196,940/(10,196,940 + 24,785,461)) x = 1 - (10,196,940/34,982,401) x = 1 - 0.</description>
     </item>
     
     <item>
@@ -182,7 +182,7 @@ library complexity (文库复杂度)，指的是一个测序文库中非冗余�
       <description>TL;DR First consulted this page
 I have R-4.0.5 with Bioconductor 3.12(4.0), use the latest scripts for installation.
 In Rstudio:
-&amp;gt; if (!requireNamespace(&amp;quot;BiocManager&amp;quot;, quietly = TRUE)) install.packages(&amp;quot;BiocManager&amp;quot;) &amp;gt; BiocManager::version() &amp;gt; # If your bioconductor version is previous to 4.0, see the section bellow &amp;gt; &amp;gt; ## Required &amp;gt; BiocManager::install(c(&amp;quot;AUCell&amp;quot;, &amp;quot;RcisTarget&amp;quot;)) &amp;gt; BiocManager::install(c(&amp;quot;GENIE3&amp;quot;)) # Optional. Can be replaced by GRNBoost &amp;gt; &amp;gt; ## Optional (but highly recommended): &amp;gt; # To score the network on cells (i.</description>
+&amp;gt; if (!requireNamespace(&amp;#34;BiocManager&amp;#34;, quietly = TRUE)) install.packages(&amp;#34;BiocManager&amp;#34;) &amp;gt; BiocManager::version() &amp;gt; # If your bioconductor version is previous to 4.0, see the section bellow &amp;gt; &amp;gt; ## Required &amp;gt; BiocManager::install(c(&amp;#34;AUCell&amp;#34;, &amp;#34;RcisTarget&amp;#34;)) &amp;gt; BiocManager::install(c(&amp;#34;GENIE3&amp;#34;)) # Optional. Can be replaced by GRNBoost &amp;gt; &amp;gt; ## Optional (but highly recommended): &amp;gt; # To score the network on cells (i.</description>
     </item>
     
     <item>
@@ -212,7 +212,7 @@ The reason is that I was trying to use two tools: cellassign and Cell_BLAST, but
       
       <guid>/post/mult-r/</guid>
       <description>Clean Built of Multiple R Versions on Ubuntu Long time ago I built R-4.0.3 on Ubuntu system following these guides: link1, link2. Briefly, I added GPG Key to APT (Advanced Package Tool) and added CRAN repository and directly retrieved R by apt.
-$ sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys E298A3A825C0D65DFD57CBB651716619E084DAB9 $ sudo add-apt-repository &#39;deb https://cloud.r-project.org/bin/linux/ubuntu bionic-cran40/&#39; $ sudo apt update $ sudo apt install r-base Recently, I ran into an issue with cellassign when analyzing single cell datasets.</description>
+$ sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys E298A3A825C0D65DFD57CBB651716619E084DAB9 $ sudo add-apt-repository &amp;#39;deb https://cloud.r-project.org/bin/linux/ubuntu bionic-cran40/&amp;#39; $ sudo apt update $ sudo apt install r-base Recently, I ran into an issue with cellassign when analyzing single cell datasets.</description>
     </item>
     
     <item>
@@ -249,20 +249,22 @@ I&amp;rsquo;ll only put here excerptions of the article that I feel excited abou
       <guid>/post/my-first-post/</guid>
       <description>2022-02-28更新：
 去年年底拿Hugo搭了一个博客，但用了没几日就没有动力再写了。我反思了一下可能主要有两个原因，总结一下：
- 长篇累牍使用英文撰写，逼格定调得太高。造成的后果是可读性差，效率又低。 今后还是老老实实用母语行文，必要时候可以加入洋文。 选用的主题（hugo-theme-cleanwhite by Huabing）过于花里胡哨。 每次翻阅过去的记录都感觉头晕目眩，遂挑了一个简约的主题重新搭了博客。  业精于勤而荒于嬉。今后还要再接再厉，也许做不到笔耕不辍，但至少也应该保持三天两头写点东西。
+长篇累牍使用英文撰写，逼格定调得太高。造成的后果是可读性差，效率又低。 今后还是老老实实用母语行文，必要时候可以加入洋文。 选用的主题（hugo-theme-cleanwhite by Huabing）过于花里胡哨。 每次翻阅过去的记录都感觉头晕目眩，遂挑了一个简约的主题重新搭了博客。 业精于勤而荒于嬉。今后还要再接再厉，也许做不到笔耕不辍，但至少也应该保持三天两头写点东西。
 这里就先记录下我是如何从hugo-theme-cleanwhite跳到新的主题Diary的。
 新主题Diary地址：(https://themes.gohugo.io/themes/hugo-theme-diary/)
- 下面是具体步骤。
+下面是具体步骤。
 如链接教程中的Quick Start所述，先用git submodule把Repo部署到本地的blog/themes目录下：
 cd my_hugo_site/blog git submodule add https://github.com/AmazingRise/hugo-theme-diary.git themes/diary 接下来可以跳过教程Quick Start中的步骤2、3。
 直接到blog目录下，用这个模板，替换config.toml文件中的内容。
 由于最初将这个Hugo site部署到github时参考了这篇推文，需要对config.toml进行修改，以满足本地的目录结构。
 修改了下面几个参数：
-baseURL = &amp;quot;/&amp;quot; title = &amp;quot;Karmotrine Dream&amp;quot; copyright = &amp;quot;&amp;quot; theme = &amp;quot;diary&amp;quot; subtitle = &amp;quot;&amp;quot; 添加下面这个参数，使hugo -D命令生成的网页推到public/目录下：
-publishDir = &amp;quot;../public&amp;quot; 删除原来public/目录中所有内容（这些是旧theme生成的文件）。
+baseURL = &amp;#34;/&amp;#34; title = &amp;#34;Karmotrine Dream&amp;#34; copyright = &amp;#34;&amp;#34; theme = &amp;#34;diary&amp;#34; subtitle = &amp;#34;&amp;#34; 添加下面这个参数，使hugo -D命令生成的网页推到public/目录下：
+publishDir = &amp;#34;../public&amp;#34; 删除原来public/目录中所有内容（这些是旧theme生成的文件）。
 最后，修改deploy.sh中的命令，使用diary作为theme来生成新的site：
 hugo -D -t diary # or `hugo -D` if no theme is specified And Voila!
-Hugo博客的theme变为Diary了！</description>
+Hugo博客的theme变为Diary了！
+最后写一下怎样在本地编辑、预览博客内容。
+首先cd到blog/目录下，用hugo new建新的post文件：</description>
     </item>
     
   </channel>

@@ -19,20 +19,22 @@
 <meta property="og:title" content="Hugo blog，新主题，新开始" />
 <meta property="og:description" content="2022-02-28更新：
 去年年底拿Hugo搭了一个博客，但用了没几日就没有动力再写了。我反思了一下可能主要有两个原因，总结一下：
- 长篇累牍使用英文撰写，逼格定调得太高。造成的后果是可读性差，效率又低。 今后还是老老实实用母语行文，必要时候可以加入洋文。 选用的主题（hugo-theme-cleanwhite by Huabing）过于花里胡哨。 每次翻阅过去的记录都感觉头晕目眩，遂挑了一个简约的主题重新搭了博客。  业精于勤而荒于嬉。今后还要再接再厉，也许做不到笔耕不辍，但至少也应该保持三天两头写点东西。
+长篇累牍使用英文撰写，逼格定调得太高。造成的后果是可读性差，效率又低。 今后还是老老实实用母语行文，必要时候可以加入洋文。 选用的主题（hugo-theme-cleanwhite by Huabing）过于花里胡哨。 每次翻阅过去的记录都感觉头晕目眩，遂挑了一个简约的主题重新搭了博客。 业精于勤而荒于嬉。今后还要再接再厉，也许做不到笔耕不辍，但至少也应该保持三天两头写点东西。
 这里就先记录下我是如何从hugo-theme-cleanwhite跳到新的主题Diary的。
 新主题Diary地址：(https://themes.gohugo.io/themes/hugo-theme-diary/)
- 下面是具体步骤。
+下面是具体步骤。
 如链接教程中的Quick Start所述，先用git submodule把Repo部署到本地的blog/themes目录下：
 cd my_hugo_site/blog git submodule add https://github.com/AmazingRise/hugo-theme-diary.git themes/diary 接下来可以跳过教程Quick Start中的步骤2、3。
 直接到blog目录下，用这个模板，替换config.toml文件中的内容。
 由于最初将这个Hugo site部署到github时参考了这篇推文，需要对config.toml进行修改，以满足本地的目录结构。
 修改了下面几个参数：
-baseURL = &quot;/&quot; title = &quot;Karmotrine Dream&quot; copyright = &quot;&quot; theme = &quot;diary&quot; subtitle = &quot;&quot; 添加下面这个参数，使hugo -D命令生成的网页推到public/目录下：
-publishDir = &quot;../public&quot; 删除原来public/目录中所有内容（这些是旧theme生成的文件）。
+baseURL = &#34;/&#34; title = &#34;Karmotrine Dream&#34; copyright = &#34;&#34; theme = &#34;diary&#34; subtitle = &#34;&#34; 添加下面这个参数，使hugo -D命令生成的网页推到public/目录下：
+publishDir = &#34;../public&#34; 删除原来public/目录中所有内容（这些是旧theme生成的文件）。
 最后，修改deploy.sh中的命令，使用diary作为theme来生成新的site：
 hugo -D -t diary # or `hugo -D` if no theme is specified And Voila!
-Hugo博客的theme变为Diary了！" />
+Hugo博客的theme变为Diary了！
+最后写一下怎样在本地编辑、预览博客内容。
+首先cd到blog/目录下，用hugo new建新的post文件：" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="/post/my-first-post/" /><meta property="article:section" content="post" />
 <meta property="article:published_time" content="2021-11-23T19:59:57+08:00" />
@@ -47,20 +49,22 @@ Hugo博客的theme变为Diary了！" />
 <meta name="twitter:title" content="Hugo blog，新主题，新开始"/>
 <meta name="twitter:description" content="2022-02-28更新：
 去年年底拿Hugo搭了一个博客，但用了没几日就没有动力再写了。我反思了一下可能主要有两个原因，总结一下：
- 长篇累牍使用英文撰写，逼格定调得太高。造成的后果是可读性差，效率又低。 今后还是老老实实用母语行文，必要时候可以加入洋文。 选用的主题（hugo-theme-cleanwhite by Huabing）过于花里胡哨。 每次翻阅过去的记录都感觉头晕目眩，遂挑了一个简约的主题重新搭了博客。  业精于勤而荒于嬉。今后还要再接再厉，也许做不到笔耕不辍，但至少也应该保持三天两头写点东西。
+长篇累牍使用英文撰写，逼格定调得太高。造成的后果是可读性差，效率又低。 今后还是老老实实用母语行文，必要时候可以加入洋文。 选用的主题（hugo-theme-cleanwhite by Huabing）过于花里胡哨。 每次翻阅过去的记录都感觉头晕目眩，遂挑了一个简约的主题重新搭了博客。 业精于勤而荒于嬉。今后还要再接再厉，也许做不到笔耕不辍，但至少也应该保持三天两头写点东西。
 这里就先记录下我是如何从hugo-theme-cleanwhite跳到新的主题Diary的。
 新主题Diary地址：(https://themes.gohugo.io/themes/hugo-theme-diary/)
- 下面是具体步骤。
+下面是具体步骤。
 如链接教程中的Quick Start所述，先用git submodule把Repo部署到本地的blog/themes目录下：
 cd my_hugo_site/blog git submodule add https://github.com/AmazingRise/hugo-theme-diary.git themes/diary 接下来可以跳过教程Quick Start中的步骤2、3。
 直接到blog目录下，用这个模板，替换config.toml文件中的内容。
 由于最初将这个Hugo site部署到github时参考了这篇推文，需要对config.toml进行修改，以满足本地的目录结构。
 修改了下面几个参数：
-baseURL = &quot;/&quot; title = &quot;Karmotrine Dream&quot; copyright = &quot;&quot; theme = &quot;diary&quot; subtitle = &quot;&quot; 添加下面这个参数，使hugo -D命令生成的网页推到public/目录下：
-publishDir = &quot;../public&quot; 删除原来public/目录中所有内容（这些是旧theme生成的文件）。
+baseURL = &#34;/&#34; title = &#34;Karmotrine Dream&#34; copyright = &#34;&#34; theme = &#34;diary&#34; subtitle = &#34;&#34; 添加下面这个参数，使hugo -D命令生成的网页推到public/目录下：
+publishDir = &#34;../public&#34; 删除原来public/目录中所有内容（这些是旧theme生成的文件）。
 最后，修改deploy.sh中的命令，使用diary作为theme来生成新的site：
 hugo -D -t diary # or `hugo -D` if no theme is specified And Voila!
-Hugo博客的theme变为Diary了！"/>
+Hugo博客的theme变为Diary了！
+最后写一下怎样在本地编辑、预览博客内容。
+首先cd到blog/目录下，用hugo new建新的post文件："/>
 
 
 
@@ -367,13 +371,13 @@ git submodule add https://github.com/AmazingRise/hugo-theme-diary.git themes/dia
 直接到<code>blog</code>目录下，用<a href="https://github.com/AmazingRise/hugo-theme-diary/blob/1.2.1/exampleSite/config.toml">这个模板</a>，替换<code>config.toml</code>文件中的内容。</p>
 <p>由于最初将这个Hugo site部署到github时参考了<a href="https://blog.csdn.net/kutawei/article/details/105421545">这篇推文</a>，需要对<code>config.toml</code>进行修改，以满足本地的目录结构。</p>
 <p>修改了下面几个参数：</p>
-<pre tabindex="0"><code>baseURL = &quot;/&quot;
-title = &quot;Karmotrine Dream&quot;
-copyright = &quot;&quot;
-theme = &quot;diary&quot;
-subtitle = &quot;&quot;
+<pre tabindex="0"><code>baseURL = &#34;/&#34;
+title = &#34;Karmotrine Dream&#34;
+copyright = &#34;&#34;
+theme = &#34;diary&#34;
+subtitle = &#34;&#34;
 </code></pre><p>添加下面这个参数，使<code>hugo -D</code>命令生成的网页推到<code>public/</code>目录下：</p>
-<pre tabindex="0"><code>publishDir = &quot;../public&quot;
+<pre tabindex="0"><code>publishDir = &#34;../public&#34;
 </code></pre><p>删除原来<code>public/</code>目录中所有内容（这些是旧theme生成的文件）。</p>
 <p>最后，修改<code>deploy.sh</code>中的命令，使用diary作为theme来生成新的site：</p>
 <pre tabindex="0"><code>hugo -D -t diary # or `hugo -D` if no theme is specified

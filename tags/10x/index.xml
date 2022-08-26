@@ -14,11 +14,11 @@
       
       <guid>/post/10x_reads_composition/</guid>
       <description>这篇文章是前两篇技术文档的后续：
- 10X CellRanger 中测序饱和度的定义与计算（一） 10X CellRanger 中测序饱和度的定义与计算（二）  前两篇文章成文过程中我意识到，单细胞测序文库从Raw Data到Deduplicated Reads，其实是一个non-trivial的流程。从fastq文件下机开始，不同来源的Reads需经过层层计算和筛选，最终只有少部分Reads能保留在表达矩阵（或counts table）中。这里用一张图总结，以帮助我们更好地理解单细胞文库的建库和上游分析（Upstream Analysis）。
-   以ScRNAseq_smkpipe_at_Luolab的分析pipeline为例。
+10X CellRanger 中测序饱和度的定义与计算（一） 10X CellRanger 中测序饱和度的定义与计算（二） 前两篇文章成文过程中我意识到，单细胞测序文库从Raw Data到Deduplicated Reads，其实是一个non-trivial的流程。从fastq文件下机开始，不同来源的Reads需经过层层计算和筛选，最终只有少部分Reads能保留在表达矩阵（或counts table）中。这里用一张图总结，以帮助我们更好地理解单细胞文库的建库和上游分析（Upstream Analysis）。
+以ScRNAseq_smkpipe_at_Luolab的分析pipeline为例。
 这套流程主要针对使用了Barcode + UMI的技术。
 流程图读法：从下往上读，不同颜色代表不同分析阶段的Reads；画斜条纹阴影的线段表示当前步骤到下一步中被清除掉的Reads。
- 黑色：Total Input Reads，一般我用的是测序下机后的Clean Reads（公司给的QC质控后的Cleandata） 黑色-&amp;gt;紫色：umi_tools whitelist, wash_whitelist, umi_tools extract 黑色阴影：Reads with Non-correctable Reads, invalid Barcode &amp;amp; UMI (discarded) 紫色：Barcode有效的Reads（Reads with valid Barcode &amp;amp; UMI） 紫色-&amp;gt;黄色：STAR 紫色阴影：Reads NOT Unique Mapped to Genome (discarded) 黄色：Unique Mapped Reads，在10X中也叫Confidently Mapped Reads（Unique Mapped, valid Barcode &amp;amp; UMI Reads） 黄色-&amp;gt;绿色：featureCounts 黄色阴影：Unique Mapped, valid Barcode &amp;amp; UMI but NOT assigned to feature 绿色：Effective Reads，即Unique Mapped, valid Barcode &amp;amp; UMI, feature assigned Reads 绿色-&amp;gt;蓝色：umi_tools count 蓝色阴影：Reads Collapsed due to UMI deduplication 蓝色：Deduplicated Reads，即最终用于生成表达矩阵的对Reads计数的结果  有了这张图，我们可以做一个简单直观的推论：如果想提高单细胞测序的技术质量，则必须尽可能减少阴影部分的Reads在总文库中的比例。</description>
+黑色：Total Input Reads，一般我用的是测序下机后的Clean Reads（公司给的QC质控后的Cleandata） 黑色-&amp;gt;紫色：umi_tools whitelist, wash_whitelist, umi_tools extract 黑色阴影：Reads with Non-correctable Reads, invalid Barcode &amp;amp; UMI (discarded) 紫色：Barcode有效的Reads（Reads with valid Barcode &amp;amp; UMI） 紫色-&amp;gt;黄色：STAR 紫色阴影：Reads NOT Unique Mapped to Genome (discarded) 黄色：Unique Mapped Reads，在10X中也叫Confidently Mapped Reads（Unique Mapped, valid Barcode &amp;amp; UMI Reads） 黄色-&amp;gt;绿色：featureCounts 黄色阴影：Unique Mapped, valid Barcode &amp;amp; UMI but NOT assigned to feature 绿色：Effective Reads，即Unique Mapped, valid Barcode &amp;amp; UMI, feature assigned Reads 绿色-&amp;gt;蓝色：umi_tools count 蓝色阴影：Reads Collapsed due to UMI deduplication 蓝色：Deduplicated Reads，即最终用于生成表达矩阵的对Reads计数的结果 有了这张图，我们可以做一个简单直观的推论：如果想提高单细胞测序的技术质量，则必须尽可能减少阴影部分的Reads在总文库中的比例。</description>
     </item>
     
     <item>
@@ -28,13 +28,13 @@
       
       <guid>/post/10x_calc_saturation_1/</guid>
       <description>最近为了搭建单细胞测序上游分析的Pipeline，正在研究怎样对分析结果做质控（Pipeline详情移步https://github.com/RuiyuRayWang/ScRNAseq_smkpipe_at_Luolab）。参考了10X CellRanger官方网站中描述的对测序饱和度的定义和计算方法：
- 10X 官方文档：什么是测序饱和度？ 10X 官方文档：测序饱和度怎样计算？  将用两篇文章记录这部分内容。
+10X 官方文档：什么是测序饱和度？ 10X 官方文档：测序饱和度怎样计算？ 将用两篇文章记录这部分内容。
 注意：本系列文章的参考来源均为10X官方公开的信息。
 这篇文章是本系列文章的第一篇，将对相关概念和计算公式的定义进行解读。
- 一、测序饱和度 和 文库复杂度 关于测序饱和度的定义，引用10X文档中的说明：
- Question: What is sequencing saturation?
+一、测序饱和度 和 文库复杂度 关于测序饱和度的定义，引用10X文档中的说明：
+Question: What is sequencing saturation?
 Answer: Sequencing saturation is a measure of the fraction of library complexity that was sequenced in a given experiment. The inverse of the sequencing saturation can be interpreted as the number of additional reads it would take to detect a new transcript.
- 这两句话言简而意赅，点明了测序饱和度(sequencing saturation)与文库复杂度(library complexity)之间的关系。
+这两句话言简而意赅，点明了测序饱和度(sequencing saturation)与文库复杂度(library complexity)之间的关系。
 library complexity (文库复杂度)，指的是一个测序文库中非冗余的DNA片段的数量（the number of unique DNA fragments present in a given library）。</description>
     </item>
     
@@ -45,15 +45,15 @@ library complexity (文库复杂度)，指的是一个测序文库中非冗余�
       
       <guid>/post/10x_calc_saturation_2/</guid>
       <description>最近为了搭建单细胞测序上游分析的Pipeline，正在研究怎样对分析结果做质控（Pipeline详情移步https://github.com/RuiyuRayWang/ScRNAseq_smkpipe_at_Luolab）。参考了10X CellRanger官方网站中描述的对测序饱和度的定义和计算方法：
- 10X 官方文档：什么是测序饱和度？ 10X 官方文档：测序饱和度怎样计算？  将用两篇文章记录这部分内容。
+10X 官方文档：什么是测序饱和度？ 10X 官方文档：测序饱和度怎样计算？ 将用两篇文章记录这部分内容。
 注意：本系列文章的参考来源均为10X官方公开的信息。
 这篇文章是本系列文章的第二篇，将利用10X官方文档中的示例数据来展示测序饱和度计算的代码复现。
- 下载数据：
- Uses dataset at https://support.10xgenomics.com/single-cell-gene-expression/datasets/3.0.0/pbmc_1k_v3, where the web summary report gives a sequencing saturation value of 0.7085123.​
- web_summary.html
- 计算公式：
- The sequencing saturation calculation below matches the 0.7085123 sequencing saturation given in the web summary report.
- unique_confidently_mapped_reads = 10,196,940 duplicate_reads = 24,785,461 x = 1 - (unique_confidently_mapped_reads/(unique_confidently_mapped_reads + duplicate_reads)) x = 1 - (10,196,940/(10,196,940 + 24,785,461)) x = 1 - (10,196,940/34,982,401) x = 1 - 0.</description>
+下载数据：
+Uses dataset at https://support.10xgenomics.com/single-cell-gene-expression/datasets/3.0.0/pbmc_1k_v3, where the web summary report gives a sequencing saturation value of 0.7085123.​
+web_summary.html
+计算公式：
+The sequencing saturation calculation below matches the 0.7085123 sequencing saturation given in the web summary report.
+unique_confidently_mapped_reads = 10,196,940 duplicate_reads = 24,785,461 x = 1 - (unique_confidently_mapped_reads/(unique_confidently_mapped_reads + duplicate_reads)) x = 1 - (10,196,940/(10,196,940 + 24,785,461)) x = 1 - (10,196,940/34,982,401) x = 1 - 0.</description>
     </item>
     
   </channel>

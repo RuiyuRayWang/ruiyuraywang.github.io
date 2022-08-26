@@ -20,7 +20,7 @@
 <meta property="og:description" content="TL;DR First consulted this page
 I have R-4.0.5 with Bioconductor 3.12(4.0), use the latest scripts for installation.
 In Rstudio:
-&gt; if (!requireNamespace(&quot;BiocManager&quot;, quietly = TRUE)) install.packages(&quot;BiocManager&quot;) &gt; BiocManager::version() &gt; # If your bioconductor version is previous to 4.0, see the section bellow &gt; &gt; ## Required &gt; BiocManager::install(c(&quot;AUCell&quot;, &quot;RcisTarget&quot;)) &gt; BiocManager::install(c(&quot;GENIE3&quot;)) # Optional. Can be replaced by GRNBoost &gt; &gt; ## Optional (but highly recommended): &gt; # To score the network on cells (i." />
+&gt; if (!requireNamespace(&#34;BiocManager&#34;, quietly = TRUE)) install.packages(&#34;BiocManager&#34;) &gt; BiocManager::version() &gt; # If your bioconductor version is previous to 4.0, see the section bellow &gt; &gt; ## Required &gt; BiocManager::install(c(&#34;AUCell&#34;, &#34;RcisTarget&#34;)) &gt; BiocManager::install(c(&#34;GENIE3&#34;)) # Optional. Can be replaced by GRNBoost &gt; &gt; ## Optional (but highly recommended): &gt; # To score the network on cells (i." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="/post/install-r-scenic/" /><meta property="article:section" content="post" />
 <meta property="article:published_time" content="2021-12-22T12:32:17+08:00" />
@@ -36,7 +36,7 @@ In Rstudio:
 <meta name="twitter:description" content="TL;DR First consulted this page
 I have R-4.0.5 with Bioconductor 3.12(4.0), use the latest scripts for installation.
 In Rstudio:
-&gt; if (!requireNamespace(&quot;BiocManager&quot;, quietly = TRUE)) install.packages(&quot;BiocManager&quot;) &gt; BiocManager::version() &gt; # If your bioconductor version is previous to 4.0, see the section bellow &gt; &gt; ## Required &gt; BiocManager::install(c(&quot;AUCell&quot;, &quot;RcisTarget&quot;)) &gt; BiocManager::install(c(&quot;GENIE3&quot;)) # Optional. Can be replaced by GRNBoost &gt; &gt; ## Optional (but highly recommended): &gt; # To score the network on cells (i."/>
+&gt; if (!requireNamespace(&#34;BiocManager&#34;, quietly = TRUE)) install.packages(&#34;BiocManager&#34;) &gt; BiocManager::version() &gt; # If your bioconductor version is previous to 4.0, see the section bellow &gt; &gt; ## Required &gt; BiocManager::install(c(&#34;AUCell&#34;, &#34;RcisTarget&#34;)) &gt; BiocManager::install(c(&#34;GENIE3&#34;)) # Optional. Can be replaced by GRNBoost &gt; &gt; ## Optional (but highly recommended): &gt; # To score the network on cells (i."/>
 
 
 
@@ -449,51 +449,51 @@ Ported from <a href="https://mak1t0.cc/" target="_blank" rel="noreferrer noopene
 <p>First consulted <a href="http://htmlpreview.github.io/?https://github.com/aertslab/SCENIC/blob/master/inst/doc/SCENIC_Setup.html">this page</a></p>
 <p>I have <code>R-4.0.5</code> with <code>Bioconductor 3.12(4.0)</code>, use the latest scripts for installation.</p>
 <p>In Rstudio:</p>
-<pre tabindex="0"><code>&gt; if (!requireNamespace(&quot;BiocManager&quot;, quietly = TRUE)) install.packages(&quot;BiocManager&quot;)
+<pre tabindex="0"><code>&gt; if (!requireNamespace(&#34;BiocManager&#34;, quietly = TRUE)) install.packages(&#34;BiocManager&#34;)
 &gt; BiocManager::version()
 &gt; # If your bioconductor version is previous to 4.0, see the section bellow
 &gt; 
 &gt; ## Required
-&gt; BiocManager::install(c(&quot;AUCell&quot;, &quot;RcisTarget&quot;))
-&gt; BiocManager::install(c(&quot;GENIE3&quot;)) # Optional. Can be replaced by GRNBoost
+&gt; BiocManager::install(c(&#34;AUCell&#34;, &#34;RcisTarget&#34;))
+&gt; BiocManager::install(c(&#34;GENIE3&#34;)) # Optional. Can be replaced by GRNBoost
 &gt; 
 &gt; ## Optional (but highly recommended):
 &gt; # To score the network on cells (i.e. run AUCell):
-&gt; BiocManager::install(c(&quot;zoo&quot;, &quot;mixtools&quot;, &quot;rbokeh&quot;))
+&gt; BiocManager::install(c(&#34;zoo&#34;, &#34;mixtools&#34;, &#34;rbokeh&#34;))
 &gt; # For various visualizations and perform t-SNEs:
-&gt; BiocManager::install(c(&quot;DT&quot;, &quot;NMF&quot;, &quot;ComplexHeatmap&quot;, &quot;R2HTML&quot;, &quot;Rtsne&quot;))
+&gt; BiocManager::install(c(&#34;DT&#34;, &#34;NMF&#34;, &#34;ComplexHeatmap&#34;, &#34;R2HTML&#34;, &#34;Rtsne&#34;))
 &gt; # To support paralell execution (not available in Windows):
-&gt; BiocManager::install(c(&quot;doMC&quot;, &quot;doRNG&quot;))
+&gt; BiocManager::install(c(&#34;doMC&#34;, &#34;doRNG&#34;))
 &gt; &gt; # To export/visualize in http://scope.aertslab.org
-&gt; if (!requireNamespace(&quot;devtools&quot;, quietly = TRUE)) install.packages(&quot;devtools&quot;)
-&gt; devtools::install_github(&quot;aertslab/SCopeLoomR&quot;, build_vignettes = TRUE)
+&gt; if (!requireNamespace(&#34;devtools&#34;, quietly = TRUE)) install.packages(&#34;devtools&#34;)
+&gt; devtools::install_github(&#34;aertslab/SCopeLoomR&#34;, build_vignettes = TRUE)
 </code></pre><p>These worked fine.</p>
 <p>Then, when installing SCENIC using <code>devtools</code>:</p>
-<pre tabindex="0"><code>&gt; if (!requireNamespace(&quot;devtools&quot;, quietly = TRUE)) install.packages(&quot;devtools&quot;)
-&gt; devtools::install_github(&quot;aertslab/SCENIC&quot;) 
+<pre tabindex="0"><code>&gt; if (!requireNamespace(&#34;devtools&#34;, quietly = TRUE)) install.packages(&#34;devtools&#34;)
+&gt; devtools::install_github(&#34;aertslab/SCENIC&#34;) 
 Downloading GitHub repo aertslab/SCENIC@HEAD
 Error in utils::download.file(url, path, method = method, quiet = quiet,  : 
-  download from 'https://api.github.com/repos/aertslab/SCENIC/tarball/HEAD' failed
+  download from &#39;https://api.github.com/repos/aertslab/SCENIC/tarball/HEAD&#39; failed
 </code></pre><p>Tried several times with no success.</p>
 <p>There are some discussions on this behavior with <code>devtools</code> and <code>remotes</code>, for example this <a href="https://github.com/r-lib/remotes/issues/130">issue</a>, but I find it un-straightforward.</p>
 <p>Instead, I decided to switch to SCENIC(R) github page and install directly from there.
 First tried directly cloning the repo:</p>
 <pre tabindex="0"><code>$ git clone https://github.com/aertslab/SCENIC.git
-Cloning into 'SCENIC'...
-fatal: unable to access 'https://github.com/aertslab/SCENIC.git/': Could not resolve host: github.com
+Cloning into &#39;SCENIC&#39;...
+fatal: unable to access &#39;https://github.com/aertslab/SCENIC.git/&#39;: Could not resolve host: github.com
 </code></pre><p>This also failed!</p>
 <p>Then tried <code>Download ZIP</code> to local and unzip <code>SCENIC-master.zip</code>. Create a new project in Rstudio from the directory containing SCENIC build and hit the <code>Install and Restart</code> button.</p>
 <p>This also failed because of an error of the sort &ldquo;Dependency &lsquo;dynamicTreeCut&rsquo; not available&rdquo;, but this won&rsquo;t be very difficult to solve.</p>
 <p>Install <code>dynamicTreeCut</code> manually:</p>
-<pre tabindex="0"><code>&gt; install.packages(&quot;dynamicTreeCut&quot;)
+<pre tabindex="0"><code>&gt; install.packages(&#34;dynamicTreeCut&#34;)
 Warning in install.packages :
   unable to access index for repository https://cran.rstudio.com/src/contrib:
-  cannot open URL 'https://cran.rstudio.com/src/contrib/PACKAGES'
+  cannot open URL &#39;https://cran.rstudio.com/src/contrib/PACKAGES&#39;
 Installing package into ‘/home/luolab/R/x86_64-pc-linux-gnu-library/4.0’
 (as ‘lib’ is unspecified)
 Warning in install.packages :
   unable to access index for repository https://cran.rstudio.com/src/contrib:
-  cannot open URL 'https://cran.rstudio.com/src/contrib/PACKAGES'
+  cannot open URL &#39;https://cran.rstudio.com/src/contrib/PACKAGES&#39;
 Warning in install.packages :
   package ‘dynamicTreeCut’ is not available for this version of R
 
@@ -501,11 +501,11 @@ A version of this package for your version of R might be available elsewhere,
 see the ideas at
 https://cran.r-project.org/doc/manuals/r-patched/R-admin.html#Installing-packages
 </code></pre><p>To <a href="https://community.rstudio.com/t/install-packages-unable-to-access-index-for-repository-try-disabling-secure-download-method-for-http/16578">fix this</a>, in Rstudio go to <code>Tools</code> &gt; <code>Global Options</code> &gt; <code>Packages</code> and <strong>Uncheck</strong> <code>Use secure download method for HTTP</code>. Then:</p>
-<pre tabindex="0"><code>&gt; install.packages(&quot;dynamicTreeCut&quot;)
+<pre tabindex="0"><code>&gt; install.packages(&#34;dynamicTreeCut&#34;)
 Installing package into ‘/home/luolab/R/x86_64-pc-linux-gnu-library/4.0’
 (as ‘lib’ is unspecified)
-trying URL 'http://cran.rstudio.com/src/contrib/dynamicTreeCut_1.63-1.tar.gz'
-Content type 'application/x-gzip' length 24027 bytes (23 KB)
+trying URL &#39;http://cran.rstudio.com/src/contrib/dynamicTreeCut_1.63-1.tar.gz&#39;
+Content type &#39;application/x-gzip&#39; length 24027 bytes (23 KB)
 ==================================================
 downloaded 23 KB
 
@@ -534,7 +534,7 @@ The downloaded source packages are in
 <h2 id="ps">P.S.</h2>
 <p>When trying to push this post to github remote, failed again&hellip;</p>
 <pre tabindex="0"><code>$ git push -u --all
-fatal: unable to access 'https://github.com/RuiyuRayWang/blog.git/': Could not resolve host: github.com
+fatal: unable to access &#39;https://github.com/RuiyuRayWang/blog.git/&#39;: Could not resolve host: github.com
 </code></pre><p>Looks like we&rsquo;re having a bad day with github server&hellip;</p>
 
                     
