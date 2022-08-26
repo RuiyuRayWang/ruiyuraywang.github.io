@@ -1,0 +1,85 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Karmotrine Dream</title>
+    <link>/</link>
+    <description>Recent content on Karmotrine Dream</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 26 Aug 2022 17:41:29 +0800</lastBuildDate>
+    
+        <atom:link href="/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    
+        <item>
+        <title>Hugo blog，新主题，新开始</title>
+        <link>/post/my-first-post/</link>
+        <pubDate>Tue, 23 Nov 2021 19:59:57 +0800</pubDate>
+        
+        <guid>/post/my-first-post/</guid>
+        <description>Karmotrine Dream /post/my-first-post/ -&lt;p&gt;2022-02-28更新：&lt;/p&gt;
+&lt;p&gt;去年年底拿Hugo搭了一个博客，但用了没几日就没有动力再写了。我反思了一下可能主要有两个原因，总结一下：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;长篇累牍使用英文撰写，逼格定调得太高。造成的后果是可读性差，效率又低。
+今后还是老老实实用母语行文，必要时候可以加入洋文。&lt;/li&gt;
+&lt;li&gt;选用的主题（hugo-theme-cleanwhite by Huabing）过于花里胡哨。
+每次翻阅过去的记录都感觉头晕目眩，遂挑了一个简约的主题重新搭了博客。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;业精于勤而荒于嬉。今后还要再接再厉，也许做不到笔耕不辍，但至少也应该保持三天两头写点东西。&lt;/p&gt;
+&lt;p&gt;这里就先记录下我是如何从hugo-theme-cleanwhite跳到新的主题Diary的。&lt;/p&gt;
+&lt;p&gt;新主题Diary地址：(&lt;a href=&#34;https://themes.gohugo.io/themes/hugo-theme-diary/&#34;&gt;https://themes.gohugo.io/themes/hugo-theme-diary/&lt;/a&gt;)&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;下面是具体步骤。&lt;/p&gt;
+&lt;p&gt;如链接教程中的Quick Start所述，先用&lt;code&gt;git submodule&lt;/code&gt;把Repo部署到本地的&lt;code&gt;blog/themes&lt;/code&gt;目录下：&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;cd my_hugo_site/blog
+git submodule add https://github.com/AmazingRise/hugo-theme-diary.git themes/diary
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;接下来可以跳过教程Quick Start中的步骤2、3。&lt;br&gt;
+直接到&lt;code&gt;blog&lt;/code&gt;目录下，用&lt;a href=&#34;https://github.com/AmazingRise/hugo-theme-diary/blob/1.2.1/exampleSite/config.toml&#34;&gt;这个模板&lt;/a&gt;，替换&lt;code&gt;config.toml&lt;/code&gt;文件中的内容。&lt;/p&gt;
+&lt;p&gt;由于最初将这个Hugo site部署到github时参考了&lt;a href=&#34;https://blog.csdn.net/kutawei/article/details/105421545&#34;&gt;这篇推文&lt;/a&gt;，需要对&lt;code&gt;config.toml&lt;/code&gt;进行修改，以满足本地的目录结构。&lt;/p&gt;
+&lt;p&gt;修改了下面几个参数：&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;baseURL = &amp;#34;/&amp;#34;
+title = &amp;#34;Karmotrine Dream&amp;#34;
+copyright = &amp;#34;&amp;#34;
+theme = &amp;#34;diary&amp;#34;
+subtitle = &amp;#34;&amp;#34;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;添加下面这个参数，使&lt;code&gt;hugo -D&lt;/code&gt;命令生成的网页推到&lt;code&gt;public/&lt;/code&gt;目录下：&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;publishDir = &amp;#34;../public&amp;#34;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;删除原来&lt;code&gt;public/&lt;/code&gt;目录中所有内容（这些是旧theme生成的文件）。&lt;/p&gt;
+&lt;p&gt;最后，修改&lt;code&gt;deploy.sh&lt;/code&gt;中的命令，使用diary作为theme来生成新的site：&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;hugo -D -t diary # or `hugo -D` if no theme is specified
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;And Voila!&lt;br&gt;
+Hugo博客的theme变为Diary了！&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;最后写一下怎样在本地编辑、预览博客内容。&lt;/p&gt;
+&lt;p&gt;首先&lt;code&gt;cd&lt;/code&gt;到&lt;code&gt;blog/&lt;/code&gt;目录下，用&lt;code&gt;hugo new&lt;/code&gt;建新的post文件：&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;cd my_hugo_site/blog
+hugo new content/post/[new-post-name].md
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;在新的博客写好后，可用下面的指令在本地预览：&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;hugo server -D
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;若预览中发现错误，务必及时纠正。&lt;/p&gt;
+&lt;p&gt;确保无误后，用&lt;code&gt;deploy.sh&lt;/code&gt;脚本推送到github上即可：&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;./deploy.sh
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;这样就大功告成了！&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;(以下内容是旧时的博客，写于2021-11-23)&lt;/p&gt;
+&lt;p&gt;Hosting my first Blog with Hugo on Github!&lt;/p&gt;
+&lt;p&gt;For a starter, I&amp;rsquo;ll document in this post how the blog is managed and used.
+I&amp;rsquo;ve setup the site by referring to &lt;a href=&#34;https://blog.csdn.net/kutawei/article/details/105421545&#34;&gt;here&lt;/a&gt;, &lt;a href=&#34;https://zhuanlan.zhihu.com/p/150095964&#34;&gt;here&lt;/a&gt;, and &lt;a href=&#34;https://gohugo.io/getting-started/quick-start/&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;The first link is particularly useful. I&amp;rsquo;ve adopted its file structure for setting up privately managed (&lt;code&gt;/blog&lt;/code&gt;) and public sites (&lt;code&gt;/public&lt;/code&gt;).
+Critically, the &lt;code&gt;/public&lt;/code&gt; repo must be created with the following convention: &lt;a href=&#34;https://github.com/RuiyuRayWang/ruiyuraywang.github.io&#34;&gt;https://github.com/RuiyuRayWang/ruiyuraywang.github.io&lt;/a&gt;
+Everytime contents in &lt;code&gt;/blog&lt;/code&gt; is updated, run &lt;code&gt;hugo -D&lt;/code&gt; to generate new site to &lt;code&gt;/public&lt;/code&gt; and push &lt;code&gt;/public&lt;/code&gt; to github accordingly.&lt;/p&gt;
+&lt;p&gt;For automatic regeneration of the static site, a shell script is given (&lt;code&gt;./deploy.h&lt;/code&gt;). After editing contents in &lt;code&gt;/blog&lt;/code&gt;, simply do&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;./deploy.sh
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;and the static sites will be updated.&lt;/p&gt;
+&lt;p&gt;To add new contents to the blog, open up a terminal and navigate to the &lt;code&gt;blog/&lt;/code&gt; directory and type:&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;hugo new content/post/[new-post-name].md
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;The newly created markdown should assume a pre-defined format (headers, etc.). Edit the post contents and then set &lt;code&gt;draft&lt;/code&gt; to &lt;code&gt;false&lt;/code&gt;, the post will be updated marked and recognized the next time &lt;code&gt;hugo -D&lt;/code&gt; is invoked.&lt;/p&gt;
+&lt;p&gt;Before pushing to github remote site, check locally how the update looks, do:&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;hugo server -D
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;and the newly generated site can be viewed at &lt;code&gt;http://localhost:1313/&lt;/code&gt;&lt;/p&gt;
+- /post/my-first-post/ - </description>
+        </item>
+    
+    
+  </channel>
+</rss> 
