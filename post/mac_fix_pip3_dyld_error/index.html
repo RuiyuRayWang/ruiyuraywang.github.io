@@ -17,7 +17,8 @@
 
 
 <meta property="og:title" content="MAC - dyld[1944]: dyld cache" />
-<meta property="og:description" content="Trying to configure virtualenv on mac, met a similar issue like this one: [https://stackoverflow.com/questions/70809158/dyld-cache-system-library-dyld-dyld-shared-cache-x86-64h-not-loaded-syscall]
+<meta property="og:description" content="Trying to configure virtualenv on mac, met this issue:
+https://stackoverflow.com/questions/70809158/dyld-cache-system-library-dyld-dyld-shared-cache-x86-64h-not-loaded-syscall
 Error messages:
 $ pip dyld[1944]: dyld cache &#39;/System/Library/dyld/dyld_shared_cache_x86_64h&#39; not loaded: syscall to map cache into shared region failed dyld[1944]: Library not loaded: &#39;/System/Library/Frameworks/CoreFoundation.framework/Versions/A/CoreFoundation&#39; Referenced from: &#39;/Library/Frameworks/Python.framework/Versions/3.5/Resources/Python.app/Contents/MacOS/Python&#39; Reason: tried: &#39;/System/Library/Frameworks/CoreFoundation.framework/Versions/A/CoreFoundation&#39; (no such file), &#39;/Library/Frameworks/CoreFoundation.framework/Versions/A/CoreFoundation&#39; (no such file) Abort trap: 6 This is essentially a python issue:
 $ python3 dyld[1944]: dyld cache &#39;/System/Library/dyld/dyld_shared_cache_x86_64h&#39; not loaded: syscall to map cache into shared region failed dyld[1944]: Library not loaded: &#39;/System/Library/Frameworks/CoreFoundation." />
@@ -33,7 +34,8 @@ $ python3 dyld[1944]: dyld cache &#39;/System/Library/dyld/dyld_shared_cache_x86
 
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="MAC - dyld[1944]: dyld cache"/>
-<meta name="twitter:description" content="Trying to configure virtualenv on mac, met a similar issue like this one: [https://stackoverflow.com/questions/70809158/dyld-cache-system-library-dyld-dyld-shared-cache-x86-64h-not-loaded-syscall]
+<meta name="twitter:description" content="Trying to configure virtualenv on mac, met this issue:
+https://stackoverflow.com/questions/70809158/dyld-cache-system-library-dyld-dyld-shared-cache-x86-64h-not-loaded-syscall
 Error messages:
 $ pip dyld[1944]: dyld cache &#39;/System/Library/dyld/dyld_shared_cache_x86_64h&#39; not loaded: syscall to map cache into shared region failed dyld[1944]: Library not loaded: &#39;/System/Library/Frameworks/CoreFoundation.framework/Versions/A/CoreFoundation&#39; Referenced from: &#39;/Library/Frameworks/Python.framework/Versions/3.5/Resources/Python.app/Contents/MacOS/Python&#39; Reason: tried: &#39;/System/Library/Frameworks/CoreFoundation.framework/Versions/A/CoreFoundation&#39; (no such file), &#39;/Library/Frameworks/CoreFoundation.framework/Versions/A/CoreFoundation&#39; (no such file) Abort trap: 6 This is essentially a python issue:
 $ python3 dyld[1944]: dyld cache &#39;/System/Library/dyld/dyld_shared_cache_x86_64h&#39; not loaded: syscall to map cache into shared region failed dyld[1944]: Library not loaded: &#39;/System/Library/Frameworks/CoreFoundation."/>
@@ -329,8 +331,8 @@ Ported from <a href="https://mak1t0.cc/" target="_blank" rel="noreferrer noopene
                 
                 <div class="post-body" v-pre>
                 
-                    <p>Trying to configure virtualenv on mac, met a similar issue like this one:
-[https://stackoverflow.com/questions/70809158/dyld-cache-system-library-dyld-dyld-shared-cache-x86-64h-not-loaded-syscall]</p>
+                    <p>Trying to configure virtualenv on mac, met this issue:<br>
+<a href="https://stackoverflow.com/questions/70809158/dyld-cache-system-library-dyld-dyld-shared-cache-x86-64h-not-loaded-syscall">https://stackoverflow.com/questions/70809158/dyld-cache-system-library-dyld-dyld-shared-cache-x86-64h-not-loaded-syscall</a></p>
 <p>Error messages:</p>
 <pre tabindex="0"><code>$ pip
 dyld[1944]: dyld cache &#39;/System/Library/dyld/dyld_shared_cache_x86_64h&#39; not loaded: syscall to map cache into shared region failed
@@ -345,8 +347,12 @@ dyld[1944]: Library not loaded: &#39;/System/Library/Frameworks/CoreFoundation.f
   Referenced from: &#39;/Library/Frameworks/Python.framework/Versions/3.5/Resources/Python.app/Contents/MacOS/Python&#39;
   Reason: tried: &#39;/System/Library/Frameworks/CoreFoundation.framework/Versions/A/CoreFoundation&#39; (no such file), &#39;/Library/Frameworks/CoreFoundation.framework/Versions/A/CoreFoundation&#39; (no such file)
 Abort trap: 6
-</code></pre><p>Solution:
-Completely uninstall python, <code>sudo rm -rf</code> the conflicting directory (<code>/Library/Frameworks/Python.framework/</code>), and install python3 back.</p>
+</code></pre><p>Solution:</p>
+<ul>
+<li>Completely uninstall python</li>
+<li><code>sudo rm -rf</code> the conflicting directory (<code>/Library/Frameworks/Python.framework/</code>)</li>
+<li><code>brew install python3</code> back.</li>
+</ul>
 <pre tabindex="0"><code>$ brew uninstall --ignore-dependencies python3
 Uninstalling /usr/local/Cellar/python@3.10/3.10.6_1... (3,113 files, 56.5MB)
 </code></pre><pre tabindex="0"><code>$ sudo rm -rf /Library/Frameworks/Python.framework/  # This is what&#39;s causing the issue

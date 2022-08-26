@@ -13,7 +13,8 @@
       <pubDate>Fri, 26 Aug 2022 17:41:29 +0800</pubDate>
       
       <guid>/post/mac_fix_pip3_dyld_error/</guid>
-      <description>Trying to configure virtualenv on mac, met a similar issue like this one: [https://stackoverflow.com/questions/70809158/dyld-cache-system-library-dyld-dyld-shared-cache-x86-64h-not-loaded-syscall]
+      <description>Trying to configure virtualenv on mac, met this issue:
+https://stackoverflow.com/questions/70809158/dyld-cache-system-library-dyld-dyld-shared-cache-x86-64h-not-loaded-syscall
 Error messages:
 $ pip dyld[1944]: dyld cache &amp;#39;/System/Library/dyld/dyld_shared_cache_x86_64h&amp;#39; not loaded: syscall to map cache into shared region failed dyld[1944]: Library not loaded: &amp;#39;/System/Library/Frameworks/CoreFoundation.framework/Versions/A/CoreFoundation&amp;#39; Referenced from: &amp;#39;/Library/Frameworks/Python.framework/Versions/3.5/Resources/Python.app/Contents/MacOS/Python&amp;#39; Reason: tried: &amp;#39;/System/Library/Frameworks/CoreFoundation.framework/Versions/A/CoreFoundation&amp;#39; (no such file), &amp;#39;/Library/Frameworks/CoreFoundation.framework/Versions/A/CoreFoundation&amp;#39; (no such file) Abort trap: 6 This is essentially a python issue:
 $ python3 dyld[1944]: dyld cache &amp;#39;/System/Library/dyld/dyld_shared_cache_x86_64h&amp;#39; not loaded: syscall to map cache into shared region failed dyld[1944]: Library not loaded: &amp;#39;/System/Library/Frameworks/CoreFoundation.</description>
