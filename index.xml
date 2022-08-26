@@ -12,14 +12,12 @@
     
     
         <item>
-        <title>MAC - dyld[1944]: dyld cache</title>
+        <title>MAC - dyld[1944]: dyld cache ERROR</title>
         <link>/post/mac_fix_pip3_dyld_error/</link>
         <pubDate>Fri, 26 Aug 2022 17:41:29 +0800</pubDate>
         
         <guid>/post/mac_fix_pip3_dyld_error/</guid>
-        <description>Karmotrine Dream /post/mac_fix_pip3_dyld_error/ -&lt;p&gt;Trying to configure virtualenv on mac, met this issue:&lt;br&gt;
-&lt;a href=&#34;https://stackoverflow.com/questions/70809158/dyld-cache-system-library-dyld-dyld-shared-cache-x86-64h-not-loaded-syscall&#34;&gt;https://stackoverflow.com/questions/70809158/dyld-cache-system-library-dyld-dyld-shared-cache-x86-64h-not-loaded-syscall&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;Error messages:&lt;/p&gt;
+        <description>Karmotrine Dream /post/mac_fix_pip3_dyld_error/ -&lt;p&gt;Trying to configure virtualenv on mac, met the following issue:&lt;/p&gt;
 &lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;$ pip
 dyld[1944]: dyld cache &amp;#39;/System/Library/dyld/dyld_shared_cache_x86_64h&amp;#39; not loaded: syscall to map cache into shared region failed
 dyld[1944]: Library not loaded: &amp;#39;/System/Library/Frameworks/CoreFoundation.framework/Versions/A/CoreFoundation&amp;#39;
@@ -33,7 +31,11 @@ dyld[1944]: Library not loaded: &amp;#39;/System/Library/Frameworks/CoreFoundati
   Referenced from: &amp;#39;/Library/Frameworks/Python.framework/Versions/3.5/Resources/Python.app/Contents/MacOS/Python&amp;#39;
   Reason: tried: &amp;#39;/System/Library/Frameworks/CoreFoundation.framework/Versions/A/CoreFoundation&amp;#39; (no such file), &amp;#39;/Library/Frameworks/CoreFoundation.framework/Versions/A/CoreFoundation&amp;#39; (no such file)
 Abort trap: 6
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Solution:&lt;/p&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Same issue on mac reported by others:
+&lt;a href=&#34;https://stackoverflow.com/questions/70809158/dyld-cache-system-library-dyld-dyld-shared-cache-x86-64h-not-loaded-syscall&#34;&gt;https://stackoverflow.com/questions/70809158/dyld-cache-system-library-dyld-dyld-shared-cache-x86-64h-not-loaded-syscall&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;And this worked for me:
+&lt;a href=&#34;https://stackoverflow.com/a/70746012/10730746&#34;&gt;https://stackoverflow.com/a/70746012/10730746&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Solution:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;Completely uninstall python&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;sudo rm -rf&lt;/code&gt; the conflicting directory (&lt;code&gt;/Library/Frameworks/Python.framework/&lt;/code&gt;)&lt;/li&gt;
